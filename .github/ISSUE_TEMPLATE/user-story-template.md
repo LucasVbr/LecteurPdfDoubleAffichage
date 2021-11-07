@@ -1,8 +1,8 @@
 ---
 name: User Story
 about: Modèles de User Stories
-title: "[US]"
-labels: ''
+title: ''
+labels: User Story
 assignees: ''
 
 ---
@@ -27,4 +27,4 @@ assignees: ''
 
 **LORSQUE:** 
 
-**ALORS:** 
+**ALORS:**
