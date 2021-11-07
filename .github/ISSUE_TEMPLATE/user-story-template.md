@@ -10,8 +10,11 @@ assignees: ''
 # Description
 
 **EN TANT QUE:** 
+
 **JE VEUT:** 
+
 **DE TELLE SORTE QUE:** 
+
 
 ## Règles métier
 - 
@@ -21,5 +24,7 @@ assignees: ''
 
 ### 
 **ETANT DONNE:** 
+
 **LORSQUE:** 
-**ALORS:**
+
+**ALORS:** 
