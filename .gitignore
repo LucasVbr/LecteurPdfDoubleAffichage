@@ -1,6 +1,5 @@
 # Meta données de IntelliJ Idea
 .idea/*
-*.iml
 
 # Dossiers de classes
 target/*
