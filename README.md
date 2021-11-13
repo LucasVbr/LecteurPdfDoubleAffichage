@@ -2,17 +2,17 @@
 
 ## Description
 
-Dans le cadre des projets tuteuré du semestre 3 de seconde année de DUT informatique de l’année 2021-2022, le sujet du lecteur PDF Double affichage a été proposé par J. Mathieu, un des enseignants de l’IUT de Rodez.
+Dans le cadre des projets tuteuré du semestre 3 de seconde année de DUT informatique de l’année 2021-2022, le sujet du lecteur PDF Double affichage a été proposé par J. Mathieu, un des enseignants de l’IUT de Rodez.
 
-L'objectif de ce projet est de réaliser une application en Java permettant de visionner un ou deux documents PDF en même temps, sous forme d'onglets. Il sera aussi possible d'ouvrir deux fois le même fichier.
+L’objectif de ce projet est de réaliser une application en Java permettant de visionner un ou deux documents PDF en même temps, sous forme d’onglets. Il sera aussi possible d’ouvrir deux fois le même fichier.
 
-Le logiciel proposera 2 modes d'utilisation:
-- le mode Unifié : où le scroll de la souris fera défiller les deux documents en même temps
-- Le mode Différencié : Qui permettra de faire défiller les pages des documents de manière indépendante
+Le logiciel proposera 2 modes d’utilisation :
+- le mode Unifié : où le scroll de la souris fera defiler les deux documents en même temps
+- Le mode Différencié : Qui permettra de faire defiler les pages des documents de manière indépendante
 
-## Membres de l'équipe et leurs rôles
+## Membres de l’équipe et leurs rôles
 
-- [Léo Fanch](https://github.com/leofranch) : Project Owner
+- [Léo Franch](https://github.com/leofranch) : Project Owner
 - [Tristan Nogaret](https://github.com/Zanter12) : Développeur
 - [Noé Villeneuve](https://github.com/NonoL3Robot) : Secrétaire
 - [Lucàs Vabre](https://github.com/LucasV-IUT) : Scrum Master
