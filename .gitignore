@@ -3,3 +3,6 @@
 
 # Dossiers de classes
 target/*
+
+# fichier compilés
+.class/*
