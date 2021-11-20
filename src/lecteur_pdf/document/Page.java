@@ -11,9 +11,13 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import javax.swing.*;
 
 /**
- * TODO A compléter
+ * TODO class comment
  *
- * @author Lucas
+ * @author Léo FRANCH
+ * @author Tristan NOGARET
+ * @author Lucàs VABRE
+ * @author Noé VILLENEUVE
+ * @version  1.0
  */
 public class Page {
 

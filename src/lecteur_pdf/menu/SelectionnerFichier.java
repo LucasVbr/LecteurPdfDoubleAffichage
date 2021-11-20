@@ -11,6 +11,10 @@ import java.io.File;
 
 /**
  * TODO class comment
+ *
+ * @author Léo FRANCH
+ * @author Tristan NOGARET
+ * @author Lucàs VABRE
  * @author Noé VILLENEUVE
  * @version  1.0
  */

@@ -16,7 +16,11 @@ import java.util.ArrayList;
 /**
  * Définis virtuellement un fichier PDF
  *
- * @author Lucas
+ * @author Léo FRANCH
+ * @author Tristan NOGARET
+ * @author Lucàs VABRE
+ * @author Noé VILLENEUVE
+ * @version  1.0
  */
 public class Pdf {
 
