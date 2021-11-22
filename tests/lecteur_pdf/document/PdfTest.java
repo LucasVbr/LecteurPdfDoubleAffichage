@@ -11,15 +11,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * TODO class comment
+ * Tests de la classe {@link Pdf}
  *
  * @author Léo FRANCH
  * @author Tristan NOGARET
  * @author Lucàs VABRE
  * @author Noé VILLENEUVE
- * @version  1.0
  */
-
 class PdfTest {
 
     @Test
@@ -28,5 +26,21 @@ class PdfTest {
 
     @Test
     void getRenderView() {
+    }
+
+    @Test
+    void testGetRenderView() {
+    }
+
+    @Test
+    void testGetNbPages() {
+    }
+
+    @Test
+    void testGetRenderView1() {
+    }
+
+    @Test
+    void testGetNbPages1() {
     }
 }
