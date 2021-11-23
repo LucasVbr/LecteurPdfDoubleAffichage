@@ -7,10 +7,10 @@
 package lecteur_pdf.document;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.rendering.PDFRenderer;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -20,41 +20,93 @@ import java.util.ArrayList;
  * @author Tristan NOGARET
  * @author Lucàs VABRE
  * @author Noé VILLENEUVE
- * @version  1.0
  */
 public class Pdf {
 
-    /** Espacement entre chaque page */
+    /**
+     * Espacement entre chaque page
+     */
     public static final int OFFSET_PAGES = 10; // px
 
-    /** Document PDF chargé */
-    private PDDocument document;
+    /**
+     * Document PDF chargé
+     */
+    private final PDDocument document;
 
-    /** Le nombre de pages du document PDF */
+    /**
+     * Le nombre de pages du document PDF
+     */
     private int nbPages;
 
-    /** Les pages du PDF sous forme d’images */
-    private ArrayList<Page> page;
+    /**
+     * Les pages du PDF sous forme d’images
+     */
+    private final ArrayList<Page> pages;
+
+    private int currentPositionY;
 
     /**
      * Crée un document PDF qui est capable d’être affiché dans une fenêtre
+     *
      * @param fichier Le fichier PDF que l’on veut ouvrir
      * @throws IllegalArgumentException si le fichier n’existe pas
      */
-    public Pdf(File fichier) {
-        // TODO
+    public Pdf(File fichier) throws IOException {
+        if (!fichier.exists()) {
+            throw new IllegalArgumentException();
+        }
+
+        this.pages = new ArrayList<>();
+        this.document = PDDocument.load(fichier);
+        this.nbPages = 0;
+
+        this.currentPositionY = 0;
+
+        this.loadPages();
     }
 
-    public int getNbPages() {
-        return nbPages;
+    /**
+     * Charge toutes les pages du document PDF et les stocke dans la liste
+     */
+    private void loadPages() {
+        for (nbPages = 0; nbPages < document.getNumberOfPages(); nbPages++) {
+            try {
+                addPage(new Page(document, nbPages));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Ajoute une page dans la liste
+     *
+     * @param page Page à ajouter dans la liste
+     */
+    private void addPage(Page page) {
+        pages.add(page);
+        page.setPosition(0, currentPositionY);
+        currentPositionY += (page.getHauteur() + OFFSET_PAGES);
     }
 
     /**
      * @return un panel scrollable contenant toutes les pages du PDF
      */
     public JScrollPane getRenderView() {
-        // TODO
-        return null; // Bouchon
+        JPanel panel = new JPanel();
+        JScrollPane scrollPane = new JScrollPane(panel);
+
+        for (Page page : pages) {
+            panel.add(page.getImage());
+        }
+
+        return scrollPane;
     }
 
+    /**
+     * @return Le nombre de pages chargées
+     */
+    public int getNbPages() {
+        return nbPages;
+    }
 }
