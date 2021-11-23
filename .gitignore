@@ -1,8 +1,5 @@
 # Meta données de IntelliJ Idea
 .idea/*
 
-# Dossiers de classes
-target/*
-
-# fichier compilés
-.class/*
+# Dossiers des fichiers compilés
+out/
