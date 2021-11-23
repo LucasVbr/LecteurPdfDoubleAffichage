@@ -53,6 +53,7 @@ public class SelectionnerFichier {
 //            e.printStackTrace();
 //        }
 
+//        int returnValue = jfc.showOpenDialog(null);
 //        if (returnValue == JFileChooser.APPROVE_OPTION) {
 //            System.out.println(jfc.getSelectedFile().getPath());
 //        }
