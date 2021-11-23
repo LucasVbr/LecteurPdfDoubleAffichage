@@ -1,5 +1,5 @@
 /*
- * MenuOption.java, 20/11/2021
+ * MenuOptions.java, 20/11/2021
  * IUT Rodez 2021-2021, INFO2
  * pas de copyright, aucun droits
  */
