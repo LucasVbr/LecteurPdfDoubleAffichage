@@ -12,7 +12,7 @@ import lecteur_pdf.menu.Menu;
 import javax.swing.*;
 
 /**
- * Définis virtuellement un fichier PDF
+ * classe correspondant à l'objet Fenetre
  *
  * @author Léo FRANCH
  * @author Tristan NOGARET

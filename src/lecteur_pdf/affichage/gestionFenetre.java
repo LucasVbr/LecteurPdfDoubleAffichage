@@ -9,7 +9,7 @@ package lecteur_pdf.affichage;
 import java.util.ArrayList;
 
 /**
- * Définis virtuellement un fichier PDF
+ * classe de gestion des fenêtres
  *
  * @author Léo FRANCH
  * @author Tristan NOGARET
