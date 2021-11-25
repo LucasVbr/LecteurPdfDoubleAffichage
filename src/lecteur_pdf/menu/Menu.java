@@ -20,54 +20,67 @@ import java.util.ArrayList;
  */
 public class Menu {
 
-    /** Menu "Fichier" */
-    private JMenu Fichier;
+    /** Array list contenant les JMenu */
+    private ArrayList<JMenu> menuList = new ArrayList<JMenu>();
 
-    /** Element "Ouvrir" */
-    private JMenuItem Ouvrir;
+    /** Array list contenant les JMenuItem */
+    private ArrayList<JMenuItem> itemList = new ArrayList<JMenuItem>();
 
-    /** Element "Fermer" */
-    private JMenuItem Fermer;
+    /** Création de la barre de menu */
+    JMenuBar menubar = new JMenuBar();
 
-    ArrayList<JMenu> menu = new ArrayList<JMenu>();
-    ArrayList<JMenuItem> item = new ArrayList<JMenuItem>();
-
+    /**
+     * Appelle la fonction createMenuFichier
+     */
     public Menu() {
-        // Frame de test
-        JFrame frame = new JFrame("Menu ouverture");
-        // Création de la barre de menu
-        JMenuBar menubar = new JMenuBar();
-        // Création du menu "Fichier"
-        Fichier = new JMenu("Fichier");
-        // Créer les éléments du menu et sous menu
-        Ouvrir = new JMenuItem("Ouvrir");
-        Fermer = new JMenuItem("Fermer");
+        createMenuFichier();
+    }
+
+    /**
+     * Fonction pour créer le Menu fichier et ses items
+     */
+    private void createMenuFichier() {
+
+        // Créer le Menu Fichier
+        JMenu Fichier = new JMenu("Fichier");
+
+        // Créer les items Ouvrir et Fermer
+        JMenuItem Ouvrir = new JMenuItem("Ouvrir");
+        JMenuItem Fermer = new JMenuItem("Fermer");
+
         // Ajouter les éléments au menu "Fichier"
         Fichier.add(Ouvrir);
         Fichier.add(Fermer);
+
         // Ajouter le menu au barre de menu
         menubar.add(Fichier);
-        // Ajouter la barre de menu au frame
-        frame.setJMenuBar(menubar);
-        frame.setSize(300,300);
-        frame.setLayout(null);
-        frame.setVisible(true);
+
+        // Création du menu "Fichier"
+        menuList.add(Fichier);
+
+        // Créer les éléments du menu et sous menu
+        itemList.add(Ouvrir);
+        itemList.add(Fermer);
     }
 
-    public void getMenuBar () {
-        // TODO Compléter la class
+    /**
+     * @return le menubar
+     */
+    public JMenuBar getMenuBar() {
+        return menubar;
     }
 
-    public void getMenuItems () {
-        // TODO Compléter la class
+    /**
+     * @return l'ArrayList des JMenuItem
+     */
+    public ArrayList<JMenuItem> getMenuItems() {
+        return itemList;
     }
 
-    public void getMenuItem (int index) {
-        // TODO Compléter la class
-    }
-
-    public static void main(String args[])
-    {
-        new Menu();
+    /**
+     * @return l'item de l'ArrayList des JMenuBar à l'index indiqué
+     */
+    public JMenuItem getMenuItem(int index) {
+        return itemList.get(index);
     }
 }
