@@ -52,7 +52,7 @@ public class Menu {
         Fichier.add(Ouvrir);
         Fichier.add(Fermer);
 
-        // Ajouter le menu au barre de menu
+        // Ajouter le menu à la barre de menu
         menubar.add(Fichier);
 
         // Création du menu "Fichier"
