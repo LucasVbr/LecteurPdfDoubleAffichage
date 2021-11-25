@@ -1,5 +1,12 @@
+/*
+ * MenuTest.java, 25/11/2021
+ * IUT Rodez 2021-2022, INFO 2
+ * pas de copyright, aucun droits
+ */
+
 package lecteur_pdf.menu;
 
+import lecteur_pdf.document.Page;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -9,6 +16,14 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests de la classe {@link Page}
+ *
+ * @author Léo FRANCH
+ * @author Tristan NOGARET
+ * @author Lucàs VABRE
+ * @author Noé VILLENEUVE
+ */
 class MenuTest {
 
     @Test

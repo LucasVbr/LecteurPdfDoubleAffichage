@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 /**
- * TODO class comment
+ * Classe pour afficher le Menu "Fichier" avec ses options
  *
  * @author Léo FRANCH
  * @author Tristan NOGARET
