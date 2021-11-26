@@ -13,7 +13,11 @@ class SelectionnerFichierTest {
 
     @Test
     void ouvrirFichier() {
+        JFrame frame = new JFrame("Menu ouverture");
         Menu menu = new Menu();
-        SelectionnerFichier.ouvrirFichier();
+        frame.setJMenuBar(menu.getMenuBar());
+        frame.setSize(300,300);
+        frame.setLayout(null);
+        frame.setVisible(true);
     }
 }

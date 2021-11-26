@@ -7,6 +7,7 @@
 package lecteur_pdf.menu;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
@@ -48,6 +49,10 @@ public class Menu {
         JMenuItem Ouvrir = new JMenuItem("Ouvrir");
         JMenuItem Fermer = new JMenuItem("Fermer");
 
+        // Ajoute des Listener aux JMenuItem
+        Ouvrir.addActionListener(this::actionPerformed);
+        Fermer.addActionListener(this::actionPerformed);
+
         // Ajouter les éléments au menu "Fichier"
         Fichier.add(Ouvrir);
         Fichier.add(Fermer);
@@ -61,6 +66,20 @@ public class Menu {
         // Créer les éléments du menu et sous menu
         itemList.add(Ouvrir);
         itemList.add(Fermer);
+    }
+
+    /**
+     * Méthode qui gère les actions des JMenuItem
+     * @param ae un action event
+     */
+    public void actionPerformed(ActionEvent ae) {
+        String choice = ae.getActionCommand();
+        if (choice.equals("Ouvrir")) {
+            SelectionnerFichier.ouvrirFichier();
+        }else if (choice.equals("Quitter")) {
+            System.exit(0); // TODO à changer pour que ça quitte vraiment
+        }
+
     }
 
     /**
