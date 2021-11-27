@@ -8,7 +8,6 @@ package lecteur_pdf.affichage;
 
 import lecteur_pdf.document.Pdf;
 import lecteur_pdf.menu.Menu;
-
 import javax.swing.*;
 
 /**
@@ -21,20 +20,29 @@ import javax.swing.*;
  * @version  1.0
  */
 
-public class Fenetre extends javax.swing.JFrame {
-    private JFrame frame ;
+public class Fenetre  {
+    private JFrame frame;
     private String titre ;
-    private Menu menu ;
+    private Menu menu = new Menu();
     private Pdf pdf ;
 
 
-    public Fenetre() {
-        frame = new JFrame( "sans titre" );
+
+    public Fenetre(){
+        //création du frame
+        frame = new JFrame( "lecteur pdf" );
+
+        // Création du menu
+        Menu menu = new Menu();
+
+        // Ajout de la barre de menu au frame
+        frame.setJMenuBar(menu.getMenuBar());
+        frame.setSize( 300 ,300);
+        frame.setLayout(null);
+        frame.setVisible(true);
+
 
     }
 
-    public Fenetre(String titre) {
-        frame = new JFrame( titre );
-    }
 
 }

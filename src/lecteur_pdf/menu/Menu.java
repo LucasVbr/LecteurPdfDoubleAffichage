@@ -8,7 +8,9 @@ package lecteur_pdf.menu;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.util.ArrayList;
+import lecteur_pdf.document.Pdf;
 
 /**
  * Classe pour afficher le Menu "Fichier" avec ses options
@@ -20,7 +22,7 @@ import java.util.ArrayList;
  * @version  1.0
  */
 public class Menu {
-
+    public File fichier ;
     /** Array list contenant les JMenu */
     private ArrayList<JMenu> menuList = new ArrayList<JMenu>();
 
@@ -75,8 +77,13 @@ public class Menu {
     public void actionPerformed(ActionEvent ae) {
         String choice = ae.getActionCommand();
         if (choice.equals("Ouvrir")) {
-            SelectionnerFichier.ouvrirFichier();
-        }else if (choice.equals("Quitter")) {
+           fichier = SelectionnerFichier.ouvrirFichier();
+           /* try {
+                new Pdf(fichier);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+        }else if (choice.equals("Fermer")) {
             System.exit(0); // TODO à changer pour que ça quitte vraiment
         }
 
