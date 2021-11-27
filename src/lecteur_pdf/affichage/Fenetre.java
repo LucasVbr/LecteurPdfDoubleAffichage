@@ -6,7 +6,7 @@
 
 package lecteur_pdf.affichage;
 
-import lecteur_pdf.document.Pdf;
+import lecteur_pdf.document.PDF;
 import lecteur_pdf.menu.Menu;
 import javax.swing.*;
 
@@ -24,7 +24,7 @@ public class Fenetre  {
     private JFrame frame;
     private String titre ;
     private Menu menu = new Menu();
-    private Pdf pdf ;
+    private PDF pdf ;
 
 
 

@@ -23,17 +23,7 @@ import java.io.IOException;
  * @author Lucàs VABRE
  * @author Noé VILLENEUVE
  */
-public class Page {
-
-    /**
-     * Indice de la page
-     */
-    private final int index;
-
-    /**
-     * Label contenant l’image de la page
-     */
-    private final JLabel image;
+public class Page extends JLabel {
 
     /**
      * Hauteur de la page
@@ -44,16 +34,6 @@ public class Page {
      * Largeur de la page
      */
     private int largeur;
-
-    /**
-     * Position X de la page dans son panel
-     */
-    private int positionX;
-
-    /**
-     * Position Y de la page dans son panel
-     */
-    private int positionY;
 
     /**
      * Crée une page virtuellement pour l’afficher avec java swing
@@ -70,11 +50,7 @@ public class Page {
             throw new IllegalArgumentException();
         }
 
-        this.index = index;
-        this.image = generateImage(document);
-
-        positionX = 0;
-        positionY = 0;
+        this.setIcon(generateImage(document, index));
     }
 
     /**
@@ -98,44 +74,22 @@ public class Page {
      * @return JLabel contenant la page sous forme d’image
      * @throws IOException En cas d’erreur de lecture
      */
-    private JLabel generateImage(PDDocument document) throws IOException {
+    private ImageIcon generateImage(PDDocument document, int index) throws IOException {
 
         PDFRenderer pdfRenderer = new PDFRenderer(document);
-        BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(this.index,
+        BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(index,
                                                                      300,
                                                                      ImageType.RGB);
 
-        this.largeur = bufferedImage.getWidth();
-        this.hauteur = bufferedImage.getHeight();
+        this.largeur = bufferedImage.getWidth() / 2;
+        this.hauteur = bufferedImage.getHeight() / 2;
 
-        ImageIcon icon = new ImageIcon(
+        System.out.println(largeur + "x" + hauteur);
+
+        final ImageIcon imageIcon = new ImageIcon(
             bufferedImage.getScaledInstance(largeur, hauteur,
                                             Image.SCALE_SMOOTH));
-
-        JLabel result = new JLabel("", SwingConstants.LEADING);
-        result.setIcon(icon);
-
-        return result;
-    }
-
-    /**
-     * Positionne la page dans son Panel
-     *
-     * @param positionX Position X de la page
-     * @param positionY Position Y de la page
-     */
-    public void setPosition(int positionX, int positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
-
-        image.setLocation(positionX, positionY);
-    }
-
-    /**
-     * @return Le label contenant l’image de la page
-     */
-    public JLabel getImage() {
-        return image;
+        return imageIcon;
     }
 
     /**

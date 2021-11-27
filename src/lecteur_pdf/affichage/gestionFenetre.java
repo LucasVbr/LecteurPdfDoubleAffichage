@@ -6,13 +6,7 @@
 
 package lecteur_pdf.affichage;
 
-import lecteur_pdf.document.Pdf;
-import lecteur_pdf.menu.Menu;
-
-import java.io.IOException;
 import java.util.ArrayList;
-
-import static lecteur_pdf.menu.SelectionnerFichier.ouvrirFichier;
 
 /**
  * classe de gestion des fenêtres

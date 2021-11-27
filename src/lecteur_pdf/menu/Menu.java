@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
-import lecteur_pdf.document.Pdf;
 
 /**
  * Classe pour afficher le Menu "Fichier" avec ses options

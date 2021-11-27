@@ -1,5 +1,7 @@
 # Meta données de IntelliJ Idea
 .idea/*
+LecteurPdfDoubleAffichage.iml
 
 # Dossiers des fichiers compilés
 out/
+*.class
