@@ -10,8 +10,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 /**
- * TODO class comment
- *
+ * Classe qui permet d'ouvrir une fenêtre pour sélectionner le fichier pdf à
+ * ouvrir
  * @author Léo FRANCH
  * @author Tristan NOGARET
  * @author Lucàs VABRE
