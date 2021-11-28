@@ -6,7 +6,14 @@
 
 package lecteur_pdf.affichage;
 
+import lecteur_pdf.document.PDF;
+import lecteur_pdf.menu.Menu;
+
+import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * classe de gestion des fenêtres
@@ -24,13 +31,27 @@ public class gestionFenetre {
     private ArrayList<Fenetre> fenetresOuvertes;
 
 
-    public static void ouvrirFenetre(){
-    new Fenetre();
-    }
-    public static void fermerFenetre(){
+    public void ouvrirPDF() throws IOException {
+        PDF doc = new PDF(new File("F:/test_pdf1.pdf"));
+
+        JScrollPane scrollPane = new JScrollPane(doc);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        //this.getContentPane().add(scrollPane);
+        try {
+            JPanel pdf = new PDF(Menu.fichier);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-    public static void main ()  {
-        ouvrirFenetre();
+    public static void fermerPDF(){
+
     }
+    public static void main (String[] args)  {
+        JFrame fenetrePrincipale = new Fenetre();
+        //fenetrePrincipale.ouvrirPDF();
+    }
+
+
 }
