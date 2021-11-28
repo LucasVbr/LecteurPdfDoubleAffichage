@@ -22,7 +22,7 @@ class PDFTest {
         frame.setVisible(true);
 
         /* Creation de l’objet PDF */
-        PDF doc = new PDF(new File("F:/test_pdf1.pdf"));
+        PDF doc = new PDF(new File("./test_pdf1.pdf"));
 
         /* Creation du JScrollPane contenant notre PDF pour pouvoir scroller */
         JScrollPane scrollPane = new JScrollPane(doc);
@@ -33,5 +33,4 @@ class PDFTest {
         frame.add(scrollPane);
         frame.validate();
     }
-
 }
