@@ -48,8 +48,6 @@ public class PDF extends JPanel {
             throw new IllegalArgumentException();
         }
 
-        // this.container = new JPanel();
-
         this.document = PDDocument.load(fichier);
         this.pages = new Page[document.getNumberOfPages()];
 
@@ -62,20 +60,20 @@ public class PDF extends JPanel {
     private void loadPages() {
         int currentPositionY = 0;
 
-        for (int i = 0; i < pages.length; i++) {
-            try {
+        try {
+            for (int i = 0; i < pages.length; i++) {
                 /* Crée un JLabel de la page */
                 pages[i] = new Page(document, i);
 
                 /* Défini sa position dans le panel et l’ajoute au panel */
                 pages[i].setLocation(0, currentPositionY);
-                System.out.println(pages[i].getLocation());
                 currentPositionY += (pages[i].getHauteur() + OFFSET_PAGES);
                 this.add(pages[i]);
-
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+
+            System.out.println("PDF: Loaded successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

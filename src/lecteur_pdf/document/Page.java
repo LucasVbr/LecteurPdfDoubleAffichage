@@ -84,8 +84,6 @@ public class Page extends JLabel {
         this.largeur = bufferedImage.getWidth() / 2;
         this.hauteur = bufferedImage.getHeight() / 2;
 
-        System.out.println(largeur + "x" + hauteur);
-
         final ImageIcon imageIcon = new ImageIcon(
             bufferedImage.getScaledInstance(largeur, hauteur,
                                             Image.SCALE_SMOOTH));
