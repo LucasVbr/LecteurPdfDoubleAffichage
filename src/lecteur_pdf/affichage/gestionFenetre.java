@@ -53,10 +53,6 @@ public class gestionFenetre {
             }
         }
     }
-    public static void main(String[] args)  {
-        JFrame fenetrePrincipale = new Fenetre();
-        //fenetrePrincipale.ouvrirPDF();
-    }
 
 
 }
