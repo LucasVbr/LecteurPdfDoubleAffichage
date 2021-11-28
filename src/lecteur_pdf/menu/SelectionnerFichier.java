@@ -49,9 +49,9 @@ public class SelectionnerFichier {
 
 
         int returnValue = fileChooser.showOpenDialog(null);
-        File file = returnValue == 0 ? new File(
-            fileChooser.getSelectedFile().getAbsolutePath()) : null;
 
-        return file;
+        return returnValue == 0
+               ? new File(fileChooser.getSelectedFile().getAbsolutePath())
+               : null;
     }
 }
