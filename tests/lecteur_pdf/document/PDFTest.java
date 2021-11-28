@@ -22,7 +22,7 @@ class PDFTest {
         frame.setBackground(Color.gray);
         frame.setVisible(true);
 
-        PDF doc = new PDF(new File("F:/test_pdf1.pdf"));
+        PDF doc = new PDF(new File("C:/Users/public/test.pdf"));
 
         JScrollPane scrollPane = new JScrollPane(doc);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
