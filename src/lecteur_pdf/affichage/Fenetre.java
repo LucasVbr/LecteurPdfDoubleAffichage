@@ -77,6 +77,7 @@ public class Fenetre extends JFrame {
         this.getContentPane().removeAll();
 
         /* Affiche le nouveau PDF */
+        scrollPane.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         this.getContentPane().add(scrollPane);
         this.validate();
     }
