@@ -11,8 +11,12 @@ import javax.swing.*;
 
 class SelectionnerFichierTest {
 
-    @Test
-    void ouvrirFichier() {
+    /**
+     * TODO comment main
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
         JFrame frame = new JFrame("Menu ouverture");
         Menu menu = new Menu();
         frame.setJMenuBar(menu.getMenuBar());
