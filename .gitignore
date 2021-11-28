@@ -3,5 +3,5 @@
 LecteurPdfDoubleAffichage.iml
 
 # Dossiers des fichiers compilés
-out/
+out/*
 *.class
