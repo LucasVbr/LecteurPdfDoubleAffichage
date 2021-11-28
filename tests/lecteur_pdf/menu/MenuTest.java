@@ -31,7 +31,7 @@ class MenuTest {
 
         final String[] itemAttendu = {"Ouvrir", "Fermer"};
 
-        Menu menuTest = new Menu();
+        Menu menuTest = new Menu(new JFrame());
         ArrayList<JMenuItem> menuItemTest = menuTest.getMenuItems();
 
         for (int i = 0; i < menuItemTest.size(); i++) {
@@ -44,7 +44,7 @@ class MenuTest {
 
         final String[] itemAttendu = {"Ouvrir", "Fermer"};
 
-        Menu menuTest = new Menu();
+        Menu menuTest = new Menu(new JFrame());
 
         for (int i = 0; i < itemAttendu.length; i++) {
             assertEquals(menuTest.getMenuItem(i).getText(), itemAttendu[i]);
@@ -57,7 +57,7 @@ class MenuTest {
         JFrame frame = new JFrame("Menu ouverture");
 
         // Créer le Menu
-        Menu menu = new Menu();
+        Menu menu = new Menu(new JFrame());
 
         // Ajouter la barre de menu au frame
         frame.setJMenuBar(menu.getMenuBar());

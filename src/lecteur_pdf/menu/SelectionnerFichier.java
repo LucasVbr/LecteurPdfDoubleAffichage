@@ -40,9 +40,9 @@ public class SelectionnerFichier {
         File file;
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
-            file = new File(fileChooser.getSelectedFile().getPath());
+            file = new File(fileChooser.getSelectedFile().getAbsolutePath());
         } else {
-          file = null;
+            file = null;
         }
         return file;
     }

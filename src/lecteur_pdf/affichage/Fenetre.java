@@ -23,7 +23,7 @@ import javax.swing.*;
 public class Fenetre extends JFrame {
     //private JFrame frame;
     private String titre ;
-    private Menu menu = new Menu();
+    private Menu menu = new Menu(this);
     private PDF pdf ;
 
 
@@ -32,7 +32,7 @@ public class Fenetre extends JFrame {
         //création du frame
 
         // Création du menu
-        Menu menu = new Menu();
+        Menu menu = new Menu(this);
 
         // Ajout de la barre de menu au frame
 

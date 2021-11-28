@@ -17,8 +17,8 @@ class SelectionnerFichierTest {
      * @param args
      */
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Menu ouverture");
-        Menu menu = new Menu();
+        JFrame frame = new JFrame("Test Menu ouverture");
+        Menu menu = new Menu(frame);
         frame.setJMenuBar(menu.getMenuBar());
         frame.setSize(300,300);
         frame.setLayout(null);
