@@ -7,12 +7,10 @@
 package lecteur_pdf.menu;
 
 import lecteur_pdf.affichage.Fenetre;
-import lecteur_pdf.document.PDF;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -22,31 +20,39 @@ import java.util.ArrayList;
  * @author Tristan NOGARET
  * @author Lucàs VABRE
  * @author Noé VILLENEUVE
- * @version  1.0
+ * @version 1.0
  */
-public class Menu {
-    public static File fichier ;
-    /** Array list contenant les JMenu */
-    private ArrayList<JMenu> menuList = new ArrayList<JMenu>();
-
-    /** Array list contenant les JMenuItem */
-    private ArrayList<JMenuItem> itemList = new ArrayList<JMenuItem>();
-
-    /** Création de la barre de menu */
-    JMenuBar menubar = new JMenuBar();
-
-    JFrame frame;
+public class Menu extends JMenuBar {
 
     /**
-     * Appelle la fonction createMenuFichier
+     * La Fenêtre mère de la barre des menus
      */
-    public Menu(JFrame frame) {
-        this.frame = frame;
+    private final Fenetre fenetre;
+
+    /**
+     * Liste contenant les différents menus
+     */
+    private final ArrayList<JMenu> menuList = new ArrayList<>();
+
+    /**
+     * Liste contenant les différents sous menus
+     */
+    private final ArrayList<JMenuItem> itemList = new ArrayList<>();
+
+    /**
+     * Constructeur du menu
+     *
+     * @param fenetre La Fenêtre mère de la barre des menus
+     */
+    public Menu(Fenetre fenetre) {
+        this.fenetre = fenetre;
+
         createMenuFichier();
+        // createMenuAfficher();
     }
 
     /**
-     * Fonction pour créer le Menu fichier et ses items
+     * Créé le menu Fichier et ses sous-menus
      */
     private void createMenuFichier() {
 
@@ -61,66 +67,53 @@ public class Menu {
         Ouvrir.addActionListener(this::actionPerformed);
         Fermer.addActionListener(this::actionPerformed);
 
+        // TODO raccourcis
+
         // Ajouter les éléments au menu "Fichier"
         Fichier.add(Ouvrir);
         Fichier.add(Fermer);
 
-        // Ajouter le menu à la barre de menu
-        menubar.add(Fichier);
-
-        // Création du menu "Fichier"
+        // Ajoute le menu "Fichier" dans la liste des menus
         menuList.add(Fichier);
 
-        // Créer les éléments du menu et sous menu
+        // Ajoute Ouvrir et Fermer dans la liste des sous menu
         itemList.add(Ouvrir);
         itemList.add(Fermer);
+
+        // Ajoute le menu à la barre de menu
+        this.add(Fichier);
     }
 
     /**
-     * Méthode qui gère les actions des JMenuItem
+     * Méthode qui gère les actions des sous-menus
+     *
      * @param ae un action event
      */
     public void actionPerformed(ActionEvent ae) {
         String choice = ae.getActionCommand();
-        if (choice.equals("Ouvrir")) {
-            try {
-                PDF doc;
-                doc = new PDF(SelectionnerFichier.ouvrirFichier());
-                /* Creation du JScrollPane contenant notre PDF pour pouvoir scroller */
-                JScrollPane scrollPane = new JScrollPane(doc);
-                scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-                /* Ajout du ScrollPane dans la frame et mise à jour de la frame */
-                frame.add(scrollPane);
-                frame.validate();
-            } catch (IOException e) {
-                e.printStackTrace();
+        switch (choice) {
+            case "Ouvrir" -> {
+                File fichier = SelectionnerFichier.ouvrirFichier();
+                fenetre.chargerPdf(fichier);
             }
-
-
-        }else if (choice.equals("Fermer")) {
-            System.exit(0); // TODO à changer pour que ça quitte vraiment
+            case "Fermer" -> System.exit(
+                0); // TODO à changer pour que ça quitte vraiment
         }
-
     }
 
     /**
-     * @return le menubar
-     */
-    public JMenuBar getMenuBar() {
-        return menubar;
-    }
-
-    /**
-     * @return l'ArrayList des JMenuItem
+     * @return la liste des JMenuItem
      */
     public ArrayList<JMenuItem> getMenuItems() {
         return itemList;
     }
 
     /**
-     * @return l'item de l'ArrayList des JMenuBar à l'index indiqué
+     * Methode qui renvoie le sous menu demandé
+     *
+     * @param index Indice du sous menu
+     * @return Le sous menu demandé
      */
     public JMenuItem getMenuItem(int index) {
         return itemList.get(index);
