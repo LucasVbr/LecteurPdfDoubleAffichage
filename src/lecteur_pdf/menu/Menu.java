@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * @version  1.0
  */
 public class Menu {
-    public File fichier ;
+    public static File fichier ;
     /** Array list contenant les JMenu */
     private ArrayList<JMenu> menuList = new ArrayList<JMenu>();
 
@@ -77,11 +77,6 @@ public class Menu {
         String choice = ae.getActionCommand();
         if (choice.equals("Ouvrir")) {
            fichier = SelectionnerFichier.ouvrirFichier();
-           /* try {
-                new Pdf(fichier);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
         }else if (choice.equals("Fermer")) {
             System.exit(0); // TODO à changer pour que ça quitte vraiment
         }

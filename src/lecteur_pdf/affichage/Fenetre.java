@@ -20,8 +20,8 @@ import javax.swing.*;
  * @version  1.0
  */
 
-public class Fenetre  {
-    private JFrame frame;
+public class Fenetre extends JFrame {
+    //private JFrame frame;
     private String titre ;
     private Menu menu = new Menu();
     private PDF pdf ;
@@ -30,16 +30,19 @@ public class Fenetre  {
 
     public Fenetre(){
         //création du frame
-        frame = new JFrame( "lecteur pdf" );
 
         // Création du menu
         Menu menu = new Menu();
 
         // Ajout de la barre de menu au frame
-        frame.setJMenuBar(menu.getMenuBar());
-        frame.setSize( 300 ,300);
-        frame.setLayout(null);
-        frame.setVisible(true);
+
+        this.setJMenuBar(menu.getMenuBar());
+        this.setSize( 300 ,300);
+        this.setLayout(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+
 
 
     }
