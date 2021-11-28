@@ -13,7 +13,6 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * classe de gestion des fenêtres
@@ -28,27 +27,33 @@ public class gestionFenetre {
 
 
     final int NB_MAX_FENETRE = 2 ;
-    private ArrayList<Fenetre> fenetresOuvertes;
+    private Fenetre[] fenetresOuvertes;
+    File fichier = null ;
 
 
-    public void ouvrirPDF() throws IOException {
-        PDF doc = new PDF(new File("F:/test_pdf1.pdf"));
-
-        JScrollPane scrollPane = new JScrollPane(doc);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        //this.getContentPane().add(scrollPane);
-        try {
-            JPanel pdf = new PDF(Menu.fichier);
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void ouvrirFenetre(){
+        int placeVide;
+        for (placeVide=0; placeVide<2; placeVide++){
+            if (fenetresOuvertes[placeVide]==null){
+                break;
+            }
         }
-
+        if(placeVide==2) {
+            //todo erreur trop de fenetres
+        }else {
+            Fenetre fenetre = new Fenetre();
+            fenetresOuvertes[placeVide] = fenetre;
+        }
     }
-    public static void fermerPDF(){
-
+    public void fermerFenetre(JFrame fenetre){
+        for (int i = 0; i<2 ; i++){
+            if (fenetre==fenetresOuvertes[i]){
+                fenetre.dispose();
+                fenetresOuvertes[i]= null ;
+            }
+        }
     }
-    public static void main (String[] args)  {
+    public static void main(String[] args)  {
         JFrame fenetrePrincipale = new Fenetre();
         //fenetrePrincipale.ouvrirPDF();
     }
