@@ -27,7 +27,7 @@ class PDFTest {
         JScrollPane scrollPane = new JScrollPane(doc);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        frame.getContentPane().add(scrollPane);
+        frame.add(scrollPane);
         frame.validate();
     }
 
