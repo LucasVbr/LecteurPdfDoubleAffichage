@@ -6,9 +6,13 @@
 
 package lecteur_pdf.menu;
 
+import lecteur_pdf.affichage.Fenetre;
+import lecteur_pdf.document.PDF;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -31,10 +35,13 @@ public class Menu {
     /** Création de la barre de menu */
     JMenuBar menubar = new JMenuBar();
 
+    JFrame frame;
+
     /**
      * Appelle la fonction createMenuFichier
      */
-    public Menu() {
+    public Menu(JFrame frame) {
+        this.frame = frame;
         createMenuFichier();
     }
 
@@ -76,7 +83,22 @@ public class Menu {
     public void actionPerformed(ActionEvent ae) {
         String choice = ae.getActionCommand();
         if (choice.equals("Ouvrir")) {
-           fichier = SelectionnerFichier.ouvrirFichier();
+            try {
+                PDF doc;
+                doc = new PDF(SelectionnerFichier.ouvrirFichier());
+                /* Creation du JScrollPane contenant notre PDF pour pouvoir scroller */
+                JScrollPane scrollPane = new JScrollPane(doc);
+                scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+                /* Ajout du ScrollPane dans la frame et mise à jour de la frame */
+                frame.add(scrollPane);
+                frame.validate();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }else if (choice.equals("Fermer")) {
             System.exit(0); // TODO à changer pour que ça quitte vraiment
         }
