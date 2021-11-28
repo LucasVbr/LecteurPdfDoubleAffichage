@@ -10,6 +10,7 @@ import lecteur_pdf.affichage.Fenetre;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -67,7 +68,13 @@ public class Menu extends JMenuBar {
         Ouvrir.addActionListener(this::actionPerformed);
         Fermer.addActionListener(this::actionPerformed);
 
-        // TODO raccourcis
+        // Définis les raccourcis
+        KeyStroke raccourciOuvrir
+            = KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK);
+        Ouvrir.setAccelerator(raccourciOuvrir);
+        KeyStroke raccourciFermer
+            = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
+        Fermer.setAccelerator(raccourciFermer);
 
         // Ajouter les éléments au menu "Fichier"
         Fichier.add(Ouvrir);
