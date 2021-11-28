@@ -36,7 +36,7 @@ public class SelectionnerFichier {
 
         /* Crée une fenêtre de sélection de fichier */
         JFileChooser fileChooser = new JFileChooser(
-            FileSystemView.getFileSystemView().getHomeDirectory());
+            FileSystemView.getFileSystemView().getDefaultDirectory());
         fileChooser.setDialogTitle(TITRE);
         fileChooser.setMultiSelectionEnabled(false);
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
