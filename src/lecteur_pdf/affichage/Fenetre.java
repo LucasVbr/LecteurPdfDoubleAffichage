@@ -29,7 +29,6 @@ public class Fenetre extends JFrame {
 
 
     public Fenetre(){
-        //création du frame
 
         // Création du menu
         Menu menu = new Menu();
