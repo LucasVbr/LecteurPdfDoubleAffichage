@@ -13,7 +13,7 @@ assignees: ''
 
 **JE VEUT:** 
 
-**DE TELLE SORTE QUE:** 
+**POUR:** 
 
 
 ## Règles métier
@@ -22,7 +22,21 @@ assignees: ''
 
 ## Tests d'acceptations
 
-### 
+### Cas Nominal
+**ETANT DONNE:** 
+
+**LORSQUE:** 
+
+**ALORS:**
+
+### Cas limite
+**ETANT DONNE:** 
+
+**LORSQUE:** 
+
+**ALORS:**
+
+### Cas d'erreur
 **ETANT DONNE:** 
 
 **LORSQUE:** 
