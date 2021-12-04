@@ -104,8 +104,8 @@ public class Menu extends JMenuBar {
                 File fichier = SelectionnerFichier.ouvrirFichier();
                 fenetre.chargerPdf(fichier);
             }
-            case "Fermer" -> System.exit(
-                0); // TODO à changer pour que ça quitte vraiment
+            case "Fermer" -> System.exit(0);
+            // TODO à changer pour que ça quitte vraiment
         }
     }
 

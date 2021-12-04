@@ -10,6 +10,7 @@ import lecteur_pdf.document.PDF;
 import lecteur_pdf.menu.Menu;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 /**
@@ -63,23 +64,34 @@ public class Fenetre extends JFrame {
      * @param fichier
      */
     public void chargerPdf(File fichier) {
-        fichierPDF = new PDF(fichier);
 
-        /* Crée l’élément scrollable */
-        JScrollPane scrollPane = new JScrollPane(fichierPDF);
-        scrollPane.setHorizontalScrollBarPolicy(
-            JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(
-            JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        /* Décharge le précédent PDF avant de charger le prochain */
+        dechargerPdf();
+
+        PDF fichierPDF = new PDF(fichier);
+
+        /* Crée le panel qui contient le document PDF */
+        JPanel mainPanel = new JPanel();
+        mainPanel.add(fichierPDF);
+
+        /* Crée l’élément scrollable qui contiendra le pannel */
+        JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
-        /* Supprime le précédent PDF */
-        this.getContentPane().removeAll();
+        /* Ajoute l'élément scrollable a la fenêtre et le centre */
+        this.add(scrollPane, BorderLayout.CENTER);
 
-        /* Affiche le nouveau PDF */
-        scrollPane.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        this.getContentPane().add(scrollPane);
-        this.validate();
+        /* Génère les pages */
+        fichierPDF.loadPages(this, 1);
+
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
+
+    public void dechargerPdf() {
+        if (this.getContentPane() != null) {
+            this.getContentPane().removeAll();
+        }
     }
 
     /**

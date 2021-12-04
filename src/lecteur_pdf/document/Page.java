@@ -6,9 +6,7 @@
 
 package lecteur_pdf.document;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.rendering.ImageType;
-import org.apache.pdfbox.rendering.PDFRenderer;
+import org.apache.pdfbox.pdmodel.PDPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,69 +23,42 @@ import java.io.IOException;
  */
 public class Page extends JLabel {
 
-    /**
-     * Hauteur de la page
-     */
+    /** Hauteur de la page */
     private int hauteur;
 
-    /**
-     * Largeur de la page
-     */
+    /** Largeur de la page */
     private int largeur;
 
     /**
      * Crée une page virtuellement pour l’afficher avec java swing
      *
-     * @param document Document pdf
-     * @param index    indice de la page
+     * @param pageImage
+     * @param scale
      * @throws IllegalArgumentException Si les arguments ne sont pas valides
      * @throws IOException              Si la page n’as pas pu être lue
      */
-    public Page(PDDocument document, int index) throws
+    public Page(PDPage pageImage, int scale) throws
                                                 IllegalArgumentException,
                                                 IOException {
-        if (!isValid(document, index)) {
-            throw new IllegalArgumentException();
-        }
+        if (pageImage == null) throw new IllegalArgumentException();
 
-        this.setIcon(generateImage(document, index));
-    }
-
-    /**
-     * Prédicat qui vérifie si une page est valide
-     * Le document ne doit pas être null et l’index doit être compris entre 0
-     * et le nombre de pages du pdf.
-     *
-     * @param document Document pdf
-     * @param index    indice de la page
-     * @return true si le prédicat est vérifié, false sinon
-     */
-    private boolean isValid(PDDocument document, int index) {
-        return document != null && 0 <= index
-               && index < document.getNumberOfPages();
+        this.setIcon(generateImage(pageImage.convertToImage(), scale));
     }
 
     /**
      * Génère une image de la page
      *
-     * @param document Document PDF
-     * @return JLabel contenant la page sous forme d’image
+     * @param img
+     * @param scale
      * @throws IOException En cas d’erreur de lecture
      */
-    private ImageIcon generateImage(PDDocument document, int index) throws IOException {
+    private ImageIcon generateImage(BufferedImage img, int scale) throws IOException {
 
-        PDFRenderer pdfRenderer = new PDFRenderer(document);
-        BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(index,
-                                                                     300,
-                                                                     ImageType.RGB);
+        this.largeur = img.getWidth() / scale;
+        this.hauteur = img.getHeight() / scale;
 
-        this.largeur = bufferedImage.getWidth() / 2;
-        this.hauteur = bufferedImage.getHeight() / 2;
-
-        final ImageIcon imageIcon = new ImageIcon(
-            bufferedImage.getScaledInstance(largeur, hauteur,
-                                            Image.SCALE_SMOOTH));
-        return imageIcon;
+        return new ImageIcon(img.getScaledInstance(largeur, hauteur,
+                                                   Image.SCALE_SMOOTH));
     }
 
     /**
