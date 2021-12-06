@@ -102,7 +102,7 @@ public class Menu extends JMenuBar {
         switch (choice) {
             case "Ouvrir" -> {
                 File fichier = SelectionnerFichier.ouvrirFichier();
-                fenetre.chargerPdf(fichier);
+                fenetre.chargerPDF(fichier);
             }
             case "Fermer" -> System.exit(
                 0); // TODO à changer pour que ça quitte vraiment

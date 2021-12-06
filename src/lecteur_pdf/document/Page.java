@@ -7,7 +7,6 @@
 package lecteur_pdf.document;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
 import javax.swing.*;
@@ -25,15 +24,20 @@ import java.io.IOException;
  */
 public class Page extends JLabel {
 
-    /**
-     * Hauteur de la page
-     */
+    /** Indice de la page dans le document */
+    private final int INDEX;
+
+    /** Zoom de la page (1.0f == 100 %, 0.5 == 50%, ...) */
+    private final float ZOOM;
+
+    /** Hauteur de la page */
     private int hauteur;
 
-    /**
-     * Largeur de la page
-     */
+    /** Largeur de la page */
     private int largeur;
+
+    /** Image de la page générée */
+    private final ImageIcon IMAGE_ICON;
 
     /**
      * Crée une page virtuellement pour l’afficher avec java swing
@@ -50,7 +54,36 @@ public class Page extends JLabel {
             throw new IllegalArgumentException();
         }
 
-        this.setIcon(generateImage(document, index));
+        this.INDEX = index;
+        this.ZOOM = 1.0f;
+        this.IMAGE_ICON = generateImage(document, ZOOM);
+
+        /* Render */
+        this.setIcon(IMAGE_ICON);
+    }
+
+    /**
+     * Crée une page virtuellement pour l’afficher avec java swing
+     *
+     * @param document Document pdf
+     * @param index    indice de la page
+     * @param zoom     Le zoom de la page
+     * @throws IllegalArgumentException Si les arguments ne sont pas valides
+     * @throws IOException              Si la page n’as pas pu être lue
+     */
+    public Page(PDDocument document, int index, float zoom) throws
+                                                IllegalArgumentException,
+                                                IOException {
+        if (!isValid(document, index)) {
+            throw new IllegalArgumentException();
+        }
+
+        this.INDEX = index;
+        this.ZOOM = zoom;
+        this.IMAGE_ICON = generateImage(document, ZOOM);
+
+        /* Render */
+        this.setIcon(IMAGE_ICON);
     }
 
     /**
@@ -74,20 +107,19 @@ public class Page extends JLabel {
      * @return JLabel contenant la page sous forme d’image
      * @throws IOException En cas d’erreur de lecture
      */
-    private ImageIcon generateImage(PDDocument document, int index) throws IOException {
+    private ImageIcon generateImage(PDDocument document, float scale) throws IOException {
+
+        final int DPI = 120;
+        int imageScale = (scale > 1.0f) ? Image.SCALE_SMOOTH : Image.SCALE_FAST;
 
         PDFRenderer pdfRenderer = new PDFRenderer(document);
-        BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(index,
-                                                                     300,
-                                                                     ImageType.RGB);
+        BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(INDEX, DPI);
 
-        this.largeur = bufferedImage.getWidth() / 2;
-        this.hauteur = bufferedImage.getHeight() / 2;
+        this.largeur = (int)(bufferedImage.getWidth() * scale);
+        this.hauteur = (int)(bufferedImage.getHeight() * scale);
 
-        final ImageIcon imageIcon = new ImageIcon(
-            bufferedImage.getScaledInstance(largeur, hauteur,
-                                            Image.SCALE_SMOOTH));
-        return imageIcon;
+        return new ImageIcon(bufferedImage.getScaledInstance(largeur, hauteur,
+                                                             imageScale));
     }
 
     /**

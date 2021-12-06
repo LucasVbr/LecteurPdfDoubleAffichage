@@ -28,7 +28,7 @@ class PageTest {
         Page page = new Page(document, 0);
 
         /* Ajout de l’objet dans la frame et mise à jour de la frame */
-        frame.add(page);
+        // frame.add(page);
         frame.validate();
     }
 }
