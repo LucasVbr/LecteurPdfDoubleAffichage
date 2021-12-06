@@ -28,7 +28,7 @@ public class Fenetre extends JFrame {
     /**
      * TODO
      */
-    private String titre;
+    private final String TITRE = "Lecteur PDF";
 
     /**
      * TODO
@@ -38,15 +38,27 @@ public class Fenetre extends JFrame {
     /**
      * TODO
      */
-    private PDF fichierPDF;
+    private File fichier;
+
+    private PDF documentPDF;
 
     /**
      * TODO
      */
     public Fenetre() {
 
+        /* Change le style de la fenêtre */
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException
+                 | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
         // Création du menu
         menu = new Menu(this);
+
+        this.setTitle(TITRE);
 
         // Ajout de la barre de menu au frame
 
@@ -63,32 +75,65 @@ public class Fenetre extends JFrame {
      *
      * @param fichier
      */
-    public void chargerPdf(File fichier) {
+    public void chargerPDF(File fichier) {
+        dechargerPDF();
 
-        /* Décharge le précédent PDF avant de charger le prochain */
-        dechargerPdf();
-
-        PDF fichierPDF = new PDF(fichier);
+        this.fichier = fichier;
 
         /* Crée le panel qui contient le document PDF */
-        JPanel mainPanel = new JPanel();
-        mainPanel.add(fichierPDF);
-
-        /* Crée l’élément scrollable qui contiendra le pannel */
-        JScrollPane scrollPane = new JScrollPane(mainPanel);
+        JPanel pdfPanel = new JPanel();
+        /* Crée l’élément scrollable */
+        JScrollPane scrollPane = new JScrollPane(pdfPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-
-        /* Ajoute l'élément scrollable a la fenêtre et le centre */
         this.add(scrollPane, BorderLayout.CENTER);
 
-        /* Génère les pages */
-        fichierPDF.loadPages(this, 1);
+        documentPDF = new PDF(fichier);
+        pdfPanel.add(documentPDF);
 
+        /* Ajoute le scrollPane et le centre dans la page */
+
+        /* Charge les pages */
+        documentPDF.loadPages();
+
+        /* Met à jour la page */
+        this.setTitle(TITRE + " | " + fichier.getName());
+        this.validate();
         this.pack();
         this.setLocationRelativeTo(null);
     }
 
-    public void dechargerPdf() {
+    /**
+     *
+     */
+    public void rechargerPDF() {
+        dechargerPDF();
+
+        /* Crée le panel qui contient le document PDF */
+        JPanel pdfPanel = new JPanel();
+        /* Crée l’élément scrollable */
+        JScrollPane scrollPane = new JScrollPane(pdfPanel);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        this.add(scrollPane, BorderLayout.CENTER);
+
+        documentPDF = new PDF(fichier);
+        pdfPanel.add(documentPDF);
+
+        /* Ajoute le scrollPane et le centre dans la page */
+
+        /* Charge les pages */
+        documentPDF.loadPages();
+
+        /* Met à jour la page */
+        this.setTitle(TITRE + " | " + fichier.getName());
+        this.validate();
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
+
+    /**
+     *
+     */
+    public void dechargerPDF() {
         if (this.getContentPane() != null) {
             this.getContentPane().removeAll();
         }

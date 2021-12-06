@@ -6,7 +6,8 @@
 
 package lecteur_pdf.document;
 
-import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.PDFRenderer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,42 +24,102 @@ import java.io.IOException;
  */
 public class Page extends JLabel {
 
+    /** Indice de la page dans le document */
+    private final int INDEX;
+
+    /** Zoom de la page (1.0f == 100 %, 0.5 == 50%, ...) */
+    private final float ZOOM;
+
     /** Hauteur de la page */
     private int hauteur;
 
     /** Largeur de la page */
     private int largeur;
 
+    /** Image de la page générée */
+    private final ImageIcon IMAGE_ICON;
+
     /**
      * Crée une page virtuellement pour l’afficher avec java swing
      *
-     * @param pageImage
-     * @param scale
+     * @param document Document pdf
+     * @param index    indice de la page
      * @throws IllegalArgumentException Si les arguments ne sont pas valides
      * @throws IOException              Si la page n’as pas pu être lue
      */
-    public Page(PDPage pageImage, int scale) throws
+    public Page(PDDocument document, int index) throws
                                                 IllegalArgumentException,
                                                 IOException {
-        if (pageImage == null) throw new IllegalArgumentException();
+        if (!isValid(document, index)) {
+            throw new IllegalArgumentException();
+        }
 
-        this.setIcon(generateImage(pageImage.convertToImage(), scale));
+        this.INDEX = index;
+        this.ZOOM = 1.0f;
+        this.IMAGE_ICON = generateImage(document, ZOOM);
+
+        /* Render */
+        this.setIcon(IMAGE_ICON);
+    }
+
+    /**
+     * Crée une page virtuellement pour l’afficher avec java swing
+     *
+     * @param document Document pdf
+     * @param index    indice de la page
+     * @param zoom     Le zoom de la page
+     * @throws IllegalArgumentException Si les arguments ne sont pas valides
+     * @throws IOException              Si la page n’as pas pu être lue
+     */
+    public Page(PDDocument document, int index, float zoom) throws
+                                                IllegalArgumentException,
+                                                IOException {
+        if (!isValid(document, index)) {
+            throw new IllegalArgumentException();
+        }
+
+        this.INDEX = index;
+        this.ZOOM = zoom;
+        this.IMAGE_ICON = generateImage(document, ZOOM);
+
+        /* Render */
+        this.setIcon(IMAGE_ICON);
+    }
+
+    /**
+     * Prédicat qui vérifie si une page est valide
+     * Le document ne doit pas être null et l’index doit être compris entre 0
+     * et le nombre de pages du pdf.
+     *
+     * @param document Document pdf
+     * @param index    indice de la page
+     * @return true si le prédicat est vérifié, false sinon
+     */
+    private boolean isValid(PDDocument document, int index) {
+        return document != null && 0 <= index
+               && index < document.getNumberOfPages();
     }
 
     /**
      * Génère une image de la page
      *
-     * @param img
-     * @param scale
+     * @param document Document PDF
+     * @return JLabel contenant la page sous forme d’image
      * @throws IOException En cas d’erreur de lecture
      */
-    private ImageIcon generateImage(BufferedImage img, int scale) throws IOException {
+    private ImageIcon generateImage(PDDocument document, float scale) throws IOException {
 
-        this.largeur = img.getWidth() / scale;
-        this.hauteur = img.getHeight() / scale;
+        final int DPI = 120;
+        int imageScale = (scale > 1.0f) ? Image.SCALE_SMOOTH : Image.SCALE_FAST;
 
-        return new ImageIcon(img.getScaledInstance(largeur, hauteur,
-                                                   Image.SCALE_SMOOTH));
+        PDFRenderer pdfRenderer = new PDFRenderer(document);
+        BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(INDEX, DPI);
+
+        this.largeur = (int)(bufferedImage.getWidth() * scale);
+        this.hauteur = (int)(bufferedImage.getHeight() * scale);
+
+        return new ImageIcon(bufferedImage.getScaledInstance(largeur, hauteur,
+                                                             imageScale));
     }
 
     /**
