@@ -24,7 +24,7 @@ class PageTest {
         frame.setVisible(true);
 
         /* Creation de l’objet Page */
-        PDDocument document = PDDocument.load(new File("F:/test_pdf1.pdf"));
+        PDDocument document = PDDocument.load(new File("F:/paysage_35pages.pdf"));
         Page page = new Page(document, 0);
 
         /* Ajout de l’objet dans la frame et mise à jour de la frame */
