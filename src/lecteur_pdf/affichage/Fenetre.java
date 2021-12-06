@@ -40,7 +40,7 @@ public class Fenetre extends JFrame {
      */
     private File fichier;
 
-    private PDF documentPDF;
+    public PDF documentPDF;
 
     /**
      * TODO
@@ -85,6 +85,7 @@ public class Fenetre extends JFrame {
         /* Crée l’élément scrollable */
         JScrollPane scrollPane = new JScrollPane(pdfPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
         this.add(scrollPane, BorderLayout.CENTER);
 
         documentPDF = new PDF(fichier);
@@ -105,7 +106,7 @@ public class Fenetre extends JFrame {
     /**
      *
      */
-    public void rechargerPDF() {
+    public void rechargerPDF(float zoom) {
         dechargerPDF();
 
         /* Crée le panel qui contient le document PDF */
@@ -113,9 +114,11 @@ public class Fenetre extends JFrame {
         /* Crée l’élément scrollable */
         JScrollPane scrollPane = new JScrollPane(pdfPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
         this.add(scrollPane, BorderLayout.CENTER);
 
         documentPDF = new PDF(fichier);
+        documentPDF.setZoom(zoom);
         pdfPanel.add(documentPDF);
 
         /* Ajoute le scrollPane et le centre dans la page */

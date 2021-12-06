@@ -6,9 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="pdfbox-2.0.24" level="project" />
+    <orderEntry type="library" name="xmpbox-2.0.24" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
@@ -35,7 +35,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="pdfbox-2.0" level="project" />
-    <orderEntry type="library" name="fontbox-2.0.24" level="project" />
   </component>
 </module>

@@ -56,7 +56,7 @@ public class Page extends JLabel {
 
         this.INDEX = index;
         this.ZOOM = 1.0f;
-        this.IMAGE_ICON = generateImage(document, ZOOM);
+        this.IMAGE_ICON = generateImage(document);
 
         /* Render */
         this.setIcon(IMAGE_ICON);
@@ -80,7 +80,7 @@ public class Page extends JLabel {
 
         this.INDEX = index;
         this.ZOOM = zoom;
-        this.IMAGE_ICON = generateImage(document, ZOOM);
+        this.IMAGE_ICON = generateImage(document);
 
         /* Render */
         this.setIcon(IMAGE_ICON);
@@ -107,16 +107,16 @@ public class Page extends JLabel {
      * @return JLabel contenant la page sous forme d’image
      * @throws IOException En cas d’erreur de lecture
      */
-    private ImageIcon generateImage(PDDocument document, float scale) throws IOException {
+    private ImageIcon generateImage(PDDocument document) throws IOException {
 
         final int DPI = 120;
-        int imageScale = (scale > 1.0f) ? Image.SCALE_SMOOTH : Image.SCALE_FAST;
+        int imageScale = (ZOOM > 1.0f) ? Image.SCALE_SMOOTH : Image.SCALE_FAST;
 
         PDFRenderer pdfRenderer = new PDFRenderer(document);
         BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(INDEX, DPI);
 
-        this.largeur = (int)(bufferedImage.getWidth() * scale);
-        this.hauteur = (int)(bufferedImage.getHeight() * scale);
+        this.largeur = (int)(bufferedImage.getWidth() * ZOOM);
+        this.hauteur = (int)(bufferedImage.getHeight() * ZOOM);
 
         return new ImageIcon(bufferedImage.getScaledInstance(largeur, hauteur,
                                                              imageScale));

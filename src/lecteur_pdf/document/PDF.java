@@ -64,7 +64,6 @@ public class PDF extends JPanel {
      */
     public void loadPages() {
 
-
         for (int i = 0; i < pages.length; i++) {
             try {
                 pages[i] = new Page(document, i, zoom);

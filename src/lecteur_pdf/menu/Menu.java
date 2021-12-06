@@ -7,6 +7,7 @@
 package lecteur_pdf.menu;
 
 import lecteur_pdf.affichage.Fenetre;
+import org.apache.pdfbox.pdmodel.PDDocument;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -49,7 +50,8 @@ public class Menu extends JMenuBar {
         this.fenetre = fenetre;
 
         createMenuFichier();
-        // createMenuAfficher();
+        createMenuOptions();
+        createMenuAffichage();
     }
 
     /**
@@ -60,13 +62,15 @@ public class Menu extends JMenuBar {
         // Créer le Menu Fichier
         JMenu Fichier = new JMenu("Fichier");
 
-        // Créer les items Ouvrir et Fermer
+        // Créer les items Ouvrir, Fermer et Quitter
         JMenuItem Ouvrir = new JMenuItem("Ouvrir");
         JMenuItem Fermer = new JMenuItem("Fermer");
+        JMenuItem Quitter = new JMenuItem("Quitter");
 
         // Ajoute des Listener aux JMenuItem
         Ouvrir.addActionListener(this::actionPerformed);
         Fermer.addActionListener(this::actionPerformed);
+        Quitter.addActionListener(this::actionPerformed);
 
         // Définis les raccourcis
         KeyStroke raccourciOuvrir
@@ -75,20 +79,103 @@ public class Menu extends JMenuBar {
         KeyStroke raccourciFermer
             = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
         Fermer.setAccelerator(raccourciFermer);
+        KeyStroke raccourciQuitter
+                = KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK);
+        Quitter.setAccelerator(raccourciQuitter);
 
         // Ajouter les éléments au menu "Fichier"
         Fichier.add(Ouvrir);
         Fichier.add(Fermer);
+        Fichier.add(Quitter);
 
         // Ajoute le menu "Fichier" dans la liste des menus
         menuList.add(Fichier);
 
-        // Ajoute Ouvrir et Fermer dans la liste des sous menu
+        // Ajoute Ouvrir, Fermer et Quitter dans la liste des sous menu
         itemList.add(Ouvrir);
         itemList.add(Fermer);
+        itemList.add(Quitter);
 
         // Ajoute le menu à la barre de menu
         this.add(Fichier);
+    }
+
+    /**
+     * Créé le menu Options et ses sous-menus
+     */
+    private void createMenuOptions() {
+
+        // Créer le Menu
+        JMenu Options = new JMenu("Options");
+
+        // Créer l'item Préférences
+        JMenuItem Preferences = new JMenuItem("Préférences");
+
+        // Ajoute des Listener aux JMenuItem
+        Preferences.addActionListener(this::actionPerformed);
+
+        // Définis les raccourcis
+        KeyStroke raccourciPreferences
+                = KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK);
+        Preferences.setAccelerator(raccourciPreferences);
+
+        // Ajouter les éléments au menu "Options"
+        Options.add(Preferences);
+
+        // Ajoute le menu "Affichage" dans la liste des menus
+        menuList.add(Options);
+
+        // Ajoute Preferences dans la liste des sous menu
+        itemList.add(Preferences);
+
+        // Ajoute le menu à la barre de menu
+        this.add(Options);
+    }
+
+    /**
+     * Créé le menu Affichage et ses sous-menus
+     */
+    private void createMenuAffichage() {
+
+        // Créer le Menu Affichage
+        JMenu Affichage = new JMenu("Affichage");
+
+        // Créer les items de zoom
+        JMenuItem ZoomPlus = new JMenuItem("Zoom +");
+        JMenuItem ZoomNeutre = new JMenuItem("Zoom 0");
+        JMenuItem ZoomMinus = new JMenuItem("Zoom -");
+
+        // Ajoute des Listener aux JMenuItem
+        ZoomPlus.addActionListener(this::actionPerformed);
+        ZoomNeutre.addActionListener(this::actionPerformed);
+        ZoomMinus.addActionListener(this::actionPerformed);
+
+        // Définis les raccourcis
+        KeyStroke raccourciZoomPlus
+                = KeyStroke.getKeyStroke(KeyEvent. VK_PLUS, KeyEvent.CTRL_DOWN_MASK);
+        ZoomPlus.setAccelerator(raccourciZoomPlus);
+        KeyStroke raccourciZoomNeutre
+                = KeyStroke.getKeyStroke(KeyEvent. VK_0, KeyEvent.CTRL_DOWN_MASK);
+        ZoomNeutre.setAccelerator(raccourciZoomNeutre);
+        KeyStroke raccourciZoomMinus
+                = KeyStroke.getKeyStroke(KeyEvent. VK_MINUS, KeyEvent.CTRL_DOWN_MASK);
+        ZoomMinus.setAccelerator(raccourciZoomMinus);
+
+        // Ajouter les éléments au menu "Affichage"
+        Affichage.add(ZoomPlus);
+        Affichage.add(ZoomNeutre);
+        Affichage.add(ZoomMinus);
+
+        // Ajoute le menu "Affichage" dans la liste des menus
+        menuList.add(Affichage);
+
+        // Ajoute des zoom dans la liste des sous menu
+        itemList.add(ZoomPlus);
+        itemList.add(ZoomNeutre);
+        itemList.add(ZoomMinus);
+
+        // Ajoute le menu à la barre de menu
+        this.add(Affichage);
     }
 
     /**
@@ -104,8 +191,22 @@ public class Menu extends JMenuBar {
                 File fichier = SelectionnerFichier.ouvrirFichier();
                 fenetre.chargerPDF(fichier);
             }
-            case "Fermer" -> System.exit(
-                0); // TODO à changer pour que ça quitte vraiment
+            case "Fermer" -> {
+                fenetre.dechargerPDF();
+                fenetre.validate();
+                fenetre.setSize(300, 300);
+            }
+            case "Quitter" ->  System.exit(
+                    0);
+            case "Zoom +" -> {
+                fenetre.rechargerPDF(2.0f);
+            }
+            case "Zoom 0" -> {
+                fenetre.rechargerPDF(1.0f);
+            }
+            case "Zoom -" -> {
+                fenetre.rechargerPDF(0.5f);
+            }
         }
     }
 
