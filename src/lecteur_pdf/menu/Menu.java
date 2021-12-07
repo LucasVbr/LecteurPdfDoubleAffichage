@@ -239,21 +239,21 @@ public class Menu extends JMenuBar {
             }
             case "Zoom 150%" -> {
                 try {
-                    FENETRE.rechargerPDF(2.0f);
+                    FENETRE.chargerPDF(2.0f);
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
                 }
             }
             case "Zoom 100%" -> {
                 try {
-                    FENETRE.rechargerPDF(1.0f);
+                    FENETRE.chargerPDF(1.0f);
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
                 }
             }
             case "Zoom 50%" -> {
                 try {
-                    FENETRE.rechargerPDF(0.5f);
+                    FENETRE.chargerPDF(0.5f);
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
                 }
@@ -262,7 +262,7 @@ public class Menu extends JMenuBar {
                 if (FENETRE.haveDocument()) {
                     FENETRE.setAffichageVertical(true);
                     try {
-                        FENETRE.rechargerPDF();
+                        FENETRE.chargerPDF();
                     } catch (IOException e) {
                         JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
                     }
@@ -272,7 +272,7 @@ public class Menu extends JMenuBar {
                 if (FENETRE.haveDocument()) {
                     FENETRE.setAffichageVertical(false);
                     try {
-                        FENETRE.rechargerPDF();
+                        FENETRE.chargerPDF();
                     } catch (IOException e) {
                         JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
                     }

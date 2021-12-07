@@ -23,27 +23,19 @@ import java.io.IOException;
  */
 public class PDF extends JPanel {
 
-    /**
-     * Espacement entre chaque page
-     */
-    public static final int OFFSET_PAGES = 10; // px
-
-    /**
-     * Document PDF chargé
-     */
+    /** Document chargé */
     private final PDDocument document;
 
-    /**
-     * Les pages du PDF sous forme de JLabel contenant des images
-     */
+    /** Les pages chargés */
     private final Page[] pages;
 
+    /** Le zoom des pages du document */
     private float zoom;
 
     /**
-     * Crée un document PDF qui est capable d’être affiché dans une fenêtre
+     * Crée un document PDF affichable dans une fenêtre
      *
-     * @param fichier Le fichier PDF que l’on veut ouvrir
+     * @param fichier Le fichier que l’on veut ouvrir
      * @throws IllegalArgumentException si le fichier n’existe pas
      */
     public PDF(File fichier, boolean vertical) throws IOException {
@@ -67,18 +59,15 @@ public class PDF extends JPanel {
                 e.printStackTrace();
             }
         }
-
-        System.out.println("PDF: Loaded successfully");
     }
 
     /**
-     * @return Le nombre de pages chargées
+     * Défini le zoom des pages du document
+     *
+     * @param zoom la nouvelle valeur du zoom (1.0f == 100%)
      */
-    public int getNbPages() {
-        return document.getNumberOfPages();
-    }
-
     public void setZoom(float zoom) {
         this.zoom = zoom;
+        loadPages();
     }
 }
