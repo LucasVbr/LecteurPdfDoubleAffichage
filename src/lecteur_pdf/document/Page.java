@@ -30,12 +30,6 @@ public class Page extends JLabel {
     /** Zoom de la page (1.0f == 100 %, 0.5 == 50%, ...) */
     private final float ZOOM;
 
-    /** Hauteur de la page */
-    private int hauteur;
-
-    /** Largeur de la page */
-    private int largeur;
-
     /** Image de la page générée */
     private final ImageIcon IMAGE_ICON;
 
@@ -74,15 +68,13 @@ public class Page extends JLabel {
     public Page(PDDocument document, int index, float zoom) throws
                                                 IllegalArgumentException,
                                                 IOException {
-        if (!isValid(document, index)) {
-            throw new IllegalArgumentException();
-        }
+        if (!isValid(document, index)) throw new IllegalArgumentException();
 
         this.INDEX = index;
         this.ZOOM = zoom;
-        this.IMAGE_ICON = generateImage(document);
+        this.IMAGE_ICON = generateImage(document); // Génère la page
 
-        /* Render */
+        /* Fait le rendu de la page */
         this.setIcon(IMAGE_ICON);
     }
 
@@ -109,30 +101,20 @@ public class Page extends JLabel {
      */
     private ImageIcon generateImage(PDDocument document) throws IOException {
 
+        /* Défini la qualité de l’image par rapport au zoom */
         final int DPI = 120;
         int imageScale = (ZOOM > 1.0f) ? Image.SCALE_SMOOTH : Image.SCALE_FAST;
 
+        /* Crée une image de la page à afficher */
         PDFRenderer pdfRenderer = new PDFRenderer(document);
         BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(INDEX, DPI);
 
-        this.largeur = (int)(bufferedImage.getWidth() * ZOOM);
-        this.hauteur = (int)(bufferedImage.getHeight() * ZOOM);
+        /* Redimensionne l'image */
+        final int LARGEUR = (int)(bufferedImage.getWidth() * ZOOM);
+        final int HAUTEUR = (int)(bufferedImage.getHeight() * ZOOM);
 
-        return new ImageIcon(bufferedImage.getScaledInstance(largeur, hauteur,
+        /* Retourne l’image à la bonne taille */
+        return new ImageIcon(bufferedImage.getScaledInstance(LARGEUR, HAUTEUR,
                                                              imageScale));
-    }
-
-    /**
-     * @return La hauteur de la page
-     */
-    public int getHauteur() {
-        return hauteur;
-    }
-
-    /**
-     * @return La largeur de la page
-     */
-    public int getLargeur() {
-        return largeur;
     }
 }

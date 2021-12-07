@@ -23,52 +23,49 @@ import java.io.IOException;
  * @author Noé VILLENEUVE
  * @version 1.0
  */
-
 public class Fenetre extends JFrame {
 
-    /**
-     * TODO
-     */
+    /** Titre de la fenêtre */
     private final String TITRE = "Lecteur PDF";
 
-    /**
-     * TODO
-     */
+    /** Le menu de la fenêtre */
     private Menu menu;
 
-    /**
-     * TODO
-     */
+    /** Le fichier courant */
     private File fichier;
 
+    /** Le document PDF courant */
     public PDF documentPDF;
 
+    /** Défini la disposition d'affichage des pages du document PDF */
     private boolean affichageVertical;
 
     /**
-     * TODO
+     * Crée une nouvelle fenêtre contenant un Menu
      */
     public Fenetre() {
 
         /* Change le style de la fenêtre */
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException
-                     | InstantiationException
-                     | IllegalAccessException
-                     | UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
 
-        // Création du menu
+        /* Création du menu */
         menu = new Menu(this);
         this.setJMenuBar(menu);
 
+        /* Definis l'affichage Vertical comme affichage par défaut */
         this.affichageVertical = true;
 
+        /* Initialise l'état par défaut de la fenêtre */
         setup();
     }
 
+    /**
+     * Fonction utilitaire qui permet de définir l'état par défaut de la fenêtre
+     */
     public void setup() {
         setTitle(TITRE);
 
@@ -83,11 +80,42 @@ public class Fenetre extends JFrame {
     }
 
     /**
-     * TODO
+     * Charge le document PDF courant si possible
      *
-     * @param fichier
+     * @throws IOException Si l'on arrive pas a charger le PDF
+     */
+    public void chargerPDF() throws IOException {
+        if (haveDocument()) chargerPDF(fichier, 1.0f);
+    }
+
+    /**
+     * Charge le document PDF courant avec un zoom spécifique si possible
+     *
+     * @param zoom La taille du zoom sur les pages
+     * @throws IOException Si l'on arrive pas a charger le PDF
+     */
+    public void chargerPDF(float zoom) throws IOException {
+        if (haveDocument()) chargerPDF(fichier, zoom);
+    }
+
+    /**
+     * Charge un document PDF
+     *
+     * @param fichier Le fichier PDF à afficher dans la fenêtre
+     * @throws IOException Si l'on arrive pas a charger le PDF
      */
     public void chargerPDF(File fichier) throws IOException {
+        chargerPDF(fichier, 1.0f);
+    }
+
+    /**
+     * Charge un document PDF
+     *
+     * @param fichier Le fichier PDF à afficher dans la fenêtre
+     * @param zoom La taille du zoom sur les pages
+     * @throws IOException Si l'on arrive pas a charger le PDF
+     */
+    public void chargerPDF(File fichier, float zoom) throws IOException {
         dechargerPDF();
 
         this.fichier = fichier;
@@ -101,49 +129,9 @@ public class Fenetre extends JFrame {
         this.add(scrollPane, BorderLayout.CENTER);
 
         documentPDF = new PDF(fichier, affichageVertical);
-        pdfPanel.add(documentPDF);
-
-        /* Charge les pages */
-        documentPDF.loadPages();
-
-        /* Met à jour la page */
-        this.setTitle(TITRE + " | " + fichier.getName());
-        this.validate();
-        this.pack();
-        this.setLocationRelativeTo(null);
-    }
-
-    /**
-     *
-     * @throws IOException
-     */
-    public void rechargerPDF() throws IOException {
-        rechargerPDF(1.0f);
-    }
-
-    /**
-     *
-     * @param zoom
-     * @throws IOException
-     */
-    public void rechargerPDF(float zoom) throws IOException {
-        dechargerPDF();
-
-        /* Crée le panel qui contient le document PDF */
-        JPanel pdfPanel = new JPanel();
-        /* Crée l’élément scrollable */
-        JScrollPane scrollPane = new JScrollPane(pdfPanel);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-        scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
-        this.add(scrollPane);
-
-        documentPDF = new PDF(fichier, affichageVertical);
         documentPDF.setZoom(zoom);
         pdfPanel.add(documentPDF);
 
-        /* Charge les pages */
-        documentPDF.loadPages();
-
         /* Met à jour la page */
         this.setTitle(TITRE + " | " + fichier.getName());
         this.validate();
@@ -152,7 +140,7 @@ public class Fenetre extends JFrame {
     }
 
     /**
-     *
+     * Supprime le PDF de la fenêtre
      */
     public void dechargerPDF() {
         if (this.getContentPane() != null) {
@@ -161,24 +149,22 @@ public class Fenetre extends JFrame {
         }
     }
 
+    /**
+     * Prédicat qui vérifie si un PDF est affiché dans la fenêtre
+     *
+     * @return true si le prédicat est vérifié, false sinon
+     */
     public boolean haveDocument() {
         return documentPDF != null;
     }
 
+    /**
+     * Définis le mode d'affichage du PDF
+     *
+     * @param affichageVertical true pour un affichage Vertical, false pour
+     *                          un affichage horizontal
+     */
     public void setAffichageVertical(boolean affichageVertical) {
         this.affichageVertical = affichageVertical;
-    }
-
-    public boolean isAffichageVertical() {
-        return affichageVertical;
-    }
-
-    /**
-     * TODO comment main
-     *
-     * @param args non utilisé
-     */
-    public static void main(String[] args) {
-        new Fenetre();
     }
 }
