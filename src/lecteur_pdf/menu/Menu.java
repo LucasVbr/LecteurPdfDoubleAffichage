@@ -10,11 +10,12 @@ import lecteur_pdf.affichage.Fenetre;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-
 /**
  * Classe pour afficher le Menu "Fichier" avec ses options
  *
@@ -185,24 +186,39 @@ public class Menu extends JMenuBar {
      */
     public void actionPerformed(ActionEvent ae) {
         String choice = ae.getActionCommand();
-
+        String messageErrCorrompu = "Une erreur s'est produite dans le chargement de votre document, il a peut-être été corrompu. ";
         switch (choice) {
             case "Ouvrir" -> {
-                File fichier = SelectionnerFichier.ouvrirFichier();
-                if (fichier != null) {
+                try {
+                    File fichier = SelectionnerFichier.ouvrirFichier();
                     fenetre.chargerPDF(fichier);
+                }catch (IOException e) {
+                    JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
                 }
             }
-            case "Fermer" -> {
-                fenetre.dechargerPDF();
-                fenetre.validate();
-                fenetre.setSize(300, 300);
+            case "Fermer" -> popupfermer(fenetre);
+            case "Quitter" -> popupquitter(fenetre);
+            case "Zoom +" -> {
+                try {
+                    fenetre.rechargerPDF(2.0f);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
+                }
             }
-            case "Quitter" ->  System.exit(0);
-
-            case "Zoom +" -> fenetre.rechargerPDF(2.0f);
-            case "Zoom 0" -> fenetre.rechargerPDF(1.0f);
-            case "Zoom -" -> fenetre.rechargerPDF(0.5f);
+            case "Zoom 0" -> {
+                try {
+                    fenetre.rechargerPDF(1.0f);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
+                }
+            }
+            case "Zoom -" -> {
+                try {
+                    fenetre.rechargerPDF(0.5f);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
+                }
+            }
         }
     }
 
@@ -221,5 +237,45 @@ public class Menu extends JMenuBar {
      */
     public JMenuItem getMenuItem(int index) {
         return itemList.get(index);
+    }
+
+
+    public void popupfermer(Fenetre fenetre){
+        JDialog jd = new JDialog(fenetre);
+        jd.setLayout(new FlowLayout());
+        jd.setBounds(500,300,400,100);
+        JLabel jlabel = new JLabel("etes vous sûr de vouloir fermer ? ");
+        JButton oui = new JButton("oui");
+        oui.addActionListener(e -> {
+            fenetre.documentPDF.removeAll();
+            fenetre.documentPDF.revalidate();
+            fenetre.documentPDF.repaint();
+            jd.setVisible(false);
+        });
+        JButton non = new JButton("non");
+        non.addActionListener(e -> jd.setVisible(false));
+        jd.add(jlabel);
+        jd.add(oui);
+        jd.add(non);
+        jd.setVisible(true);
+    }
+
+    private void popupquitter(Fenetre fenetre) {
+        JDialog jd = new JDialog(fenetre);
+        jd.setLayout(new FlowLayout());
+        jd.setBounds(500,300,400,100);
+        JLabel jlabel = new JLabel("etes vous sûr de vouloir quitter ? ");
+        JButton oui = new JButton("oui");
+        oui.addActionListener(e -> {
+            System.exit(0);
+            jd.setVisible(false);
+        });
+        JButton non = new JButton("non");
+        non.addActionListener(e -> jd.setVisible(false));
+        jd.add(jlabel);
+        jd.add(oui);
+        jd.add(non);
+        jd.setVisible(true);
+
     }
 }

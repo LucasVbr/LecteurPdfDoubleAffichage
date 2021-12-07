@@ -12,6 +12,7 @@ import lecteur_pdf.menu.Menu;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * classe correspondant à l’objet Fenêtre
@@ -75,7 +76,7 @@ public class Fenetre extends JFrame {
      *
      * @param fichier
      */
-    public void chargerPDF(File fichier) {
+    public void chargerPDF(File fichier) throws IOException {
         dechargerPDF();
 
         this.fichier = fichier;
@@ -106,7 +107,7 @@ public class Fenetre extends JFrame {
     /**
      *
      */
-    public void rechargerPDF(float zoom) {
+    public void rechargerPDF(float zoom) throws IOException{
         dechargerPDF();
 
         /* Crée le panel qui contient le document PDF */
