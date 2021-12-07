@@ -198,8 +198,8 @@ public class Menu extends JMenuBar {
                 fenetre.validate();
                 fenetre.setSize(300, 300);
             }
-            case "Quitter" ->  System.exit(
-                    0);
+            case "Quitter" ->  System.exit(0);
+
             case "Zoom +" -> fenetre.rechargerPDF(2.0f);
             case "Zoom 0" -> fenetre.rechargerPDF(1.0f);
             case "Zoom -" -> fenetre.rechargerPDF(0.5f);
