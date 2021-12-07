@@ -13,7 +13,6 @@ import java.io.File;
 /**
  * Classe qui permet d'ouvrir une fenêtre pour sélectionner le fichier pdf à
  * ouvrir
- *
  * @author Léo FRANCH
  * @author Tristan NOGARET
  * @author Lucàs VABRE
@@ -25,8 +24,7 @@ public class SelectionnerFichier {
     /**
      * Méthode qui créée une fenêtre pour que l'utilisateur choisisse un
      * fichier PDF
-     *
-     * @return file le fichier choisi par l'utilisateur
+     * @return le fichier choisi par l'utilisateur
      */
     public static File ouvrirFichier() {
 
@@ -42,9 +40,13 @@ public class SelectionnerFichier {
         JFileChooser fileChooser = new JFileChooser(
             FileSystemView.getFileSystemView().getDefaultDirectory());
         fileChooser.setDialogTitle(TITRE);
-        fileChooser.setMultiSelectionEnabled(false);
+
+        /* Options du JFileChooser */
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setMultiSelectionEnabled(false);
         fileChooser.setAcceptAllFileFilterUsed(false);
+
+        /* Définit le texte et les tooltips des boutons */
         fileChooser.setApproveButtonText(BOUTON_OK);
         fileChooser.setApproveButtonToolTipText(INDICE_BOUTON_OK);
         UIManager.put("FileChooser.cancelButtonText", BOUTON_ANNULER);
@@ -58,12 +60,12 @@ public class SelectionnerFichier {
         fileChooser.addChoosableFileFilter(filter);
 
 
+        /* Renvoie un File lorsque l'utilisateur appuie sur le bouton Ouvrir */
         int returnValue = fileChooser.showOpenDialog(null);
-
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             return new File(fileChooser.getSelectedFile().getAbsolutePath());
         }
 
-        return null;
+        return null; // bouchon
     }
 }
