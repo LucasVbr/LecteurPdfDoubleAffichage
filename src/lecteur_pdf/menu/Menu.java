@@ -241,30 +241,33 @@ public class Menu extends JMenuBar {
 
 
     public void popupfermer(Fenetre fenetre){
-        JDialog jd = new JDialog(fenetre);
-        jd.setLayout(new FlowLayout());
-        jd.setBounds(500,300,400,100);
-        JLabel jlabel = new JLabel("etes vous sûr de vouloir fermer ? ");
-        JButton oui = new JButton("oui");
-        oui.addActionListener(e -> {
-            fenetre.documentPDF.removeAll();
-            fenetre.documentPDF.revalidate();
-            fenetre.documentPDF.repaint();
-            jd.setVisible(false);
-        });
-        JButton non = new JButton("non");
-        non.addActionListener(e -> jd.setVisible(false));
-        jd.add(jlabel);
-        jd.add(oui);
-        jd.add(non);
-        jd.setVisible(true);
+        if (fenetre.documentPDF ==null){JOptionPane.showMessageDialog(fenetre,"vous n'avez aucun document pdf ouvert !");}
+        else {
+            JDialog jd = new JDialog(fenetre);
+            jd.setLayout(new FlowLayout());
+            jd.setBounds(500, 300, 400, 100);
+            JLabel jlabel = new JLabel("Etes vous sûr de vouloir fermer le Document PDF? ");
+            JButton oui = new JButton("oui");
+            oui.addActionListener(e -> {
+                fenetre.documentPDF.removeAll();
+                fenetre.documentPDF.revalidate();
+                fenetre.documentPDF.repaint();
+                jd.setVisible(false);
+            });
+            JButton non = new JButton("non");
+            non.addActionListener(e -> jd.setVisible(false));
+            jd.add(jlabel);
+            jd.add(oui);
+            jd.add(non);
+            jd.setVisible(true);
+        }
     }
 
     private void popupquitter(Fenetre fenetre) {
         JDialog jd = new JDialog(fenetre);
         jd.setLayout(new FlowLayout());
         jd.setBounds(500,300,400,100);
-        JLabel jlabel = new JLabel("etes vous sûr de vouloir quitter ? ");
+        JLabel jlabel = new JLabel("Etes vous sûr de vouloir quitter la fenêtre ? ");
         JButton oui = new JButton("oui");
         oui.addActionListener(e -> {
             System.exit(0);
