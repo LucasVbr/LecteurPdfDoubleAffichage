@@ -46,17 +46,17 @@ public class PDF extends JPanel {
      * @param fichier Le fichier PDF que l’on veut ouvrir
      * @throws IllegalArgumentException si le fichier n’existe pas
      */
-    public PDF(File fichier) {
-        try {
+    public PDF(File fichier) throws IOException{
+       // try {
             this.document = PDDocument.load(fichier);
             this.pages = new Page[document.getNumberOfPages()];
             this.zoom = 1.0f;
 
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             this.setAlignmentX(Component.CENTER_ALIGNMENT);
-        } catch (IOException e) {
-            throw new IllegalArgumentException();
-        }
+       // } catch (IOException e) {
+       //     throw new IllegalArgumentException();
+       // }
     }
 
     /**

@@ -21,12 +21,12 @@ class PDFTest {
         frame.setBackground(Color.gray);
         frame.setVisible(true);
 
-        PDF doc = new PDF(new File("C:/Users/public/test.pdf"));
+        //PDF doc = new PDF(new File("C:/Users/public/test.pdf"));
 
-        JScrollPane scrollPane = new JScrollPane(doc);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        frame.add(scrollPane);
+        //JScrollPane scrollPane = new JScrollPane(doc);
+        //scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        //scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        //frame.add(scrollPane);
         frame.validate();
     }
 
