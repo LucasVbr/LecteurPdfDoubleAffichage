@@ -73,15 +73,12 @@ public class Menu extends JMenuBar {
         Quitter.addActionListener(this::actionPerformed);
 
         // Définis les raccourcis
-        KeyStroke raccourciOuvrir = KeyStroke.getKeyStroke(KeyEvent.VK_O,
-                                                           KeyEvent.CTRL_DOWN_MASK);
-        Ouvrir.setAccelerator(raccourciOuvrir);
-        KeyStroke raccourciFermer = KeyStroke.getKeyStroke(KeyEvent.VK_Q,
-                                                           KeyEvent.CTRL_DOWN_MASK);
-        Fermer.setAccelerator(raccourciFermer);
-        KeyStroke raccourciQuitter = KeyStroke.getKeyStroke(KeyEvent.VK_X,
-                                                            KeyEvent.CTRL_DOWN_MASK);
-        Quitter.setAccelerator(raccourciQuitter);
+
+        Ouvrir.setAccelerator(KeyBinding.raccourciOuvrir);
+
+        Fermer.setAccelerator(KeyBinding.raccourciFermer);
+
+        Quitter.setAccelerator(KeyBinding.raccourciQuitter);
 
         // Ajouter les éléments au menu "Fichier"
         Fichier.add(Ouvrir);
