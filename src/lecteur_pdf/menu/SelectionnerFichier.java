@@ -33,6 +33,10 @@ public class SelectionnerFichier {
         final String TITRE = "Sélectionnez un PDF";
         final String DESCRIPTION = "PDF files (*.pdf)";
         final String EXTENSION = "pdf";
+        final String BOUTON_OK = "Ouvrir";
+        final String INDICE_BOUTON_OK = "Ouvre le fichier sélectionné";
+        final String BOUTON_ANNULER = "Annuler";
+        final String INDICE_BOUTON_ANNULER = "Annule la sélection";
 
         /* Crée une fenêtre de sélection de fichier */
         JFileChooser fileChooser = new JFileChooser(
@@ -41,6 +45,12 @@ public class SelectionnerFichier {
         fileChooser.setMultiSelectionEnabled(false);
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.setApproveButtonText(BOUTON_OK);
+        fileChooser.setApproveButtonToolTipText(INDICE_BOUTON_OK);
+        UIManager.put("FileChooser.cancelButtonText", BOUTON_ANNULER);
+        UIManager.put("FileChooser.cancelButtonToolTipText",
+                      INDICE_BOUTON_ANNULER);
+        SwingUtilities.updateComponentTreeUI(fileChooser);
 
         /* Filtre uniquement les fichiers PDF */
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -50,8 +60,10 @@ public class SelectionnerFichier {
 
         int returnValue = fileChooser.showOpenDialog(null);
 
-        return returnValue == 0
-               ? new File(fileChooser.getSelectedFile().getAbsolutePath())
-               : null;
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            return new File(fileChooser.getSelectedFile().getAbsolutePath());
+        }
+
+        return null;
     }
 }

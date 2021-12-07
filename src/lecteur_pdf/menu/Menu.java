@@ -189,7 +189,9 @@ public class Menu extends JMenuBar {
         switch (choice) {
             case "Ouvrir" -> {
                 File fichier = SelectionnerFichier.ouvrirFichier();
-                fenetre.chargerPDF(fichier);
+                if (fichier != null) {
+                    fenetre.chargerPDF(fichier);
+                }
             }
             case "Fermer" -> {
                 fenetre.dechargerPDF();
@@ -198,15 +200,9 @@ public class Menu extends JMenuBar {
             }
             case "Quitter" ->  System.exit(
                     0);
-            case "Zoom +" -> {
-                fenetre.rechargerPDF(2.0f);
-            }
-            case "Zoom 0" -> {
-                fenetre.rechargerPDF(1.0f);
-            }
-            case "Zoom -" -> {
-                fenetre.rechargerPDF(0.5f);
-            }
+            case "Zoom +" -> fenetre.rechargerPDF(2.0f);
+            case "Zoom 0" -> fenetre.rechargerPDF(1.0f);
+            case "Zoom -" -> fenetre.rechargerPDF(0.5f);
         }
     }
 
