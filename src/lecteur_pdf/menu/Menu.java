@@ -188,11 +188,14 @@ public class Menu extends JMenuBar {
         String choice = ae.getActionCommand();
         String messageErrCorrompu = "Une erreur s'est produite dans le chargement de votre document, il a peut-être été corrompu. ";
         switch (choice) {
+            //action ouvrir
             case "Ouvrir" -> {
                 try {
+                    //ouverture d'un selectionneur de fichier
                     File fichier = SelectionnerFichier.ouvrirFichier();
                     fenetre.chargerPDF(fichier);
                 }catch (IOException e) {
+                    //affichage d'une pop-up d'erreur si le fichier est corrompu
                     JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
                 }
             }
@@ -241,44 +244,55 @@ public class Menu extends JMenuBar {
 
 
     public void popupfermer(Fenetre fenetre){
-        if (fenetre.documentPDF ==null){JOptionPane.showMessageDialog(fenetre,"vous n'avez aucun document pdf ouvert !");}
+        //test si il y a un document d'ouvert ou non et affiche un message d'erreur s'il n'y en a pas
+        if (fenetre.documentPDF ==null){JOptionPane.showMessageDialog(fenetre,"Vous n'avez aucun document pdf ouvert !");}
+        //affiche une fenêtre de confirmation pour la fermeture
         else {
-            JDialog jd = new JDialog(fenetre);
-            jd.setLayout(new FlowLayout());
-            jd.setBounds(500, 300, 400, 100);
+            JDialog popup = new JDialog(fenetre);
+            popup.setLayout(new FlowLayout());
+            popup.setBounds(500, 300, 400, 100);
             JLabel jlabel = new JLabel("Etes vous sûr de vouloir fermer le Document PDF? ");
+            //bouton oui
             JButton oui = new JButton("oui");
             oui.addActionListener(e -> {
+                //fermeture du document PDF
                 fenetre.documentPDF.removeAll();
                 fenetre.documentPDF.revalidate();
                 fenetre.documentPDF.repaint();
-                jd.setVisible(false);
+                popup.setVisible(false);
             });
+            //bouton non
             JButton non = new JButton("non");
-            non.addActionListener(e -> jd.setVisible(false));
-            jd.add(jlabel);
-            jd.add(oui);
-            jd.add(non);
-            jd.setVisible(true);
+            //fermeture de la popup
+            non.addActionListener(e -> popup.setVisible(false));
+            popup.add(jlabel);
+            popup.add(oui);
+            popup.add(non);
+            popup.setVisible(true);
         }
     }
 
     private void popupquitter(Fenetre fenetre) {
-        JDialog jd = new JDialog(fenetre);
-        jd.setLayout(new FlowLayout());
-        jd.setBounds(500,300,400,100);
+        //affichage d'une fenêtre de confirmation pour quitter
+        JDialog popup = new JDialog(fenetre);
+        popup.setLayout(new FlowLayout());
+        popup.setBounds(500,300,400,100);
         JLabel jlabel = new JLabel("Etes vous sûr de vouloir quitter la fenêtre ? ");
+        //bouton oui
         JButton oui = new JButton("oui");
         oui.addActionListener(e -> {
+            //fermeture de la fenêtre et de la popup
             System.exit(0);
-            jd.setVisible(false);
+            popup.setVisible(false);
         });
+        //bouton non
         JButton non = new JButton("non");
-        non.addActionListener(e -> jd.setVisible(false));
-        jd.add(jlabel);
-        jd.add(oui);
-        jd.add(non);
-        jd.setVisible(true);
+        //fermeture de la popup
+        non.addActionListener(e -> popup.setVisible(false));
+        popup.add(jlabel);
+        popup.add(oui);
+        popup.add(non);
+        popup.setVisible(true);
 
     }
 }
