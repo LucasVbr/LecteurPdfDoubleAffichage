@@ -1,5 +1,5 @@
 /*
- * MenuOptions.java, 18/11/2021
+ * Keymapping.java, 18/11/2021
  * IUT Rodez 2021-2021, INFO2
  * pas de copyright, aucun droits
  */
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @author Noé VILLENEUVE
  * @version  1.0
  */
-public class MenuOptions {
+public class Keymapping {
 
     /* Déclaration des éléments visuels */
     JFrame menuOptions = new JFrame();
