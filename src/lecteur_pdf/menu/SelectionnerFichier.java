@@ -32,8 +32,8 @@ public class SelectionnerFichier {
         final String DESCRIPTION = "PDF files (*.pdf)";
         final String EXTENSION = "pdf";
         final String BOUTON_OK = "Ouvrir";
-        final String INDICE_BOUTON_OK = "Ouvre le fichier sélectionné";
         final String BOUTON_ANNULER = "Annuler";
+        final String INDICE_BOUTON_OK = "Ouvre le fichier sélectionné";
         final String INDICE_BOUTON_ANNULER = "Annule la sélection";
 
         /* Crée une fenêtre de sélection de fichier */

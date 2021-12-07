@@ -7,15 +7,14 @@
 package lecteur_pdf.menu;
 
 import lecteur_pdf.affichage.Fenetre;
-import org.apache.pdfbox.pdmodel.PDDocument;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
 /**
  * Classe pour afficher le Menu "Fichier" avec ses options
  *
@@ -30,17 +29,17 @@ public class Menu extends JMenuBar {
     /**
      * La Fenêtre mère de la barre des menus
      */
-    private final Fenetre fenetre;
+    private final Fenetre FENETRE;
 
     /**
      * Liste contenant les différents menus
      */
-    private final ArrayList<JMenu> menuList = new ArrayList<>();
+    private final ArrayList<JMenu> MENU_LIST = new ArrayList<>();
 
     /**
      * Liste contenant les différents sous menus
      */
-    private final ArrayList<JMenuItem> itemList = new ArrayList<>();
+    private final ArrayList<JMenuItem> ITEM_LIST = new ArrayList<>();
 
     /**
      * Constructeur du menu
@@ -48,7 +47,7 @@ public class Menu extends JMenuBar {
      * @param fenetre La Fenêtre mère de la barre des menus
      */
     public Menu(Fenetre fenetre) {
-        this.fenetre = fenetre;
+        this.FENETRE = fenetre;
 
         createMenuFichier();
         createMenuOptions();
@@ -74,14 +73,14 @@ public class Menu extends JMenuBar {
         Quitter.addActionListener(this::actionPerformed);
 
         // Définis les raccourcis
-        KeyStroke raccourciOuvrir
-            = KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK);
+        KeyStroke raccourciOuvrir = KeyStroke.getKeyStroke(KeyEvent.VK_O,
+                                                           KeyEvent.CTRL_DOWN_MASK);
         Ouvrir.setAccelerator(raccourciOuvrir);
-        KeyStroke raccourciFermer
-            = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
+        KeyStroke raccourciFermer = KeyStroke.getKeyStroke(KeyEvent.VK_Q,
+                                                           KeyEvent.CTRL_DOWN_MASK);
         Fermer.setAccelerator(raccourciFermer);
-        KeyStroke raccourciQuitter
-                = KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK);
+        KeyStroke raccourciQuitter = KeyStroke.getKeyStroke(KeyEvent.VK_X,
+                                                            KeyEvent.CTRL_DOWN_MASK);
         Quitter.setAccelerator(raccourciQuitter);
 
         // Ajouter les éléments au menu "Fichier"
@@ -90,12 +89,12 @@ public class Menu extends JMenuBar {
         Fichier.add(Quitter);
 
         // Ajoute le menu "Fichier" dans la liste des menus
-        menuList.add(Fichier);
+        MENU_LIST.add(Fichier);
 
         // Ajoute Ouvrir, Fermer et Quitter dans la liste des sous menu
-        itemList.add(Ouvrir);
-        itemList.add(Fermer);
-        itemList.add(Quitter);
+        ITEM_LIST.add(Ouvrir);
+        ITEM_LIST.add(Fermer);
+        ITEM_LIST.add(Quitter);
 
         // Ajoute le menu à la barre de menu
         this.add(Fichier);
@@ -116,18 +115,18 @@ public class Menu extends JMenuBar {
         Preferences.addActionListener(this::actionPerformed);
 
         // Définis les raccourcis
-        KeyStroke raccourciPreferences
-                = KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK);
+        KeyStroke raccourciPreferences = KeyStroke.getKeyStroke(KeyEvent.VK_P,
+                                                                KeyEvent.CTRL_DOWN_MASK);
         Preferences.setAccelerator(raccourciPreferences);
 
         // Ajouter les éléments au menu "Options"
         Options.add(Preferences);
 
         // Ajoute le menu "Affichage" dans la liste des menus
-        menuList.add(Options);
+        MENU_LIST.add(Options);
 
         // Ajoute Preferences dans la liste des sous menu
-        itemList.add(Preferences);
+        ITEM_LIST.add(Preferences);
 
         // Ajoute le menu à la barre de menu
         this.add(Options);
@@ -142,38 +141,47 @@ public class Menu extends JMenuBar {
         JMenu Affichage = new JMenu("Affichage");
 
         // Créer les items de zoom
-        JMenuItem ZoomPlus = new JMenuItem("Zoom +");
-        JMenuItem ZoomNeutre = new JMenuItem("Zoom 0");
-        JMenuItem ZoomMinus = new JMenuItem("Zoom -");
+        JMenuItem ZoomPlus = new JMenuItem("Zoom 150%");
+        JMenuItem ZoomNeutre = new JMenuItem("Zoom 100%");
+        JMenuItem ZoomMinus = new JMenuItem("Zoom 50%");
+        JMenuItem affichageVertical = new JMenuItem("Disposition Verticale");
+        JMenuItem affichageHorizontal = new JMenuItem("Disposition Horizontale");
 
         // Ajoute des Listener aux JMenuItem
         ZoomPlus.addActionListener(this::actionPerformed);
         ZoomNeutre.addActionListener(this::actionPerformed);
         ZoomMinus.addActionListener(this::actionPerformed);
+        affichageVertical.addActionListener(this::actionPerformed);
+        affichageHorizontal.addActionListener(this::actionPerformed);
 
         // Définis les raccourcis
-        KeyStroke raccourciZoomPlus
-                = KeyStroke.getKeyStroke(KeyEvent. VK_PLUS, KeyEvent.CTRL_DOWN_MASK);
+        KeyStroke raccourciZoomPlus = KeyStroke.getKeyStroke(KeyEvent.VK_PLUS,
+                                                             KeyEvent.CTRL_DOWN_MASK);
         ZoomPlus.setAccelerator(raccourciZoomPlus);
-        KeyStroke raccourciZoomNeutre
-                = KeyStroke.getKeyStroke(KeyEvent. VK_0, KeyEvent.CTRL_DOWN_MASK);
+        KeyStroke raccourciZoomNeutre = KeyStroke.getKeyStroke(KeyEvent.VK_0,
+                                                               KeyEvent.CTRL_DOWN_MASK);
         ZoomNeutre.setAccelerator(raccourciZoomNeutre);
-        KeyStroke raccourciZoomMinus
-                = KeyStroke.getKeyStroke(KeyEvent. VK_MINUS, KeyEvent.CTRL_DOWN_MASK);
+        KeyStroke raccourciZoomMinus = KeyStroke.getKeyStroke(KeyEvent.VK_MINUS,
+                                                              KeyEvent.CTRL_DOWN_MASK);
         ZoomMinus.setAccelerator(raccourciZoomMinus);
 
         // Ajouter les éléments au menu "Affichage"
         Affichage.add(ZoomPlus);
         Affichage.add(ZoomNeutre);
         Affichage.add(ZoomMinus);
+        Affichage.addSeparator();
+        Affichage.add(affichageVertical);
+        Affichage.add(affichageHorizontal);
 
         // Ajoute le menu "Affichage" dans la liste des menus
-        menuList.add(Affichage);
+        MENU_LIST.add(Affichage);
 
         // Ajoute des zoom dans la liste des sous menu
-        itemList.add(ZoomPlus);
-        itemList.add(ZoomNeutre);
-        itemList.add(ZoomMinus);
+        ITEM_LIST.add(ZoomPlus);
+        ITEM_LIST.add(ZoomNeutre);
+        ITEM_LIST.add(ZoomMinus);
+        ITEM_LIST.add(affichageHorizontal);
+        ITEM_LIST.add(affichageVertical);
 
         // Ajoute le menu à la barre de menu
         this.add(Affichage);
@@ -184,39 +192,93 @@ public class Menu extends JMenuBar {
      *
      * @param ae un action event
      */
-    public void actionPerformed(ActionEvent ae) {
+        public void actionPerformed(ActionEvent ae) {
         String choice = ae.getActionCommand();
-        String messageErrCorrompu = "Une erreur s'est produite dans le chargement de votre document, il a peut-être été corrompu. ";
+        String messageErrCorrompu = "Une erreur s'est produite dans le"
+                                    + "chargement de votre document,"
+                                    + "il a peut-être été corrompu. ";
+
+
+        final int FERMER = 0;
+        final int QUITTER = 1;
+
+        final String[][] POPUPS_MSG = {
+            {"Fermer le PDF actuel", "Êtes-vous sûr de vouloir fermer ?"},
+            {"Quitter l'application", "Êtes-vous sûr de vouloir quitter ?"}
+        };
+
         switch (choice) {
             case "Ouvrir" -> {
-                try {
-                    File fichier = SelectionnerFichier.ouvrirFichier();
-                    fenetre.chargerPDF(fichier);
-                }catch (IOException e) {
-                    JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
+                File fichier = SelectionnerFichier.ouvrirFichier();
+
+                if (FENETRE.haveDocument()
+                    && popupConfirmation(POPUPS_MSG[FERMER])
+                       != JOptionPane.OK_OPTION) {
+                    break;
+                }
+
+                if (fichier != null) {
+                    try {
+                        FENETRE.chargerPDF(fichier);
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(FENETRE,
+                                                      messageErrCorrompu);
+                    }
                 }
             }
-            case "Fermer" -> popupfermer(fenetre);
-            case "Quitter" -> popupquitter(fenetre);
-            case "Zoom +" -> {
-                try {
-                    fenetre.rechargerPDF(2.0f);
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
+            case "Fermer" -> {
+                if (FENETRE.haveDocument()
+                    && popupConfirmation(POPUPS_MSG[FERMER])
+                       == JOptionPane.OK_OPTION) {
+                    FENETRE.setup();
                 }
             }
-            case "Zoom 0" -> {
-                try {
-                    fenetre.rechargerPDF(1.0f);
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
+            case "Quitter" -> {
+                int option = popupConfirmation(POPUPS_MSG[QUITTER]);
+
+                if (option == JOptionPane.OK_OPTION) {
+                    System.exit(0);
                 }
             }
-            case "Zoom -" -> {
+            case "Zoom 150%" -> {
                 try {
-                    fenetre.rechargerPDF(0.5f);
+                    FENETRE.rechargerPDF(2.0f);
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(fenetre,messageErrCorrompu);
+                    JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
+                }
+            }
+            case "Zoom 100%" -> {
+                try {
+                    FENETRE.rechargerPDF(1.0f);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
+                }
+            }
+            case "Zoom 50%" -> {
+                try {
+                    FENETRE.rechargerPDF(0.5f);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
+                }
+            }
+            case "Disposition Verticale" -> {
+                if (FENETRE.haveDocument()) {
+                    FENETRE.setAffichageVertical(true);
+                    try {
+                        FENETRE.rechargerPDF();
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
+                    }
+                }
+            }
+            case "Disposition Horizontale" -> {
+                if (FENETRE.haveDocument()) {
+                    FENETRE.setAffichageVertical(false);
+                    try {
+                        FENETRE.rechargerPDF();
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(FENETRE, messageErrCorrompu);
+                    }
                 }
             }
         }
@@ -226,7 +288,7 @@ public class Menu extends JMenuBar {
      * @return la liste des JMenuItem
      */
     public ArrayList<JMenuItem> getMenuItems() {
-        return itemList;
+        return ITEM_LIST;
     }
 
     /**
@@ -236,46 +298,33 @@ public class Menu extends JMenuBar {
      * @return Le sous menu demandé
      */
     public JMenuItem getMenuItem(int index) {
-        return itemList.get(index);
+        return ITEM_LIST.get(index);
     }
 
+    /**
+     * Affiche une popup avec un message ou l'on peut repondre par oui ou par
+     * non
+     *
+     * @param strings Le tableau de chaine de caractère contenant le titre de
+     *                la fenêtre et son message
+     * @return 0 Si la valeur est Oui
+     * 1 Si la valeur est Non
+     * -1 en cas d'erreur
+     */
+    public int popupConfirmation(String[] strings) {
+        if (strings.length != 2) {
+            return -1;
+        }
 
-    public void popupfermer(Fenetre fenetre){
-        JDialog jd = new JDialog(fenetre);
-        jd.setLayout(new FlowLayout());
-        jd.setBounds(500,300,400,100);
-        JLabel jlabel = new JLabel("etes vous sûr de vouloir fermer ? ");
-        JButton oui = new JButton("oui");
-        oui.addActionListener(e -> {
-            fenetre.documentPDF.removeAll();
-            fenetre.documentPDF.revalidate();
-            fenetre.documentPDF.repaint();
-            jd.setVisible(false);
-        });
-        JButton non = new JButton("non");
-        non.addActionListener(e -> jd.setVisible(false));
-        jd.add(jlabel);
-        jd.add(oui);
-        jd.add(non);
-        jd.setVisible(true);
-    }
+        final int TITRE = 0;
+        final int MESSAGE = 1;
 
-    private void popupquitter(Fenetre fenetre) {
-        JDialog jd = new JDialog(fenetre);
-        jd.setLayout(new FlowLayout());
-        jd.setBounds(500,300,400,100);
-        JLabel jlabel = new JLabel("etes vous sûr de vouloir quitter ? ");
-        JButton oui = new JButton("oui");
-        oui.addActionListener(e -> {
-            System.exit(0);
-            jd.setVisible(false);
-        });
-        JButton non = new JButton("non");
-        non.addActionListener(e -> jd.setVisible(false));
-        jd.add(jlabel);
-        jd.add(oui);
-        jd.add(non);
-        jd.setVisible(true);
+        final Object[] CHOIX = {"Oui", "Non"};
 
+        return JOptionPane.showOptionDialog(null, strings[MESSAGE],
+                                            strings[TITRE],
+                                            JOptionPane.YES_NO_OPTION,
+                                            JOptionPane.QUESTION_MESSAGE, null,
+                                            CHOIX, CHOIX[0]);
     }
 }

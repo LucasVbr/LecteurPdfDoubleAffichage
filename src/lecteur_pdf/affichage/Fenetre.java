@@ -43,6 +43,8 @@ public class Fenetre extends JFrame {
 
     public PDF documentPDF;
 
+    private boolean affichageVertical;
+
     /**
      * TODO
      */
@@ -51,24 +53,33 @@ public class Fenetre extends JFrame {
         /* Change le style de la fenêtre */
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException
-                 | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            } catch (ClassNotFoundException
+                     | InstantiationException
+                     | IllegalAccessException
+                     | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
 
         // Création du menu
         menu = new Menu(this);
-
-        this.setTitle(TITRE);
-
-        // Ajout de la barre de menu au frame
-
         this.setJMenuBar(menu);
 
-        this.setSize(300, 300);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        this.affichageVertical = true;
+
+        setup();
+    }
+
+    public void setup() {
+        setTitle(TITRE);
+
+        setSize(300, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        dechargerPDF();
+        revalidate();
+        repaint();
     }
 
     /**
@@ -89,10 +100,8 @@ public class Fenetre extends JFrame {
         scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
         this.add(scrollPane, BorderLayout.CENTER);
 
-        documentPDF = new PDF(fichier);
+        documentPDF = new PDF(fichier, affichageVertical);
         pdfPanel.add(documentPDF);
-
-        /* Ajoute le scrollPane et le centre dans la page */
 
         /* Charge les pages */
         documentPDF.loadPages();
@@ -106,8 +115,18 @@ public class Fenetre extends JFrame {
 
     /**
      *
+     * @throws IOException
      */
-    public void rechargerPDF(float zoom) throws IOException{
+    public void rechargerPDF() throws IOException {
+        rechargerPDF(1.0f);
+    }
+
+    /**
+     *
+     * @param zoom
+     * @throws IOException
+     */
+    public void rechargerPDF(float zoom) throws IOException {
         dechargerPDF();
 
         /* Crée le panel qui contient le document PDF */
@@ -116,13 +135,11 @@ public class Fenetre extends JFrame {
         JScrollPane scrollPane = new JScrollPane(pdfPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
-        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(scrollPane);
 
-        documentPDF = new PDF(fichier);
+        documentPDF = new PDF(fichier, affichageVertical);
         documentPDF.setZoom(zoom);
         pdfPanel.add(documentPDF);
-
-        /* Ajoute le scrollPane et le centre dans la page */
 
         /* Charge les pages */
         documentPDF.loadPages();
@@ -140,7 +157,20 @@ public class Fenetre extends JFrame {
     public void dechargerPDF() {
         if (this.getContentPane() != null) {
             this.getContentPane().removeAll();
+            documentPDF = null;
         }
+    }
+
+    public boolean haveDocument() {
+        return documentPDF != null;
+    }
+
+    public void setAffichageVertical(boolean affichageVertical) {
+        this.affichageVertical = affichageVertical;
+    }
+
+    public boolean isAffichageVertical() {
+        return affichageVertical;
     }
 
     /**
