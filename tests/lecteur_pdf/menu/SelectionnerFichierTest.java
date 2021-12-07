@@ -2,10 +2,13 @@ package lecteur_pdf.menu;
 
 import lecteur_pdf.affichage.Fenetre;
 
-class SelectionnerFichierTest {
+/**
+ * Classe de test de l'ouverture d'un fichier
+ */
+public class SelectionnerFichierTest {
 
     /**
-     * TODO comment main
+     * Créé une instance du lecteur PDF
      *
      * @param args
      */
