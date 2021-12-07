@@ -1,5 +1,5 @@
 /*
- * Keymapping.java, 18/11/2021
+ * KeyBinding.java, 18/11/2021
  * IUT Rodez 2021-2021, INFO2
  * pas de copyright, aucun droits
  */
@@ -18,10 +18,10 @@ import java.util.ArrayList;
  * @author Noé VILLENEUVE
  * @version  1.0
  */
-public class Keymapping {
+public class KeyBinding {
 
     /* Déclaration des éléments visuels */
-    JFrame menuOptions = new JFrame();
+    JFrame KeyBinding = new JFrame();
     JLabel label = new JLabel();
 
     /* Déclaration des listes */
@@ -31,7 +31,7 @@ public class Keymapping {
     /**
      * TODO commenter la méthode
      */
-    public void menuOptions() {
+    public void KeyBinding() {
         // TODO
     }
 
