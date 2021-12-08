@@ -219,9 +219,7 @@ public class Menu extends JMenuBar {
         final int FERMER = 0;
         final int QUITTER = 1;
 
-        /**
-         * Message sur les pop ups d'erreurs
-         */
+        /* Message sur les popups d'erreurs */
         final String[][] POPUPS_MSG = {
             {"Fermer le PDF actuel", "Êtes-vous sûr de vouloir fermer le PDF "
                                      + "courant ?"},
@@ -277,9 +275,7 @@ public class Menu extends JMenuBar {
             }
 
             // Cas où l'utilisateur clique sur mode plein écran
-            case "Mode plein écran" -> {
-                FENETRE.setFullscreen();
-            }
+            case "Mode plein écran" -> FENETRE.setFullscreen();
 
             // Cas où l'utilisateur clique sur zoom 150%
             case "Zoom 150%" -> {
