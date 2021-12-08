@@ -6,10 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FenetreTest {
 
-    // TODO
-
     /**
-     * Lance les methodes de tests
+     * Lance les methodes de tests pour le fenêtre
      *
      * @param args non utilisé
      */
