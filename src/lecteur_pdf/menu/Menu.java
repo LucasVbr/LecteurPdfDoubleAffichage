@@ -224,12 +224,13 @@ public class Menu extends JMenuBar {
                 if (FENETRE.isFullscreen()) {
                     FENETRE.setFullscreen();
                 }
-                File fichier = SelectionnerFichier.ouvrirFichier();
+
                 if (FENETRE.haveDocument()
                     && popupConfirmation(POPUPS_MSG[FERMER])
                        != JOptionPane.OK_OPTION) {
                     break;
                 }
+                File fichier = SelectionnerFichier.ouvrirFichier();
 
                 if (fichier != null) {
                     try {
