@@ -58,9 +58,11 @@ public class Fenetre extends JFrame {
         menu = new Menu(this);
         this.setJMenuBar(menu);
 
+        /* permet de définir le mode plein écran comme désactivé lors du
+        lancement de la fenêtre */
         fullscreen = false;
 
-        /* Definis l'affichage Vertical comme affichage par défaut */
+        /* Définis l'affichage Vertical comme affichage par défaut */
         this.affichageVertical = true;
 
         /* Initialise l'état par défaut de la fenêtre */
@@ -177,10 +179,18 @@ public class Fenetre extends JFrame {
         this.affichageVertical = affichageVertical;
     }
 
+    /**
+     * Prédicat qui vérifie si la fenêtre est en mode plein écran
+     * @return true si le prédicat est vérifié, false sinon
+     */
     public boolean isFullscreen() {
         return fullscreen;
     }
 
+    /**
+     * Affiche la fenêtre en plein écran lorsqu'elle ne l'est pas et repasse
+     * en mode fenêtré si le mode plein écran est activé
+     */
     public void setFullscreen() {
         GraphicsEnvironment graphics =
             GraphicsEnvironment.getLocalGraphicsEnvironment();
