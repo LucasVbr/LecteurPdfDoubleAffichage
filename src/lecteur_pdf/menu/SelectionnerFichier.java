@@ -66,6 +66,6 @@ public class SelectionnerFichier {
             return new File(fileChooser.getSelectedFile().getAbsolutePath());
         }
 
-        return null; // bouchon
+        return null;
     }
 }

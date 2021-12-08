@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FenetreTest {
 
     /**
-     * Lance les methodes de tests pour le fenêtre
+     * Crée une nouvelle instance du lecteur PDF
      *
      * @param args non utilisé
      */
