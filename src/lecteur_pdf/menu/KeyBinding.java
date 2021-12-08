@@ -7,7 +7,6 @@
 package lecteur_pdf.menu;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
@@ -29,26 +28,11 @@ public class KeyBinding {
     ArrayList<String> listeOptions;
     ArrayList<KeyStroke> listeRaccourcis;
 
-    static KeyStroke raccourciOuvrir = KeyStroke.getKeyStroke(KeyEvent.VK_O,
-                                                       KeyEvent.CTRL_DOWN_MASK);
-    static KeyStroke raccourciFermer = KeyStroke.getKeyStroke(KeyEvent.VK_Q,
-                                                       KeyEvent.CTRL_DOWN_MASK);
-    static KeyStroke raccourciQuitter = KeyStroke.getKeyStroke(KeyEvent.VK_X,
-                                                        KeyEvent.CTRL_DOWN_MASK);
-
     /**
      * TODO commenter la méthode
      */
     public void KeyBinding() {
 
-    }
-
-    /**
-     * Méthode qui récupère la lettre pressée par l'utilisateur
-     * @return un KeyEvent correspond à la lettre pressée
-     */
-    public KeyEvent getUserKey() {
-        return null; // bouchon
     }
 
     /**
