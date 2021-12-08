@@ -9,7 +9,6 @@ package lecteur_pdf.menu;
 import lecteur_pdf.affichage.Fenetre;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -213,14 +212,19 @@ public class Menu extends JMenuBar {
         final int QUITTER = 1;
 
         final String[][] POPUPS_MSG = {
-            {"Fermer le PDF actuel", "Êtes-vous sûr de vouloir fermer le PDF Courant ?"},
+            {"Fermer le PDF actuel", "Êtes-vous sûr de vouloir fermer le PDF "
+                                     + "courant ?"},
             {"Quitter l'application", "Êtes-vous sûr de vouloir quitter ?"}
         };
 
+
+
         switch (choice) {
             case "Ouvrir" -> {
+                if (FENETRE.isFullscreen()) {
+                    FENETRE.setFullscreen();
+                }
                 File fichier = SelectionnerFichier.ouvrirFichier();
-
                 if (FENETRE.haveDocument()
                     && popupConfirmation(POPUPS_MSG[FERMER])
                        != JOptionPane.OK_OPTION) {
@@ -237,6 +241,9 @@ public class Menu extends JMenuBar {
                 }
             }
             case "Fermer" -> {
+                if (FENETRE.isFullscreen()) {
+                    FENETRE.setFullscreen();
+                }
                 if (FENETRE.haveDocument()
                     && popupConfirmation(POPUPS_MSG[FERMER])
                        == JOptionPane.OK_OPTION) {
@@ -244,6 +251,9 @@ public class Menu extends JMenuBar {
                 }
             }
             case "Quitter" -> {
+                if (FENETRE.isFullscreen()) {
+                    FENETRE.setFullscreen();
+                }
                 int option = popupConfirmation(POPUPS_MSG[QUITTER]);
 
                 if (option == JOptionPane.OK_OPTION) {
@@ -251,19 +261,7 @@ public class Menu extends JMenuBar {
                 }
             }
             case "Mode plein écran" -> {
-                GraphicsEnvironment graphics =
-                    GraphicsEnvironment.getLocalGraphicsEnvironment();
-                GraphicsDevice device = graphics.getDefaultScreenDevice();
-                FENETRE.dispose();
-                if (FENETRE.isUndecorated()) {
-                    device.setFullScreenWindow(null);
-                    FENETRE.setUndecorated(false);
-                } else {
-                    FENETRE.setUndecorated(true);
-                    device.setFullScreenWindow(FENETRE);
-                }
-                FENETRE.setVisible(true);
-                FENETRE.repaint();
+                FENETRE.setFullscreen();
             }
             case "Zoom 150%" -> {
                 try {

@@ -40,6 +40,8 @@ public class Fenetre extends JFrame {
     /** Défini la disposition d'affichage des pages du document PDF */
     private boolean affichageVertical;
 
+    private boolean fullscreen;
+
     /**
      * Crée une nouvelle fenêtre contenant un Menu
      */
@@ -55,6 +57,8 @@ public class Fenetre extends JFrame {
         /* Création du menu */
         menu = new Menu(this);
         this.setJMenuBar(menu);
+
+        fullscreen = false;
 
         /* Definis l'affichage Vertical comme affichage par défaut */
         this.affichageVertical = true;
@@ -171,5 +175,27 @@ public class Fenetre extends JFrame {
      */
     public void setAffichageVertical(boolean affichageVertical) {
         this.affichageVertical = affichageVertical;
+    }
+
+    public boolean isFullscreen() {
+        return fullscreen;
+    }
+
+    public void setFullscreen() {
+        GraphicsEnvironment graphics =
+            GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
+
+        dispose();
+        fullscreen = !fullscreen;
+        if (fullscreen) {
+            setUndecorated(true);
+            device.setFullScreenWindow(this);
+        } else {
+            device.setFullScreenWindow(null);
+            setUndecorated(false);
+        }
+        setVisible(true);
+        repaint();
     }
 }
