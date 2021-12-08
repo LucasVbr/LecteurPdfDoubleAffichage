@@ -9,6 +9,7 @@ package lecteur_pdf.menu;
 import lecteur_pdf.affichage.Fenetre;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -141,6 +142,7 @@ public class Menu extends JMenuBar {
         JMenu Affichage = new JMenu("Affichage");
 
         // Créer les items de zoom
+        JMenuItem PleinEcran = new JMenuItem("Mode plein écran");
         JMenuItem ZoomPlus = new JMenuItem("Zoom 150%");
         JMenuItem ZoomNeutre = new JMenuItem("Zoom 100%");
         JMenuItem ZoomMinus = new JMenuItem("Zoom 50%");
@@ -148,6 +150,7 @@ public class Menu extends JMenuBar {
         JMenuItem affichageHorizontal = new JMenuItem("Disposition Horizontale");
 
         // Ajoute des Listener aux JMenuItem
+        PleinEcran.addActionListener(this::actionPerformed);
         ZoomPlus.addActionListener(this::actionPerformed);
         ZoomNeutre.addActionListener(this::actionPerformed);
         ZoomMinus.addActionListener(this::actionPerformed);
@@ -155,6 +158,10 @@ public class Menu extends JMenuBar {
         affichageHorizontal.addActionListener(this::actionPerformed);
 
         // Définis les raccourcis
+
+        KeyStroke raccourciPleinEcran = KeyStroke.getKeyStroke(KeyEvent.VK_F11,
+                                                              0);
+        PleinEcran.setAccelerator(raccourciPleinEcran);
         KeyStroke raccourciZoomPlus = KeyStroke.getKeyStroke(KeyEvent.VK_PLUS,
                                                              KeyEvent.CTRL_DOWN_MASK);
         ZoomPlus.setAccelerator(raccourciZoomPlus);
@@ -166,6 +173,8 @@ public class Menu extends JMenuBar {
         ZoomMinus.setAccelerator(raccourciZoomMinus);
 
         // Ajouter les éléments au menu "Affichage"
+        Affichage.add(PleinEcran);
+        Affichage.addSeparator();
         Affichage.add(ZoomPlus);
         Affichage.add(ZoomNeutre);
         Affichage.add(ZoomMinus);
@@ -176,7 +185,8 @@ public class Menu extends JMenuBar {
         // Ajoute le menu "Affichage" dans la liste des menus
         MENU_LIST.add(Affichage);
 
-        // Ajoute des zoom dans la liste des sous menu
+        // Ajoute les JMenuItem dans la liste des sous-menus
+        ITEM_LIST.add(PleinEcran);
         ITEM_LIST.add(ZoomPlus);
         ITEM_LIST.add(ZoomNeutre);
         ITEM_LIST.add(ZoomMinus);
@@ -239,6 +249,21 @@ public class Menu extends JMenuBar {
                 if (option == JOptionPane.OK_OPTION) {
                     System.exit(0);
                 }
+            }
+            case "Mode plein écran" -> {
+                GraphicsEnvironment graphics =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+                GraphicsDevice device = graphics.getDefaultScreenDevice();
+                FENETRE.dispose();
+                if (FENETRE.isUndecorated()) {
+                    device.setFullScreenWindow(null);
+                    FENETRE.setUndecorated(false);
+                } else {
+                    FENETRE.setUndecorated(true);
+                    device.setFullScreenWindow(FENETRE);
+                }
+                FENETRE.setVisible(true);
+                FENETRE.repaint();
             }
             case "Zoom 150%" -> {
                 try {
