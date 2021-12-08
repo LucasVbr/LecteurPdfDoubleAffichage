@@ -86,6 +86,7 @@ public class Fenetre extends JFrame {
      */
     public void chargerPDF() throws IOException {
         if (haveDocument()) chargerPDF(fichier, 1.0f);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -96,6 +97,7 @@ public class Fenetre extends JFrame {
      */
     public void chargerPDF(float zoom) throws IOException {
         if (haveDocument()) chargerPDF(fichier, zoom);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -106,6 +108,7 @@ public class Fenetre extends JFrame {
      */
     public void chargerPDF(File fichier) throws IOException {
         chargerPDF(fichier, 1.0f);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -137,6 +140,8 @@ public class Fenetre extends JFrame {
         this.validate();
         this.pack();
         this.setLocationRelativeTo(null);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
     }
 
     /**

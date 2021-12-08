@@ -203,7 +203,7 @@ public class Menu extends JMenuBar {
         final int QUITTER = 1;
 
         final String[][] POPUPS_MSG = {
-            {"Fermer le PDF actuel", "Êtes-vous sûr de vouloir fermer ?"},
+            {"Fermer le PDF actuel", "Êtes-vous sûr de vouloir fermer le PDF Courant ?"},
             {"Quitter l'application", "Êtes-vous sûr de vouloir quitter ?"}
         };
 
