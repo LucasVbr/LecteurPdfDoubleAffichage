@@ -5,3 +5,6 @@
 # Dossiers des fichiers compilés
 out/*
 *.class
+
+# Dossier pour l'executable
+META-INF/
