@@ -172,6 +172,12 @@ public class Menu extends JMenuBar {
         KeyStroke raccourciZoomMinus = KeyStroke.getKeyStroke(KeyEvent.VK_MINUS,
                                                               KeyEvent.CTRL_DOWN_MASK);
         ZoomMinus.setAccelerator(raccourciZoomMinus);
+        KeyStroke raccourciAffVert = KeyStroke.getKeyStroke(KeyEvent.VK_V,
+                                                              KeyEvent.CTRL_DOWN_MASK);
+        affichageVertical.setAccelerator(raccourciAffVert);
+        KeyStroke raccourciAffHor = KeyStroke.getKeyStroke(KeyEvent.VK_H,
+                                                            KeyEvent.CTRL_DOWN_MASK);
+        affichageHorizontal.setAccelerator(raccourciAffHor);
 
         // Ajout des éléments au menu "Affichage"
         Affichage.add(PleinEcran);
