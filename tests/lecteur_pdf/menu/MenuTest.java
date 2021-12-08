@@ -26,6 +26,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class MenuTest {
 
+    /**
+     * Classe de test de getMenuItems
+     * Teste si le getter retourne bien les MenuItems
+     */
     @Test
     void getMenuItems() {
 
@@ -39,6 +43,10 @@ class MenuTest {
         }
     }
 
+    /**
+     * Classe de test de getMenuItem
+     * Teste si le getter retourne bien le MenuItem à l'index donné
+     */
     @Test
     void getMenuItem() {
 
@@ -51,6 +59,10 @@ class MenuTest {
         }
     }
 
+    /**
+     * Classe de test Menu
+     * Main pour voir l'affichage des menus et valide le test ou non
+     */
     @Test
     void testMenu() {
         // Frame de test
