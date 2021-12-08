@@ -50,7 +50,7 @@ public class Menu extends JMenuBar {
         this.FENETRE = fenetre;
 
         createMenuFichier();
-        createMenuOptions();
+//        createMenuOptions();
         createMenuAffichage();
     }
 
@@ -100,37 +100,37 @@ public class Menu extends JMenuBar {
         this.add(Fichier);
     }
 
-    /**
-     * Créé le menu Options et ses sous-menus
-     */
-    private void createMenuOptions() {
-
-        // Créer le Menu
-        JMenu Options = new JMenu("Options");
-
-        // Créer l'item Préférences
-        JMenuItem Preferences = new JMenuItem("Préférences");
-
-        // Ajoute des Listener aux JMenuItem
-        Preferences.addActionListener(this::actionPerformed);
-
-        // Définis les raccourcis
-        KeyStroke raccourciPreferences = KeyStroke.getKeyStroke(KeyEvent.VK_P,
-                                                                KeyEvent.CTRL_DOWN_MASK);
-        Preferences.setAccelerator(raccourciPreferences);
-
-        // Ajouter les éléments au menu "Options"
-        Options.add(Preferences);
-
-        // Ajoute le menu "Affichage" dans la liste des menus
-        MENU_LIST.add(Options);
-
-        // Ajoute Preferences dans la liste des sous menu
-        ITEM_LIST.add(Preferences);
-
-        // Ajoute le menu à la barre de menu
-        this.add(Options);
-    }
+//    /**
+//     * Créé le menu Options et ses sous-menus
+//     */
+//    private void createMenuOptions() {
+//
+//        // Créer le Menu
+//        JMenu Options = new JMenu("Options");
+//
+//        // Créer l'item Préférences
+//        JMenuItem Preferences = new JMenuItem("Préférences");
+//
+//        // Ajoute des Listener aux JMenuItem
+//        Preferences.addActionListener(this::actionPerformed);
+//
+//        // Définis les raccourcis
+//        KeyStroke raccourciPreferences = KeyStroke.getKeyStroke(KeyEvent.VK_P,
+//                                                                KeyEvent.CTRL_DOWN_MASK);
+//        Preferences.setAccelerator(raccourciPreferences);
+//
+//        // Ajouter les éléments au menu "Options"
+//        Options.add(Preferences);
+//
+//        // Ajoute le menu "Affichage" dans la liste des menus
+//        MENU_LIST.add(Options);
+//
+//        // Ajoute Preferences dans la liste des sous menu
+//        ITEM_LIST.add(Preferences);
+//
+//        // Ajoute le menu à la barre de menu
+//        this.add(Options);
+//    }
 
     /**
      * Créé le menu Affichage et ses sous-menus
