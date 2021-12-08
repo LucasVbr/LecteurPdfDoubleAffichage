@@ -15,7 +15,7 @@ public class LecteurPDFDoubleAffichage {
     /**
      * Crée une nouvelle instance du lecteur PDF
      *
-     * @param args
+     * @param args non utilisé
      */
     public static void main(String[] args) {new Fenetre();}
 }
