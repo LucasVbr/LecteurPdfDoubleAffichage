@@ -37,9 +37,10 @@ public class Fenetre extends JFrame {
     /** Le document PDF courant */
     public PDF documentPDF;
 
-    /** Défini la disposition d'affichage des pages du document PDF */
+    /** Définit la disposition d'affichage des pages du document PDF */
     private boolean affichageVertical;
 
+    /** Définit l'état de la fenêtre, true si la fenêtre est en plein écran */
     private boolean fullscreen;
 
     /**

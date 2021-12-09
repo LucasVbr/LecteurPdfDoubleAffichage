@@ -172,6 +172,12 @@ public class Menu extends JMenuBar {
         KeyStroke raccourciZoomMinus = KeyStroke.getKeyStroke(KeyEvent.VK_MINUS,
                                                               KeyEvent.CTRL_DOWN_MASK);
         ZoomMinus.setAccelerator(raccourciZoomMinus);
+        KeyStroke raccourciAffVert = KeyStroke.getKeyStroke(KeyEvent.VK_V,
+                                                              KeyEvent.CTRL_DOWN_MASK);
+        affichageVertical.setAccelerator(raccourciAffVert);
+        KeyStroke raccourciAffHor = KeyStroke.getKeyStroke(KeyEvent.VK_H,
+                                                            KeyEvent.CTRL_DOWN_MASK);
+        affichageHorizontal.setAccelerator(raccourciAffHor);
 
         // Ajout des éléments au menu "Affichage"
         Affichage.add(PleinEcran);
@@ -206,16 +212,14 @@ public class Menu extends JMenuBar {
         public void actionPerformed(ActionEvent ae) {
         String choice = ae.getActionCommand();
         String messageErrCorrompu = "Une erreur s'est produite dans le"
-                                    + "chargement de votre document,"
-                                    + "il a peut-être été corrompu. ";
+                                    + " chargement de votre document,"
+                                    + " il a peut-être été corrompu. ";
 
 
         final int FERMER = 0;
         final int QUITTER = 1;
 
-        /**
-         * Message sur les pop ups d'erreurs
-         */
+        /* Message sur les popups d'erreurs */
         final String[][] POPUPS_MSG = {
             {"Fermer le PDF actuel", "Êtes-vous sûr de vouloir fermer le PDF "
                                      + "courant ?"},
@@ -271,9 +275,7 @@ public class Menu extends JMenuBar {
             }
 
             // Cas où l'utilisateur clique sur mode plein écran
-            case "Mode plein écran" -> {
-                FENETRE.setFullscreen();
-            }
+            case "Mode plein écran" -> FENETRE.setFullscreen();
 
             // Cas où l'utilisateur clique sur zoom 150%
             case "Zoom 150%" -> {
