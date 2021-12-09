@@ -212,8 +212,8 @@ public class Menu extends JMenuBar {
         public void actionPerformed(ActionEvent ae) {
         String choice = ae.getActionCommand();
         String messageErrCorrompu = "Une erreur s'est produite dans le"
-                                    + "chargement de votre document,"
-                                    + "il a peut-être été corrompu. ";
+                                    + " chargement de votre document,"
+                                    + " il a peut-être été corrompu. ";
 
 
         final int FERMER = 0;
