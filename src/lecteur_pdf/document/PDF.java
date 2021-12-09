@@ -36,7 +36,9 @@ public class PDF extends JPanel {
      * Crée un document PDF affichable dans une fenêtre
      *
      * @param fichier Le fichier que l’on veut ouvrir
-     * @throws IllegalArgumentException si le fichier n’existe pas
+     * @param vertical booléen si true, affiche les pages en vertical,
+     *                 sinon horizontal
+     * @throws IOException si le fichier n’existe pas
      */
     public PDF(File fichier, boolean vertical) throws IOException {
         document = PDDocument.load(fichier);
