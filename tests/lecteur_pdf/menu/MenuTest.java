@@ -33,7 +33,10 @@ class MenuTest {
     @Test
     void getMenuItems() {
 
-        final String[] itemAttendu = {"Ouvrir", "Fermer"};
+        final String[] itemAttendu = {
+            "Ouvrir", "Fermer", "Quitter", "Mode plein écran", "Zoom 150%",
+            "Zoom 100%", "Zoom 50%", "Disposition Verticale",
+            "Disposition Horizontale"};
 
         Menu menuTest = new Menu(new Fenetre());
         ArrayList<JMenuItem> menuItemTest = menuTest.getMenuItems();
@@ -50,7 +53,10 @@ class MenuTest {
     @Test
     void getMenuItem() {
 
-        final String[] itemAttendu = {"Ouvrir", "Fermer"};
+        final String[] itemAttendu = {
+            "Ouvrir", "Fermer", "Quitter", "Mode plein écran", "Zoom 150%",
+            "Zoom 100%", "Zoom 50%", "Disposition Verticale",
+            "Disposition Horizontale"};
 
         Menu menuTest = new Menu(new Fenetre());
 
@@ -73,7 +79,7 @@ class MenuTest {
 
         // Ajouter la barre de menu au frame
         frame.setJMenuBar(menu);
-        frame.setSize(300,300);
+        frame.setSize(300, 300);
         frame.setLayout(null);
         frame.setVisible(true);
     }

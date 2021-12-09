@@ -197,8 +197,9 @@ public class Menu extends JMenuBar {
         ITEM_LIST.add(ZoomPlus);
         ITEM_LIST.add(ZoomNeutre);
         ITEM_LIST.add(ZoomMinus);
-        ITEM_LIST.add(affichageHorizontal);
         ITEM_LIST.add(affichageVertical);
+        ITEM_LIST.add(affichageHorizontal);
+
 
         // Ajoute le menu à la barre de menu
         this.add(Affichage);
