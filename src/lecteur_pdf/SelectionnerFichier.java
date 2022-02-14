@@ -3,7 +3,8 @@
  * IUT Rodez 2021-2021, INFO2
  * pas de copyright, aucun droits
  */
-package lecteur_pdf.menu;
+
+package lecteur_pdf_swing;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
