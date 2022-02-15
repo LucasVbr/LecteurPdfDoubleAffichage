@@ -1,4 +1,4 @@
-package lecteur_pdf_swing.pdf;
+package lecteur_pdf.pdf;
 
 import javax.swing.*;
 import java.awt.*;

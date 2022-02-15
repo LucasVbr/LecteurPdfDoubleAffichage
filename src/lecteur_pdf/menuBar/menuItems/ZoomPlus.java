@@ -1,6 +1,6 @@
-package lecteur_pdf_swing.menuBar.menuItems;
+package lecteur_pdf.menuBar.menuItems;
 
-import lecteur_pdf_swing.IhmPdf;
+import lecteur_pdf.IhmPdf;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

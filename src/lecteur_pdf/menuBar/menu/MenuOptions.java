@@ -1,4 +1,4 @@
-package lecteur_pdf_swing.menuBar.menu;
+package lecteur_pdf.menuBar.menu;
 
 import javax.swing.*;
 

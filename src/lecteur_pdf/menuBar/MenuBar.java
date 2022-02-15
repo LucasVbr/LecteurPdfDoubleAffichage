@@ -1,7 +1,7 @@
-package lecteur_pdf_swing.menuBar;
+package lecteur_pdf.menuBar;
 
-import lecteur_pdf_swing.IhmPdf;
-import lecteur_pdf_swing.menuBar.menu.*;
+import lecteur_pdf.IhmPdf;
+import lecteur_pdf.menuBar.menu.*;
 
 import javax.swing.*;
 
