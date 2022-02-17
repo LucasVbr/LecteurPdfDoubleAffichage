@@ -11,6 +11,7 @@ public class MenuBar extends JMenuBar {
 
         add(new MenuFichier(parent));
         add(new MenuAffichage(parent));
-        add(new MenuOptions());
+        add(new MenuMode(parent));
+        add(new MenuOptions(parent));
     }
 }

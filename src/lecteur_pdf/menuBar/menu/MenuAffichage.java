@@ -9,7 +9,7 @@ public class MenuAffichage extends JMenu {
 
     public MenuAffichage(IhmPdf parent) {
         super("Affichage");
-        // Ajouter les menu items
+        // Ajoute les menu items
         add(new PleinEcran(parent));
         addSeparator();
         add(new ZoomPlus(parent));

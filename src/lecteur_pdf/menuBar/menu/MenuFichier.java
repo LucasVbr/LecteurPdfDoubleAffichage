@@ -8,7 +8,7 @@ import javax.swing.*;
 public class MenuFichier extends JMenu {
     public MenuFichier(IhmPdf parent) {
         super("Fichier");
-        // Ajouter les menu items
+        // Ajoute les menu items
         add(new OuvrirFichier(parent));
         add(new FermerFichier(parent));
         add(new Quitter(parent));
