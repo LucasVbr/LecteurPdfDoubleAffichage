@@ -1,4 +1,4 @@
-package lecteur_pdf_swing.pdf;
+package lecteur_pdf.pdf;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;

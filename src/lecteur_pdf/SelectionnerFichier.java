@@ -4,7 +4,7 @@
  * pas de copyright, aucun droits
  */
 
-package lecteur_pdf_swing;
+package lecteur_pdf;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;

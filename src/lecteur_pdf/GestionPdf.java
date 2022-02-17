@@ -1,7 +1,5 @@
-package lecteur_pdf_swing;
+package lecteur_pdf;
 
-import javax.swing.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

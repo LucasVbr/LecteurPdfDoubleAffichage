@@ -4,11 +4,10 @@
  * pas de copyright, aucun droits
  */
 
-package lecteur_pdf_swing;
+package lecteur_pdf;
 
-import lecteur_pdf_swing.menuBar.MenuBar;
-import lecteur_pdf_swing.menuBar.menuItems.FermerFichier;
-import lecteur_pdf_swing.pdf.PdfPanel;
+import lecteur_pdf.menuBar.MenuBar;
+import lecteur_pdf.pdf.PdfPanel;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,7 @@
-package lecteur_pdf_swing.menuBar.menu;
+package lecteur_pdf.menuBar.menu;
 
-import lecteur_pdf_swing.IhmPdf;
-import lecteur_pdf_swing.menuBar.menuItems.*;
+import lecteur_pdf.IhmPdf;
+import lecteur_pdf.menuBar.menuItems.*;
 
 import javax.swing.*;
 
@@ -9,7 +9,7 @@ public class MenuAffichage extends JMenu {
 
     public MenuAffichage(IhmPdf parent) {
         super("Affichage");
-        // Ajouter les menu items
+        // Ajoute les menu items
         add(new PleinEcran(parent));
         addSeparator();
         add(new ZoomPlus(parent));
