@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class MenuMode extends JMenu {
     public MenuMode(IhmPdf parent) {
-        super("Options");
+        super("Mode");
         // Ajoute les menu items
         add(new NouvelleFenetre(parent));
         add(new ModeSynchronise(parent));
