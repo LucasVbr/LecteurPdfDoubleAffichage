@@ -47,6 +47,13 @@ public class SelectionnerFichier {
         fileChooser.setMultiSelectionEnabled(false);
         fileChooser.setAcceptAllFileFilterUsed(false);
 
+        /* Définit le style de la fenêtre sur l'explorateur windows lorsque
+         * cela est possible
+         */
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Exception e) {}
+
         /* Définit le texte et les tooltips des boutons */
         fileChooser.setApproveButtonText(BOUTON_OK);
         fileChooser.setApproveButtonToolTipText(INDICE_BOUTON_OK);
