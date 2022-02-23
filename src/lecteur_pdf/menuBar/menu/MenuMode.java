@@ -10,6 +10,7 @@ public class MenuMode extends JMenu {
         super("Mode");
         // Ajoute les menu items
         add(new NouvelleFenetre(parent));
+        add(new ModeSepare(parent));
         add(new ModeSynchronise(parent));
     }
 }

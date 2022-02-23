@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GestionPdf {
-    private static final int maxPdf = 2;
-    private static final List<IhmPdf> ihmPdfList = new ArrayList<IhmPdf>();
+    public static boolean modeDoubleAffichage = false;
+    public static boolean modeSynchronise = false;
+    public static final int maxPdf = 2;
+    public static final List<IhmPdf> ihmPdfList = new ArrayList<>();
 
     public static void newIhmPdf() {
         if (ihmPdfList.size() >= maxPdf) {
@@ -18,9 +20,22 @@ public class GestionPdf {
             ihmPdfList.add(ihm);
         } catch (IOException ignored) {}
 
+        modeDoubleAffichage = ihmPdfList.size() >= 2;
     }
 
     public static void main(String[] args) {
         newIhmPdf();
+    }
+
+    public static void nextPages() {
+        for (IhmPdf ihm : ihmPdfList) {
+            ihm.pdfPanel.nextPage();
+        }
+    }
+
+    public static void previousPages() {
+        for (IhmPdf ihm : ihmPdfList) {
+            ihm.pdfPanel.previousPage();
+        }
     }
 }

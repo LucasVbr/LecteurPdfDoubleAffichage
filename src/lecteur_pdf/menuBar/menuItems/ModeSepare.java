@@ -5,16 +5,15 @@ import lecteur_pdf.IhmPdf;
 
 import javax.swing.*;
 
-public class ModeSynchronise extends JMenuItem {
-
+public class ModeSepare extends JMenuItem {
     IhmPdf parent;
 
-    public ModeSynchronise(IhmPdf parent) {
-        super("Mode Synchronisé");
+    public ModeSepare(IhmPdf parent) {
+        super("Mode Séparé");
         this.parent = parent;
 
         addActionListener(e -> {
-            GestionPdf.modeSynchronise = true;
+            GestionPdf.modeSynchronise = false;
         });
 
         // TODO ajouter une checkbox pour indiquer si l'option est utilisé

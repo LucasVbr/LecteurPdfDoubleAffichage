@@ -12,6 +12,9 @@ public class MenuAffichage extends JMenu {
         // Ajoute les menu items
         add(new PleinEcran(parent));
         addSeparator();
+        add(new PagePrecedente(parent));
+        add(new PageSuivante(parent));
+        addSeparator();
         add(new ZoomPlus(parent));
         add(new ZoomDefaut(parent));
         add(new ZoomMoins(parent));

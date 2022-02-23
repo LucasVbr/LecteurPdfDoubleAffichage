@@ -1,9 +1,9 @@
 package lecteur_pdf.menuBar.menuItems;
 
+import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 
 public class NouvelleFenetre extends JMenuItem {
 
@@ -13,8 +13,13 @@ public class NouvelleFenetre extends JMenuItem {
         super("Nouvelle Fenêtre");
         this.parent = parent;
 
-        // TODO griser l'options lorsque inutilisable
+        addActionListener(e -> {
+            /* Essaye de créer une nouvelle fenêtre */
+            GestionPdf.newIhmPdf();
 
-        // TODO ajouter l'options nouvelle fenêtre
+            /* Désactive le bouton si on a atteint la limite des affichages */
+            this.setEnabled(GestionPdf.ihmPdfList.size() == GestionPdf.maxPdf);
+        });
+
     }
 }

@@ -49,6 +49,10 @@ public class IhmPdf extends JFrame {
         }
     }
 
+    public PdfPanel getPdfPanel() {
+        return pdfPanel;
+    }
+
     public void ouvrirFichier() throws IOException {
         File fichier = SelectionnerFichier.ouvrirFichier();
         pdfPanel = new PdfPanel(fichier);

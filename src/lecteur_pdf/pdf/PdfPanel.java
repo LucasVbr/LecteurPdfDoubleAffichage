@@ -35,10 +35,11 @@ public class PdfPanel extends JPanel {
             add(mainPanel);
 
             /* Actions */
-            suivantButton.addActionListener(e -> updatePage(currentPage + 1));
-            precedentButton.addActionListener(e -> updatePage(currentPage - 1));
+            suivantButton.addActionListener(e -> nextPage());
+            precedentButton.addActionListener(e -> previousPage());
             indexPage.addActionListener(e -> updatePageInput());
         }
+
     }
 
     public void updateScale(float scale) {
@@ -48,6 +49,14 @@ public class PdfPanel extends JPanel {
 
     private void defaultPage() {
         updatePage(0);
+    }
+
+    public void nextPage() {
+        updatePage(currentPage + 1);
+    }
+
+    public void previousPage() {
+        updatePage(currentPage - 1);
     }
 
     public void updatePage(int index) {
