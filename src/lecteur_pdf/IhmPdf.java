@@ -7,11 +7,14 @@
 package lecteur_pdf;
 
 import lecteur_pdf.menuBar.MenuBar;
+import lecteur_pdf.menuBar.menuItems.ModeSepare;
+import lecteur_pdf.menuBar.menuItems.ModeSynchronise;
 import lecteur_pdf.pdf.PdfPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 /**
@@ -23,41 +26,38 @@ public class IhmPdf extends JFrame {
 
     PdfPanel pdfPanel;
     MenuBar menuBar;
+    ModeSepare modeSepare;
+    ModeSynchronise modeSynchronise;
 
-    public IhmPdf(File pdfFile) throws IOException {
-        super(pdfFile.getName());
+    public IhmPdf() throws IOException {
+        super(GestionPdf.titreApplication);
 
         /* Déclaration des attributs */
         menuBar = new MenuBar(this);
-        pdfPanel = new PdfPanel(pdfFile);
+        pdfPanel = new PdfPanel();
 
         /* Hierarchie */
         setContentPane(pdfPanel);
         setJMenuBar(menuBar);
 
+        /* Action à la fermeture de la fenêtre */
+        this.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent et) {
+                quitter();
+            }
+        });
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
         /* Render de la Frame */
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
         setVisible(true);
-    }
-
-    public void fermerFichier() {
-        try {
-            pdfPanel = new PdfPanel(null);
-            validate();
-        } catch (IOException ignored) {
-        }
     }
 
     public PdfPanel getPdfPanel() {
         return pdfPanel;
     }
 
-    public void ouvrirFichier() throws IOException {
-        File fichier = SelectionnerFichier.ouvrirFichier();
-        pdfPanel = new PdfPanel(fichier);
-        validate();
-    }
 
     private boolean fullscreen = false;
     private GraphicsDevice device;
@@ -78,21 +78,16 @@ public class IhmPdf extends JFrame {
     }
 
     public void quitter() {
+        pdfPanel.dechargerPdf();
+        GestionPdf.ihmPdfList.remove(this);
         dispose();
+        if (GestionPdf.ihmPdfList.size() == 0) {
+            System.exit(0);
+        }
     }
 
-    public void zoomDefaut() {
-        pdfPanel.updateScale(1.0f);
-        validate();
-    }
-
-    public void zoomMoins() {
-        pdfPanel.updateScale(0.5f);
-        validate();
-    }
-
-    public void zoomPlus() {
-        pdfPanel.updateScale(1.5f);
-        validate();
+    public void setMode(ModeSepare modeSepare, ModeSynchronise modeSynchronise) {
+        this.modeSepare = modeSepare;
+        this.modeSynchronise = modeSynchronise;
     }
 }

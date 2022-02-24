@@ -2,21 +2,19 @@ package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.IhmPdf;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 
-public class ZoomMoins extends JMenuItem {
-
-    IhmPdf parent;
+public class ZoomMoins extends MenuItem {
 
     public ZoomMoins(IhmPdf parent) {
-        super("Zoom 50%");
-        this.parent = parent;
+        super(parent, "Zoom 50%");
 
-        KeyStroke raccourciZoomMoins = KeyStroke.getKeyStroke(KeyEvent.VK_K,
-                                                              KeyEvent.CTRL_DOWN_MASK);
-        setAccelerator(raccourciZoomMoins);
-        addActionListener(e -> {parent.zoomMoins();});
+        addActionListener(e -> {
+            parent.getPdfPanel().updateScale(0.5f);
+            parent.validate();
+        });
+
+        setRaccourcis(KeyEvent.VK_K, KeyEvent.CTRL_DOWN_MASK);
 
     }
 }

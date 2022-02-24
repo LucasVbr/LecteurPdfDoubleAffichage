@@ -1,23 +1,21 @@
 package lecteur_pdf.menuBar.menuItems;
 
+import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 
-public class FermerFichier extends JMenuItem {
-
-    IhmPdf parent;
+public class FermerFichier extends MenuItem {
 
     public FermerFichier(IhmPdf parent) {
-        super("Fermer");
-        this.parent = parent;
+        super(parent, "Fermer");
 
-        addActionListener(e -> {parent.fermerFichier();});
+        addActionListener(e -> {
+            parent.getPdfPanel().dechargerPdf();
+            parent.setTitle(GestionPdf.titreApplication);
+            parent.pack();
+        });
 
-        KeyStroke raccourciFermer = KeyStroke.getKeyStroke(KeyEvent.VK_X,
-                                                           KeyEvent.CTRL_DOWN_MASK);
-        setAccelerator(raccourciFermer);
-
+        setRaccourcis(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK);
     }
 }

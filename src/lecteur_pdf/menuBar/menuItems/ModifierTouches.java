@@ -2,17 +2,14 @@ package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.IhmPdf;
 
-import javax.swing.*;
-import java.awt.event.KeyEvent;
-
-public class ModifierTouches extends JMenuItem {
-
-    IhmPdf parent;
+public class ModifierTouches extends MenuItem {
 
     public ModifierTouches(IhmPdf parent) {
-        super("Modifier Touches");
-        this.parent = parent;
+        super(parent, "Modifier Touches");
 
-        // TODO ajouter l'options de modif de touches
+        addActionListener(e -> {
+            // TODO Ouverture de la fenêtre de dialogue de modification des touches
+        });
+
     }
 }

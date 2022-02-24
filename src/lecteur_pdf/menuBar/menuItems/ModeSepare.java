@@ -5,7 +5,8 @@ import lecteur_pdf.IhmPdf;
 
 import javax.swing.*;
 
-public class ModeSepare extends JMenuItem {
+public class ModeSepare extends JRadioButtonMenuItem {
+
     IhmPdf parent;
 
     public ModeSepare(IhmPdf parent) {
@@ -13,7 +14,7 @@ public class ModeSepare extends JMenuItem {
         this.parent = parent;
 
         addActionListener(e -> {
-            GestionPdf.modeSynchronise = false;
+            GestionPdf.setModeSynchronise(false);
         });
 
         // TODO ajouter une checkbox pour indiquer si l'option est utilisé

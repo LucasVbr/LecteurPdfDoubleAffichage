@@ -5,7 +5,7 @@ import lecteur_pdf.IhmPdf;
 
 import javax.swing.*;
 
-public class ModeSynchronise extends JMenuItem {
+public class ModeSynchronise extends JRadioButtonMenuItem {
 
     IhmPdf parent;
 
@@ -14,7 +14,7 @@ public class ModeSynchronise extends JMenuItem {
         this.parent = parent;
 
         addActionListener(e -> {
-            GestionPdf.modeSynchronise = true;
+            GestionPdf.setModeSynchronise(true);
         });
 
         // TODO ajouter une checkbox pour indiquer si l'option est utilisé

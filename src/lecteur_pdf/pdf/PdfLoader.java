@@ -29,6 +29,7 @@ public class PdfLoader {
 
     public void close() {
         try {
+            renderer = null;
             document.close();
         } catch(IOException ignored) {}
     }

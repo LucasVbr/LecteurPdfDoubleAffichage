@@ -3,15 +3,10 @@ package lecteur_pdf.menuBar.menuItems;
 import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 
-import javax.swing.*;
-
-public class PageSuivante extends JMenuItem {
-
-    IhmPdf parent;
+public class PageSuivante extends MenuItem {
 
     public PageSuivante(IhmPdf parent) {
-        super("Page suivante");
-        this.parent = parent;
+        super(parent,"Page suivante");
 
         addActionListener(e -> {
             if (GestionPdf.modeDoubleAffichage && GestionPdf.modeSynchronise) {
@@ -21,7 +16,6 @@ public class PageSuivante extends JMenuItem {
             }
         });
 
-        KeyStroke raccourciPageSuivante = KeyStroke.getKeyStroke('m');
-        setAccelerator(raccourciPageSuivante);
+        setRaccourcis('m');
     }
 }
