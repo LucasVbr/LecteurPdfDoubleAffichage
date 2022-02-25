@@ -1,5 +1,6 @@
 package lecteur_pdf;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,13 @@ public class GestionPdf {
      * @param args non utilisé
      */
     public static void main(String[] args) {
+        /* Définit le style de la fenêtre sur l'explorateur windows lorsque
+         * cela est possible
+         */
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Exception ignored) {}
+
         newIhmPdf();
     }
 }
