@@ -24,10 +24,16 @@ import java.io.IOException;
  */
 public class IhmPdf extends JFrame {
 
-    PdfPanel pdfPanel;
-    MenuBar menuBar;
-    ModeSepare modeSepare;
-    ModeSynchronise modeSynchronise;
+    /* Elements visuels */
+    private final PdfPanel pdfPanel;
+    private MenuBar menuBar;
+
+    /* Relatif au FullScreen */
+    private boolean fullscreen = false;
+    private GraphicsDevice device;
+
+    /* Gestionnaire des modes de visionnage */
+    private GestionMode gestionMode;
 
     public IhmPdf() throws IOException {
         super(GestionPdf.titreApplication);
@@ -58,9 +64,13 @@ public class IhmPdf extends JFrame {
         return pdfPanel;
     }
 
+    public void initGestionMode(ModeSepare modeSepare, ModeSynchronise modeSynchronise) {
+        this.gestionMode = new GestionMode(modeSepare, modeSynchronise);
+    }
 
-    private boolean fullscreen = false;
-    private GraphicsDevice device;
+    public GestionMode getGestionMode() {
+        return gestionMode;
+    }
 
     public void pleinEcran() {
         // Switch de disposition
@@ -84,10 +94,5 @@ public class IhmPdf extends JFrame {
         if (GestionPdf.ihmPdfList.size() == 0) {
             System.exit(0);
         }
-    }
-
-    public void setMode(ModeSepare modeSepare, ModeSynchronise modeSynchronise) {
-        this.modeSepare = modeSepare;
-        this.modeSynchronise = modeSynchronise;
     }
 }

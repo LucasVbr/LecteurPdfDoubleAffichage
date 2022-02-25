@@ -24,7 +24,7 @@ public class MenuMode extends JMenu {
         modeSepare.setSelected(!GestionPdf.modeSynchronise);
         modeSynchronise.setSelected(GestionPdf.modeSynchronise);
 
-        parent.setMode(modeSepare, modeSynchronise);
+        parent.initGestionMode(modeSepare, modeSynchronise);
 
         /* Ajoute les menu items */
         add(new NouvelleFenetre(parent));

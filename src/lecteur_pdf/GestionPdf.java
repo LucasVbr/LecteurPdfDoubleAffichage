@@ -12,11 +12,13 @@ public class GestionPdf {
     public static final int maxPdf = 2;
     public static final List<IhmPdf> ihmPdfList = new ArrayList<>();
 
-    public static void setModeSynchronise(boolean value) {
-        modeSynchronise = value;
-        for(IhmPdf ihm : ihmPdfList) {
-            ihm.modeSepare.setSelected(!value);
-            ihm.modeSynchronise.setSelected(value);
+    public static void setModeSynchronise(boolean modeSynchronise) {
+        for(IhmPdf fenetre : ihmPdfList) {
+            if (modeSynchronise) {
+                fenetre.getGestionMode().setModeSynchronise();
+            } else {
+                fenetre.getGestionMode().setModeSepare();
+            }
         }
     }
 
@@ -42,7 +44,7 @@ public class GestionPdf {
      */
     public static void nextPages() {
         for (IhmPdf ihm : ihmPdfList) {
-            ihm.pdfPanel.nextPage();
+            ihm.getPdfPanel().nextPage();
         }
     }
 
@@ -51,7 +53,7 @@ public class GestionPdf {
      */
     public static void previousPages() {
         for (IhmPdf ihm : ihmPdfList) {
-            ihm.pdfPanel.previousPage();
+            ihm.getPdfPanel().previousPage();
         }
     }
 
