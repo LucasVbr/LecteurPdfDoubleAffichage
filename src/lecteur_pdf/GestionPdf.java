@@ -40,7 +40,7 @@ public class GestionPdf {
      */
     public static void newIhmPdf() {
         if (ihmPdfList.size() >= maxPdf) {
-            // TODO Message erreur "nombre max de fenêtre atteint"
+            JOptionPane.showMessageDialog(new JFrame(),"vous ne pouvez plus ouvrir de nouvelle fenêtre car vous avez atteint le nombre maximum. ");
             return;
         }
 

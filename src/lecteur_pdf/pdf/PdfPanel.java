@@ -114,7 +114,7 @@ public class PdfPanel extends JPanel {
             setPdfLoader(new PdfLoader(pdfFile));
             setPage(0);
         } catch (IOException e) {
-            return false;
+            JOptionPane.showMessageDialog(new JFrame(),"Une erreur s'est produite dans le chargement de votre document, il est peut-être corrompu. ");
         }
         return true;
     }

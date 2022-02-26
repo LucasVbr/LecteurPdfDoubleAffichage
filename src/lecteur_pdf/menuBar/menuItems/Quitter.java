@@ -8,6 +8,8 @@ package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.IhmPdf;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -28,7 +30,22 @@ public class Quitter extends MenuItem {
         super(parent, "Quitter");
 
         addActionListener(e -> {
-            parent.quitter();
+            JDialog jd = new JDialog();
+            jd.setLayout(new FlowLayout());
+            jd.setBounds(500,300,400,100);
+            JLabel jlabel = new JLabel("etes vous sûr de vouloir quitter ? ");
+            JButton oui = new JButton("oui");
+            oui.addActionListener(m -> {
+                parent.quitter();
+                jd.setVisible(false);
+            });
+            JButton non = new JButton("non");
+            non.addActionListener(n -> jd.setVisible(false));
+            jd.add(jlabel);
+            jd.add(oui);
+            jd.add(non);
+            jd.setVisible(true);
+
         });
 
         setRaccourcis(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
