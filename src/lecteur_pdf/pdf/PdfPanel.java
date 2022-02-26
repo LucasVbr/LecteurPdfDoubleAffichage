@@ -1,7 +1,7 @@
 /*
  * PdfPanel.java, 26/02/2022
  * IUT Rodez 2021-2022, INFO 2
- * pas de copyright, aucun droits
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf.pdf;
@@ -11,11 +11,13 @@ import lecteur_pdf.GestionPdf;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.io.File;
 import java.io.IOException;
 
 /**
- * TODO commentaires
+ * Interface de la mainframe de l'application sans utilisation de forms
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,79 +25,113 @@ import java.io.IOException;
  * @author Tristan Nogaret
  */
 public class PdfPanel extends JPanel {
-    /**
-     * TODO
-     */
+
     private int currentPage;
 
-    /**
-     * TODO
-     */
-    private float currentScale;
+    private float scaleSizing;
+    private float scaleZoom;
 
-    /**
-     * TODO
-     */
+    private boolean pleineLargeur;
+
     private PdfLoader pdfLoader;
 
-    private JButton suivantButton;
-    private JButton precedentButton;
-    private JLabel pageIndicator;
-    private JPanel mainPanel;
-    private JLabel page;
-    private JScrollPane scrollPane;
-    private JTextField indexPage;
+    private final JTextField indexPageInput;
+    private final JLabel maxPageLabel;
 
-    /**
-     * TODO
-     */
+    private final JScrollPane scrollPane;
+    private final JViewport viewport;
+    private final JLabel page;
+
+    private boolean processing;
+
     public PdfPanel() {
-        super();
+        super(new BorderLayout());
 
-        this.currentScale = 1.0f;
+        scaleSizing = 0.0f;
+        scaleZoom = 1.0f;
+        currentPage = 0;
+        processing = false;
+        pleineLargeur = false;
 
-        scrollPane.setMaximumSize(Toolkit.getDefaultToolkit().getScreenSize());
+        /* Controls */
+        JPanel controls = new JPanel();
+        /* Contenu de Controls */
+        JButton btnPrecedent = new JButton("Précédent");
+        indexPageInput = new JTextField();
+        indexPageInput.setText("-");
+        maxPageLabel = new JLabel("/ -");
+        JButton btnSuivant = new JButton("Suivant");
 
-        // TODO supprimer le form et creer les éléments 1 par 1
+        controls.add(btnPrecedent);
+        controls.add(indexPageInput);
+        controls.add(maxPageLabel);
+        controls.add(btnSuivant);
 
-        /* Hierarchie */
-        add(mainPanel);
+        add(controls, BorderLayout.PAGE_START);
+
+        /* View */
+        page = new JLabel();
+        JPanel pagePanel = new JPanel();
+        /* Contenu de View */
+        scrollPane = new JScrollPane(pagePanel);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        viewport = scrollPane.getViewport();
+
+        pagePanel.add(page);
+
+        add(scrollPane, BorderLayout.CENTER);
 
         /* Actions */
-        suivantButton.addActionListener(e -> {
-            if (GestionMode.isModeSepare()) {
-                nextPage();
-            } else {
-                GestionPdf.nextPages();
-            }
+        btnSuivant.addActionListener(e -> {
+            if (GestionMode.isModeSepare()) nextPage();
+            else GestionPdf.nextPages();
         });
 
-        precedentButton.addActionListener(e -> {
-            if (GestionMode.isModeSepare()) {
-                previousPage();
-            } else {
-                GestionPdf.previousPages();
-            }
+        btnPrecedent.addActionListener(e -> {
+            if (GestionMode.isModeSepare()) previousPage();
+            else GestionPdf.previousPages();
         });
 
-        indexPage.addActionListener(e -> {
-
-            String saisie = indexPage.getText();
-
-            int index = Integer.parseInt(saisie);
-
-            /* Si cet entier est valide on change de page sinon on efface le contenu de la saisie */
-            if (isPageValide(index)) {
-                setPage(index - 1);
-            } else {
-                indexPage.setText(null);
+        indexPageInput.addActionListener(e -> {
+            String saisie = indexPageInput.getText();
+            try {
+                int index = Integer.parseInt(saisie);
+                if (isPageValide(index - 1)) setPage(index - 1);
+                else throw new Exception();
+            } catch (Exception f) {
+                indexPageInput.setText(null);
             }
+
         });
 
+        scrollPane.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                super.componentResized(e);
+                resize();
+            }
+        });
+    }
+
+    public void resize() {
+        if (pdfLoader != null && !processing) {
+            if (pleineLargeur) {
+                scaleSizing = (((float) viewport.getWidth() - (float) scrollPane.getVerticalScrollBar().getWidth()) / (float) pdfLoader.getMinWidth()) - scaleZoom;
+            } else {
+                scaleSizing = (((float) viewport.getHeight() - (float) scrollPane.getHorizontalScrollBar().getHeight()) / (float) pdfLoader.getMinHeight()) - scaleZoom;
+            }
+            updateScaleSizing(scaleSizing);
+        }
+    }
+
+    public void setPleineLargeur(boolean pleineLargeur) {
+        this.pleineLargeur = pleineLargeur;
+        resize();
     }
 
     /**
      * Prédicat qui vérifie si un index de page est valide pour le PDF courrant
+     *
      * @param index Entier correspondant a l'indice du numéro de page à tester
      * @return true si le prédicat est vérifié, false sinon
      */
@@ -106,6 +142,7 @@ public class PdfPanel extends JPanel {
 
     /**
      * Methode qui permet de charger un PDF dans le fenêtre courrante
+     *
      * @param pdfFile Le fichier PDF à charger
      * @return true si le PDF à pu se charger, false sinon
      */
@@ -120,7 +157,6 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * TODO
      * @param pdfLoader
      */
     public void setPdfLoader(PdfLoader pdfLoader) {
@@ -131,9 +167,7 @@ public class PdfPanel extends JPanel {
      * TODO
      */
     public void dechargerPdf() {
-        if (pdfLoader == null) {
-            return;
-        }
+        if (pdfLoader == null) return;
 
         /* Ferme le loader et l'efface */
         pdfLoader.close();
@@ -144,18 +178,29 @@ public class PdfPanel extends JPanel {
         currentPage = 0;
 
         /* Interface Vide */
-        indexPage.setText("");
-        pageIndicator.setText("/ -");
+        indexPageInput.setText("");
+        maxPageLabel.setText("/ -");
 
         validate();
     }
 
     /**
      * Change la taille de la page courrante
+     *
      * @param scale Valeur flottante (1.00f == 100%)
      */
-    public void updateScale(float scale) {
-        currentScale = scale;
+    public void updateScaleZoom(float scale) {
+        scaleZoom = scale;
+        setPage(currentPage);
+    }
+
+    /**
+     * Change la taille de la page courrante
+     *
+     * @param scale Valeur flottante (1.00f == 100%)
+     */
+    public void updateScaleSizing(float scale) {
+        scaleSizing = scale;
         setPage(currentPage);
     }
 
@@ -175,19 +220,19 @@ public class PdfPanel extends JPanel {
 
     /**
      * Essaye de changer de page si possible, sinon ne fait rien
+     *
      * @param index Le numéro de la page où l'on veut se rendre
      */
     private void setPage(int index) {
         if (!isPageValide(index)) return;
 
+        processing = true;
         try {
-            page.setIcon(new ImageIcon(pdfLoader.renderPage(index, currentScale)));
+            page.setIcon(new ImageIcon(pdfLoader.renderPage(index, scaleZoom + scaleSizing)));
             currentPage = index;
-            indexPage.setText(Integer.toString(currentPage +1));
-            pageIndicator.setText(String.format("/%d", pdfLoader.getNbPages()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+            indexPageInput.setText(Integer.toString(currentPage + 1));
+            maxPageLabel.setText(String.format("/%d", pdfLoader.getNbPages()));
+        } catch (IOException ignored) {}
+        processing = false;
     }
 }

@@ -44,6 +44,12 @@ public class MenuAffichage extends JMenu {
         add(new ZoomPlus(parent));
         add(new ZoomDefaut(parent));
         add(new ZoomMoins(parent));
+        addSeparator();
+
+
+
+        add(new PageEntiere(parent));
+        add(new PleineLargeur(parent));
     }
 
 }

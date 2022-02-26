@@ -26,12 +26,15 @@ public class PdfLoader {
     /**
      * TODO
      */
-    PDDocument document;
+    private PDDocument document;
 
     /**
      * TODO
      */
-    PDFRenderer renderer;
+    private PDFRenderer renderer;
+
+    private int minWidth;
+    private int minHeight;
 
     /**
      * TODO
@@ -42,6 +45,16 @@ public class PdfLoader {
     public PdfLoader(File file) throws IOException {
         document = PDDocument.load(file);
         renderer = new PDFRenderer(document);
+        minWidth = -1;
+        minHeight = -1;
+    }
+
+    public int getMinWidth() {
+        return minWidth;
+    }
+
+    public int getMinHeight() {
+        return minHeight;
     }
 
     /**
@@ -51,6 +64,18 @@ public class PdfLoader {
      */
     public int getNbPages() {
         return document.getNumberOfPages();
+    }
+
+
+    public BufferedImage renderPage(int pageIndex) throws IOException {
+        return renderPage(pageIndex, 1.0f);
+    }
+
+    public BufferedImage setScale(float scale) {
+        try {
+            return renderPage(0, scale);
+        } catch (IOException ignored) {}
+        return null;
     }
 
     /**
@@ -65,7 +90,15 @@ public class PdfLoader {
         if (pageIndex < 0 || pageIndex >= this.getNbPages()) {
             throw new IllegalArgumentException();
         }
-        return renderer.renderImage(pageIndex, scale);
+
+        BufferedImage img = renderer.renderImage(pageIndex, scale);
+
+        if (scale == 1.0f && minWidth == -1 && minHeight == -1) {
+            minWidth = img.getWidth();
+            minHeight = img.getHeight();
+        }
+
+        return img;
     }
 
     /**
@@ -75,6 +108,8 @@ public class PdfLoader {
         try {
             renderer = null;
             document.close();
+            minWidth = -1;
+            minHeight = -1;
         } catch (IOException ignored) {
         }
     }

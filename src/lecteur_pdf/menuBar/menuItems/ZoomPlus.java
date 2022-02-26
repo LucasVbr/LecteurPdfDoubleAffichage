@@ -28,7 +28,7 @@ public class ZoomPlus extends MenuItem {
         super(parent, "Zoom 150%");
 
         addActionListener(e -> {
-            parent.getPdfPanel().updateScale(1.5f);
+            parent.getPdfPanel().updateScaleZoom(1.5f);
             parent.validate();
         });
 
