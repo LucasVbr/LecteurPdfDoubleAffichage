@@ -3,27 +3,45 @@ package lecteur_pdf;
 import lecteur_pdf.menuBar.menuItems.ModeSepare;
 import lecteur_pdf.menuBar.menuItems.ModeSynchronise;
 
+import java.util.ArrayList;
+
 public class GestionMode {
 
-    private ModeSepare modeSepare;
-    private ModeSynchronise modeSynchronise;
+    /**
+     * Défini le mode actif :
+     * true -> Mode Séparé
+     * false -> Mode Synchronisé
+     */
+    private static boolean modeSepare;
 
-    public GestionMode(ModeSepare separe, ModeSynchronise synchronise) {
-        modeSepare = separe;
-        modeSynchronise = synchronise;
+    private static final ArrayList<ModeSepare> modeSepareList = new ArrayList<>();
+    private static final ArrayList<ModeSynchronise> modeSynchroniseList = new ArrayList<>();
 
-        /* Mode par défaut */
-        setModeSepare();
+    public static void addItem(ModeSepare separe, ModeSynchronise synchronise) {
+        modeSepareList.add(separe);
+        modeSynchroniseList.add(synchronise);
+        updateMode();
     }
 
-    public void setModeSepare() {
-        modeSepare.setSelected(true);
-        modeSynchronise.setSelected(false);
+    public static boolean isModeSepare() {
+        return modeSepare;
     }
 
-    public void setModeSynchronise() {
-        modeSepare.setSelected(false);
-        modeSynchronise.setSelected(true);
+    public static void setModeSepare() {
+        modeSepare = true;
+        updateMode();
+    }
+
+    public static void setModeSynchronise() {
+        modeSepare = false;
+        updateMode();
+    }
+
+    private static void updateMode() {
+        for (int i = 0; i < modeSepareList.size() ; i++) {
+            modeSepareList.get(i).setSelected(modeSepare);
+            modeSynchroniseList.get(i).setSelected(!modeSepare);
+        }
     }
 
 

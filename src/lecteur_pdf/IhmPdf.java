@@ -7,8 +7,6 @@
 package lecteur_pdf;
 
 import lecteur_pdf.menuBar.MenuBar;
-import lecteur_pdf.menuBar.menuItems.ModeSepare;
-import lecteur_pdf.menuBar.menuItems.ModeSynchronise;
 import lecteur_pdf.pdf.PdfPanel;
 
 import javax.swing.*;
@@ -31,9 +29,6 @@ public class IhmPdf extends JFrame {
     /* Relatif au FullScreen */
     private boolean fullscreen = false;
     private GraphicsDevice device;
-
-    /* Gestionnaire des modes de visionnage */
-    private GestionMode gestionMode;
 
     public IhmPdf() throws IOException {
         super(GestionPdf.titreApplication);
@@ -62,14 +57,6 @@ public class IhmPdf extends JFrame {
 
     public PdfPanel getPdfPanel() {
         return pdfPanel;
-    }
-
-    public void initGestionMode(ModeSepare modeSepare, ModeSynchronise modeSynchronise) {
-        this.gestionMode = new GestionMode(modeSepare, modeSynchronise);
-    }
-
-    public GestionMode getGestionMode() {
-        return gestionMode;
     }
 
     public void pleinEcran() {

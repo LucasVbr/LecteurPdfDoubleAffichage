@@ -8,20 +8,8 @@ import java.util.List;
 public class GestionPdf {
     public static String titreApplication = "LPDA";
 
-    public static boolean modeDoubleAffichage = false;
-    public static boolean modeSynchronise = false;
     public static final int maxPdf = 2;
     public static final List<IhmPdf> ihmPdfList = new ArrayList<>();
-
-    public static void setModeSynchronise(boolean modeSynchronise) {
-        for(IhmPdf fenetre : ihmPdfList) {
-            if (modeSynchronise) {
-                fenetre.getGestionMode().setModeSynchronise();
-            } else {
-                fenetre.getGestionMode().setModeSepare();
-            }
-        }
-    }
 
     /**
      * Crée une nouvelle fenêtre
@@ -36,8 +24,6 @@ public class GestionPdf {
             IhmPdf ihm = new IhmPdf();
             ihmPdfList.add(ihm);
         } catch (IOException ignored) {}
-
-        modeDoubleAffichage = ihmPdfList.size() >= 2;
     }
 
     /**
@@ -78,6 +64,7 @@ public class GestionPdf {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception ignored) {}
 
+        GestionMode.setModeSepare();
         newIhmPdf();
     }
 }

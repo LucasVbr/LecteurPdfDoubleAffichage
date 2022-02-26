@@ -1,5 +1,8 @@
 package lecteur_pdf.pdf;
 
+import lecteur_pdf.GestionMode;
+import lecteur_pdf.GestionPdf;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -32,8 +35,21 @@ public class PdfPanel extends JPanel {
         add(mainPanel);
 
         /* Actions */
-        suivantButton.addActionListener(e -> nextPage());
-        precedentButton.addActionListener(e -> previousPage());
+        suivantButton.addActionListener(e -> {
+            if (GestionMode.isModeSepare()) {
+                nextPage();
+            } else {
+                GestionPdf.nextPages();
+            }
+        });
+
+        precedentButton.addActionListener(e -> {
+            if (GestionMode.isModeSepare()) {
+                previousPage();
+            } else {
+                GestionPdf.previousPages();
+            }
+        });
 
         indexPage.addActionListener(e -> {
 
