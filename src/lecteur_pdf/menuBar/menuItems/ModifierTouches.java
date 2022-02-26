@@ -7,6 +7,7 @@
 package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.IhmPdf;
+import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 /**
  * TODO commentaires
@@ -26,7 +27,7 @@ public class ModifierTouches extends MenuItem {
         super(parent, "Modifier Touches");
 
         addActionListener(e -> {
-            // TODO Ouverture de la fenêtre de dialogue de modification des touches
+            new RaccourcisClavier();
         });
 
     }

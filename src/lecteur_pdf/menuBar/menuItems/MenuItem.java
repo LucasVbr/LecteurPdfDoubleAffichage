@@ -7,7 +7,7 @@
 package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.IhmPdf;
-import lecteur_pdf.RaccourcisClavier;
+import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 import javax.swing.*;
 
@@ -47,7 +47,8 @@ public class MenuItem extends JMenuItem {
         KeyStroke raccourcis = KeyStroke.getKeyStroke((char) key);
         setAccelerator(raccourcis);
 
-        RaccourcisClavier.gestionnaireRaccourcis.put(this, raccourcis);
+        RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
+        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
     }
 
     /**
@@ -60,6 +61,7 @@ public class MenuItem extends JMenuItem {
         KeyStroke raccourcis = KeyStroke.getKeyStroke(key, mask);
         setAccelerator(raccourcis);
 
-        RaccourcisClavier.gestionnaireRaccourcis.put(this, raccourcis);
+        RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
+        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
     }
 }
