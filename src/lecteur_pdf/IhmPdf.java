@@ -1,5 +1,5 @@
 /*
- * Ihm, 03/02/2022
+ * IhmPdf, 03/02/2022
  * IUT Rodez 2022, INFO2
  * pas de copyright, aucun droits
  */
@@ -16,9 +16,12 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 /**
- * TODO A compléter
+ * TODO commentaires
  *
- * @author lucas
+ * @author Léo Franch
+ * @author Lucas Vabre
+ * @author Noé Villeneuve
+ * @author Tristan Nogaret
  */
 public class IhmPdf extends JFrame {
 
@@ -30,8 +33,12 @@ public class IhmPdf extends JFrame {
     private boolean fullscreen = false;
     private GraphicsDevice device;
 
+    /**
+     * TODO
+     * @throws IOException
+     */
     public IhmPdf() throws IOException {
-        super(GestionPdf.titreApplication);
+        super(GestionPdf.TITRE_APPLICATION);
 
         /* Déclaration des attributs */
         menuBar = new MenuBar(this);
@@ -55,10 +62,17 @@ public class IhmPdf extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * TODO
+     * @return
+     */
     public PdfPanel getPdfPanel() {
         return pdfPanel;
     }
 
+    /**
+     * TODO
+     */
     public void pleinEcran() {
         // Switch de disposition
         fullscreen = !fullscreen;
@@ -74,6 +88,9 @@ public class IhmPdf extends JFrame {
         }
     }
 
+    /**
+     * TODO
+     */
     public void quitter() {
         pdfPanel.dechargerPdf();
         GestionPdf.ihmPdfList.remove(this);

@@ -1,3 +1,9 @@
+/*
+ * GestionPdf.java, 26/02/2022
+ * IUT Rodez 2021-2022, INFO 2
+ * pas de copyright, aucun droits
+ */
+
 package lecteur_pdf;
 
 import javax.swing.*;
@@ -5,10 +11,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TODO commentaires
+ *
+ * @author Léo Franch
+ * @author Lucas Vabre
+ * @author Noé Villeneuve
+ * @author Tristan Nogaret
+ */
 public class GestionPdf {
-    public static String titreApplication = "LPDA";
+    /**
+     * TODO
+     */
+    public static final String TITRE_APPLICATION = "LPDA";
 
+    /**
+     * TODO
+     */
     public static final int maxPdf = 2;
+
+    /**
+     * TODO
+     */
     public static final List<IhmPdf> ihmPdfList = new ArrayList<>();
 
     /**
@@ -42,14 +66,6 @@ public class GestionPdf {
         for (IhmPdf ihm : ihmPdfList) {
             ihm.getPdfPanel().previousPage();
         }
-    }
-
-    public void chargerRaccourcisClaviers() {
-        // TODO changer les raccourcis clavier a partir d'un fichier
-    }
-
-    public void sauvegarderRaccourcisClaviers() {
-        // TODO sauvegarder les raccourcis clavier dans un fichier
     }
 
     /**

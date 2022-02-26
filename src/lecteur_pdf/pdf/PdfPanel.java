@@ -1,3 +1,9 @@
+/*
+ * PdfPanel.java, 26/02/2022
+ * IUT Rodez 2021-2022, INFO 2
+ * pas de copyright, aucun droits
+ */
+
 package lecteur_pdf.pdf;
 
 import lecteur_pdf.GestionMode;
@@ -8,10 +14,28 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * TODO commentaires
+ *
+ * @author Léo Franch
+ * @author Lucas Vabre
+ * @author Noé Villeneuve
+ * @author Tristan Nogaret
+ */
 public class PdfPanel extends JPanel {
+    /**
+     * TODO
+     */
     private int currentPage;
+
+    /**
+     * TODO
+     */
     private float currentScale;
 
+    /**
+     * TODO
+     */
     private PdfLoader pdfLoader;
 
     private JButton suivantButton;
@@ -22,6 +46,9 @@ public class PdfPanel extends JPanel {
     private JScrollPane scrollPane;
     private JTextField indexPage;
 
+    /**
+     * TODO
+     */
     public PdfPanel() {
         super();
 
@@ -92,10 +119,17 @@ public class PdfPanel extends JPanel {
         return true;
     }
 
+    /**
+     * TODO
+     * @param pdfLoader
+     */
     public void setPdfLoader(PdfLoader pdfLoader) {
         this.pdfLoader = pdfLoader;
     }
 
+    /**
+     * TODO
+     */
     public void dechargerPdf() {
         if (pdfLoader == null) {
             return;

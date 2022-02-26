@@ -13,13 +13,16 @@ import java.util.Map;
 /**
  * Gestionnaire des raccourcis claviers de l'application
  *
- * @author Léo Franche
+ * @author Léo Franch
  * @author Lucas Vabre
  * @author Noé Villeneuve
  * @author Tristan Nogaret
  */
 public class RaccourcisClavier {
 
+    /**
+     * TODO
+     */
     public static Map<JMenuItem, KeyStroke> gestionnaireRaccourcis = new HashMap<>();
 
 }
