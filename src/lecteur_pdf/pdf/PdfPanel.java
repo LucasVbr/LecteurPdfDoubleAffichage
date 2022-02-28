@@ -181,6 +181,10 @@ public class PdfPanel extends JPanel {
         indexPageInput.setText("");
         maxPageLabel.setText("/ -");
 
+        /* Efface les données relatives au zoom */
+        scaleSizing = 0.0f;
+        scaleZoom = 1.0f;
+
         validate();
     }
 

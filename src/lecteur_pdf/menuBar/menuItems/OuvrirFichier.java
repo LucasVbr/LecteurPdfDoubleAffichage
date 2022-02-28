@@ -6,6 +6,7 @@
 
 package lecteur_pdf.menuBar.menuItems;
 
+import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 import lecteur_pdf.SelectionnerFichier;
 
@@ -31,8 +32,19 @@ public class OuvrirFichier extends MenuItem {
         super(parent, "Ouvrir");
 
         addActionListener(e -> {
+            /* On charge le fichier si c'est possible */
             File fichier = SelectionnerFichier.ouvrirFichier();
-            if (fichier != null && parent.getPdfPanel().chargerPdf(fichier)) {
+
+            if (fichier == null) {
+                return;
+            }
+
+            /* Si il y a deja un fichier d'ouvert, on le ferme */
+            parent.getPdfPanel().dechargerPdf();
+            parent.setTitle(GestionPdf.TITRE_APPLICATION);
+            parent.pack();
+
+            if (parent.getPdfPanel().chargerPdf(fichier)) {
                 parent.setTitle(fichier.getName());
                 parent.pack();
             } else {
