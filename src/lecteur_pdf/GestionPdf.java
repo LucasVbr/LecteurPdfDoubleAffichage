@@ -28,7 +28,7 @@ public class GestionPdf {
     /**
      * TODO
      */
-    public static final int maxPdf = 2;
+     public static final int maxPdf = 2;
 
     /**
      * TODO
