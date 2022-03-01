@@ -8,7 +8,9 @@ package lecteur_pdf;
 
 import lecteur_pdf.menuBar.menuItems.ModeSepare;
 import lecteur_pdf.menuBar.menuItems.ModeSynchronise;
+import lecteur_pdf.menuBar.menuItems.NouvelleFenetre;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -40,10 +42,16 @@ public class GestionMode {
 
     /**
      * TODO
+     */
+    private static final ArrayList<NouvelleFenetre> nouvelleFenetreList = new ArrayList<>();
+
+    /**
+     * TODO
      * @param separe
      * @param synchronise
      */
-    public static void addItem(ModeSepare separe, ModeSynchronise synchronise) {
+    public static void addItem(NouvelleFenetre fenetre, ModeSepare separe, ModeSynchronise synchronise) {
+        nouvelleFenetreList.add(fenetre);
         modeSepareList.add(separe);
         modeSynchroniseList.add(synchronise);
         updateMode();
@@ -80,6 +88,26 @@ public class GestionMode {
         for (int i = 0; i < modeSepareList.size() ; i++) {
             modeSepareList.get(i).setSelected(modeSepare);
             modeSynchroniseList.get(i).setSelected(!modeSepare);
+        }
+    }
+
+    /**
+     * TODO
+     */
+    public static void desactiverFenetre() {
+        for (NouvelleFenetre item : nouvelleFenetreList) {
+            item.setEnabled(false);
+            item.setBackground(Color.GRAY);
+        }
+    }
+
+    /**
+     * TODO
+     */
+    public static void activerFenetre() {
+        for (NouvelleFenetre item : nouvelleFenetreList) {
+            item.setEnabled(true);
+            item.setBackground(Color.BLACK);
         }
     }
 }

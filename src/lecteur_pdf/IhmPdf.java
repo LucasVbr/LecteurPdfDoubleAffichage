@@ -93,8 +93,10 @@ public class IhmPdf extends JFrame {
      */
     public void quitter() {
         pdfPanel.dechargerPdf();
+        if (GestionPdf.ihmPdfList.size() == GestionPdf.maxPdf) GestionMode.activerFenetre();
         GestionPdf.ihmPdfList.remove(this);
         dispose();
+
         if (GestionPdf.ihmPdfList.size() == 0) {
             System.exit(0);
         }
