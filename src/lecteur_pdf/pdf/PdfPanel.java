@@ -13,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -57,7 +59,13 @@ public class PdfPanel extends JPanel {
         JPanel controls = new JPanel();
         /* Contenu de Controls */
         JButton btnPrecedent = new JButton("Précédent");
-        indexPageInput = new JTextField();
+//        indexPageInput = new JSpinner();
+//        JComponent field = ((JSpinner.DefaultEditor) indexPageInput.getEditor());
+//        Dimension prefSize = field.getPreferredSize();
+//        prefSize = new Dimension(50, prefSize.height);
+//        field.setPreferredSize(prefSize);
+
+        indexPageInput = new JTextField(5);
         indexPageInput.setText("-");
         maxPageLabel = new JLabel("/ -");
         JButton btnSuivant = new JButton("Suivant");
@@ -92,6 +100,18 @@ public class PdfPanel extends JPanel {
             else GestionPdf.previousPages();
         });
 
+        /* Saisie uniquement de caractère numérique */
+        indexPageInput.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                String value = indexPageInput.getText();
+                int l = value.length();
+                indexPageInput.setEditable(e.getKeyChar() >= '0' && e.getKeyChar() <= '9');
+            }
+        });
+
+        /* A la pression de la touche entrée on fait une recherche */
         indexPageInput.addActionListener(e -> {
             String saisie = indexPageInput.getText();
             try {
@@ -99,7 +119,7 @@ public class PdfPanel extends JPanel {
                 if (isPageValide(index - 1)) setPage(index - 1);
                 else throw new Exception();
             } catch (Exception f) {
-                indexPageInput.setText(null);
+                indexPageInput.setText(Integer.toString(currentPage +1));
             }
 
         });
@@ -115,11 +135,9 @@ public class PdfPanel extends JPanel {
 
     public void resize() {
         if (pdfLoader != null && !processing) {
-            if (pleineLargeur) {
-                scaleSizing = (((float) viewport.getWidth() - (float) scrollPane.getVerticalScrollBar().getWidth()) / (float) pdfLoader.getMinWidth()) - scaleZoom;
-            } else {
-                scaleSizing = (((float) viewport.getHeight() - (float) scrollPane.getHorizontalScrollBar().getHeight()) / (float) pdfLoader.getMinHeight()) - scaleZoom;
-            }
+            scaleSizing = pleineLargeur
+                    ? (((float) viewport.getWidth() - (float) scrollPane.getVerticalScrollBar().getWidth()) / (float) pdfLoader.getMinWidth()) - scaleZoom
+                    : (((float) viewport.getHeight() - (float) scrollPane.getHorizontalScrollBar().getHeight()) / (float) pdfLoader.getMinHeight()) - scaleZoom;
             updateScaleSizing(scaleSizing);
         }
     }
@@ -178,6 +196,7 @@ public class PdfPanel extends JPanel {
         currentPage = 0;
 
         /* Interface Vide */
+//        indexPageInput.setValue(0);
         indexPageInput.setText("");
         maxPageLabel.setText("/ -");
 
@@ -234,6 +253,7 @@ public class PdfPanel extends JPanel {
         try {
             page.setIcon(new ImageIcon(pdfLoader.renderPage(index, scaleZoom + scaleSizing)));
             currentPage = index;
+//            indexPageInput.setValue(currentPage +1);
             indexPageInput.setText(Integer.toString(currentPage + 1));
             maxPageLabel.setText(String.format("/%d", pdfLoader.getNbPages()));
         } catch (IOException ignored) {}
