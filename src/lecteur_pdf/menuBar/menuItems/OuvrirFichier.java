@@ -45,7 +45,7 @@ public class OuvrirFichier extends MenuItem {
             parent.pack();
 
             if (parent.getPdfPanel().chargerPdf(fichier)) {
-                parent.setTitle(fichier.getName());
+                parent.setTitle(GestionPdf.TITRE_APPLICATION + " - " + fichier.getName());
                 parent.pack();
             } else {
                 // TODO Erreur fichier n'as pas pu etre chargé
