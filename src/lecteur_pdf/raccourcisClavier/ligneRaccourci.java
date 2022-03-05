@@ -20,7 +20,8 @@ public class ligneRaccourci extends JPanel {
 
     public ligneRaccourci(String labelName, char raccourcis, boolean ctrl) {
         raccourciLabel.setText(labelName);
-        inputButton.setText(String.valueOf(raccourcis).toUpperCase(Locale.ROOT));
+        inputButton.setText(String.valueOf(raccourcis)/*.toUpperCase(Locale
+        .ROOT)*/);
         ctrlCheckBox.setSelected(ctrl);
         add(optionsRaccourcis);
     }

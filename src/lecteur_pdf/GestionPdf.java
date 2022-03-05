@@ -87,6 +87,5 @@ public class GestionPdf {
 
         System.out.println(RaccourcisClavier.raccourcis);
         System.out.println(RaccourcisClavier.gestionnaireRaccourcis);
-
     }
 }

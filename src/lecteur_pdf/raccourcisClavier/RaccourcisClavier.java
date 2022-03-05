@@ -10,6 +10,7 @@ import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,25 +34,22 @@ public class RaccourcisClavier extends JFrame {
         super("Modification des raccourcis claviers");
         JPanel panel = new JPanel();
         for (String nomOptions : raccourcis.keySet()) {
-            panel.add(new ligneRaccourci(nomOptions,
-                                         getChar(nomOptions),
-                                         false));
+            panel.add(
+                new ligneRaccourci(nomOptions, getChar(nomOptions), false));
         }
         add(panel);
         pack();
-        setSize(500, 500);
+        setSize(250, 500);
         setResizable(false);
         setVisible(true);
     }
 
     public char getChar(String nomOptions) {
-//        if () {
-//            return (char) raccourcis.get(nomOptions)
-//                                    .getKeyCode();
-//        } else {
-//            return (char) raccourcis.get(nomOptions)
-//                                    .getKeyChar();
-//        }
-        return (char) raccourcis.get(nomOptions).getKeyCode();
+        if (raccourcis.get(nomOptions).getModifiers()
+            == (InputEvent.CTRL_DOWN_MASK)) {
+            return (char) raccourcis.get(nomOptions).getKeyCode();
+        } else {
+            return raccourcis.get(nomOptions).getKeyChar();
+        }
     }
 }
