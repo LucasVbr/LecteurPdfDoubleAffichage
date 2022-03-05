@@ -7,19 +7,20 @@
 package lecteur_pdf.raccourcisClavier;
 
 import javax.swing.*;
+import java.util.Locale;
 
 /**
  * TODO class comment
  */
 public class ligneRaccourci extends JPanel {
     private JLabel raccourciLabel;
-    private JTextField inputTextField;
     private JCheckBox ctrlCheckBox;
     private JPanel optionsRaccourcis;
+    private JButton inputButton;
 
     public ligneRaccourci(String labelName, char raccourcis, boolean ctrl) {
         raccourciLabel.setText(labelName);
-        inputTextField.setText(String.valueOf(raccourcis));
+        inputButton.setText(String.valueOf(raccourcis).toUpperCase(Locale.ROOT));
         ctrlCheckBox.setSelected(ctrl);
         add(optionsRaccourcis);
     }
@@ -28,8 +29,8 @@ public class ligneRaccourci extends JPanel {
         return raccourciLabel;
     }
 
-    public JTextField getInputTextField() {
-        return inputTextField;
+    public JButton getInputTextField() {
+        return inputButton;
     }
 
     public JCheckBox getCtrlCheckBox() {

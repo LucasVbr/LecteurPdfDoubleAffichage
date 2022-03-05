@@ -6,6 +6,8 @@
 
 package lecteur_pdf;
 
+import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -82,5 +84,9 @@ public class GestionPdf {
 
         GestionMode.setModeSepare();
         newIhmPdf();
+
+        System.out.println(RaccourcisClavier.raccourcis);
+        System.out.println(RaccourcisClavier.gestionnaireRaccourcis);
+
     }
 }

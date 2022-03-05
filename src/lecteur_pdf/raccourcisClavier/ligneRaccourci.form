@@ -16,13 +16,13 @@
           <text value="Label"/>
         </properties>
       </component>
-      <component id="8ab7f" class="javax.swing.JTextField" binding="inputTextField">
+      <component id="ec92c" class="javax.swing.JButton" binding="inputButton">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="Button"/>
+        </properties>
       </component>
       <component id="37960" class="javax.swing.JCheckBox" binding="ctrlCheckBox">
         <constraints>

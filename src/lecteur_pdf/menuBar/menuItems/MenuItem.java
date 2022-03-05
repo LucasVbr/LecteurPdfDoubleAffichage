@@ -64,4 +64,6 @@ public class MenuItem extends JMenuItem {
         RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
         RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
     }
+
+
 }

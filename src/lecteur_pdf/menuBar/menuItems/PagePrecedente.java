@@ -10,6 +10,8 @@ import lecteur_pdf.GestionMode;
 import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 
+import java.awt.event.KeyEvent;
+
 /**
  * TODO commentaires
  *
