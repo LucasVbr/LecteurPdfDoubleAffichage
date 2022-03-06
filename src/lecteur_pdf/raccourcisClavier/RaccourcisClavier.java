@@ -39,39 +39,39 @@ public class RaccourcisClavier extends JFrame {
     public static Map<String, KeyStroke> raccourcis = new HashMap<>() {};
 
     public static String[] LISTE_NOM = {
-            "Ouvrir",
-            "Fermer",
-            "Quitter",
-            "Mode Plein Ecran",
-            "Page Prédédente",
-            "Page Suivante",
-            "Zoom 50%",
-            "Zoom 100%",
-            "Zoom 150%",
-            "Page Entière",
-            "Pleine Largeur",
-            "Nouvelle Fenêtre",
-//            "Mode Séparé",
-//            "Mode Synchronisé",
-            "Modifier Touches"
+        "Ouvrir",
+        "Fermer",
+        "Quitter",
+        "Mode Plein Ecran",
+        "Page Prédédente",
+        "Page Suivante",
+        "Zoom 50%",
+        "Zoom 100%",
+        "Zoom 150%",
+        "Page Entière",
+        "Pleine Largeur",
+        "Nouvelle Fenêtre",
+        "Mode Séparé",
+        "Mode Synchronisé",
+        "Modifier Touches"
     };
 
     public static KeyStroke[] LISTE_RACCOURCIS = {
-            KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK), // Ouvrir
-            KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK), // Fermer
-            KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK), // Quitter
-            KeyStroke.getKeyStroke(KeyEvent.VK_F11, KeyEvent.CTRL_DOWN_MASK), // Mode Plein Ecran
-            KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, KeyEvent.CTRL_DOWN_MASK), // Page Prédédente
-            KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, KeyEvent.CTRL_DOWN_MASK), // Page Suivante
-            KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK), // Zoom 50%
-            KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD0, KeyEvent.CTRL_DOWN_MASK), // Zoom 100%
-            KeyStroke.getKeyStroke(KeyEvent.VK_PLUS, KeyEvent.CTRL_DOWN_MASK), // Zoom 150%
-            KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK), // Page Entière
-            KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK), // Pleine Largeur
-            KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK), // Nouvelle Fenêtre
-//          KeyStroke.getKeyStroke(KeyEvent.VK_O,KeyEvent.CTRL_DOWN_MASK),  // Mode Séparé
-//          KeyStroke.getKeyStroke(KeyEvent.VK_O,KeyEvent.CTRL_DOWN_MASK),  // Mode Synchronisé
-            KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK), // Modifier Touches
+        KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK), // Ouvrir
+        KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK), // Fermer
+        KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK), // Quitter
+        KeyStroke.getKeyStroke(KeyEvent.VK_F11, KeyEvent.CTRL_DOWN_MASK), // Mode Plein Ecran
+        KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, KeyEvent.CTRL_DOWN_MASK), // Page Prédédente
+        KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, KeyEvent.CTRL_DOWN_MASK), // Page Suivante
+        KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK), // Zoom 50%
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD0, KeyEvent.CTRL_DOWN_MASK), // Zoom 100%
+        KeyStroke.getKeyStroke(KeyEvent.VK_PLUS, KeyEvent.CTRL_DOWN_MASK), // Zoom 150%
+        KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK), // Page Entière
+        KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK), // Pleine Largeur
+        KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK), // Nouvelle Fenêtre
+        KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK),  // Mode Séparé
+        KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK),  // Mode Synchronisé
+        KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK), // Modifier Touches
     };
 
     public RaccourcisClavier() {
@@ -112,17 +112,12 @@ public class RaccourcisClavier extends JFrame {
             fis.close();
             System.out.println("Chargement des données avec succès");
         } catch (IOException ioe) {
+            initialisationFichierRaccourcis();
             ioe.printStackTrace();
         } catch (ClassNotFoundException c) {
             System.out.println("Class not found");
             c.printStackTrace();
         }
-
-        /* Test : Affichage du contenu de la HashMap dans l'ordre des noms */
-//        for (String a : LISTE_NOM) {
-//            System.out.println(a + " : " + raccourcis.get(a));
-//        }
-
     }
 
     /**
@@ -147,8 +142,8 @@ public class RaccourcisClavier extends JFrame {
      * Remplis la HashMap avec les raccourcis claviers par défaut
      * et la sauvegarde
      */
-    private void initialisationFichierRaccourcis() {
-        for (int i = 0; i < LISTE_NOM.length && i < LISTE_RACCOURCIS.length ; i++) {
+    private static void initialisationFichierRaccourcis() {
+        for (int i = 0; i < LISTE_NOM.length && i < LISTE_RACCOURCIS.length; i++) {
             raccourcis.put(LISTE_NOM[i], LISTE_RACCOURCIS[i]);
         }
         sauvegarderRaccourcis();

@@ -8,6 +8,7 @@ package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.GestionMode;
 import lecteur_pdf.IhmPdf;
+import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 import javax.swing.*;
 
@@ -21,19 +22,13 @@ import javax.swing.*;
  */
 public class ModeSynchronise extends JRadioButtonMenuItem {
 
-    /**
-     * TODO
-     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
-     */
-    public ModeSynchronise(IhmPdf parent) {
+    public ModeSynchronise() {
         super("Mode Synchronisé");
 
         addActionListener(e -> {
             GestionMode.setModeSynchronise();
         });
 
-        // TODO ajouter une checkbox pour indiquer si l'option est utilisé
-
-        // TODO ajouter l'options de mode Synchronisé
+        RaccourcisClavier.listeMenuItems.add(this);
     }
 }

@@ -42,22 +42,6 @@ public abstract class MenuItem extends JMenuItem {
 
     protected abstract void action(ActionEvent evt);
 
-//    public void setRaccourcis(int key) {
-//        KeyStroke raccourcis.save = KeyStroke.getKeyStroke((char) key);
-//        setAccelerator(raccourcis.save);
-//
-//        RaccourcisClavier.raccourcis.save.put(this.getText(), raccourcis.save);
-//        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
-//    }
-
-//    public void setRaccourcis(int key, int mask) {
-//        KeyStroke raccourcis.save = KeyStroke.getKeyStroke(key, mask);
-//        setAccelerator(raccourcis.save);
-//
-//        RaccourcisClavier.raccourcis.save.put(this.getText(), raccourcis.save);
-//        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
-//    }
-
 
 
 }
