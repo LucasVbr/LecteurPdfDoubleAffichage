@@ -10,6 +10,7 @@ import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 import lecteur_pdf.SelectionnerFichier;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
@@ -26,32 +27,32 @@ public class OuvrirFichier extends MenuItem {
     /**
      * TODO
      *
-     * @param parent
      */
     public OuvrirFichier(IhmPdf parent) {
         super(parent, "Ouvrir");
 
-        addActionListener(e -> {
-            /* On charge le fichier si c'est possible */
-            File fichier = SelectionnerFichier.ouvrirFichier();
+//        setRaccourcis(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK);
+    }
 
-            if (fichier == null) {
-                return;
-            }
+    @Override
+    protected void action(ActionEvent evt) {
+        /* On charge le fichier si c'est possible */
+        File fichier = SelectionnerFichier.ouvrirFichier();
 
-            /* Si il y a deja un fichier d'ouvert, on le ferme */
-            parent.getPdfPanel().dechargerPdf();
-            parent.setTitle(GestionPdf.TITRE_APPLICATION);
+        if (fichier == null) {
+            return;
+        }
+
+        /* Si il y a deja un fichier d'ouvert, on le ferme */
+        parent.getPdfPanel().dechargerPdf();
+        parent.setTitle(GestionPdf.TITRE_APPLICATION);
+        parent.pack();
+
+        if (parent.getPdfPanel().chargerPdf(fichier)) {
+            parent.setTitle(GestionPdf.TITRE_APPLICATION + " - " + fichier.getName());
             parent.pack();
-
-            if (parent.getPdfPanel().chargerPdf(fichier)) {
-                parent.setTitle(GestionPdf.TITRE_APPLICATION + " - " + fichier.getName());
-                parent.pack();
-            } else {
-                // TODO Erreur fichier n'as pas pu etre chargé
-            }
-        });
-
-        setRaccourcis(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK);
+        } else {
+            // TODO Erreur fichier n'as pas pu etre chargé
+        }
     }
 }

@@ -10,6 +10,7 @@ import lecteur_pdf.GestionMode;
 import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 /**
@@ -29,14 +30,12 @@ public class PageSuivante extends MenuItem {
     public PageSuivante(IhmPdf parent) {
         super(parent, "Page suivante");
 
-        addActionListener(e -> {
-            if (GestionMode.isModeSepare()) {
-                parent.getPdfPanel().nextPage();
-            } else {
-                GestionPdf.nextPages();
-            }
-        });
+//        setRaccourcis(KeyEvent.VK_M, KeyEvent.CTRL_DOWN_MASK);
+    }
 
-        setRaccourcis(KeyEvent.VK_M, KeyEvent.CTRL_DOWN_MASK);
+    @Override
+    protected void action(ActionEvent evt) {
+        if (GestionMode.isModeSepare()) parent.getPdfPanel().nextPage();
+        else GestionPdf.nextPages();
     }
 }

@@ -34,7 +34,5 @@ public class MenuFichier extends JMenu {
         add(new OuvrirFichier(parent));
         add(new FermerFichier(parent));
         add(new Quitter(parent));
-
-
     }
 }

@@ -10,6 +10,7 @@ import lecteur_pdf.IhmPdf;
 import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  * TODO commentaires
@@ -19,7 +20,7 @@ import javax.swing.*;
  * @author Noé Villeneuve
  * @author Tristan Nogaret
  */
-public class MenuItem extends JMenuItem {
+public abstract class MenuItem extends JMenuItem {
 
     /**
      * TODO
@@ -30,40 +31,33 @@ public class MenuItem extends JMenuItem {
      * TODO
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
-     * @param name
+     * @param name Nom de l'action
      */
     public MenuItem(IhmPdf parent, String name) {
         super(name);
         this.parent = parent;
-
+        addActionListener(this::action);
+        RaccourcisClavier.listeItem.put(name, this);
     }
 
-    /**
-     * TODO
-     *
-     * @param key
-     */
-    public void setRaccourcis(int key) {
-        KeyStroke raccourcis = KeyStroke.getKeyStroke((char) key);
-        setAccelerator(raccourcis);
+    protected abstract void action(ActionEvent evt);
 
-        RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
-        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
-    }
+//    public void setRaccourcis(int key) {
+//        KeyStroke raccourcis = KeyStroke.getKeyStroke((char) key);
+//        setAccelerator(raccourcis);
+//
+//        RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
+//        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
+//    }
 
-    /**
-     * TODO
-     *
-     * @param key
-     * @param mask
-     */
-    public void setRaccourcis(int key, int mask) {
-        KeyStroke raccourcis = KeyStroke.getKeyStroke(key, mask);
-        setAccelerator(raccourcis);
+//    public void setRaccourcis(int key, int mask) {
+//        KeyStroke raccourcis = KeyStroke.getKeyStroke(key, mask);
+//        setAccelerator(raccourcis);
+//
+//        RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
+//        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
+//    }
 
-        RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
-        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
-    }
 
 
 }

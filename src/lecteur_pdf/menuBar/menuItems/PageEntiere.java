@@ -2,6 +2,8 @@ package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.IhmPdf;
 
+import java.awt.event.ActionEvent;
+
 public class PageEntiere extends MenuItem {
     /**
      * TODO
@@ -9,9 +11,10 @@ public class PageEntiere extends MenuItem {
      */
     public PageEntiere(IhmPdf parent) {
         super(parent, "Page Entière");
+    }
 
-        addActionListener(e -> {
-            parent.getPdfPanel().setPleineLargeur(false);
-        });
+    @Override
+    protected void action(ActionEvent evt) {
+        parent.getPdfPanel().setPleineLargeur(false);
     }
 }

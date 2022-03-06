@@ -8,6 +8,7 @@ package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.IhmPdf;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 /**
@@ -27,12 +28,13 @@ public class ZoomPlus extends MenuItem {
     public ZoomPlus(IhmPdf parent) {
         super(parent, "Zoom 150%");
 
-        addActionListener(e -> {
-            parent.getPdfPanel().updateScaleZoom(1.5f);
-            parent.validate();
-        });
+//        setRaccourcis(KeyEvent.VK_H, KeyEvent.CTRL_DOWN_MASK);
 
-        setRaccourcis(KeyEvent.VK_H, KeyEvent.CTRL_DOWN_MASK);
+    }
 
+    @Override
+    protected void action(ActionEvent evt) {
+        parent.getPdfPanel().updateScaleZoom(1.5f);
+        parent.validate();
     }
 }

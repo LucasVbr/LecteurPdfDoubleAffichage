@@ -23,12 +23,7 @@ import javax.swing.*;
  * @author Tristan Nogaret
  */
 public class MenuBar extends JMenuBar {
-
-    /**
-     * TODO
-     *
-     * @param parent
-     */
+    
     public MenuBar(IhmPdf parent) {
         add(new MenuFichier(parent));
         add(new MenuAffichage(parent));

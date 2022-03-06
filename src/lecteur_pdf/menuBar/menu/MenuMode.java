@@ -45,6 +45,5 @@ public class MenuMode extends JMenu {
         addSeparator();
         add(modeSepare);
         add(modeSynchronise);
-
     }
 }

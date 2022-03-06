@@ -110,8 +110,7 @@ public class PdfLoader {
             document.close();
             minWidth = -1;
             minHeight = -1;
-        } catch (IOException ignored) {
-        }
+        } catch (IOException ignored) {}
     }
 
     /**

@@ -51,7 +51,6 @@ public class OutilsImage {
         int h = img.getHeight();
 
         int ratio = newH / (1+h);
-//        System.out.println(ratio);
 
         int newW = w * ratio;
 

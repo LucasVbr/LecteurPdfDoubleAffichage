@@ -10,7 +10,7 @@ import lecteur_pdf.GestionMode;
 import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 
-import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * TODO commentaires
@@ -28,14 +28,14 @@ public class NouvelleFenetre extends MenuItem {
      */
     public NouvelleFenetre(IhmPdf parent) {
         super(parent, "Nouvelle Fenêtre");
+    }
 
-        addActionListener(e -> {
-            /* Essaye de créer une nouvelle fenêtre */
-            GestionPdf.newIhmPdf();
+    @Override
+    public void action(ActionEvent evt) {
+        /* Essaye de créer une nouvelle fenêtre */
+        GestionPdf.newIhmPdf();
 
-            /* Désactive le bouton si on a atteint la limite des affichages */
-            if (GestionPdf.ihmPdfList.size() == GestionPdf.maxPdf) GestionMode.desactiverFenetre();
-        });
-
+        /* Désactive le bouton si on a atteint la limite des affichages */
+        if (GestionPdf.ihmPdfList.size() == GestionPdf.maxPdf) GestionMode.desactiverFenetre();
     }
 }

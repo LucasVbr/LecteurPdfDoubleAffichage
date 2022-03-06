@@ -2,6 +2,8 @@ package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.IhmPdf;
 
+import java.awt.event.ActionEvent;
+
 public class PleineLargeur extends MenuItem{
 
 
@@ -11,9 +13,10 @@ public class PleineLargeur extends MenuItem{
      */
     public PleineLargeur(IhmPdf parent) {
         super(parent, "Pleine Largeur");
+    }
 
-        addActionListener(e -> {
-            parent.getPdfPanel().setPleineLargeur(true);
-        });
+    @Override
+    protected void action(ActionEvent evt) {
+        parent.getPdfPanel().setPleineLargeur(true);
     }
 }

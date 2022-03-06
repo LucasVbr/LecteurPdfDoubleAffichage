@@ -10,6 +10,7 @@ import lecteur_pdf.IhmPdf;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 /**
@@ -29,26 +30,25 @@ public class Quitter extends MenuItem {
     public Quitter(IhmPdf parent) {
         super(parent, "Quitter");
 
-        addActionListener(e -> {
-            JDialog jd = new JDialog();
-            jd.setLayout(new FlowLayout());
-            jd.setBounds(500,300,400,100);
-            JLabel jlabel = new JLabel("etes vous sûr de vouloir quitter ? ");
-            JButton oui = new JButton("oui");
-            oui.addActionListener(m -> {
-                parent.quitter();
-                jd.setVisible(false);
-            });
-            JButton non = new JButton("non");
-            non.addActionListener(n -> jd.setVisible(false));
-            jd.add(jlabel);
-            jd.add(oui);
-            jd.add(non);
-            jd.setVisible(true);
-
-        });
-
-        setRaccourcis(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
+//        setRaccourcis(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
     }
 
+    @Override
+    protected void action(ActionEvent evt) {
+        JDialog jd = new JDialog();
+        jd.setLayout(new FlowLayout());
+        jd.setBounds(500,300,400,100);
+        JLabel jlabel = new JLabel("etes vous sûr de vouloir quitter ? ");
+        JButton oui = new JButton("oui");
+        oui.addActionListener(m -> {
+            parent.quitter();
+            jd.setVisible(false);
+        });
+        JButton non = new JButton("non");
+        non.addActionListener(n -> jd.setVisible(false));
+        jd.add(jlabel);
+        jd.add(oui);
+        jd.add(non);
+        jd.setVisible(true);
+    }
 }

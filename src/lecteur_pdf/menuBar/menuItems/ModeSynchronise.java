@@ -23,16 +23,10 @@ public class ModeSynchronise extends JRadioButtonMenuItem {
 
     /**
      * TODO
-     */
-    IhmPdf parent;
-
-    /**
-     * TODO
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     public ModeSynchronise(IhmPdf parent) {
         super("Mode Synchronisé");
-        this.parent = parent;
 
         addActionListener(e -> {
             GestionMode.setModeSynchronise();

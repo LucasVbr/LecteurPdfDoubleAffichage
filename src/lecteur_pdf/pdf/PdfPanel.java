@@ -11,10 +11,7 @@ import lecteur_pdf.GestionPdf;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -28,24 +25,26 @@ import java.io.IOException;
  */
 public class PdfPanel extends JPanel {
 
+    /* Données */
     private int currentPage;
-
     private float scaleSizing;
     private float scaleZoom;
-
     private boolean pleineLargeur;
+    private boolean processing;
 
+    /* Chargeur de Pdf */
     private PdfLoader pdfLoader;
 
+    /* Interface */
     private final JTextField indexPageInput;
     private final JLabel maxPageLabel;
-
     private final JScrollPane scrollPane;
     private final JViewport viewport;
     private final JLabel page;
 
-    private boolean processing;
-
+    /**
+     * Crée une nouvelle interface de PDF vide
+     */
     public PdfPanel() {
         super(new BorderLayout());
 
@@ -55,17 +54,10 @@ public class PdfPanel extends JPanel {
         processing = false;
         pleineLargeur = false;
 
-        /* Controls */
+        /* Controleurs */
         JPanel controls = new JPanel();
-        /* Contenu de Controls */
         JButton btnPrecedent = new JButton("Précédent");
-//        indexPageInput = new JSpinner();
-//        JComponent field = ((JSpinner.DefaultEditor) indexPageInput.getEditor());
-//        Dimension prefSize = field.getPreferredSize();
-//        prefSize = new Dimension(50, prefSize.height);
-//        field.setPreferredSize(prefSize);
-
-        indexPageInput = new JTextField(5);
+        indexPageInput = new JTextField(7);
         indexPageInput.setText("-");
         maxPageLabel = new JLabel("/ -");
         JButton btnSuivant = new JButton("Suivant");
@@ -90,15 +82,8 @@ public class PdfPanel extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
 
         /* Actions */
-        btnSuivant.addActionListener(e -> {
-            if (GestionMode.isModeSepare()) nextPage();
-            else GestionPdf.nextPages();
-        });
-
-        btnPrecedent.addActionListener(e -> {
-            if (GestionMode.isModeSepare()) previousPage();
-            else GestionPdf.previousPages();
-        });
+        btnSuivant.addActionListener(this::btnSuivantAction);
+        btnPrecedent.addActionListener(this::btnPrecedentAction);
 
         /* Saisie uniquement de caractère numérique */
         indexPageInput.addKeyListener(new KeyAdapter() {
@@ -131,6 +116,22 @@ public class PdfPanel extends JPanel {
                 resize();
             }
         });
+    }
+
+    /**
+     * @param evt Ecouteur d'évèvement
+     */
+    private void btnSuivantAction(ActionEvent evt) {
+        if (GestionMode.isModeSepare()) nextPage();
+        else GestionPdf.nextPages();
+    }
+
+    /**
+     * @param evt Ecouteur d'évèvement
+     */
+    private void btnPrecedentAction(ActionEvent evt) {
+        if (GestionMode.isModeSepare()) previousPage();
+        else GestionPdf.previousPages();
     }
 
     public void resize() {
@@ -196,7 +197,6 @@ public class PdfPanel extends JPanel {
         currentPage = 0;
 
         /* Interface Vide */
-//        indexPageInput.setValue(0);
         indexPageInput.setText("");
         maxPageLabel.setText("/ -");
 
@@ -253,7 +253,6 @@ public class PdfPanel extends JPanel {
         try {
             page.setIcon(new ImageIcon(pdfLoader.renderPage(index, scaleZoom + scaleSizing)));
             currentPage = index;
-//            indexPageInput.setValue(currentPage +1);
             indexPageInput.setText(Integer.toString(currentPage + 1));
             maxPageLabel.setText(String.format("/%d", pdfLoader.getNbPages()));
         } catch (IOException ignored) {}

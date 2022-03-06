@@ -9,6 +9,8 @@ package lecteur_pdf.menuBar.menuItems;
 import lecteur_pdf.IhmPdf;
 import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
+import java.awt.event.ActionEvent;
+
 /**
  * TODO commentaires
  *
@@ -25,10 +27,10 @@ public class ModifierTouches extends MenuItem {
      */
     public ModifierTouches(IhmPdf parent) {
         super(parent, "Modifier Touches");
+    }
 
-        addActionListener(e -> {
-            new RaccourcisClavier();
-        });
-
+    @Override
+    protected void action(ActionEvent evt) {
+        new RaccourcisClavier();
     }
 }
