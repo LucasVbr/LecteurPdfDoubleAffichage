@@ -6,16 +6,16 @@
 
 package lecteur_pdf.raccourcisClavier;
 
-import lecteur_pdf.menuBar.menuItems.MenuItem;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Gestionnaire des raccourcis claviers de l'application
+ * Gestionnaire des raccourcis.save claviers de l'application
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -24,66 +24,142 @@ import java.util.Map;
  */
 public class RaccourcisClavier extends JFrame {
 
-    public static Map<String, JMenuItem> listeItem = new HashMap<>();
+    public static boolean saisieBloquee;
 
-    public final String[][] RACCOURCIS = {
-            {"Ouvrir", "o",},
-            {"Fermer", "f",},
-            {"Quitter", "x",},
-            {"Mode Plein Ecran", "p",},
-            {"Page Prédédente", "m",},
-            {"Page Suivante", "l",},
-            {"Zoom 50%", "&",},
-            {"Zoom 100%", "é",},
-            {"Zoom 150%", "\"",},
-            {"Page Entière", "a",},
-            {"Pleine Largeur", "z",},
-            {"Nouvelle Fenêtre", "n",},
-//          {  "Mode Séparé",},
-//          {  "Mode Synchronisé",},
-            {"Modifier Touches", "!",}
+    public static final String FICHIER_SAUVEGARDE = "raccourcis.save";
+
+    /**
+     * Liste des menus items, se remplis a la création de chaque MenuItem de l'application
+     */
+    public static ArrayList<JMenuItem> listeMenuItems = new ArrayList<>();
+
+    /**
+     * HashMap qui prend en clé le Nom et en valeur une combinaison de touche : le raccourcis.save clavier
+     */
+    public static Map<String, KeyStroke> raccourcis = new HashMap<>() {};
+
+    public static String[] LISTE_NOM = {
+            "Ouvrir",
+            "Fermer",
+            "Quitter",
+            "Mode Plein Ecran",
+            "Page Prédédente",
+            "Page Suivante",
+            "Zoom 50%",
+            "Zoom 100%",
+            "Zoom 150%",
+            "Page Entière",
+            "Pleine Largeur",
+            "Nouvelle Fenêtre",
+//            "Mode Séparé",
+//            "Mode Synchronisé",
+            "Modifier Touches"
+    };
+
+    public static KeyStroke[] LISTE_RACCOURCIS = {
+            KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK), // Ouvrir
+            KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK), // Fermer
+            KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK), // Quitter
+            KeyStroke.getKeyStroke(KeyEvent.VK_F11, KeyEvent.CTRL_DOWN_MASK), // Mode Plein Ecran
+            KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, KeyEvent.CTRL_DOWN_MASK), // Page Prédédente
+            KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, KeyEvent.CTRL_DOWN_MASK), // Page Suivante
+            KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK), // Zoom 50%
+            KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD0, KeyEvent.CTRL_DOWN_MASK), // Zoom 100%
+            KeyStroke.getKeyStroke(KeyEvent.VK_PLUS, KeyEvent.CTRL_DOWN_MASK), // Zoom 150%
+            KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK), // Page Entière
+            KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK), // Pleine Largeur
+            KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK), // Nouvelle Fenêtre
+//          KeyStroke.getKeyStroke(KeyEvent.VK_O,KeyEvent.CTRL_DOWN_MASK),  // Mode Séparé
+//          KeyStroke.getKeyStroke(KeyEvent.VK_O,KeyEvent.CTRL_DOWN_MASK),  // Mode Synchronisé
+            KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK), // Modifier Touches
     };
 
     public RaccourcisClavier() {
         super("Modification des raccourcis claviers");
-        JPanel panel = new JPanel(new GridLayout(RACCOURCIS.length, 1, 10, 5));
+        saisieBloquee = false;
 
-        System.out.println(listeItem);
+        /* Charge le fichier et affecte les raccourcis aux MenuItems */
+        chargerRaccourcis();
+        affecterRaccourcis();
 
-        for (int i = 0; i < listeItem.size(); i++) {
-            RaccourcisElement raccourcisElement = new RaccourcisElement(RACCOURCIS[i][0], listeItem.get(RACCOURCIS[i][0]));
+        /* Creattion de la fenêtre */
+        JPanel panel = new JPanel(new GridLayout(raccourcis.size(), 1, 10, 5));
 
-            // Si l'actions n'as pas de raccourcis, mettre celui par défaut
-//            try {
-//                listeItem.get(RACCOURCIS[i][0]).getAccelerator();
-//            } catch (NullPointerException e) {
-//                listeItem.get(RACCOURCIS[i][0]).setAccelerator(KeyStroke.getKeyStroke(RACCOURCIS[i][1].charAt(0), KeyEvent.CTRL_DOWN_MASK));
-//            }
-
+        for (String nom : LISTE_NOM) {
+            RaccourcisElement raccourcisElement = new RaccourcisElement(nom, raccourcis.get(nom));
             panel.add(raccourcisElement);
         }
+        add(panel);
 
-        add(new JScrollPane(panel));
+        sauvegarderRaccourcis();
 
-//        JPanel panel = new JPanel();
-//        for (String nomOptions : raccourcis.keySet()) {
-//            panel.add(new ligneRaccourci(nomOptions,
-//                                         (char) raccourcis.get(nomOptions)
-//                                                          .getKeyCode()));
-//        }
-//        add(panel);
         pack();
         setMinimumSize(new Dimension(400, 200));
-//        setSize(200, 400);
-//        setResizable(false);
         setVisible(true);
     }
 
-    private void chargerRaccourcisDefaut() {
+    /**
+     * Lis le fichier de sauvegarde et restaure la HashMap des raccourcis
+     */
+    public static void chargerRaccourcis() {
+        try {
+            FileInputStream fis = new FileInputStream(FICHIER_SAUVEGARDE);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            raccourcis = (HashMap) ois.readObject();
+
+            ois.close();
+            fis.close();
+            System.out.println("Chargement des données avec succès");
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            System.out.println("Class not found");
+            c.printStackTrace();
+        }
+
+        /* Test : Affichage du contenu de la HashMap dans l'ordre des noms */
+//        for (String a : LISTE_NOM) {
+//            System.out.println(a + " : " + raccourcis.get(a));
+//        }
 
     }
 
-    private void chargerRaccourcis() {
+    /**
+     * Ecrit dans le fichier de sauvegarde la HashMap des raccourcis
+     */
+    public static void sauvegarderRaccourcis() {
+        try {
+            FileOutputStream fos = new FileOutputStream(FICHIER_SAUVEGARDE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
 
+            oos.writeObject(raccourcis);
+
+            oos.close();
+            fos.close();
+            System.out.println("Sauvegardé avec succes");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Remplis la HashMap avec les raccourcis claviers par défaut
+     * et la sauvegarde
+     */
+    private void initialisationFichierRaccourcis() {
+        for (int i = 0; i < LISTE_NOM.length && i < LISTE_RACCOURCIS.length ; i++) {
+            raccourcis.put(LISTE_NOM[i], LISTE_RACCOURCIS[i]);
+        }
+        sauvegarderRaccourcis();
+    }
+
+    /**
+     * Affecte a chaque MenuItems le raccourcis qui lui est destiné
+     */
+    public static void affecterRaccourcis() {
+        for (JMenuItem menuItem : listeMenuItems) {
+            menuItem.setAccelerator(raccourcis.get(menuItem.getText()));
+        }
     }
 }

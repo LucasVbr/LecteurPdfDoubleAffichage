@@ -37,24 +37,24 @@ public abstract class MenuItem extends JMenuItem {
         super(name);
         this.parent = parent;
         addActionListener(this::action);
-        RaccourcisClavier.listeItem.put(name, this);
+        RaccourcisClavier.listeMenuItems.add(this);
     }
 
     protected abstract void action(ActionEvent evt);
 
 //    public void setRaccourcis(int key) {
-//        KeyStroke raccourcis = KeyStroke.getKeyStroke((char) key);
-//        setAccelerator(raccourcis);
+//        KeyStroke raccourcis.save = KeyStroke.getKeyStroke((char) key);
+//        setAccelerator(raccourcis.save);
 //
-//        RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
+//        RaccourcisClavier.raccourcis.save.put(this.getText(), raccourcis.save);
 //        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
 //    }
 
 //    public void setRaccourcis(int key, int mask) {
-//        KeyStroke raccourcis = KeyStroke.getKeyStroke(key, mask);
-//        setAccelerator(raccourcis);
+//        KeyStroke raccourcis.save = KeyStroke.getKeyStroke(key, mask);
+//        setAccelerator(raccourcis.save);
 //
-//        RaccourcisClavier.raccourcis.put(this.getText(), raccourcis);
+//        RaccourcisClavier.raccourcis.save.put(this.getText(), raccourcis.save);
 //        RaccourcisClavier.gestionnaireRaccourcis.put(this, this.getText());
 //    }
 

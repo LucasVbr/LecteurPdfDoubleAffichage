@@ -84,8 +84,5 @@ public class GestionPdf {
 
         GestionMode.setModeSepare();
         newIhmPdf();
-
-//        System.out.println(RaccourcisClavier.raccourcis);
-//        System.out.println(RaccourcisClavier.gestionnaireRaccourcis);
     }
 }

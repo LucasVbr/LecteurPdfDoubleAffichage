@@ -32,7 +32,7 @@ public class FermerFichier extends MenuItem {
     public FermerFichier(IhmPdf parent) {
         super(parent, "Fermer");
 
-        /* TODO Définition du raccourcis clavier a modifier */
+        /* TODO Définition du raccourcis.save clavier a modifier */
 //        setRaccourcis(KeyEvent.VK_X, KeyEvent.CTRL_DOWN_MASK);
     }
 

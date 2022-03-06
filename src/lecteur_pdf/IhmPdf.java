@@ -8,6 +8,7 @@ package lecteur_pdf;
 
 import lecteur_pdf.menuBar.MenuBar;
 import lecteur_pdf.pdf.PdfPanel;
+import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,6 +57,11 @@ public class IhmPdf extends JFrame {
             }
         });
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        /* Affecte les raccourcis claviers de la fenêtre */
+        RaccourcisClavier.chargerRaccourcis();
+        RaccourcisClavier.affecterRaccourcis();
+        RaccourcisClavier.sauvegarderRaccourcis();
 
         /* Render de la Frame */
         pack();
