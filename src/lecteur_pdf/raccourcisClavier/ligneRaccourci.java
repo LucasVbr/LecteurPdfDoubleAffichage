@@ -14,15 +14,13 @@ import java.util.Locale;
  */
 public class ligneRaccourci extends JPanel {
     private JLabel raccourciLabel;
-    private JCheckBox ctrlCheckBox;
     private JPanel optionsRaccourcis;
     private JButton inputButton;
 
-    public ligneRaccourci(String labelName, char raccourcis, boolean ctrl) {
+    public ligneRaccourci(String labelName, char raccourcis) {
         raccourciLabel.setText(labelName);
         inputButton.setText(String.valueOf(raccourcis)/*.toUpperCase(Locale
         .ROOT)*/);
-        ctrlCheckBox.setSelected(ctrl);
         add(optionsRaccourcis);
     }
 
@@ -30,11 +28,7 @@ public class ligneRaccourci extends JPanel {
         return raccourciLabel;
     }
 
-    public JButton getInputTextField() {
+    public JButton getInputButton() {
         return inputButton;
-    }
-
-    public JCheckBox getCtrlCheckBox() {
-        return ctrlCheckBox;
     }
 }

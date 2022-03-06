@@ -36,12 +36,11 @@ public class RaccourcisClavier extends JFrame {
         for (String nomOptions : raccourcis.keySet()) {
             panel.add(new ligneRaccourci(nomOptions,
                                          (char) raccourcis.get(nomOptions)
-                                                          .getKeyCode(),
-                                         false));
+                                                          .getKeyCode()));
         }
         add(panel);
         pack();
-        setSize(250, 500);
+        setSize(200, 400);
         setResizable(false);
         setVisible(true);
     }
