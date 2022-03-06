@@ -37,6 +37,6 @@ public class PagePrecedente extends MenuItem {
             }
         });
 
-        setRaccourcis('l');
+        setRaccourcis(KeyEvent.VK_L, KeyEvent.CTRL_DOWN_MASK);
     }
 }

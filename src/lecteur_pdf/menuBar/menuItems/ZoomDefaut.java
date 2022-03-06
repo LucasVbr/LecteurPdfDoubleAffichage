@@ -32,7 +32,7 @@ public class ZoomDefaut extends MenuItem {
             parent.validate();
         });
 
-        setRaccourcis(KeyEvent.VK_L, KeyEvent.CTRL_DOWN_MASK);
+        setRaccourcis(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK);
 
     }
 

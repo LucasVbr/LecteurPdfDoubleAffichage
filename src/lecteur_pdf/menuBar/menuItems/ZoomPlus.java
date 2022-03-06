@@ -32,7 +32,7 @@ public class ZoomPlus extends MenuItem {
             parent.validate();
         });
 
-        setRaccourcis(KeyEvent.VK_M, KeyEvent.CTRL_DOWN_MASK);
+        setRaccourcis(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK);
 
     }
 }

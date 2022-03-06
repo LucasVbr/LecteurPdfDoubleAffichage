@@ -10,6 +10,8 @@ import lecteur_pdf.GestionMode;
 import lecteur_pdf.GestionPdf;
 import lecteur_pdf.IhmPdf;
 
+import java.awt.event.KeyEvent;
+
 /**
  * TODO commentaires
  *
@@ -35,6 +37,6 @@ public class PageSuivante extends MenuItem {
             }
         });
 
-        setRaccourcis('m');
+        setRaccourcis(KeyEvent.VK_M, KeyEvent.CTRL_DOWN_MASK);
     }
 }

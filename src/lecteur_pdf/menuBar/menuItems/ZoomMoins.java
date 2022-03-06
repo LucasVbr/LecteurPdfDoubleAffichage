@@ -32,7 +32,7 @@ public class ZoomMoins extends MenuItem {
             parent.validate();
         });
 
-        setRaccourcis(KeyEvent.VK_K, KeyEvent.CTRL_DOWN_MASK);
+        setRaccourcis(KeyEvent.VK_I, KeyEvent.CTRL_DOWN_MASK);
 
     }
 }

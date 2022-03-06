@@ -41,9 +41,9 @@ public class MenuAffichage extends JMenu {
         addSeparator();
 
         /* Section des Zoom */
-        add(new ZoomPlus(parent));
-        add(new ZoomDefaut(parent));
         add(new ZoomMoins(parent));
+        add(new ZoomDefaut(parent));
+        add(new ZoomPlus(parent));
         addSeparator();
 
 
