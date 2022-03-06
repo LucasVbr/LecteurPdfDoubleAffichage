@@ -34,22 +34,15 @@ public class RaccourcisClavier extends JFrame {
         super("Modification des raccourcis claviers");
         JPanel panel = new JPanel();
         for (String nomOptions : raccourcis.keySet()) {
-            panel.add(
-                new ligneRaccourci(nomOptions, getChar(nomOptions), false));
+            panel.add(new ligneRaccourci(nomOptions,
+                                         (char) raccourcis.get(nomOptions)
+                                                          .getKeyCode(),
+                                         false));
         }
         add(panel);
         pack();
         setSize(250, 500);
         setResizable(false);
         setVisible(true);
-    }
-
-    public char getChar(String nomOptions) {
-        if (raccourcis.get(nomOptions).getModifiers()
-            == (InputEvent.CTRL_DOWN_MASK)) {
-            return (char) raccourcis.get(nomOptions).getKeyCode();
-        } else {
-            return raccourcis.get(nomOptions).getKeyChar();
-        }
     }
 }
