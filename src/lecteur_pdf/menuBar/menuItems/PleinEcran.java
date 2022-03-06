@@ -31,7 +31,6 @@ public class PleinEcran extends MenuItem {
             parent.pleinEcran();
         });
 
-        setRaccourcis(KeyEvent.VK_F11);
-
+        setRaccourcis(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK);
     }
 }
