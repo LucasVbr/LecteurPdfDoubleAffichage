@@ -20,7 +20,7 @@ public class RaccourcisElement extends JPanel {
 
         /* Interface */
         JLabel nomElement = new JLabel(nom);
-        btnRaccourcis = new JButton(modifierToString(raccourcis.getModifiers()) + " + " + (char)raccourcis.getKeyCode());
+        btnRaccourcis = new JButton(modifierToString(raccourcis.getModifiers()) + " + " + raccourcis.toString().split(" ")[2]);
         add(nomElement);
         add(btnRaccourcis);
 
@@ -48,7 +48,7 @@ public class RaccourcisElement extends JPanel {
                         System.out.println(ks);
                         /* Vérifie que ce raccourcis clavier n'existe pas */
                         if (!RaccourcisClavier.raccourcis.containsValue(ks)) {
-                            btnRaccourcis.setText(getMaskString(previousKeyPressed) + " + " + (char)evt.getKeyCode());
+                            btnRaccourcis.setText(getMaskString(previousKeyPressed) + " + " + ks.toString().split(" ")[2]);
                             // On modifie la valeur
                             RaccourcisClavier.raccourcis.replace(nom, ks);
                             raccourcis = ks;
