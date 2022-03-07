@@ -41,6 +41,9 @@ public class IhmPdf extends JFrame {
     public IhmPdf() throws IOException {
         super(GestionPdf.TITRE_APPLICATION);
 
+        /* Icone de la fenêtre */
+        setIconImage(GestionPdf.ICONE);
+
         /* Déclaration des attributs */
         menuBar = new MenuBar(this);
         pdfPanel = new PdfPanel();

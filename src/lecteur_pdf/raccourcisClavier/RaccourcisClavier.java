@@ -6,6 +6,8 @@
 
 package lecteur_pdf.raccourcisClavier;
 
+import lecteur_pdf.GestionPdf;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -78,11 +80,13 @@ public class RaccourcisClavier extends JFrame {
         super("Modification des raccourcis claviers");
         saisieBloquee = false;
 
+        setIconImage(GestionPdf.ICONE);
+
         /* Charge le fichier et affecte les raccourcis aux MenuItems */
         chargerRaccourcis();
         affecterRaccourcis();
 
-        /* Creattion de la fenêtre */
+        /* Creation de la fenêtre */
         JPanel panel = new JPanel(new GridLayout(raccourcis.size(), 1, 10, 5));
 
         for (String nom : LISTE_NOM) {

@@ -27,7 +27,7 @@ public class SelectionnerFichier {
      * fichier PDF
      * @return le fichier choisi par l'utilisateur
      */
-    public static File ouvrirFichier() {
+    public static File ouvrirFichier(JFrame parent) {
 
         final String TITRE = "Sélectionnez un PDF";
         final String DESCRIPTION = "PDF files (*.pdf)";
@@ -62,7 +62,7 @@ public class SelectionnerFichier {
 
 
         /* Renvoie un File lorsque l'utilisateur appuie sur le bouton Ouvrir */
-        int returnValue = fileChooser.showOpenDialog(null);
+        int returnValue = fileChooser.showOpenDialog(parent);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             return new File(fileChooser.getSelectedFile().getAbsolutePath());
         }

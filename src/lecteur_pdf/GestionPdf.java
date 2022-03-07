@@ -9,6 +9,7 @@ package lecteur_pdf;
 import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,8 @@ public class GestionPdf {
      * TODO
      */
     public static final String TITRE_APPLICATION = "LPDA";
+
+    public static final Image ICONE = new ImageIcon("./lib/icon.png").getImage();
 
     /**
      * TODO

@@ -37,7 +37,7 @@ public class OuvrirFichier extends MenuItem {
     @Override
     protected void action(ActionEvent evt) {
         /* On charge le fichier si c'est possible */
-        File fichier = SelectionnerFichier.ouvrirFichier();
+        File fichier = SelectionnerFichier.ouvrirFichier(parent);
 
         if (fichier == null) {
             return;
