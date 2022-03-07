@@ -93,6 +93,10 @@ public class RaccourcisClavier extends JFrame {
             RaccourcisElement raccourcisElement = new RaccourcisElement(nom, raccourcis.get(nom));
             panel.add(raccourcisElement);
         }
+
+        JButton reset = new JButton("Reset");
+        panel.add(reset, 1, raccourcis.size());
+
         add(panel);
 
         sauvegarderRaccourcis();
