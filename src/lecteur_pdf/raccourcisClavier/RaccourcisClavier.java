@@ -45,8 +45,8 @@ public class RaccourcisClavier extends JFrame {
         "Fermer",
         "Quitter",
         "Mode Plein Ecran",
-        "Page Prédédente",
-        "Page Suivante",
+        "Page précédente",
+        "Page suivante",
         "Zoom 50%",
         "Zoom 100%",
         "Zoom 150%",
@@ -63,7 +63,7 @@ public class RaccourcisClavier extends JFrame {
         KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK), // Fermer
         KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK), // Quitter
         KeyStroke.getKeyStroke(KeyEvent.VK_F11, KeyEvent.CTRL_DOWN_MASK), // Mode Plein Ecran
-        KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, KeyEvent.CTRL_DOWN_MASK), // Page Prédédente
+        KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, KeyEvent.CTRL_DOWN_MASK), // Page Précédente
         KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, KeyEvent.CTRL_DOWN_MASK), // Page Suivante
         KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK), // Zoom 50%
         KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD0, KeyEvent.CTRL_DOWN_MASK), // Zoom 100%
@@ -94,8 +94,8 @@ public class RaccourcisClavier extends JFrame {
             panel.add(raccourcisElement);
         }
 
-        JButton reset = new JButton("Reset");
-        panel.add(reset, 1, raccourcis.size());
+//        JButton reset = new JButton("Reset");
+//        panel.add(reset, 1, raccourcis.size());
 
         add(panel);
 

@@ -29,8 +29,6 @@ public class PageSuivante extends MenuItem {
      */
     public PageSuivante(IhmPdf parent) {
         super(parent, "Page suivante");
-
-//        setRaccourcis(KeyEvent.VK_M, KeyEvent.CTRL_DOWN_MASK);
     }
 
     @Override

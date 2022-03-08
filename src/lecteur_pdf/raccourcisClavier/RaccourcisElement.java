@@ -20,6 +20,7 @@ public class RaccourcisElement extends JPanel {
 
         /* Interface */
         JLabel nomElement = new JLabel(nom);
+        System.out.println(raccourcis);
         btnRaccourcis = new JButton(modifierToString(raccourcis.getModifiers()) + " + " + raccourcis.toString().split(" ")[2]);
         add(nomElement);
         add(btnRaccourcis);
