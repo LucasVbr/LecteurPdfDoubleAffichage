@@ -25,7 +25,7 @@ public class PleinEcran extends MenuItem {
      * @param parent
      */
     public PleinEcran(Fenetre parent) {
-        super(parent, "Mode Plein Ecran");
+        super(parent, "Mode Plein Écran");
     }
 
     @Override

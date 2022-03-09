@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Gestionnaire des fênetres ouvertes dans l'application
+ * Gestionnaire des fenêtres ouvertes dans l'application
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -22,7 +22,7 @@ import java.util.List;
 public class GestionFenetre {
 
     /**
-     * Iconne de l'application (affiché en haut a droite des fenêtres)
+     * Icône de l'application (affiché en haut à droite des fenêtres)
      */
     public static final Image ICONE = new ImageIcon("./lib/icon.png").getImage();
 
@@ -47,7 +47,8 @@ public class GestionFenetre {
     }
 
     /**
-     * Methode qui affiche la page suivante de tout les PDF ouvert (mode Synchronisé)
+     * Méthode qui affiche la page suivante de tous les PDF ouverts
+     * (mode Synchronisé)
      */
     public static void nextPages() {
         for (Fenetre ihm : FENETRE_LIST) {
@@ -56,7 +57,8 @@ public class GestionFenetre {
     }
 
     /**
-     * Methode qui affiche la page précédente de tout les PDF ouvert (mode Synchronisé)
+     * Méthode qui affiche la page précédente de tous les PDF ouverts
+     * (mode Synchronisé)
      */
     public static void previousPages() {
         for (Fenetre ihm : FENETRE_LIST) {
@@ -69,7 +71,7 @@ public class GestionFenetre {
      * @param args non utilisé
      */
     public static void main(String[] args) {
-        /* Définit le style de la fenêtre sur l'explorateur windows si possible */
+        /* Définit le style de la fenêtre sur l'explorateur Windows si possible */
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception ignored) {}

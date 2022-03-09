@@ -15,7 +15,8 @@ import lecteur_pdf.menuBar.menuItems.NouvelleFenetre;
 import javax.swing.*;
 
 /**
- * Element de la barre des menus contenant l'intégralités des actions lié au mode multi-affichage
+ * Element de la barre des menus contenant l'intégralité des actions liés au
+ * mode multi-affichage
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -29,6 +30,7 @@ public class MenuMode extends JMenu {
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce menu
      */
+    @SuppressWarnings("GrazieInspection")
     public MenuMode(Fenetre parent) {
         super("Mode");
 
@@ -37,10 +39,10 @@ public class MenuMode extends JMenu {
         ModeSynchronise modeSynchronise = new ModeSynchronise();
         NouvelleFenetre nouvelleFenetre = new NouvelleFenetre(parent);
 
-        /* Les ajoute au gestionnaire des mode */
+        /* Les ajoute au gestionnaire des modes */
         GestionMode.addItem(nouvelleFenetre, modeSepare, modeSynchronise);
 
-        /* Ajoute les menu items */
+        /* Ajoute les menuItems */
         add(nouvelleFenetre);
         addSeparator();
         add(modeSepare);

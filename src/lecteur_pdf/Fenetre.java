@@ -42,7 +42,7 @@ public class Fenetre extends JFrame {
     private boolean fullscreen = false;
 
     /**
-     * Composant Graphique permettant la mise en place du plein ecran
+     * Composant Graphique permettant la mise en place du plein écran
      */
     private GraphicsDevice device;
 
@@ -52,13 +52,13 @@ public class Fenetre extends JFrame {
     public Fenetre() {
         super(TITRE);
 
-        /* Icone de la fenêtre */
+        /* Icône de la fenêtre */
         setIconImage(GestionFenetre.ICONE);
 
         /* Déclaration des attributs */
         pdfPanel = new PdfPanel();
 
-        /* Hierarchie */
+        /* Hiérarchie */
         setContentPane(pdfPanel);
         setJMenuBar(new MenuBar(this));   // Ajoute la barre des menus
 
@@ -89,16 +89,16 @@ public class Fenetre extends JFrame {
     }
 
     /**
-     * Si fullscreen est égal à false -> Désactive le mode Plein Ecran
-     * Sinon Active le mode Plein Ecran
+     * Si fullscreen est égal à false -> Désactive le mode Plein Écran
+     * Sinon Active le mode Plein Écran
      */
     public void pleinEcran() {
 
-        if (!fullscreen) { // Active le Plein Ecran
+        if (!fullscreen) { // Active le Plein Écran
             GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
             device = graphics.getDefaultScreenDevice();
             device.setFullScreenWindow(this);
-        } else { // Désactive le Plein Ecran
+        } else { // Désactive le Plein Écran
             device.setFullScreenWindow(null);
             setUndecorated(false);
             setVisible(true);
@@ -108,8 +108,8 @@ public class Fenetre extends JFrame {
     }
 
     /**
-     * Décharge le PDF courrant, ferme la fenêtre
-     * Si il s'agit de la dernière fenêtre ouverte, arrête l'application
+     * Décharge le PDF courant, ferme la fenêtre
+     * S'il s'agit de la dernière fenêtre ouverte, arrête l'application
      */
     public void quitter() {
 
@@ -120,15 +120,16 @@ public class Fenetre extends JFrame {
         GestionFenetre.FENETRE_LIST.remove(this);
         dispose();
 
-        /* Si la liste des fenêtres n'est pas pleine alors on reactive le boutton pour créer une nouvelle fenêtre  */
+        /* Si la liste des fenêtres n'est pas pleine alors on réactive le
+        bouton pour créer une nouvelle fenêtre  */
         if (GestionFenetre.FENETRE_LIST.size() < GestionFenetre.NB_MAX_PDF) GestionMode.activerBtnNouvelleFenetre();
 
-        /* Si il n'y a plus de fenêtre ouvertes on quitte l'application */
+        /* S'il n'y a plus de fenêtres ouvertes on quitte l'application */
         if (GestionFenetre.FENETRE_LIST.size() == 0) System.exit(0);
     }
 
     /**
-     * Décharge le PDF courrant et redéfini le titre de l'application
+     * Décharge le PDF courant et redéfini le titre de l'application
      */
     public void fermerPdf() {
         getPdfPanel().dechargerPdf();

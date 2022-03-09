@@ -32,7 +32,8 @@ public class RaccourcisClavier extends JFrame {
     public static boolean saisieBloquee;
 
     /**
-     * Liste des menus items, se remplis a la création de chaque MenuItem de l'application
+     * Liste des menus items, se remplis à la création de chaque MenuItem de
+     * l'application
      */
     public static ArrayList<JMenuItem> listeMenuItems = new ArrayList<>();
 
@@ -47,7 +48,7 @@ public class RaccourcisClavier extends JFrame {
         "Ouvrir",
         "Fermer",
         "Quitter",
-        "Mode Plein Ecran",
+        "Mode Plein Écran",
         "Page précédente",
         "Page suivante",
         "Zoom 50%",
@@ -65,7 +66,7 @@ public class RaccourcisClavier extends JFrame {
         KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK), // Ouvrir
         KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK), // Fermer
         KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK), // Quitter
-        KeyStroke.getKeyStroke(KeyEvent.VK_F11, KeyEvent.CTRL_DOWN_MASK), // Mode Plein Ecran
+        KeyStroke.getKeyStroke(KeyEvent.VK_F11, KeyEvent.CTRL_DOWN_MASK), // Mode Plein Écran
         KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, KeyEvent.CTRL_DOWN_MASK), // Page Précédente
         KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, KeyEvent.CTRL_DOWN_MASK), // Page Suivante
         KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK), // Zoom 50%
@@ -175,7 +176,7 @@ public class RaccourcisClavier extends JFrame {
     }
 
     /**
-     * Affecte a chaque MenuItems le raccourcis qui lui est destiné
+     * Affecte a chaque MenuItems le raccourci qui lui est destiné
      */
     public static void affecterRaccourcis() {
         for (JMenuItem menuItem : listeMenuItems) {

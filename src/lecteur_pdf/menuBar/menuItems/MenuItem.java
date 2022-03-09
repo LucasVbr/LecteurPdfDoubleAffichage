@@ -41,7 +41,7 @@ public abstract class MenuItem extends JMenuItem {
     }
 
     /**
-     * Action de l'element lors du clic
+     * Action de l'élément lors du clic
      * @param evt Action de l'utilisateur (clic)
      */
     protected abstract void action(ActionEvent evt);

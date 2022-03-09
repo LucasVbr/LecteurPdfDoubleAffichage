@@ -47,7 +47,7 @@ public class RaccourcisElement extends JPanel {
 
                         KeyStroke ks = KeyStroke.getKeyStroke(evt.getKeyCode(), getMask(previousKeyPressed));
                         System.out.println(ks);
-                        /* Vérifie que ce raccourcis clavier n'existe pas */
+                        /* Vérifie que ce raccourci clavier n'existe pas */
                         if (!RaccourcisClavier.raccourcis.containsValue(ks)) {
                             btnRaccourcis.setText(getMaskString(previousKeyPressed) + " + " + ks.toString().split(" ")[2]);
                             // On modifie la valeur

@@ -12,7 +12,8 @@ import lecteur_pdf.menuBar.menuItems.*;
 import javax.swing.*;
 
 /**
- * Element de la barre des menus contenant l'intégralités des Options de l'application
+ * Element de la barre des menus contenant l'intégralité des options de
+ * l'application
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -22,7 +23,7 @@ import javax.swing.*;
 public class MenuOptions extends JMenu {
 
     /**
-     * Crée une nouvelle instance du menu Option
+     * Crée une nouvelle instance du menu Options
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce menu
      */

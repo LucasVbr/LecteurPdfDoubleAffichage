@@ -12,7 +12,8 @@ import lecteur_pdf.menuBar.menuItems.*;
 import javax.swing.*;
 
 /**
- * Element de la barre des menus contenant l'intégralités des actions lié à l'affichage de l'application
+ * Element de la barre des menus contenant l'intégralité des actions liés à
+ * l'affichage de l'application
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -38,7 +39,7 @@ public class MenuAffichage extends JMenu {
         add(new PageSuivante(parent));
         addSeparator();
 
-        /* Section des Zoom */
+        /* Section des Zooms */
         add(new ZoomMoins(parent));
         add(new ZoomDefaut(parent));
         add(new ZoomPlus(parent));

@@ -35,7 +35,7 @@ public class FermerFichier extends MenuItem {
     protected void action(ActionEvent evt) {
         if (parent.getPdfPanel().isCharge()) {
             String TITRE = "Fermeture du document";
-            String MESSAGE = "Etes vous sûr de vouloir fermer le document ?";
+            String MESSAGE = "Êtes-vous sûr de vouloir fermer le document ?";
 
             if (Popup.OuiNonPopup(parent, TITRE, MESSAGE) == JOptionPane.YES_OPTION) parent.fermerPdf();
         }

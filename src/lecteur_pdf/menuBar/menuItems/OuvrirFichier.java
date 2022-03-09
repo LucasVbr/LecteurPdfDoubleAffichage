@@ -42,7 +42,7 @@ public class OuvrirFichier extends MenuItem {
             return;
         }
 
-        /* Si il y a deja un fichier d'ouvert, on le ferme */
+        /* S'il y a deja un fichier d'ouvert, on le ferme */
         parent.getPdfPanel().dechargerPdf();
         parent.setTitle(Fenetre.TITRE);
         parent.pack();

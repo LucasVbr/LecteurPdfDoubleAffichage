@@ -55,7 +55,7 @@ public class PdfPanel extends JPanel {
         processing = false;
         pleineLargeur = false;
 
-        /* Controleurs */
+        /* Contrôleurs */
         JPanel controls = new JPanel();
         JButton btnPrecedent = new JButton("Précédent");
         indexPageInput = new JTextField(7);
@@ -97,7 +97,7 @@ public class PdfPanel extends JPanel {
             }
         });
 
-        /* A la pression de la touche entrée on fait une recherche */
+        /* À la pression de la touche entrée on fait une recherche */
         indexPageInput.addActionListener(e -> {
             String saisie = indexPageInput.getText();
             try {
@@ -120,7 +120,7 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * @param evt Ecouteur d'évèvement
+     * @param evt Écouteur d'évènement
      */
     private void btnSuivantAction(ActionEvent evt) {
         if (GestionMode.isModeSepare()) nextPage();
@@ -128,7 +128,7 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * @param evt Ecouteur d'évèvement
+     * @param evt Écouteur d'évènement
      */
     private void btnPrecedentAction(ActionEvent evt) {
         if (GestionMode.isModeSepare()) previousPage();
@@ -150,7 +150,7 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * Prédicat qui vérifie si un index de page est valide pour le PDF courrant
+     * Prédicat qui vérifie si un index de page est valide pour le PDF courant
      *
      * @param index Entier correspondant a l'indice du numéro de page à tester
      * @return true si le prédicat est vérifié, false sinon
@@ -161,10 +161,10 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * Methode qui permet de charger un PDF dans le fenêtre courrante
+     * Methode qui permet de charger un PDF dans la fenêtre courante
      *
      * @param pdfFile Le fichier PDF à charger
-     * @return true si le PDF à pu se charger, false sinon
+     * @return true si le PDF a pu se charger, false sinon
      */
     public boolean chargerPdf(File pdfFile) {
         try {
@@ -184,7 +184,7 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * Décharge le document courrant si il y en a un
+     * Décharge le document courant s'il y en a un
      */
     public void dechargerPdf() {
         if (isCharge()) {
@@ -209,7 +209,7 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * Change la taille de la page courrante
+     * Change la taille de la page courante
      *
      * @param scale Valeur flottante (1.00f == 100%)
      */
@@ -219,7 +219,7 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * Change la taille de la page courrante
+     * Change la taille de la page courante
      *
      * @param scale Valeur flottante (1.00f == 100%)
      */
