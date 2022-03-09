@@ -10,6 +10,7 @@ import lecteur_pdf.GestionPdf;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class RaccourcisClavier extends JFrame {
      * Liste des menus items, se remplis a la création de chaque MenuItem de l'application
      */
     public static ArrayList<JMenuItem> listeMenuItems = new ArrayList<>();
+
+    public static ArrayList<RaccourcisElement> listeRaccourcisElement = new ArrayList<>();
 
     /**
      * HashMap qui prend en clé le Nom et en valeur une combinaison de touche : le raccourcis.save clavier
@@ -79,7 +82,6 @@ public class RaccourcisClavier extends JFrame {
     public RaccourcisClavier() {
         super("Modification des raccourcis claviers");
         saisieBloquee = false;
-
         setIconImage(GestionPdf.ICONE);
 
         /* Charge le fichier et affecte les raccourcis aux MenuItems */
@@ -87,23 +89,38 @@ public class RaccourcisClavier extends JFrame {
         affecterRaccourcis();
 
         /* Creation de la fenêtre */
-        JPanel panel = new JPanel(new GridLayout(raccourcis.size(), 1, 10, 5));
+        JPanel panel = new JPanel(new GridLayout(raccourcis.size() +1, 1, 10, 5));
 
         for (String nom : LISTE_NOM) {
             RaccourcisElement raccourcisElement = new RaccourcisElement(nom, raccourcis.get(nom));
+            listeRaccourcisElement.add(raccourcisElement);
             panel.add(raccourcisElement);
         }
 
-//        JButton reset = new JButton("Reset");
-//        panel.add(reset, 1, raccourcis.size());
+        JButton btnReset = new JButton("Raccourcis par défaut");
+        btnReset.addActionListener(this::actionBtnReset);
+        panel.add(btnReset);
 
         add(panel);
-
-        sauvegarderRaccourcis();
 
         pack();
         setMinimumSize(new Dimension(400, 200));
         setVisible(true);
+    }
+
+    private void actionBtnReset(ActionEvent evt) {
+        initialisationFichierRaccourcis();
+        chargerRaccourcis();
+
+        // Affichage des bouttons
+        for (int i = 0; i < listeRaccourcisElement.size() ; i++) {
+            String cle = LISTE_NOM[i];
+            KeyStroke valeur = raccourcis.get(cle);
+
+            /* Met a jour l'affichage du boutton */
+            listeRaccourcisElement.get(i).setRaccourcis(valeur);
+        }
+        affecterRaccourcis();
     }
 
     /**

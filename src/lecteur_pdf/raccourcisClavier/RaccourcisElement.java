@@ -21,7 +21,7 @@ public class RaccourcisElement extends JPanel {
         /* Interface */
         JLabel nomElement = new JLabel(nom);
         System.out.println(raccourcis);
-        btnRaccourcis = new JButton(modifierToString(raccourcis.getModifiers()) + " + " + raccourcis.toString().split(" ")[2]);
+        btnRaccourcis = new JButton(keystrokeToString(raccourcis));
         add(nomElement);
         add(btnRaccourcis);
 
@@ -104,4 +104,12 @@ public class RaccourcisElement extends JPanel {
         };
     }
 
+    private String keystrokeToString(KeyStroke keyStroke) {
+        return modifierToString(keyStroke.getModifiers()) + " + " + keyStroke.toString().split(" ")[2];
+    }
+
+    public void setRaccourcis(KeyStroke raccourcis) {
+        this.raccourcis = raccourcis;
+        this.btnRaccourcis.setText(keystrokeToString(raccourcis));
+    }
 }
