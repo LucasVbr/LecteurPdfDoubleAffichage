@@ -6,10 +6,9 @@
 
 package lecteur_pdf.menuBar.menuItems;
 
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
 /**
  * TODO commentaires
@@ -25,11 +24,8 @@ public class ZoomDefaut extends MenuItem {
      * TODO
      * @param parent
      */
-    public ZoomDefaut(IhmPdf parent) {
+    public ZoomDefaut(Fenetre parent) {
         super(parent, "Zoom 100%");
-
-//        setRaccourcis(KeyEvent.VK_G, KeyEvent.CTRL_DOWN_MASK);
-
     }
 
     @Override

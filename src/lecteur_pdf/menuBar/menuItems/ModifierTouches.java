@@ -6,7 +6,7 @@
 
 package lecteur_pdf.menuBar.menuItems;
 
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 import java.awt.event.ActionEvent;
@@ -25,7 +25,7 @@ public class ModifierTouches extends MenuItem {
      * TODO
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
-    public ModifierTouches(IhmPdf parent) {
+    public ModifierTouches(Fenetre parent) {
         super(parent, "Modifier Touches");
     }
 

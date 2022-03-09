@@ -7,8 +7,8 @@
 package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.GestionMode;
-import lecteur_pdf.GestionPdf;
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.GestionFenetre;
+import lecteur_pdf.Fenetre;
 
 import java.awt.event.ActionEvent;
 
@@ -26,16 +26,16 @@ public class NouvelleFenetre extends MenuItem {
      * TODO
      * @param parent
      */
-    public NouvelleFenetre(IhmPdf parent) {
+    public NouvelleFenetre(Fenetre parent) {
         super(parent, "Nouvelle Fenêtre");
     }
 
     @Override
     public void action(ActionEvent evt) {
         /* Essaye de créer une nouvelle fenêtre */
-        GestionPdf.newIhmPdf();
+        GestionFenetre.newIhmPdf();
 
         /* Désactive le bouton si on a atteint la limite des affichages */
-        if (GestionPdf.ihmPdfList.size() == GestionPdf.maxPdf) GestionMode.desactiverFenetre();
+        if (GestionFenetre.FENETRE_LIST.size() == GestionFenetre.NB_MAX_PDF) GestionMode.desactiverFenetre();
     }
 }

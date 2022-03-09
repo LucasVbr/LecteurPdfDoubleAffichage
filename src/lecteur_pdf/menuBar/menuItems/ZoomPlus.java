@@ -6,10 +6,9 @@
 
 package lecteur_pdf.menuBar.menuItems;
 
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
 /**
  * TODO commentaires
@@ -25,11 +24,8 @@ public class ZoomPlus extends MenuItem {
      * TODO
      * @param parent
      */
-    public ZoomPlus(IhmPdf parent) {
+    public ZoomPlus(Fenetre parent) {
         super(parent, "Zoom 150%");
-
-//        setRaccourcis(KeyEvent.VK_H, KeyEvent.CTRL_DOWN_MASK);
-
     }
 
     @Override

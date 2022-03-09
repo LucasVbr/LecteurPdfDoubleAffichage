@@ -6,10 +6,9 @@
 
 package lecteur_pdf.menuBar.menuItems;
 
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
 /**
  * TODO commentaires
@@ -25,10 +24,8 @@ public class PleinEcran extends MenuItem {
      * TODO
      * @param parent
      */
-    public PleinEcran(IhmPdf parent) {
+    public PleinEcran(Fenetre parent) {
         super(parent, "Mode Plein Ecran");
-
-//        setRaccourcis(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK);
     }
 
     @Override

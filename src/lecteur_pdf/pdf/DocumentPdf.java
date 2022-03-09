@@ -21,7 +21,7 @@ import java.io.IOException;
  * @author Noé Villeneuve
  * @author Tristan Nogaret
  */
-public class PdfLoader {
+public class DocumentPdf {
 
     /**
      * TODO
@@ -42,7 +42,7 @@ public class PdfLoader {
      * @param file
      * @throws IOException
      */
-    public PdfLoader(File file) throws IOException {
+    public DocumentPdf(File file) throws IOException {
         document = PDDocument.load(file);
         renderer = new PDFRenderer(document);
         minWidth = -1;
@@ -111,17 +111,5 @@ public class PdfLoader {
             minWidth = -1;
             minHeight = -1;
         } catch (IOException ignored) {}
-    }
-
-    /**
-     * TODO
-     *
-     * @param file
-     */
-    public void load(File file) {
-        try {
-            document = PDDocument.load(file);
-        } catch (IOException ignored) {
-        }
     }
 }

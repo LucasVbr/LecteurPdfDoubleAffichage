@@ -6,69 +6,60 @@
 
 package lecteur_pdf;
 
-import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
-
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO commentaires
+ * Gestionnaire des fênetres ouvertes dans l'application
  *
  * @author Léo Franch
  * @author Lucas Vabre
  * @author Noé Villeneuve
  * @author Tristan Nogaret
  */
-public class GestionPdf {
-    /**
-     * TODO
-     */
-    public static final String TITRE_APPLICATION = "LPDA";
+public class GestionFenetre {
 
+    /**
+     * Iconne de l'application (affiché en haut a droite des fenêtres)
+     */
     public static final Image ICONE = new ImageIcon("./lib/icon.png").getImage();
 
     /**
-     * TODO
+     * Nombre maximum de PDF que l'application peut ouvrir en simultané
      */
-     public static final int maxPdf = 2;
+     public static final int NB_MAX_PDF = 2;
 
     /**
-     * TODO
+     * Liste des fenêtres ouvertes
      */
-    public static final List<IhmPdf> ihmPdfList = new ArrayList<>();
+    public static final List<Fenetre> FENETRE_LIST = new ArrayList<>();
 
     /**
-     * Crée une nouvelle fenêtre
+     * Crée une nouvelle fenêtre si NB_MAX_PDF n'est pas atteint
      */
     public static void newIhmPdf() {
-        if (ihmPdfList.size() >= maxPdf) {
-            JOptionPane.showMessageDialog(new JFrame(),"vous ne pouvez plus ouvrir de nouvelle fenêtre car vous avez atteint le nombre maximum. ");
-            return;
+        if (FENETRE_LIST.size() < NB_MAX_PDF) {
+            Fenetre ihm = new Fenetre();
+            FENETRE_LIST.add(ihm);
         }
-
-        try {
-            IhmPdf ihm = new IhmPdf();
-            ihmPdfList.add(ihm);
-        } catch (IOException ignored) {}
     }
 
     /**
-     * Methode affiche la page suivante en mode Synchronisé
+     * Methode qui affiche la page suivante de tout les PDF ouvert (mode Synchronisé)
      */
     public static void nextPages() {
-        for (IhmPdf ihm : ihmPdfList) {
+        for (Fenetre ihm : FENETRE_LIST) {
             ihm.getPdfPanel().nextPage();
         }
     }
 
     /**
-     * Methode affiche la page précédente en mode Synchronisé
+     * Methode qui affiche la page précédente de tout les PDF ouvert (mode Synchronisé)
      */
     public static void previousPages() {
-        for (IhmPdf ihm : ihmPdfList) {
+        for (Fenetre ihm : FENETRE_LIST) {
             ihm.getPdfPanel().previousPage();
         }
     }
@@ -78,9 +69,7 @@ public class GestionPdf {
      * @param args non utilisé
      */
     public static void main(String[] args) {
-        /* Définit le style de la fenêtre sur l'explorateur windows lorsque
-         * cela est possible
-         */
+        /* Définit le style de la fenêtre sur l'explorateur windows si possible */
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception ignored) {}

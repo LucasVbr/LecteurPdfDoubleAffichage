@@ -6,7 +6,7 @@
 
 package lecteur_pdf.menuBar;
 
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 import lecteur_pdf.menuBar.menu.MenuAffichage;
 import lecteur_pdf.menuBar.menu.MenuFichier;
 import lecteur_pdf.menuBar.menu.MenuMode;
@@ -24,7 +24,7 @@ import javax.swing.*;
  */
 public class MenuBar extends JMenuBar {
     
-    public MenuBar(IhmPdf parent) {
+    public MenuBar(Fenetre parent) {
         add(new MenuFichier(parent));
         add(new MenuAffichage(parent));
         add(new MenuMode(parent));

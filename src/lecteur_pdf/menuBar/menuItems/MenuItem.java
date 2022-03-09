@@ -6,14 +6,14 @@
 
 package lecteur_pdf.menuBar.menuItems;
 
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * TODO commentaires
+ * Classe abstraite qui défini les Elements de menu qui necessite d'acceder à leur Fenêtre parente
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,25 +23,26 @@ import java.awt.event.ActionEvent;
 public abstract class MenuItem extends JMenuItem {
 
     /**
-     * TODO
+     * Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
-    IhmPdf parent;
+    Fenetre parent;
 
     /**
-     * TODO
+     * Crée un nouvel Element de Menu avec un nom, une action et se référence dans la liste des raccourcis claviers
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      * @param name Nom de l'action
      */
-    public MenuItem(IhmPdf parent, String name) {
+    public MenuItem(Fenetre parent, String name) {
         super(name);
         this.parent = parent;
         addActionListener(this::action);
         RaccourcisClavier.listeMenuItems.add(this);
     }
 
+    /**
+     * Action de l'element lors du clic
+     * @param evt Action de l'utilisateur (clic)
+     */
     protected abstract void action(ActionEvent evt);
-
-
-
 }

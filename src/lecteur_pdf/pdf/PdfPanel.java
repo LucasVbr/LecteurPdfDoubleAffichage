@@ -7,7 +7,8 @@
 package lecteur_pdf.pdf;
 
 import lecteur_pdf.GestionMode;
-import lecteur_pdf.GestionPdf;
+import lecteur_pdf.GestionFenetre;
+import lecteur_pdf.Popup;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +34,7 @@ public class PdfPanel extends JPanel {
     private boolean processing;
 
     /* Chargeur de Pdf */
-    private PdfLoader pdfLoader;
+    private DocumentPdf pdfLoader;
 
     /* Interface */
     private final JTextField indexPageInput;
@@ -123,7 +124,7 @@ public class PdfPanel extends JPanel {
      */
     private void btnSuivantAction(ActionEvent evt) {
         if (GestionMode.isModeSepare()) nextPage();
-        else GestionPdf.nextPages();
+        else GestionFenetre.nextPages();
     }
 
     /**
@@ -131,7 +132,7 @@ public class PdfPanel extends JPanel {
      */
     private void btnPrecedentAction(ActionEvent evt) {
         if (GestionMode.isModeSepare()) previousPage();
-        else GestionPdf.previousPages();
+        else GestionFenetre.previousPages();
     }
 
     public void resize() {
@@ -167,44 +168,44 @@ public class PdfPanel extends JPanel {
      */
     public boolean chargerPdf(File pdfFile) {
         try {
-            setPdfLoader(new PdfLoader(pdfFile));
+            setPdfLoader(new DocumentPdf(pdfFile));
             setPage(0);
+            return true;
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(new JFrame(),"Une erreur s'est produite dans le chargement de votre document, il est peut-être corrompu. ");
+            return false;
         }
-        return true;
     }
 
     /**
      * @param pdfLoader
      */
-    public void setPdfLoader(PdfLoader pdfLoader) {
+    public void setPdfLoader(DocumentPdf pdfLoader) {
         this.pdfLoader = pdfLoader;
     }
 
     /**
-     * TODO
+     * Décharge le document courrant si il y en a un
      */
     public void dechargerPdf() {
-        if (pdfLoader == null) return;
+        if (isCharge()) {
+            /* Ferme le loader et l'efface */
+            pdfLoader.close();
+            pdfLoader = null;
 
-        /* Ferme le loader et l'efface */
-        pdfLoader.close();
-        pdfLoader = null;
+            /* Efface l'image de la page */
+            page.setIcon(null);
+            currentPage = 0;
 
-        /* Efface l'image de la page */
-        page.setIcon(null);
-        currentPage = 0;
+            /* Interface Vide */
+            indexPageInput.setText("");
+            maxPageLabel.setText("/ -");
 
-        /* Interface Vide */
-        indexPageInput.setText("");
-        maxPageLabel.setText("/ -");
+            /* Efface les données relatives au zoom */
+            scaleSizing = 0.0f;
+            scaleZoom = 1.0f;
 
-        /* Efface les données relatives au zoom */
-        scaleSizing = 0.0f;
-        scaleZoom = 1.0f;
-
-        validate();
+            validate();
+        }
     }
 
     /**
@@ -247,15 +248,24 @@ public class PdfPanel extends JPanel {
      * @param index Le numéro de la page où l'on veut se rendre
      */
     private void setPage(int index) {
-        if (!isPageValide(index)) return;
+        if (isPageValide(index)) {
 
-        processing = true;
-        try {
-            page.setIcon(new ImageIcon(pdfLoader.renderPage(index, scaleZoom + scaleSizing)));
-            currentPage = index;
-            indexPageInput.setText(Integer.toString(currentPage + 1));
-            maxPageLabel.setText(String.format("/%d", pdfLoader.getNbPages()));
-        } catch (IOException ignored) {}
-        processing = false;
+            processing = true;
+            try {
+                page.setIcon(new ImageIcon(pdfLoader.renderPage(index, scaleZoom + scaleSizing)));
+                currentPage = index;
+                indexPageInput.setText(Integer.toString(currentPage + 1));
+                maxPageLabel.setText(String.format("/%d", pdfLoader.getNbPages()));
+            } catch (IOException ignored) {}
+            processing = false;
+        }
+    }
+
+    /**
+     * Prédicat qui vérifie si un PDF est chargé ou non
+     * @return true si un PDF est chargé, false sinon
+     */
+    public boolean isCharge() {
+        return pdfLoader != null;
     }
 }

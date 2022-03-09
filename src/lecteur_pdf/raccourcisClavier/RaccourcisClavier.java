@@ -6,7 +6,7 @@
 
 package lecteur_pdf.raccourcisClavier;
 
-import lecteur_pdf.GestionPdf;
+import lecteur_pdf.GestionFenetre;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,9 +27,9 @@ import java.util.Map;
  */
 public class RaccourcisClavier extends JFrame {
 
-    public static boolean saisieBloquee;
-
     public static final String FICHIER_SAUVEGARDE = "raccourcis.save";
+
+    public static boolean saisieBloquee;
 
     /**
      * Liste des menus items, se remplis a la création de chaque MenuItem de l'application
@@ -82,7 +82,7 @@ public class RaccourcisClavier extends JFrame {
     public RaccourcisClavier() {
         super("Modification des raccourcis claviers");
         saisieBloquee = false;
-        setIconImage(GestionPdf.ICONE);
+        setIconImage(GestionFenetre.ICONE);
 
         /* Charge le fichier et affecte les raccourcis aux MenuItems */
         chargerRaccourcis();

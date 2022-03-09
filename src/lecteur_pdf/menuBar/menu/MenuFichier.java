@@ -6,7 +6,7 @@
 
 package lecteur_pdf.menuBar.menu;
 
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 import lecteur_pdf.menuBar.menuItems.*;
 
 import javax.swing.*;
@@ -26,10 +26,8 @@ public class MenuFichier extends JMenu {
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce menu
      */
-    public MenuFichier(IhmPdf parent) {
+    public MenuFichier(Fenetre parent) {
         super("Fichier");
-
-        /* - Ajoute les différentes options - */
 
         add(new OuvrirFichier(parent));
         add(new FermerFichier(parent));

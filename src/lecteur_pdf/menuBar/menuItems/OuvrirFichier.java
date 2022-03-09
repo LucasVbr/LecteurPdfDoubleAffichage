@@ -6,12 +6,11 @@
 
 package lecteur_pdf.menuBar.menuItems;
 
-import lecteur_pdf.GestionPdf;
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
+import lecteur_pdf.Popup;
 import lecteur_pdf.SelectionnerFichier;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.io.File;
 
 /**
@@ -28,7 +27,7 @@ public class OuvrirFichier extends MenuItem {
      * TODO
      *
      */
-    public OuvrirFichier(IhmPdf parent) {
+    public OuvrirFichier(Fenetre parent) {
         super(parent, "Ouvrir");
 
 //        setRaccourcis(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK);
@@ -45,14 +44,16 @@ public class OuvrirFichier extends MenuItem {
 
         /* Si il y a deja un fichier d'ouvert, on le ferme */
         parent.getPdfPanel().dechargerPdf();
-        parent.setTitle(GestionPdf.TITRE_APPLICATION);
+        parent.setTitle(Fenetre.TITRE);
         parent.pack();
 
         if (parent.getPdfPanel().chargerPdf(fichier)) {
-            parent.setTitle(GestionPdf.TITRE_APPLICATION + " - " + fichier.getName());
+            parent.setTitle(Fenetre.TITRE + " - " + fichier.getName());
             parent.pack();
         } else {
-            // TODO Erreur fichier n'as pas pu etre chargé
+            final String TITRE = "Erreur";
+            final String MESSAGE = "Erreur : Le document n'as pas pu être chargé";
+            Popup.errorPopup(parent, TITRE, MESSAGE);
         }
     }
 }

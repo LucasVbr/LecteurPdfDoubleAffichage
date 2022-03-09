@@ -7,11 +7,10 @@
 package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.GestionMode;
-import lecteur_pdf.GestionPdf;
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.GestionFenetre;
+import lecteur_pdf.Fenetre;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
 /**
  * TODO commentaires
@@ -27,13 +26,13 @@ public class PagePrecedente extends MenuItem {
      * TODO
      * @param parent
      */
-    public PagePrecedente(IhmPdf parent) {
+    public PagePrecedente(Fenetre parent) {
         super(parent, "Page précédente");
     }
 
     @Override
     protected void action(ActionEvent evt) {
         if (GestionMode.isModeSepare()) parent.getPdfPanel().previousPage();
-        else GestionPdf.previousPages();
+        else GestionFenetre.previousPages();
     }
 }

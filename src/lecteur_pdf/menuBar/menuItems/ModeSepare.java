@@ -7,7 +7,6 @@
 package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.GestionMode;
-import lecteur_pdf.IhmPdf;
 import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 
 import javax.swing.*;
@@ -24,15 +23,10 @@ public class ModeSepare extends JRadioButtonMenuItem {
 
     /**
      * TODO
-     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     public ModeSepare() {
         super("Mode Séparé");
-
-        addActionListener(e -> {
-            GestionMode.setModeSepare();
-        });
-
+        addActionListener(e -> GestionMode.setModeSepare());
         RaccourcisClavier.listeMenuItems.add(this);
     }
 }

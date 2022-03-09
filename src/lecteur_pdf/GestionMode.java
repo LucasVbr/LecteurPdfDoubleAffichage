@@ -104,7 +104,7 @@ public class GestionMode {
     /**
      * TODO
      */
-    public static void activerFenetre() {
+    public static void activerBtnNouvelleFenetre() {
         for (NouvelleFenetre item : nouvelleFenetreList) {
             item.setEnabled(true);
             item.setBackground(Color.BLACK);

@@ -7,7 +7,7 @@
 package lecteur_pdf.menuBar.menu;
 
 import lecteur_pdf.GestionMode;
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 import lecteur_pdf.menuBar.menuItems.ModeSepare;
 import lecteur_pdf.menuBar.menuItems.ModeSynchronise;
 import lecteur_pdf.menuBar.menuItems.NouvelleFenetre;
@@ -29,7 +29,7 @@ public class MenuMode extends JMenu {
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce menu
      */
-    public MenuMode(IhmPdf parent) {
+    public MenuMode(Fenetre parent) {
         super("Mode");
 
         /* Crée les différentes options */

@@ -12,8 +12,8 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 
 /**
- * Classe qui permet d'ouvrir une fenêtre pour sélectionner le fichier pdf à
- * ouvrir
+ * Classe qui permet d'ouvrir une fenêtre pour sélectionner le fichier pdf à ouvrir
+ *
  * @author Léo FRANCH
  * @author Tristan NOGARET
  * @author Lucàs VABRE
@@ -23,8 +23,8 @@ import java.io.File;
 public class SelectionnerFichier {
 
     /**
-     * Méthode qui créée une fenêtre pour que l'utilisateur choisisse un
-     * fichier PDF
+     * Méthode qui créée une fenêtre pour que l'utilisateur choisisse un fichier PDF
+     *
      * @return le fichier choisi par l'utilisateur
      */
     public static File ouvrirFichier(JFrame parent) {

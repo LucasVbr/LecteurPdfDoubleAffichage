@@ -6,7 +6,7 @@
 
 package lecteur_pdf.menuBar.menu;
 
-import lecteur_pdf.IhmPdf;
+import lecteur_pdf.Fenetre;
 import lecteur_pdf.menuBar.menuItems.*;
 
 import javax.swing.*;
@@ -26,16 +26,14 @@ public class MenuAffichage extends JMenu {
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce menu
      */
-    public MenuAffichage(IhmPdf parent) {
+    public MenuAffichage(Fenetre parent) {
         super("Affichage");
-
-        /* - Ajoute les différentes options - */
 
         /* Mode plein écran */
         add(new PleinEcran(parent));
         addSeparator();
 
-        /* Navigation dans les différentes pages des documents */
+        /* Navigation dans les différentes pages */
         add(new PagePrecedente(parent));
         add(new PageSuivante(parent));
         addSeparator();
@@ -46,6 +44,7 @@ public class MenuAffichage extends JMenu {
         add(new ZoomPlus(parent));
         addSeparator();
 
+        /* Mode d'affichage */
         add(new PageEntiere(parent));
         add(new PleineLargeur(parent));
     }
