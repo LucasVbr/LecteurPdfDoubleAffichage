@@ -13,7 +13,7 @@ import lecteur_pdf.Fenetre;
 import java.awt.event.ActionEvent;
 
 /**
- * TODO commentaires
+ * Element de Menu Page Suivante qui permet d'afficher la page suivante du document courrant (ou les pages suivantes si le mode Synchronisé est activé)
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,8 +23,9 @@ import java.awt.event.ActionEvent;
 public class PageSuivante extends MenuItem {
 
     /**
-     * TODO
-     * @param parent
+     * Crée un nouvel Element de Menu "Page Suivante"
+     *
+     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     public PageSuivante(Fenetre parent) {
         super(parent, "Page suivante");

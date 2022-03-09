@@ -18,24 +18,36 @@ import java.io.File;
  * @author Tristan NOGARET
  * @author Lucàs VABRE
  * @author Noé VILLENEUVE
- * @version 1.0
  */
 public class SelectionnerFichier {
+
+    /** Le titre de la fenêtre */
+    private static final String TITRE = "Sélectionnez un PDF";
+
+    /** Description du filtre */
+    private static final String DESCRIPTION = "PDF files (*.pdf)";
+
+    /** Extension de fichier filtré */
+    private static final String EXTENSION = "pdf";
+
+    /** Valeur du boutton OK */
+    private static final String BOUTON_OK = "Ouvrir";
+
+    /** Valeur du boutton Annuler */
+    private static final String BOUTON_ANNULER = "Annuler";
+
+    /** indice au survol du boutton Ok */
+    private static final String INDICE_BOUTON_OK = "Ouvre le fichier sélectionné";
+
+    /** Indice au survol du boutton Annuler */
+    private static final String INDICE_BOUTON_ANNULER = "Annule la sélection";
 
     /**
      * Méthode qui créée une fenêtre pour que l'utilisateur choisisse un fichier PDF
      *
-     * @return le fichier choisi par l'utilisateur
+     * @return le fichier choisi par l'utilisateur, null si aucun fichier n'est choisis
      */
     public static File ouvrirFichier(JFrame parent) {
-
-        final String TITRE = "Sélectionnez un PDF";
-        final String DESCRIPTION = "PDF files (*.pdf)";
-        final String EXTENSION = "pdf";
-        final String BOUTON_OK = "Ouvrir";
-        final String BOUTON_ANNULER = "Annuler";
-        final String INDICE_BOUTON_OK = "Ouvre le fichier sélectionné";
-        final String INDICE_BOUTON_ANNULER = "Annule la sélection";
 
         /* Crée une fenêtre de sélection de fichier */
         JFileChooser fileChooser = new JFileChooser(
@@ -67,6 +79,7 @@ public class SelectionnerFichier {
             return new File(fileChooser.getSelectedFile().getAbsolutePath());
         }
 
+        /* Renvoie null si le fichier n'est pas trouvé */
         return null;
     }
 }

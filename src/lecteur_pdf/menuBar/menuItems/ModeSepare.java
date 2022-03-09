@@ -12,7 +12,7 @@ import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 import javax.swing.*;
 
 /**
- * TODO commentaires
+ * Element de Menu Mode Séparé qui permet d'activer le défilement des pages de documents en séparé
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -22,7 +22,7 @@ import javax.swing.*;
 public class ModeSepare extends JRadioButtonMenuItem {
 
     /**
-     * TODO
+     * Crée un nouvel Element de Menu "Mode Séparé"
      */
     public ModeSepare() {
         super("Mode Séparé");

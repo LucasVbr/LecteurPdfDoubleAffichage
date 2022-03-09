@@ -12,7 +12,7 @@ import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 import java.awt.event.ActionEvent;
 
 /**
- * TODO commentaires
+ * Element de Menu Modifier Touches qui permet d'ouvrir une fenêtre pour modifier les raccourcis claviers de l'application
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -22,7 +22,8 @@ import java.awt.event.ActionEvent;
 public class ModifierTouches extends MenuItem {
 
     /**
-     * TODO
+     * Crée un nouvel Element de Menu "Modifier Touches"
+     *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     public ModifierTouches(Fenetre parent) {

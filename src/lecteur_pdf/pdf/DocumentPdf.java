@@ -23,17 +23,16 @@ import java.io.IOException;
  */
 public class DocumentPdf {
 
-    /**
-     * TODO
-     */
+    /** TODO */
     private PDDocument document;
 
-    /**
-     * TODO
-     */
+    /** TODO */
     private PDFRenderer renderer;
 
+    /** TODO */
     private int minWidth;
+
+    /** TODO */
     private int minHeight;
 
     /**
@@ -49,10 +48,16 @@ public class DocumentPdf {
         minHeight = -1;
     }
 
+    /**
+     * TODO
+     */
     public int getMinWidth() {
         return minWidth;
     }
 
+    /**
+     * TODO
+     */
     public int getMinHeight() {
         return minHeight;
     }
@@ -66,11 +71,16 @@ public class DocumentPdf {
         return document.getNumberOfPages();
     }
 
-
+    /**
+     * TODO
+     */
     public BufferedImage renderPage(int pageIndex) throws IOException {
         return renderPage(pageIndex, 1.0f);
     }
 
+    /**
+     * TODO
+     */
     public BufferedImage setScale(float scale) {
         try {
             return renderPage(0, scale);
@@ -102,7 +112,7 @@ public class DocumentPdf {
     }
 
     /**
-     * TODO
+     * Ferme le document courrant et redéfini les paramêtres par défaut
      */
     public void close() {
         try {

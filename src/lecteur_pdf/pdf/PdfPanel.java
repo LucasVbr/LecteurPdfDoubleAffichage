@@ -135,15 +135,31 @@ public class PdfPanel extends JPanel {
         else GestionFenetre.previousPages();
     }
 
+    /**
+     * TODO
+     */
     public void resize() {
-        if (pdfLoader != null && !processing) {
-            scaleSizing = pleineLargeur
-                    ? (((float) viewport.getWidth() - (float) scrollPane.getVerticalScrollBar().getWidth()) / (float) pdfLoader.getMinWidth()) - scaleZoom
-                    : (((float) viewport.getHeight() - (float) scrollPane.getHorizontalScrollBar().getHeight()) / (float) pdfLoader.getMinHeight()) - scaleZoom;
-            updateScaleSizing(scaleSizing);
+        if (pdfLoader == null || processing) return;
+
+        if (pleineLargeur) {
+            float viewportWidth = viewport.getWidth();
+            float scrollpaneWidth = scrollPane.getVerticalScrollBar().getWidth();
+            float pdfMinWidth = pdfLoader.getMinWidth();
+
+            scaleSizing = (viewportWidth - scrollpaneWidth) / pdfMinWidth - scaleZoom;
+        } else {
+            float viewportHeight = viewport.getHeight();
+            float scrollpaneHeight = scrollPane.getVerticalScrollBar().getHeight();
+            float pdfMinHeight = pdfLoader.getMinHeight();
+
+            scaleSizing = (viewportHeight - scrollpaneHeight) / pdfMinHeight - scaleZoom;
         }
+        updateScaleSizing(scaleSizing);
     }
 
+    /**
+     * @param pleineLargeur booléen qui défini l'état du mode pleine largeur
+     */
     public void setPleineLargeur(boolean pleineLargeur) {
         this.pleineLargeur = pleineLargeur;
         resize();
@@ -156,8 +172,9 @@ public class PdfPanel extends JPanel {
      * @return true si le prédicat est vérifié, false sinon
      */
     private boolean isPageValide(int index) {
-        if (pdfLoader == null) return false;
-        return 0 <= index && index < pdfLoader.getNbPages();
+        return pdfLoader != null
+                && 0 <= index
+                && index < pdfLoader.getNbPages();
     }
 
     /**
@@ -171,13 +188,12 @@ public class PdfPanel extends JPanel {
             setPdfLoader(new DocumentPdf(pdfFile));
             setPage(0);
             return true;
-        } catch (IOException e) {
-            return false;
-        }
+        } catch (IOException ignored) {}
+        return false;
     }
 
     /**
-     * @param pdfLoader
+     * @param pdfLoader un nouveau document PDF à affecter à la fenêtre
      */
     public void setPdfLoader(DocumentPdf pdfLoader) {
         this.pdfLoader = pdfLoader;
@@ -187,25 +203,25 @@ public class PdfPanel extends JPanel {
      * Décharge le document courant s'il y en a un
      */
     public void dechargerPdf() {
-        if (isCharge()) {
-            /* Ferme le loader et l'efface */
-            pdfLoader.close();
-            pdfLoader = null;
+        if (!isCharge()) return;
 
-            /* Efface l'image de la page */
-            page.setIcon(null);
-            currentPage = 0;
+        /* Ferme le loader et l'efface */
+        pdfLoader.close();
+        pdfLoader = null;
 
-            /* Interface Vide */
-            indexPageInput.setText("");
-            maxPageLabel.setText("/ -");
+        /* Efface l'image de la page */
+        page.setIcon(null);
+        currentPage = 0;
 
-            /* Efface les données relatives au zoom */
-            scaleSizing = 0.0f;
-            scaleZoom = 1.0f;
+        /* Interface Vide */
+        indexPageInput.setText("");
+        maxPageLabel.setText("/ -");
 
-            validate();
-        }
+        /* Efface les données relatives au zoom */
+        scaleSizing = 0.0f;
+        scaleZoom = 1.0f;
+
+        validate();
     }
 
     /**
@@ -223,7 +239,7 @@ public class PdfPanel extends JPanel {
      *
      * @param scale Valeur flottante (1.00f == 100%)
      */
-    public void updateScaleSizing(float scale) {
+    private void updateScaleSizing(float scale) {
         scaleSizing = scale;
         setPage(currentPage);
     }
@@ -248,17 +264,16 @@ public class PdfPanel extends JPanel {
      * @param index Le numéro de la page où l'on veut se rendre
      */
     private void setPage(int index) {
-        if (isPageValide(index)) {
+        if (!isPageValide(index)) return;
 
-            processing = true;
-            try {
-                page.setIcon(new ImageIcon(pdfLoader.renderPage(index, scaleZoom + scaleSizing)));
-                currentPage = index;
-                indexPageInput.setText(Integer.toString(currentPage + 1));
-                maxPageLabel.setText(String.format("/%d", pdfLoader.getNbPages()));
-            } catch (IOException ignored) {}
-            processing = false;
-        }
+        processing = true;
+        try {
+            page.setIcon(new ImageIcon(pdfLoader.renderPage(index, scaleZoom + scaleSizing)));
+            currentPage = index;
+            indexPageInput.setText(Integer.toString(currentPage + 1));
+            maxPageLabel.setText(String.format("/%d", pdfLoader.getNbPages()));
+        } catch (IOException ignored) {}
+        processing = false;
     }
 
     /**

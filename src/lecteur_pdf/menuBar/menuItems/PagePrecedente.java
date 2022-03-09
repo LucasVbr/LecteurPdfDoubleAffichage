@@ -13,7 +13,7 @@ import lecteur_pdf.Fenetre;
 import java.awt.event.ActionEvent;
 
 /**
- * TODO commentaires
+ * Element de Menu Page Precedente qui permet d'afficher la page précédente du document courrant (ou les pages précédentes si le mode Synchronisé est activé)
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,8 +23,9 @@ import java.awt.event.ActionEvent;
 public class PagePrecedente extends MenuItem {
 
     /**
-     * TODO
-     * @param parent
+     * Crée un nouvel Element de Menu "Page Précédente"
+     *
+     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     public PagePrecedente(Fenetre parent) {
         super(parent, "Page précédente");

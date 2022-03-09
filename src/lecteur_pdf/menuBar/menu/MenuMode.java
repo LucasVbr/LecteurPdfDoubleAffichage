@@ -30,7 +30,6 @@ public class MenuMode extends JMenu {
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce menu
      */
-    @SuppressWarnings("GrazieInspection")
     public MenuMode(Fenetre parent) {
         super("Mode");
 

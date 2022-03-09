@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * TODO commentaires
+ * Element de Menu Fermer qui permet de fermer le document PDF courrant
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -21,6 +21,12 @@ import java.awt.event.ActionEvent;
  * @author Tristan Nogaret
  */
 public class FermerFichier extends MenuItem {
+
+    /** Titre de la popup lors de la fermeture d'un document */
+    public static final String TITRE = "Fermeture du document";
+
+    /** Message de la Popup lors de la fermeture d'un document */
+    public static final String MESSAGE = "Êtes-vous sûr de vouloir fermer le document ?";
 
     /**
      * Crée un nouvel Element de Menu "Fermer"
@@ -34,10 +40,8 @@ public class FermerFichier extends MenuItem {
     @Override
     protected void action(ActionEvent evt) {
         if (parent.getPdfPanel().isCharge()) {
-            String TITRE = "Fermeture du document";
-            String MESSAGE = "Êtes-vous sûr de vouloir fermer le document ?";
-
-            if (Popup.OuiNonPopup(parent, TITRE, MESSAGE) == JOptionPane.YES_OPTION) parent.fermerPdf();
+            int resultatPopup = Popup.OuiNonPopup(parent, TITRE, MESSAGE);
+            if (resultatPopup == JOptionPane.YES_OPTION) parent.fermerPdf();
         }
     }
 }

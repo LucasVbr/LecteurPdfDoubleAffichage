@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * TODO commentaires
+ * Element de Menu Quitter qui permet de fermer la fenêtre courrante, ferme l'application si il s'agit de la dernière fenêtre fermée
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,8 +23,9 @@ import java.awt.event.ActionEvent;
 public class Quitter extends MenuItem {
 
     /**
-     * TODO
-     * @param parent
+     * Crée un nouvel Element de Menu "Quitter"
+     *
+     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     public Quitter(Fenetre parent) {
         super(parent, "Quitter");

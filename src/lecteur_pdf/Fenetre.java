@@ -122,7 +122,8 @@ public class Fenetre extends JFrame {
 
         /* Si la liste des fenêtres n'est pas pleine alors on réactive le
         bouton pour créer une nouvelle fenêtre  */
-        if (GestionFenetre.FENETRE_LIST.size() < GestionFenetre.NB_MAX_PDF) GestionMode.activerBtnNouvelleFenetre();
+        if (GestionFenetre.FENETRE_LIST.size() < GestionFenetre.NB_MAX_PDF)
+            GestionMode.activerBtnNouvelleFenetre();
 
         /* S'il n'y a plus de fenêtres ouvertes on quitte l'application */
         if (GestionFenetre.FENETRE_LIST.size() == 0) System.exit(0);

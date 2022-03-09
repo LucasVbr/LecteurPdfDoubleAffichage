@@ -11,7 +11,7 @@ import lecteur_pdf.Fenetre;
 import java.awt.event.ActionEvent;
 
 /**
- * TODO commentaires
+ * Element de Menu Zoom 150% qui permet de zoomer
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -21,8 +21,9 @@ import java.awt.event.ActionEvent;
 public class ZoomPlus extends MenuItem {
 
     /**
-     * TODO
-     * @param parent
+     * Crée un nouvel Element de Menu "Zoom 150%"
+     *
+     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     public ZoomPlus(Fenetre parent) {
         super(parent, "Zoom 150%");

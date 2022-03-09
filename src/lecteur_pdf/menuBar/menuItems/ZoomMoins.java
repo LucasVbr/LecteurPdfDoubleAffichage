@@ -11,7 +11,7 @@ import lecteur_pdf.Fenetre;
 import java.awt.event.ActionEvent;
 
 /**
- * TODO commentaires
+ * Element de Menu Zoom 50% qui permet de dézoomer
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -21,8 +21,9 @@ import java.awt.event.ActionEvent;
 public class ZoomMoins extends MenuItem {
 
     /**
-     * TODO
-     * @param parent
+     * Crée un nouvel Element de Menu "Zoom 50%"
+     *
+     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     public ZoomMoins(Fenetre parent) {
         super(parent, "Zoom 50%");

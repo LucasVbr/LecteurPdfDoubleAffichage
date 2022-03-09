@@ -15,7 +15,7 @@ import lecteur_pdf.menuBar.menu.MenuOptions;
 import javax.swing.*;
 
 /**
- * TODO commentaires
+ * Barre de menu contenant l'ensemble des menus de l'application
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,7 +23,12 @@ import javax.swing.*;
  * @author Tristan Nogaret
  */
 public class MenuBar extends JMenuBar {
-    
+
+    /**
+     * Crée une nouvelle barre de menu avec l'ensemble des menu de l'application
+     *
+     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
+     */
     public MenuBar(Fenetre parent) {
         add(new MenuFichier(parent));
         add(new MenuAffichage(parent));

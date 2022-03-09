@@ -22,10 +22,8 @@ import java.awt.event.ActionEvent;
  */
 public abstract class MenuItem extends JMenuItem {
 
-    /**
-     * Référence de la fenêtre qui possède l'instance de ce MenuItem
-     */
-    Fenetre parent;
+    /** Référence de la fenêtre qui possède l'instance de ce MenuItem */
+    final Fenetre parent;
 
     /**
      * Crée un nouvel Element de Menu avec un nom, une action et se référence dans la liste des raccourcis claviers

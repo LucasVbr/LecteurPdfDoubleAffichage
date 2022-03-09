@@ -12,7 +12,7 @@ import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 import javax.swing.*;
 
 /**
- * TODO commentaires
+ * Element de Menu Mode Synchronisé qui permet d'activer le défilement des pages de documents en simultané
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -22,7 +22,7 @@ import javax.swing.*;
 public class ModeSynchronise extends JRadioButtonMenuItem {
 
     /**
-     * TODO
+     * Crée un nouvel Element de Menu "Mode Synchronisé"
      */
     public ModeSynchronise() {
         super("Mode Synchronisé");
