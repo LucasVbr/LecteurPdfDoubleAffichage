@@ -13,19 +13,22 @@ import lecteur_pdf.GestionMode;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Page Precedente qui permet d'afficher la page précédente du document courrant (ou les pages précédentes si le mode Synchronisé est activé)
+ * Element de Menu PagePrecedente qui permet d'afficher la page précédente du
+ * document courant (ou les pages précédentes si le mode Synchronisé est activé)
  *
  * @author Léo Franch
  * @author Lucas Vabre
  * @author Noé Villeneuve
  * @author Tristan Nogaret
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class PagePrecedente extends MenuItem {
 
     /**
-     * Crée un nouvel Element de Menu "Page Précédente"
+     * Crée un nouvel Element de Menu PagePrecedente
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
+     * @param parent Référence de la fenêtre qui possède l'instance de ce
+     *               MenuItem
      */
     public PagePrecedente(Fenetre parent) {
         super(parent, "Page précédente");
@@ -33,7 +36,10 @@ public class PagePrecedente extends MenuItem {
 
     @Override
     protected void action(ActionEvent evt) {
-        if (GestionMode.isModeSepare()) parent.getPdfPanel().previousPage();
-        else GestionFenetre.previousPages();
+        if (GestionMode.isModeSepare()) {
+            parent.getPdfPanel().previousPage();
+        } else {
+            GestionFenetre.previousPages();
+        }
     }
 }

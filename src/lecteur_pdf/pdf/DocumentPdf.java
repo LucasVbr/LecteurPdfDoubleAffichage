@@ -112,7 +112,7 @@ public class DocumentPdf {
     }
 
     /**
-     * Ferme le document courrant et redéfini les paramêtres par défaut
+     * Ferme le document courant et redéfini les paramètres par défaut
      */
     public void close() {
         try {

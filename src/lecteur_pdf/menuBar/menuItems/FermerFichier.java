@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Fermer qui permet de fermer le document PDF courrant
+ * Element de Menu Fermer qui permet de fermer le document PDF courant
  *
  * @author Léo Franch
  * @author Lucas Vabre

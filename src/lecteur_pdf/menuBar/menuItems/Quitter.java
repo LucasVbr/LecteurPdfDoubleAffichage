@@ -13,7 +13,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Quitter qui permet de fermer la fenêtre courrante, ferme l'application si il s'agit de la dernière fenêtre fermée
+ * Element de Menu Quitter qui permet de fermer la fenêtre courante, ferme
+ * l'application s'il s'agit de la dernière fenêtre fermée
  *
  * @author Léo Franch
  * @author Lucas Vabre

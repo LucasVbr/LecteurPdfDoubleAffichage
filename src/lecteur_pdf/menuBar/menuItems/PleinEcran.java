@@ -11,7 +11,7 @@ import lecteur_pdf.Fenetre;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Plein Ecran qui permet d'afficher la page la fenêtre courrante en plein écran
+ * Element de Menu PleinEcran qui permet d'afficher la page la fenêtre courante en plein écran
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 public class PleinEcran extends MenuItem {
 
     /**
-     * Crée un nouvel Element de Menu "Plein Ecran"
+     * Crée un nouvel Element de Menu PleinEcran
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

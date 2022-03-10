@@ -25,7 +25,8 @@ import javax.swing.*;
 public class MenuBar extends JMenuBar {
 
     /**
-     * Crée une nouvelle barre de menu avec l'ensemble des menu de l'application
+     * Crée une nouvelle barre de menu avec l'ensemble des menus de
+     * l'application
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

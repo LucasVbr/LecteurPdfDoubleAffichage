@@ -13,7 +13,8 @@ import lecteur_pdf.GestionMode;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Page Suivante qui permet d'afficher la page suivante du document courrant (ou les pages suivantes si le mode Synchronisé est activé)
+ * Element de Menu Page Suivante qui permet d'afficher la page suivante du
+ * document courant (ou les pages suivantes si le mode Synchronisé est activé)
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -25,7 +26,8 @@ public class PageSuivante extends MenuItem {
     /**
      * Crée un nouvel Element de Menu "Page Suivante"
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
+     * @param parent Référence de la fenêtre qui possède l'instance de ce
+     *               MenuItem
      */
     public PageSuivante(Fenetre parent) {
         super(parent, "Page suivante");
@@ -33,7 +35,10 @@ public class PageSuivante extends MenuItem {
 
     @Override
     protected void action(ActionEvent evt) {
-        if (GestionMode.isModeSepare()) parent.getPdfPanel().nextPage();
-        else GestionFenetre.nextPages();
+        if (GestionMode.isModeSepare()) {
+            parent.getPdfPanel().nextPage();
+        } else {
+            GestionFenetre.nextPages();
+        }
     }
 }

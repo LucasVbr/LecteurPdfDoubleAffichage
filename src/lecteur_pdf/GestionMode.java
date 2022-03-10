@@ -50,6 +50,7 @@ public class GestionMode {
      * @param separe
      * @param synchronise
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public static void addItem(NouvelleFenetre fenetre, ModeSepare separe, ModeSynchronise synchronise) {
         nouvelleFenetreList.add(fenetre);
         modeSepareList.add(separe);

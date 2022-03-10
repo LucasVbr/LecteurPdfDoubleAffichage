@@ -13,7 +13,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Classe abstraite qui défini les Elements de menu qui necessite d'acceder à leur Fenêtre parente
+ * Classe abstraite qui défini les Elements de menu qui nécessite d'accéder à
+ * leur Fenêtre parente
  *
  * @author Léo Franch
  * @author Lucas Vabre
