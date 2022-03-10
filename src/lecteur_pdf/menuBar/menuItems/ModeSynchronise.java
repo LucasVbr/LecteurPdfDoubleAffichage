@@ -22,7 +22,8 @@ import javax.swing.*;
 public class ModeSynchronise extends JRadioButtonMenuItem {
 
     /**
-     * Crée un nouvel Élément de Menu "Mode Synchronisé"
+     * Créé un nouvel élément de
+     * {@link lecteur_pdf.menuBar.menu.MenuMode MenuMode}
      */
     public ModeSynchronise() {
         super("Mode Synchronisé");

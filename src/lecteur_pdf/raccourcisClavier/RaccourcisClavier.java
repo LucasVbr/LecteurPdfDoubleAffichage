@@ -170,7 +170,7 @@ public class RaccourcisClavier extends JFrame {
     }
 
     /**
-     * Ecrit dans le fichier de sauvegarde la HashMap des raccourcis
+     * Écrit dans le fichier de sauvegarde la HashMap des raccourcis
      */
     public static void sauvegarderRaccourcis() {
         try {
@@ -181,7 +181,7 @@ public class RaccourcisClavier extends JFrame {
 
             oos.close();
             fos.close();
-            System.out.println("Sauvegardé avec succes");
+            System.out.println("Sauvegardé avec succès");
         } catch (IOException e) {
             e.printStackTrace();
         }

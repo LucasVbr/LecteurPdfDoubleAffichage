@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 public class PleinEcran extends MenuItem {
 
     /**
-     * Crée un nouvel Élément de Menu PleinEcran
+     * Créé un nouvel élément de Menu PleinEcran
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

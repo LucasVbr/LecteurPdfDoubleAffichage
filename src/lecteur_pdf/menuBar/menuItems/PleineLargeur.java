@@ -24,7 +24,7 @@ public class PleineLargeur extends MenuItem {
 
 
     /**
-     * Crée un nouvel Élément de Menu "Pleine Largeur"
+     * Créé un nouvel élément de Menu "Pleine Largeur"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce
      *               MenuItem

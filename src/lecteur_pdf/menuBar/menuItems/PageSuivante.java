@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class PageSuivante extends MenuItem {
 
     /**
-     * Crée un nouvel Élément de Menu "Page Suivante"
+     * Créé un nouvel Élément de Menu "Page Suivante"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce
      *               MenuItem

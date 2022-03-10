@@ -20,9 +20,9 @@ import java.awt.event.ActionEvent;
  */
 public class PageEntiere extends MenuItem {
     /**
-     * Crée un nouvel Élément de Menu PageEntiere
+     * Créé un nouvel élément de Menu PageEntiere
      *
-     *  @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
+     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
     @SuppressWarnings("SpellCheckingInspection")
     public PageEntiere(Fenetre parent) {

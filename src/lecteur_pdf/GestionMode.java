@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Gestionnaire de mode Synchonisé ou Séparé
+ * Gestionnaire de mode Synchronisé ou Séparé
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -29,7 +29,7 @@ public class GestionMode {
     /** Liste les MenuItems de type NouvelleFenetre de l'application */
     private static final ArrayList<NouvelleFenetre> nouvelleFenetreList = new ArrayList<>();
 
-    /** Liste les MenuItem de type ModeSeparé de l'application */
+    /** Liste les MenuItem de type ModeSepare de l'application */
     private static final ArrayList<ModeSepare> modeSepareList = new ArrayList<>();
 
     /** Liste les MenuItem de type ModeSynchronise de l'application */

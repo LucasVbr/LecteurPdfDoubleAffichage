@@ -13,7 +13,8 @@ import lecteur_pdf.GestionMode;
 import java.awt.event.ActionEvent;
 
 /**
- * Élément de Menu NouvelleFenetre qui permet d'ouvrir une autre fenêtre (pouvant contenir un PDF) si le nombre maximal de fenêtre n'est pas atteint
+ * Élément de Menu NouvelleFenetre qui permet d'ouvrir une autre fenêtre 
+ * (pouvant contenir un PDF) si le nombre maximal de fenêtre n'est pas atteint
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class NouvelleFenetre extends MenuItem {
 
     /**
-     * Crée un nouvel Élément de Menu "Nouvelle Fenêtre"
+     * Créé un nouvel élément de Menu "Nouvelle Fenêtre"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
@@ -36,7 +37,7 @@ public class NouvelleFenetre extends MenuItem {
         /* Essaye de créer une nouvelle fenêtre */
         GestionFenetre.newIhmPdf();
 
-        /* Désactive le bouton si on a atteint la limite des affichages */
+        /* Désactive le bouton si on a atteint la limite de fenêtres */
         if (GestionFenetre.FENETRE_LIST.size() == GestionFenetre.NB_MAX_PDF) GestionMode.desactiverBtnNouvelleFenetre();
     }
 }

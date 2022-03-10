@@ -47,7 +47,7 @@ public class Fenetre extends JFrame {
     private GraphicsDevice device;
 
     /**
-     * Crée une nouvelle fenêtre vide
+     * Créé une nouvelle fenêtre vide
      */
     public Fenetre() {
         super(TITRE);

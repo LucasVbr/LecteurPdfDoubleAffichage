@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 public class ZoomMoins extends MenuItem {
 
     /**
-     * Crée un nouvel Élément de Menu "Zoom 50%"
+     * Créé un nouvel élément de Menu "Zoom 50%"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

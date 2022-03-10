@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class Quitter extends MenuItem {
 
     /**
-     * Crée un nouvel Élément de Menu "Quitter"
+     * Créé un nouvel élément de Menu "Quitter"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

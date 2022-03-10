@@ -31,7 +31,7 @@ public class OuvrirFichier extends MenuItem {
     public static final String MESSAGE_ERREUR = "Erreur : Le document n'as pas pu être chargé";
 
     /**
-     *  Crée un nouvel Élément de Menu "Ouvrir Fichier"
+     * Créé un nouvel élément de Menu "Ouvrir Fichier"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

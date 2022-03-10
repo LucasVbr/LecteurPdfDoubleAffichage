@@ -64,13 +64,16 @@ public class DocumentPdf {
     }
 
     /**
-     * Crée une image de la page voulue
+     * Créé une image de la page voulue
      *
-     * @param pageIndex Numero de la page désirée (compris entre 0 et le nombre maximal de pages)
-     * @param scale Taille de la page (La qualité de l'image est amélioré suivant cette valeur)
+     * @param pageIndex Numéro de la page désirée (compris entre 0 et le 
+     *                  nombre maximal de pages)
+     * @param scale Taille de la page (La qualité de l'image est amélioré 
+     *              suivant cette valeur)
      * @return Une image de la page demandée
      * @throws IOException Si l'image de rendu n'as pas pu être créée
-     * @throws IllegalArgumentException Si le numero de page est invalide (n'est pas compris entre 0 et le nombre maximal de pages)
+     * @throws IllegalArgumentException Si le numero de page est invalide
+     * (n'est pas compris entre 0 et le nombre maximal de pages)
      */
     public BufferedImage renderPage(int pageIndex, float scale) throws IOException {
         if (pageIndex < 0 || pageIndex >= this.getNbPages()) {

@@ -48,7 +48,7 @@ public class PdfPanel extends JPanel {
     /** La zone de saisie du numéro de page */
     private final JTextField indexPageInput;
 
-    /** Le texte définissant le nombre max de page */
+    /** Le texte définissant le nombre max de pages */
     private final JLabel maxPageLabel;
 
     /** Element scrollable qui contiens la page */
@@ -197,7 +197,7 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * Methode qui permet de charger un PDF dans la fenêtre courante
+     * Méthode qui permet de charger un PDF dans la fenêtre courante
      *
      * @param pdfFile Le fichier PDF à charger
      * @return true si le PDF a pu se charger, false sinon

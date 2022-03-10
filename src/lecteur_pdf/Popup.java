@@ -20,7 +20,8 @@ import java.awt.*;
 public class Popup {
 
     /**
-     * Crée une nouvelle fenêtre comportant un message et deux boutons : Oui et Non
+     * Créé une nouvelle fenêtre comportant un message et
+     * deux boutons : Oui et Non
      *
      * @param parent La fenêtre parente de référence
      * @param titre Titre de la fenêtre
@@ -34,7 +35,8 @@ public class Popup {
     }
 
     /**
-     * Crée une nouvelle fenêtre comportant un message d'erreur avec un bouton OK
+     * Créé une nouvelle fenêtre comportant un message d'erreur avec un
+     * bouton OK
      *
      * @param parent La fenêtre parente de référence
      * @param titre Titre de la fenêtre

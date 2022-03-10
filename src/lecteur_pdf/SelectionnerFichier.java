@@ -36,20 +36,22 @@ public class SelectionnerFichier {
     /** Valeur du bouton Annuler */
     private static final String BOUTON_ANNULER = "Annuler";
 
-    /** indice au survol du bouton Ok */
+    /** Indice au survol du bouton Ok */
     private static final String INDICE_BOUTON_OK = "Ouvre le fichier sélectionné";
 
     /** Indice au survol du bouton Annuler */
     private static final String INDICE_BOUTON_ANNULER = "Annule la sélection";
 
     /**
-     * Méthode qui créée une fenêtre pour que l'utilisateur choisisse un fichier PDF
+     * Méthode qui créée une fenêtre pour que l'utilisateur choisisse un
+     * fichier PDF
      *
-     * @return le fichier choisi par l'utilisateur, null si aucun fichier n'est choisis
+     * @return le fichier choisi par l'utilisateur, null si aucun fichier
+     * n'est choisi
      */
     public static File ouvrirFichier(JFrame parent) {
 
-        /* Crée une fenêtre de sélection de fichier */
+        /* Créé une fenêtre de sélection de fichier */
         JFileChooser fileChooser = new JFileChooser(
             FileSystemView.getFileSystemView().getDefaultDirectory());
         fileChooser.setDialogTitle(TITRE);
@@ -59,7 +61,7 @@ public class SelectionnerFichier {
         fileChooser.setMultiSelectionEnabled(false);
         fileChooser.setAcceptAllFileFilterUsed(false);
 
-        /* Définit le texte et les tooltips des boutons */
+        /* Défini le texte et les tooltips des boutons */
         fileChooser.setApproveButtonText(BOUTON_OK);
         fileChooser.setApproveButtonToolTipText(INDICE_BOUTON_OK);
         UIManager.put("FileChooser.cancelButtonText", BOUTON_ANNULER);
