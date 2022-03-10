@@ -30,16 +30,16 @@ public class SelectionnerFichier {
     /** Extension de fichier filtré */
     private static final String EXTENSION = "pdf";
 
-    /** Valeur du boutton OK */
+    /** Valeur du bouton OK */
     private static final String BOUTON_OK = "Ouvrir";
 
-    /** Valeur du boutton Annuler */
+    /** Valeur du bouton Annuler */
     private static final String BOUTON_ANNULER = "Annuler";
 
-    /** indice au survol du boutton Ok */
+    /** indice au survol du bouton Ok */
     private static final String INDICE_BOUTON_OK = "Ouvre le fichier sélectionné";
 
-    /** Indice au survol du boutton Annuler */
+    /** Indice au survol du bouton Annuler */
     private static final String INDICE_BOUTON_ANNULER = "Annule la sélection";
 
     /**

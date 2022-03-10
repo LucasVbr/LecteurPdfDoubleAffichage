@@ -13,7 +13,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Classe abstraite qui défini les Elements de menu qui necessite d'acceder à leur Fenêtre parente
+ * Classe abstraite qui défini les Éléments de menu qui nécessite d'accéder à
+ * leur Fenêtre parente
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -26,7 +27,7 @@ public abstract class MenuItem extends JMenuItem {
     final Fenetre parent;
 
     /**
-     * Crée un nouvel Element de Menu avec un nom, une action et se référence dans la liste des raccourcis claviers
+     * Crée un nouvel Élément de Menu avec un nom, une action et se référence dans la liste des raccourcis claviers
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      * @param name Nom de l'action

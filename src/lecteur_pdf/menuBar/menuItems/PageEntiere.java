@@ -11,7 +11,7 @@ import lecteur_pdf.Fenetre;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Page Entière qui permet d'afficher l'intégralité du document courrant verticalement
+ * Élément de Menu Page Entière qui permet d'afficher l'intégralité du document courant verticalement
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -20,10 +20,11 @@ import java.awt.event.ActionEvent;
  */
 public class PageEntiere extends MenuItem {
     /**
-     * Crée un nouvel Element de Menu "Page Entiere"
+     * Crée un nouvel Élément de Menu PageEntiere
      *
      *  @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public PageEntiere(Fenetre parent) {
         super(parent, "Page Entière");
     }

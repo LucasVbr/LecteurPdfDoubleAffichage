@@ -11,7 +11,7 @@ import lecteur_pdf.Fenetre;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Zoom 100% qui permet de mettre le Zoom par défaut
+ * Élément de Menu Zoom 100% qui permet de mettre le Zoom par défaut
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 public class ZoomDefaut extends MenuItem {
 
     /**
-     * Crée un nouvel Element de Menu "Zoom 100%"
+     * Crée un nouvel Élément de Menu "Zoom 100%"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

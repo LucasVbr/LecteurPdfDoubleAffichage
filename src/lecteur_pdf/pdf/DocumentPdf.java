@@ -24,7 +24,7 @@ import java.io.IOException;
 public class DocumentPdf {
 
     /** TODO */
-    private PDDocument document;
+    private final PDDocument document;
 
     /** TODO */
     private PDFRenderer renderer;
@@ -112,7 +112,7 @@ public class DocumentPdf {
     }
 
     /**
-     * Ferme le document courrant et redéfini les paramêtres par défaut
+     * Ferme le document courant et redéfini les paramètres par défaut
      */
     public void close() {
         try {

@@ -113,12 +113,12 @@ public class RaccourcisClavier extends JFrame {
         initialisationFichierRaccourcis();
         chargerRaccourcis();
 
-        // Affichage des bouttons
+        // Affichage des boutons
         for (int i = 0; i < listeRaccourcisElement.size() ; i++) {
             String cle = LISTE_NOM[i];
             KeyStroke valeur = raccourcis.get(cle);
 
-            /* Met a jour l'affichage du boutton */
+            /* Met a jour l'affichage du bouton */
             listeRaccourcisElement.get(i).setRaccourcis(valeur);
         }
         affecterRaccourcis();
