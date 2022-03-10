@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 
 /**
- * Element de Menu Ouvrir Fichier qui permet d'ouvrir un document
+ * Élément de Menu Ouvrir Fichier qui permet d'ouvrir un document
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -31,7 +31,7 @@ public class OuvrirFichier extends MenuItem {
     public static final String MESSAGE_ERREUR = "Erreur : Le document n'as pas pu être chargé";
 
     /**
-     *  Crée un nouvel Element de Menu "Ouvrir Fichier"
+     *  Crée un nouvel Élément de Menu "Ouvrir Fichier"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

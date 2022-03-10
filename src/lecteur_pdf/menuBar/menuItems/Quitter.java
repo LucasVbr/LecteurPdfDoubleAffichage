@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Quitter qui permet de fermer la fenêtre courante, ferme
+ * Élément de Menu Quitter qui permet de fermer la fenêtre courante, ferme
  * l'application s'il s'agit de la dernière fenêtre fermée
  *
  * @author Léo Franch
@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class Quitter extends MenuItem {
 
     /**
-     * Crée un nouvel Element de Menu "Quitter"
+     * Crée un nouvel Élément de Menu "Quitter"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

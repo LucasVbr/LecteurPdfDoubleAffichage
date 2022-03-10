@@ -15,7 +15,7 @@ import lecteur_pdf.menuBar.menuItems.NouvelleFenetre;
 import javax.swing.*;
 
 /**
- * Element de la barre des menus contenant l'intégralité des actions liés au
+ * Élément de la barre des menus contenant l'intégralité des actions liés au
  * mode multi-affichage
  *
  * @author Léo Franch

@@ -13,7 +13,7 @@ import lecteur_pdf.GestionMode;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu NouvelleFenetre qui permet d'ouvrir une autre fenêtre (pouvant contenir un PDF) si le nombre maximal de fenêtre n'est pas atteint
+ * Élément de Menu NouvelleFenetre qui permet d'ouvrir une autre fenêtre (pouvant contenir un PDF) si le nombre maximal de fenêtre n'est pas atteint
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 public class NouvelleFenetre extends MenuItem {
 
     /**
-     * Crée un nouvel Element de Menu "Nouvelle Fenêtre"
+     * Crée un nouvel Élément de Menu "Nouvelle Fenêtre"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

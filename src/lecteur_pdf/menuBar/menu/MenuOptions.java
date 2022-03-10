@@ -12,7 +12,7 @@ import lecteur_pdf.menuBar.menuItems.ModifierTouches;
 import javax.swing.*;
 
 /**
- * Element de la barre des menus contenant l'intégralité des options de
+ * Élément de la barre des menus contenant l'intégralité des options de
  * l'application
  *
  * @author Léo Franch

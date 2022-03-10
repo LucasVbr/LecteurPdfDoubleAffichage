@@ -13,7 +13,7 @@ import lecteur_pdf.GestionMode;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu PagePrecedente qui permet d'afficher la page précédente du
+ * Élément de Menu PagePrecedente qui permet d'afficher la page précédente du
  * document courant (ou les pages précédentes si le mode Synchronisé est activé)
  *
  * @author Léo Franch
@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 public class PagePrecedente extends MenuItem {
 
     /**
-     * Crée un nouvel Element de Menu PagePrecedente
+     * Crée un nouvel Élément de Menu PagePrecedente
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce
      *               MenuItem

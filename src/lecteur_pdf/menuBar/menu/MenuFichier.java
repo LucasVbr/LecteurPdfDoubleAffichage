@@ -14,7 +14,7 @@ import lecteur_pdf.menuBar.menuItems.Quitter;
 import javax.swing.*;
 
 /**
- * Element de la barre des menus contenant l'intégralité des actions liés à
+ * Élément de la barre des menus contenant l'intégralité des actions liés à
  * la gestion des fichiers de l'application
  *
  * @author Léo Franch

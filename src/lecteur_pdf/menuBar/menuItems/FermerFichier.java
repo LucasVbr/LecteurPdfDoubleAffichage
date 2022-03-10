@@ -13,7 +13,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Fermer qui permet de fermer le document PDF courant
+ * Élément de {@link lecteur_pdf.menuBar.menu.MenuFichier} qui permet de
+ * fermer le document PDF
+ * courant
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -29,7 +31,7 @@ public class FermerFichier extends MenuItem {
     public static final String MESSAGE = "Êtes-vous sûr de vouloir fermer le document ?";
 
     /**
-     * Crée un nouvel Element de Menu "Fermer"
+     * Crée un nouvel Élément de Menu "Fermer"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
      */

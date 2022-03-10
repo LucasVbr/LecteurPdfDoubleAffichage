@@ -11,7 +11,7 @@ import lecteur_pdf.Fenetre;
 import java.awt.event.ActionEvent;
 
 /**
- * Element de Menu Pleine Largeur qui permet d'afficher le document courant
+ * Élément de Menu Pleine Largeur qui permet d'afficher le document courant
  * de manière bord à bord (la taille horizontale du document coincide avec
  * celle de la fenêtre)
  *
@@ -24,7 +24,7 @@ public class PleineLargeur extends MenuItem {
 
 
     /**
-     * Crée un nouvel Element de Menu "Pleine Largeur"
+     * Crée un nouvel Élément de Menu "Pleine Largeur"
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce
      *               MenuItem

@@ -12,7 +12,7 @@ import lecteur_pdf.menuBar.menuItems.*;
 import javax.swing.*;
 
 /**
- * Element de la barre des menus contenant l'intégralité des actions liés à
+ * Élément de la barre des menus contenant l'intégralité des actions liés à
  * l'affichage de l'application
  *
  * @author Léo Franch
