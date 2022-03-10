@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Classe outils permettant de creer des fenêtre Popups
+ * Classe outils permettant de créer des fenêtres Popups
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -20,7 +20,7 @@ import java.awt.*;
 public class Popup {
 
     /**
-     * Crée une nouvelle fenêtre comportant un message et deux bouttons : Oui et Non
+     * Crée une nouvelle fenêtre comportant un message et deux boutons : Oui et Non
      *
      * @param parent La fenêtre parente de référence
      * @param titre Titre de la fenêtre
@@ -34,7 +34,7 @@ public class Popup {
     }
 
     /**
-     * Crée une nouvelle fenêtre comportant un message d'erreur avec un boutton OK
+     * Crée une nouvelle fenêtre comportant un message d'erreur avec un bouton OK
      *
      * @param parent La fenêtre parente de référence
      * @param titre Titre de la fenêtre
