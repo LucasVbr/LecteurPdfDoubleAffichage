@@ -6,8 +6,8 @@
 
 package lecteur_pdf.menuBar.menu;
 
-import lecteur_pdf.GestionMode;
 import lecteur_pdf.Fenetre;
+import lecteur_pdf.GestionMode;
 import lecteur_pdf.menuBar.menuItems.ModeSepare;
 import lecteur_pdf.menuBar.menuItems.ModeSynchronise;
 import lecteur_pdf.menuBar.menuItems.NouvelleFenetre;

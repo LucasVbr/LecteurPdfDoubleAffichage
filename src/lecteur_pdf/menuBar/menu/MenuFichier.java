@@ -7,7 +7,9 @@
 package lecteur_pdf.menuBar.menu;
 
 import lecteur_pdf.Fenetre;
-import lecteur_pdf.menuBar.menuItems.*;
+import lecteur_pdf.menuBar.menuItems.FermerFichier;
+import lecteur_pdf.menuBar.menuItems.OuvrirFichier;
+import lecteur_pdf.menuBar.menuItems.Quitter;
 
 import javax.swing.*;
 

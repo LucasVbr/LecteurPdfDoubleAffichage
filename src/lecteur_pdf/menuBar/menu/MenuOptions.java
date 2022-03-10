@@ -7,7 +7,7 @@
 package lecteur_pdf.menuBar.menu;
 
 import lecteur_pdf.Fenetre;
-import lecteur_pdf.menuBar.menuItems.*;
+import lecteur_pdf.menuBar.menuItems.ModifierTouches;
 
 import javax.swing.*;
 

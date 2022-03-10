@@ -6,9 +6,9 @@
 
 package lecteur_pdf.menuBar.menuItems;
 
-import lecteur_pdf.GestionMode;
-import lecteur_pdf.GestionFenetre;
 import lecteur_pdf.Fenetre;
+import lecteur_pdf.GestionFenetre;
+import lecteur_pdf.GestionMode;
 
 import java.awt.event.ActionEvent;
 

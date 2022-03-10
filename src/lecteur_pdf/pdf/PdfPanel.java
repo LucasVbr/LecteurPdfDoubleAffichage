@@ -6,9 +6,8 @@
 
 package lecteur_pdf.pdf;
 
-import lecteur_pdf.GestionMode;
 import lecteur_pdf.GestionFenetre;
-import lecteur_pdf.Popup;
+import lecteur_pdf.GestionMode;
 
 import javax.swing.*;
 import java.awt.*;
