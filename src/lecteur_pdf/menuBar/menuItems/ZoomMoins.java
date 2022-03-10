@@ -1,22 +1,20 @@
 /*
  * ZoomMoins.java, 26/02/2022
- * IUT Rodez 2021-2022, INFO 2
- * pas de copyright, aucun droits
+ * IUT Rodez 2021-2022, INFO2
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf.menuBar.menuItems;
 
 import lecteur_pdf.Fenetre;
 
-import java.awt.event.ActionEvent;
-
 /**
  * Élément de Menu Zoom 50% qui permet de dézoomer
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
  */
 public class ZoomMoins extends MenuItem {
 
@@ -30,7 +28,7 @@ public class ZoomMoins extends MenuItem {
     }
 
     @Override
-    protected void action(ActionEvent evt) {
+    protected void action() {
         parent.getPdfPanel().setZoom(0.5f);
         parent.validate();
     }

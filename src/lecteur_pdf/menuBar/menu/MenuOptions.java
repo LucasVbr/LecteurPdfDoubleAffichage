@@ -7,7 +7,7 @@
 package lecteur_pdf.menuBar.menu;
 
 import lecteur_pdf.Fenetre;
-import lecteur_pdf.menuBar.menuItems.ModifierTouches;
+import lecteur_pdf.menuBar.menuItems.*;
 
 import javax.swing.*;
 
@@ -16,16 +16,18 @@ import javax.swing.*;
  * l'application
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
+ * @see JMenu
  */
 public class MenuOptions extends JMenu {
 
     /**
      * Créé une nouvelle instance du menu Options
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce menu
+     * @param parent Référence de la {@link Fenetre fenêtre}
+     *               qui possède l'instance de ce menu
      */
     public MenuOptions(Fenetre parent) {
         super("Options");

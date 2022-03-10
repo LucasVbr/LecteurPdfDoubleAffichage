@@ -8,9 +8,7 @@ package lecteur_pdf.menuBar.menu;
 
 import lecteur_pdf.Fenetre;
 import lecteur_pdf.GestionMode;
-import lecteur_pdf.menuBar.menuItems.ModeSepare;
-import lecteur_pdf.menuBar.menuItems.ModeSynchronise;
-import lecteur_pdf.menuBar.menuItems.NouvelleFenetre;
+import lecteur_pdf.menuBar.menuItems.*;
 
 import javax.swing.*;
 
@@ -19,16 +17,18 @@ import javax.swing.*;
  * mode multi-affichage
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
+ * @see JMenu
  */
 public class MenuMode extends JMenu {
 
     /**
      * Créé une nouvelle instance du menu Mode
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce menu
+     * @param parent Référence de la {@link Fenetre fenêtre}
+     *               qui possède l'instance de ce menu
      */
     public MenuMode(Fenetre parent) {
         super("Mode");

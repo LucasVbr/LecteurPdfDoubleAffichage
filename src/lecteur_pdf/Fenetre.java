@@ -1,7 +1,7 @@
 /*
  * IhmPdf, 03/02/2022
  * IUT Rodez 2022, INFO2
- * pas de copyright, aucun droits
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf;
@@ -19,9 +19,9 @@ import java.awt.event.WindowEvent;
  * Classe définissant une fenêtre qui peut contenir un document PDF
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
  */
 public class Fenetre extends JFrame {
 

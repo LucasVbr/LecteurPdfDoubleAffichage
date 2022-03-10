@@ -1,7 +1,7 @@
 /*
  * SelectionnerFichier.java, 18/11/2021
  * IUT Rodez 2021-2021, INFO2
- * pas de copyright, aucun droits
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf;

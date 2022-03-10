@@ -1,7 +1,7 @@
 /*
  * ModeSynchronise.java, 26/02/2022
- * IUT Rodez 2021-2022, INFO 2
- * pas de copyright, aucun droits
+ * IUT Rodez 2021-2022, INFO2
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf.menuBar.menuItems;
@@ -12,12 +12,14 @@ import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 import javax.swing.*;
 
 /**
- * Élément de Menu Mode Synchronisé qui permet d'activer le défilement des pages de documents en simultané
+ * Élément de {@link lecteur_pdf.menuBar.menu.MenuMode MenuMode}
+ * qui permet d'activer le défilement des pages de documents en simultané
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
+ * @see JRadioButtonMenuItem
  */
 public class ModeSynchronise extends JRadioButtonMenuItem {
 

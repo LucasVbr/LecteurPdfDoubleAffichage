@@ -1,6 +1,6 @@
 /*
  * PdfPanel.java, 26/02/2022
- * IUT Rodez 2021-2022, INFO 2
+ * IUT Rodez 2021-2022, INFO2
  * Pas de copyright, aucun droits
  */
 
@@ -19,13 +19,13 @@ import java.io.IOException;
  * Interface de la mainframe de l'application sans utilisation de forms
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
  */
 public class PdfPanel extends JPanel {
 
-    /** Le numéro de la page courrante */
+    /** Le numéro de la page courante */
     private int numeroPage;
 
     /** Valeur multiplicative de la taille de la page */
@@ -37,7 +37,8 @@ public class PdfPanel extends JPanel {
     /** Défini si la page est en pleine largeur ou non */
     private boolean pleineLargeur;
 
-    /** Bloqueur qui défini si le processeur est entrain de générer une nouvelle page */
+    /** Bloqueur qui défini si le processeur est en train de générer une
+     * nouvelle page */
     private boolean processing;
 
     /** Le document PDF chargé */
@@ -54,10 +55,10 @@ public class PdfPanel extends JPanel {
     /** Element scrollable qui contiens la page */
     private final JScrollPane scrollPane;
 
-    /** Zone de l'élément scollable quio est visible */
+    /** Zone de l'élément scrollable qui est visible */
     private final JViewport viewport;
 
-    /** Label qui contiens l'image de la page affichée */
+    /** Label qui contient l'image de la page affichée */
     private final JLabel page;
 
     /**
@@ -100,8 +101,8 @@ public class PdfPanel extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
 
         /* Actions */
-        btnSuivant.addActionListener(this::btnSuivantAction);
-        btnPrecedent.addActionListener(this::btnPrecedentAction);
+        btnSuivant.addActionListener(evt1 -> btnSuivantAction());
+        btnPrecedent.addActionListener(evt -> btnPrecedentAction());
 
         /* Saisie uniquement de caractère numérique */
         indexPageInput.addKeyListener(new KeyAdapter() {
@@ -135,29 +136,28 @@ public class PdfPanel extends JPanel {
     }
 
     /**
-     * Action lors du clic sur le boutton suivant
-     * Affiche la page suivante du ou des documents (suivant si le mode synchronisé est activé)
-     *
-     * @param evt Écouteur d'évènement
+     * Action lors du clic sur le bouton suivant
+     * Affiche la page suivante du ou des documents (suivant si le mode
+     * synchronisé est activé ou non)
      */
-    private void btnSuivantAction(ActionEvent evt) {
+    private void btnSuivantAction() {
         if (GestionMode.isModeSepare()) pageSuivante();
         else GestionFenetre.nextPages();
     }
 
     /**
-     * Action lors du clic sur le boutton precedent
-     * Affiche la page précédente du ou des documents (suivant si le mode synchronisé est activé)
-     *
-     * @param evt Écouteur d'évènement
+     * Action lors du clic sur le bouton precedent
+     * Affiche la page précédente du ou des documents (suivant si le mode
+     * synchronisé est activé ou non)
      */
-    private void btnPrecedentAction(ActionEvent evt) {
+    private void btnPrecedentAction() {
         if (GestionMode.isModeSepare()) pagePrecedente();
         else GestionFenetre.previousPages();
     }
 
     /**
-     * Change la taille de la page courrante suivant si fonction Pleine Largeur est activé ou non
+     * Change la taille de la page courante suivant si fonction Pleine
+     * Largeur est activé ou non
      */
     public void changerTaille() {
         if (pdfLoader == null || processing) return;

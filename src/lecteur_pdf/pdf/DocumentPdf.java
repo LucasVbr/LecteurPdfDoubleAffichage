@@ -1,7 +1,7 @@
 /*
  * PdfLoader.java, 26/02/2022
- * IUT Rodez 2021-2022, INFO 2
- * pas de copyright, aucun droits
+ * IUT Rodez 2021-2022, INFO2
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf.pdf;
@@ -17,22 +17,22 @@ import java.io.IOException;
  * Classe qui représente un document PDF ouvert, elle permet de créer des images des pages
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
  */
 public class DocumentPdf {
 
     /** Le document PDF chargé avec PdfBox */
     private final PDDocument document;
 
-    /** L'outils de rendus de PdfBox */
+    /** L'outil de rendus de PdfBox */
     private PDFRenderer renderer;
 
-    /** La largueur par défaut de la page courrante */
+    /** La largeur par défaut de la page courante */
     private int minWidth;
 
-    /** La longueur par défaut de la page courrante */
+    /** La longueur par défaut de la page courante */
     private int minHeight;
 
     /**
@@ -48,12 +48,12 @@ public class DocumentPdf {
         minHeight = -1;
     }
 
-    /** @return La largueur par défaut de la page courrante */
+    /** @return La largeur par défaut de la page courante */
     public int getMinWidth() {
         return minWidth;
     }
 
-    /** @return La longueur par défaut de la page courrante */
+    /** @return La longueur par défaut de la page courante */
     public int getMinHeight() {
         return minHeight;
     }

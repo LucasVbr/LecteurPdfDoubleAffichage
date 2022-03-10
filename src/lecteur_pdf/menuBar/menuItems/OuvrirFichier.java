@@ -1,7 +1,7 @@
 /*
  * OuvrirFichier.java, 26/02/2022
- * IUT Rodez 2021-2022, INFO 2
- * pas de copyright, aucun droits
+ * IUT Rodez 2021-2022, INFO2
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf.menuBar.menuItems;
@@ -11,16 +11,15 @@ import lecteur_pdf.Popup;
 import lecteur_pdf.SelectionnerFichier;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.File;
 
 /**
  * Élément de Menu Ouvrir Fichier qui permet d'ouvrir un document
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
  */
 public class OuvrirFichier extends MenuItem {
 
@@ -40,7 +39,7 @@ public class OuvrirFichier extends MenuItem {
     }
 
     @Override
-    protected void action(ActionEvent evt) {
+    protected void action() {
 
         int valide = parent.getPdfPanel().isCharge()
                 ? Popup.OuiNonPopup(parent, FermerFichier.TITRE, FermerFichier.MESSAGE)

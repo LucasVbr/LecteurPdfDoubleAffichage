@@ -1,6 +1,6 @@
 /*
  * RaccourcisElement.java 10/03/2022
- * IUT Rodez 2021-2022, INFO 2
+ * IUT Rodez 2021-2022, INFO2
  * Pas de copyright, aucun droits
  */
 
@@ -15,31 +15,33 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Element de raccourcis qui définit un raccourcis pour une propriété de l'application
+ * Élément de raccourcis qui définit un raccourci pour une propriété de
+ * l'application
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
  */
 public class RaccourcisElement extends JPanel {
 
     /** Le nom du MenuItem */
     private final String nom;
 
-    /** Le boutton qui contiens en valeur la séquence de touches correspondant au raccourcis du MenuItem de l'application */
+    /** Le bouton qui contient en valeur la séquence de touches correspondant
+     *  au raccourci du MenuItem de l'application */
     private final JButton btnRaccourcis;
 
-    /** Le raccourcis clavier */
+    /** Le raccourci clavier */
     private KeyStroke raccourcis;
 
     /**
-     * Crée un nouveau JPanel conportant une ligne et deux colonnes
+     * Crée un nouveau JPanel comportant une ligne et deux colonnes
      * Dans la première colonne on trouve un Label qui défini le MenuItem
-     * Dans la seconde colonne on trouve le boutton pour éditer le raccourcis clavier
+     * Dans la seconde colonne on trouve le bouton pour éditer le raccourci clavier
      *
      * @param nom Le nom du MenuItem ciblé
-     * @param raccourcis Le raccourcis clavier actuel du MenuItem ciblé
+     * @param raccourcis Le raccourci clavier actuel du MenuItem ciblé
      */
     public RaccourcisElement(String nom, KeyStroke raccourcis) {
         super(new GridLayout(1, 2));
@@ -58,7 +60,7 @@ public class RaccourcisElement extends JPanel {
     }
 
     /**
-     * Action lors du clic sur le boutton d'édition du raccourcis
+     * Action lors du clic sur le bouton d'édition du raccourci
      *
      * @param evt écouteur d'évènement
      */
@@ -72,7 +74,7 @@ public class RaccourcisElement extends JPanel {
                 /** Valeur qui permet de définir si une touche n'est pas reconnue */
                 private static final int INDETERMINATE = -1;
 
-                /** La valeur de la touche pressé precedament */
+                /** La valeur de la touche pressée précédemment */
                 private int previousKeyPressed = INDETERMINATE;
 
                 @Override
@@ -94,7 +96,8 @@ public class RaccourcisElement extends JPanel {
                             RaccourcisClavier.sauvegarderRaccourcis();
                         } else {
                             final String TITRE_ERREUR = "Erreur raccourcis";
-                            final String MESSAGE_ERREUR = "Le raccourcis que vous venez de réaliser est déja affecté à une autre fonctionnalité";
+                            final String MESSAGE_ERREUR = "Le raccourcis que "
+                                                          + "vous venez de réaliser est déjà affecté à une autre fonctionnalité";
 
                             Popup.errorPopup(btnRaccourcis, TITRE_ERREUR, MESSAGE_ERREUR);
                             btnRaccourcis.setText(modifierToString(raccourcis.getModifiers()) + " + " + (char)raccourcis.getKeyCode());
@@ -118,8 +121,9 @@ public class RaccourcisElement extends JPanel {
                 }
 
                 /**
-                 * Methode outils qui permet de convertir la valeur tapée en KeyEvent
-                 * @param maskValue Valeur de masque tapé (controle, shift ou alt)
+                 * Méthode outil qui permet de convertir la valeur tapée en
+                 * KeyEvent
+                 * @param maskValue Valeur de masque tapé (control, shift ou alt)
                  * @return Le KeyEvent correspondant
                  */
                 private int getMask(int maskValue) {
@@ -131,7 +135,8 @@ public class RaccourcisElement extends JPanel {
                 }
 
                 /**
-                 * Méthode outils qui permet de convertir la valeur tapée en Chaine de caractère
+                 * Méthode outil qui permet de convertir la valeur tapée en
+                 * chaîne de caractère
                  * @param maskValue Valeur de masque tapé (controle, shift ou alt)
                  * @return La chaine de caractère correspondante
                  */
@@ -147,9 +152,9 @@ public class RaccourcisElement extends JPanel {
     }
 
     /**
-     * Convertis un Modifieur en chaine de caractère
-     * @param modifier valeur du modifieur (Element d'un KeyStroke != KeyEvent)
-     * @return La chaine de caractère correspondante
+     * Convertit un Modifier en chaîne de caractère
+     * @param modifier valeur du modifier (Element d'un KeyStroke != KeyEvent)
+     * @return La chaîne de caractère correspondante
      */
     private String modifierToString(int modifier) {
         return switch (modifier) {
@@ -160,17 +165,17 @@ public class RaccourcisElement extends JPanel {
     }
 
     /**
-     * Convertis un raccourcis en chaine de caractère
-     * @param keyStroke Le raccourcis en question
-     * @return La chaine de caractère construite à partir du raccourcis
+     * Convertis un raccourci en chaîne de caractère
+     * @param keyStroke Le raccourci en question
+     * @return La chaîne de caractère construite à partir du raccourci
      */
     private String keystrokeToString(KeyStroke keyStroke) {
         return modifierToString(keyStroke.getModifiers()) + " + " + keyStroke.toString().split(" ")[2];
     }
 
     /**
-     * Change le raccourcis (visuellement)
-     * @param raccourcis Nouveau raccourcis
+     * Change le raccourci (visuellement)
+     * @param raccourcis nouveau raccourci
      */
     public void setRaccourcis(KeyStroke raccourcis) {
         this.raccourcis = raccourcis;

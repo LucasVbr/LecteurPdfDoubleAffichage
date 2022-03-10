@@ -1,7 +1,7 @@
 /*
  * GestionMode.java, 26/02/2022
- * IUT Rodez 2021-2022, INFO 2
- * pas de copyright, aucun droits
+ * IUT Rodez 2021-2022, INFO2
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf;
@@ -17,9 +17,9 @@ import java.util.ArrayList;
  * Gestionnaire de mode Synchronisé ou Séparé
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
  */
 public class GestionMode {
 
@@ -36,12 +36,12 @@ public class GestionMode {
     private static final ArrayList<ModeSynchronise> modeSynchroniseList = new ArrayList<>();
 
     /**
-     * Référence les elements NouvelleFenetre, ModeSepare, ModeSynchronise lors de la création d'une nouvelle fenêtre
+     * Référence les éléments NouvelleFenetre, ModeSepare, ModeSynchronise 
+     * lors de la création d'une nouvelle fenêtre
      * @param fenetre Référence du MenuItem NouvelleFenetre de la fenêtre crée
      * @param separe Référence du MenuItem ModeSepare de la fenêtre crée
      * @param synchronise Référence du MenuItem ModeSynchronise de la fenêtre crée
      */
-    @SuppressWarnings("SpellCheckingInspection")
     public static void addItem(NouvelleFenetre fenetre, ModeSepare separe, ModeSynchronise synchronise) {
         nouvelleFenetreList.add(fenetre);
         modeSepareList.add(separe);
@@ -64,7 +64,8 @@ public class GestionMode {
     }
 
     /**
-     * Met a jour dans toutes les fenêtres ouvertes la checkbox du mode selectionné
+     * Met à jour dans toutes les fenêtres ouvertes la checkbox du mode
+     * sélectionné
      */
     private static void updateMode() {
         for (int i = 0; i < modeSepareList.size() ; i++) {
@@ -74,7 +75,8 @@ public class GestionMode {
     }
 
     /**
-     * Grise le boutton "Nouvelle Fenêtre" de toute les fenêtres de l'application
+     * Grise le bouton "Nouvelle Fenêtre" de toutes les fenêtres de
+     * l'application
      */
     public static void desactiverBtnNouvelleFenetre() {
         for (NouvelleFenetre item : nouvelleFenetreList) {
@@ -84,7 +86,8 @@ public class GestionMode {
     }
 
     /**
-     * Dégrise le boutton "Nouvelle Fenêtre" de toutes les fenêtres de l'application
+     * Dégrise le bouton "Nouvelle Fenêtre" de toutes les fenêtres de
+     * l'application
      */
     public static void activerBtnNouvelleFenetre() {
         for (NouvelleFenetre item : nouvelleFenetreList) {

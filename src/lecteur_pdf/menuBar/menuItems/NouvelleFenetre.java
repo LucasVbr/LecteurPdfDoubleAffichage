@@ -1,7 +1,7 @@
 /*
  * NouvelleFenetre.java, 26/02/2022
- * IUT Rodez 2021-2022, INFO 2
- * pas de copyright, aucun droits
+ * IUT Rodez 2021-2022, INFO2
+ * Pas de copyright, aucun droits
  */
 
 package lecteur_pdf.menuBar.menuItems;
@@ -10,16 +10,14 @@ import lecteur_pdf.Fenetre;
 import lecteur_pdf.GestionFenetre;
 import lecteur_pdf.GestionMode;
 
-import java.awt.event.ActionEvent;
-
 /**
  * Élément de Menu NouvelleFenetre qui permet d'ouvrir une autre fenêtre 
  * (pouvant contenir un PDF) si le nombre maximal de fenêtre n'est pas atteint
  *
  * @author Léo Franch
- * @author Lucas Vabre
- * @author Noé Villeneuve
  * @author Tristan Nogaret
+ * @author Lucàs Vabre
+ * @author Noé Villeneuve
  */
 public class NouvelleFenetre extends MenuItem {
 
@@ -33,7 +31,7 @@ public class NouvelleFenetre extends MenuItem {
     }
 
     @Override
-    public void action(ActionEvent evt) {
+    public void action() {
         /* Essaye de créer une nouvelle fenêtre */
         GestionFenetre.newIhmPdf();
 
