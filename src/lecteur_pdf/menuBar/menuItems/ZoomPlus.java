@@ -31,7 +31,7 @@ public class ZoomPlus extends MenuItem {
 
     @Override
     protected void action(ActionEvent evt) {
-        parent.getPdfPanel().updateScaleZoom(1.5f);
+        parent.getPdfPanel().setZoom(1.5f);
         parent.validate();
     }
 }

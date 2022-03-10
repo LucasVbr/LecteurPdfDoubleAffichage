@@ -51,7 +51,7 @@ public class GestionFenetre {
      * (mode Synchronisé)
      */
     public static void nextPages() {
-        for (Fenetre ihm : FENETRE_LIST) ihm.getPdfPanel().nextPage();
+        for (Fenetre ihm : FENETRE_LIST) ihm.getPdfPanel().pageSuivante();
     }
 
     /**
@@ -59,7 +59,7 @@ public class GestionFenetre {
      * (mode Synchronisé)
      */
     public static void previousPages() {
-        for (Fenetre ihm : FENETRE_LIST) ihm.getPdfPanel().previousPage();
+        for (Fenetre ihm : FENETRE_LIST) ihm.getPdfPanel().pagePrecedente();
     }
 
     /**

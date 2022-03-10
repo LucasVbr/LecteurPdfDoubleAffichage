@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Gestionnaire des raccourcis.save claviers de l'application
+ * Gestionnaire des raccourcis claviers de l'application
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -27,8 +27,10 @@ import java.util.Map;
  */
 public class RaccourcisClavier extends JFrame {
 
+    /** Le nom du fichier de sauvegarde */
     public static final String FICHIER_SAUVEGARDE = "raccourcis.save";
 
+    /** Booleen qui garantis l'attribution d'un seul raccourcis à la fois */
     public static boolean saisieBloquee;
 
     /**
@@ -37,13 +39,19 @@ public class RaccourcisClavier extends JFrame {
      */
     public static ArrayList<JMenuItem> listeMenuItems = new ArrayList<>();
 
+    /**
+     * Liste des éléments graphiques (un élément est une ligne) de la fenêtre
+     */
     public static ArrayList<RaccourcisElement> listeRaccourcisElement = new ArrayList<>();
 
     /**
-     * HashMap qui prend en clé le Nom et en valeur une combinaison de touche : le raccourcis.save clavier
+     * HashMap qui prend en clé le Nom du MenuItem et en valeur une combinaison de touche : le raccourcis clavier
      */
     public static Map<String, KeyStroke> raccourcis = new HashMap<>() {};
 
+    /**
+     * La liste des noms de MenuItems de l'application
+     */
     public static String[] LISTE_NOM = {
         "Ouvrir",
         "Fermer",
@@ -62,7 +70,10 @@ public class RaccourcisClavier extends JFrame {
         "Modifier Touches"
     };
 
-    public static KeyStroke[] LISTE_RACCOURCIS = {
+    /**
+     * La liste des raccourcis par défaut
+     */
+    public static KeyStroke[] RACCOURCIS_DEFAUT = {
         KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK), // Ouvrir
         KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK), // Fermer
         KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK), // Quitter
@@ -80,6 +91,9 @@ public class RaccourcisClavier extends JFrame {
         KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK), // Modifier Touches
     };
 
+    /**
+     * Crée une nouvelle fenêtre contenant la liste des Raccourcis claviers de l'application ainsi qu'un boutton Raccourcis par défaut qui remet les raccourcis par défaut de l'application
+     */
     public RaccourcisClavier() {
         super("Modification des raccourcis claviers");
         saisieBloquee = false;
@@ -92,12 +106,14 @@ public class RaccourcisClavier extends JFrame {
         /* Creation de la fenêtre */
         JPanel panel = new JPanel(new GridLayout(raccourcis.size() +1, 1, 10, 5));
 
+        /* Ajout de tout les raccourcis claviers de l'application dans la fenêtre */
         for (String nom : LISTE_NOM) {
             RaccourcisElement raccourcisElement = new RaccourcisElement(nom, raccourcis.get(nom));
             listeRaccourcisElement.add(raccourcisElement);
             panel.add(raccourcisElement);
         }
 
+        /* Ajout du boutton Reset */
         JButton btnReset = new JButton("Raccourcis par défaut");
         btnReset.addActionListener(this::actionBtnReset);
         panel.add(btnReset);
@@ -109,6 +125,13 @@ public class RaccourcisClavier extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Action lors du clic sur le boutton Reset
+     * Charge les raccourcis par défaut puis les sauvegarde
+     * Met a jour l'interface
+     *
+     * @param evt écouteur d'évènement
+     */
     private void actionBtnReset(ActionEvent evt) {
         initialisationFichierRaccourcis();
         chargerRaccourcis();
@@ -169,8 +192,8 @@ public class RaccourcisClavier extends JFrame {
      * et la sauvegarde
      */
     private static void initialisationFichierRaccourcis() {
-        for (int i = 0; i < LISTE_NOM.length && i < LISTE_RACCOURCIS.length; i++) {
-            raccourcis.put(LISTE_NOM[i], LISTE_RACCOURCIS[i]);
+        for (int i = 0; i < LISTE_NOM.length && i < RACCOURCIS_DEFAUT.length; i++) {
+            raccourcis.put(LISTE_NOM[i], RACCOURCIS_DEFAUT[i]);
         }
         sauvegarderRaccourcis();
     }

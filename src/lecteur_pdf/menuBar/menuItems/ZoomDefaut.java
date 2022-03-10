@@ -31,7 +31,7 @@ public class ZoomDefaut extends MenuItem {
 
     @Override
     protected void action(ActionEvent evt) {
-        parent.getPdfPanel().updateScaleZoom(1.0f);
+        parent.getPdfPanel().setZoom(1.0f);
         parent.validate();
     }
 }

@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * TODO commentaires
+ * Classe qui représente un document PDF ouvert, elle permet de créer des images des pages
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,23 +23,23 @@ import java.io.IOException;
  */
 public class DocumentPdf {
 
-    /** TODO */
+    /** Le document PDF chargé avec PdfBox */
     private final PDDocument document;
 
-    /** TODO */
+    /** L'outils de rendus de PdfBox */
     private PDFRenderer renderer;
 
-    /** TODO */
+    /** La largueur par défaut de la page courrante */
     private int minWidth;
 
-    /** TODO */
+    /** La longueur par défaut de la page courrante */
     private int minHeight;
 
     /**
-     * TODO
+     * Charge un nouveau document PDF
      *
-     * @param file
-     * @throws IOException
+     * @param file Le fichier PDF à charger
+     * @throws IOException Si le document passé en argument est illisible
      */
     public DocumentPdf(File file) throws IOException {
         document = PDDocument.load(file);
@@ -48,53 +48,29 @@ public class DocumentPdf {
         minHeight = -1;
     }
 
-    /**
-     * TODO
-     */
+    /** @return La largueur par défaut de la page courrante */
     public int getMinWidth() {
         return minWidth;
     }
 
-    /**
-     * TODO
-     */
+    /** @return La longueur par défaut de la page courrante */
     public int getMinHeight() {
         return minHeight;
     }
 
-    /**
-     * TODO
-     *
-     * @return
-     */
+    /** @return Le nombre de pages du document */
     public int getNbPages() {
         return document.getNumberOfPages();
     }
 
     /**
-     * TODO
-     */
-    public BufferedImage renderPage(int pageIndex) throws IOException {
-        return renderPage(pageIndex, 1.0f);
-    }
-
-    /**
-     * TODO
-     */
-    public BufferedImage setScale(float scale) {
-        try {
-            return renderPage(0, scale);
-        } catch (IOException ignored) {}
-        return null;
-    }
-
-    /**
-     * TODO
+     * Crée une image de la page voulue
      *
-     * @param pageIndex
-     * @param scale
-     * @return
-     * @throws IOException
+     * @param pageIndex Numero de la page désirée (compris entre 0 et le nombre maximal de pages)
+     * @param scale Taille de la page (La qualité de l'image est amélioré suivant cette valeur)
+     * @return Une image de la page demandée
+     * @throws IOException Si l'image de rendu n'as pas pu être créée
+     * @throws IllegalArgumentException Si le numero de page est invalide (n'est pas compris entre 0 et le nombre maximal de pages)
      */
     public BufferedImage renderPage(int pageIndex, float scale) throws IOException {
         if (pageIndex < 0 || pageIndex >= this.getNbPages()) {

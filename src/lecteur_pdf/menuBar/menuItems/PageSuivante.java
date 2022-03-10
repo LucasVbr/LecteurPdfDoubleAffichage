@@ -36,7 +36,7 @@ public class PageSuivante extends MenuItem {
     @Override
     protected void action(ActionEvent evt) {
         if (GestionMode.isModeSepare()) {
-            parent.getPdfPanel().nextPage();
+            parent.getPdfPanel().pageSuivante();
         } else {
             GestionFenetre.nextPages();
         }

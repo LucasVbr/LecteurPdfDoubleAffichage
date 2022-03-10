@@ -25,21 +25,39 @@ import java.io.IOException;
  */
 public class PdfPanel extends JPanel {
 
-    /* Données */
-    private int currentPage;
-    private float scaleSizing;
-    private float scaleZoom;
+    /** Le numéro de la page courrante */
+    private int numeroPage;
+
+    /** Valeur multiplicative de la taille de la page */
+    private float taille;
+
+    /** Valeur multiplicative du zoom  */
+    private float zoom;
+
+    /** Défini si la page est en pleine largeur ou non */
     private boolean pleineLargeur;
+
+    /** Bloqueur qui défini si le processeur est entrain de générer une nouvelle page */
     private boolean processing;
 
-    /* Chargeur de Pdf */
+    /** Le document PDF chargé */
     private DocumentPdf pdfLoader;
 
     /* Interface */
+
+    /** La zone de saisie du numéro de page */
     private final JTextField indexPageInput;
+
+    /** Le texte définissant le nombre max de page */
     private final JLabel maxPageLabel;
+
+    /** Element scrollable qui contiens la page */
     private final JScrollPane scrollPane;
+
+    /** Zone de l'élément scollable quio est visible */
     private final JViewport viewport;
+
+    /** Label qui contiens l'image de la page affichée */
     private final JLabel page;
 
     /**
@@ -48,9 +66,9 @@ public class PdfPanel extends JPanel {
     public PdfPanel() {
         super(new BorderLayout());
 
-        scaleSizing = 0.0f;
-        scaleZoom = 1.0f;
-        currentPage = 0;
+        taille = 0.0f;
+        zoom = 1.0f;
+        numeroPage = 0;
         processing = false;
         pleineLargeur = false;
 
@@ -90,8 +108,6 @@ public class PdfPanel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
-                String value = indexPageInput.getText();
-                int l = value.length();
                 indexPageInput.setEditable(e.getKeyChar() >= '0' && e.getKeyChar() <= '9');
             }
         });
@@ -101,10 +117,10 @@ public class PdfPanel extends JPanel {
             String saisie = indexPageInput.getText();
             try {
                 int index = Integer.parseInt(saisie);
-                if (isPageValide(index - 1)) setPage(index - 1);
+                if (isPageValide(index - 1)) changerPage(index - 1);
                 else throw new Exception();
             } catch (Exception f) {
-                indexPageInput.setText(Integer.toString(currentPage +1));
+                indexPageInput.setText(Integer.toString(numeroPage +1));
             }
 
         });
@@ -113,31 +129,37 @@ public class PdfPanel extends JPanel {
             @Override
             public void componentResized(ComponentEvent e) {
                 super.componentResized(e);
-                resize();
+                changerTaille();
             }
         });
     }
 
     /**
+     * Action lors du clic sur le boutton suivant
+     * Affiche la page suivante du ou des documents (suivant si le mode synchronisé est activé)
+     *
      * @param evt Écouteur d'évènement
      */
     private void btnSuivantAction(ActionEvent evt) {
-        if (GestionMode.isModeSepare()) nextPage();
+        if (GestionMode.isModeSepare()) pageSuivante();
         else GestionFenetre.nextPages();
     }
 
     /**
+     * Action lors du clic sur le boutton precedent
+     * Affiche la page précédente du ou des documents (suivant si le mode synchronisé est activé)
+     *
      * @param evt Écouteur d'évènement
      */
     private void btnPrecedentAction(ActionEvent evt) {
-        if (GestionMode.isModeSepare()) previousPage();
+        if (GestionMode.isModeSepare()) pagePrecedente();
         else GestionFenetre.previousPages();
     }
 
     /**
-     * TODO
+     * Change la taille de la page courrante suivant si fonction Pleine Largeur est activé ou non
      */
-    public void resize() {
+    public void changerTaille() {
         if (pdfLoader == null || processing) return;
 
         if (pleineLargeur) {
@@ -145,23 +167,21 @@ public class PdfPanel extends JPanel {
             float scrollpaneWidth = scrollPane.getVerticalScrollBar().getWidth();
             float pdfMinWidth = pdfLoader.getMinWidth();
 
-            scaleSizing = (viewportWidth - scrollpaneWidth) / pdfMinWidth - scaleZoom;
+            taille = (viewportWidth - scrollpaneWidth) / pdfMinWidth - zoom;
         } else {
             float viewportHeight = viewport.getHeight();
             float scrollpaneHeight = scrollPane.getVerticalScrollBar().getHeight();
             float pdfMinHeight = pdfLoader.getMinHeight();
 
-            scaleSizing = (viewportHeight - scrollpaneHeight) / pdfMinHeight - scaleZoom;
+            taille = (viewportHeight - scrollpaneHeight) / pdfMinHeight - zoom;
         }
-        updateScaleSizing(scaleSizing);
+        setTaille(taille);
     }
 
-    /**
-     * @param pleineLargeur booléen qui défini l'état du mode pleine largeur
-     */
+    /** @param pleineLargeur booléen qui défini l'état du mode pleine largeur */
     public void setPleineLargeur(boolean pleineLargeur) {
         this.pleineLargeur = pleineLargeur;
-        resize();
+        changerTaille();
     }
 
     /**
@@ -185,15 +205,13 @@ public class PdfPanel extends JPanel {
     public boolean chargerPdf(File pdfFile) {
         try {
             setPdfLoader(new DocumentPdf(pdfFile));
-            setPage(0);
+            changerPage(0);
             return true;
         } catch (IOException ignored) {}
         return false;
     }
 
-    /**
-     * @param pdfLoader un nouveau document PDF à affecter à la fenêtre
-     */
+    /** @param pdfLoader un nouveau document PDF à affecter à la fenêtre */
     public void setPdfLoader(DocumentPdf pdfLoader) {
         this.pdfLoader = pdfLoader;
     }
@@ -210,51 +228,47 @@ public class PdfPanel extends JPanel {
 
         /* Efface l'image de la page */
         page.setIcon(null);
-        currentPage = 0;
+        numeroPage = 0;
 
         /* Interface Vide */
         indexPageInput.setText("");
         maxPageLabel.setText("/ -");
 
         /* Efface les données relatives au zoom */
-        scaleSizing = 0.0f;
-        scaleZoom = 1.0f;
+        taille = 0.0f;
+        zoom = 1.0f;
 
         validate();
     }
 
     /**
+     * Change la valeur du zoom de la page courante
+     *
+     * @param scale Valeur flottante (1.00f == 100%)
+     */
+    public void setZoom(float scale) {
+        zoom = scale;
+        changerPage(numeroPage);
+    }
+
+    /**
      * Change la taille de la page courante
      *
      * @param scale Valeur flottante (1.00f == 100%)
      */
-    public void updateScaleZoom(float scale) {
-        scaleZoom = scale;
-        setPage(currentPage);
+    private void setTaille(float scale) {
+        taille = scale;
+        changerPage(numeroPage);
     }
 
-    /**
-     * Change la taille de la page courante
-     *
-     * @param scale Valeur flottante (1.00f == 100%)
-     */
-    private void updateScaleSizing(float scale) {
-        scaleSizing = scale;
-        setPage(currentPage);
+    /** Affiche la page suivante */
+    public void pageSuivante() {
+        changerPage(numeroPage + 1);
     }
 
-    /**
-     * Affiche la page suivante
-     */
-    public void nextPage() {
-        setPage(currentPage + 1);
-    }
-
-    /**
-     * Affiche la page suivante
-     */
-    public void previousPage() {
-        setPage(currentPage - 1);
+    /** Affiche la page suivante */
+    public void pagePrecedente() {
+        changerPage(numeroPage - 1);
     }
 
     /**
@@ -262,14 +276,14 @@ public class PdfPanel extends JPanel {
      *
      * @param index Le numéro de la page où l'on veut se rendre
      */
-    private void setPage(int index) {
+    private void changerPage(int index) {
         if (!isPageValide(index)) return;
 
         processing = true;
         try {
-            page.setIcon(new ImageIcon(pdfLoader.renderPage(index, scaleZoom + scaleSizing)));
-            currentPage = index;
-            indexPageInput.setText(Integer.toString(currentPage + 1));
+            page.setIcon(new ImageIcon(pdfLoader.renderPage(index, zoom + taille)));
+            numeroPage = index;
+            indexPageInput.setText(Integer.toString(numeroPage + 1));
             maxPageLabel.setText(String.format("/%d", pdfLoader.getNbPages()));
         } catch (IOException ignored) {}
         processing = false;

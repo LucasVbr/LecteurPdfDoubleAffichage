@@ -37,7 +37,7 @@ public class PagePrecedente extends MenuItem {
     @Override
     protected void action(ActionEvent evt) {
         if (GestionMode.isModeSepare()) {
-            parent.getPdfPanel().previousPage();
+            parent.getPdfPanel().pagePrecedente();
         } else {
             GestionFenetre.previousPages();
         }

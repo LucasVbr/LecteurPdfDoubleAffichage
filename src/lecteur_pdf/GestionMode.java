@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * TODO commentaires
+ * Gestionnaire de mode Synchonisé ou Séparé
  *
  * @author Léo Franch
  * @author Lucas Vabre
@@ -23,32 +23,23 @@ import java.util.ArrayList;
  */
 public class GestionMode {
 
-    /**
-     * Défini le mode actif :
-     * true -> Mode Séparé
-     * false -> Mode Synchronisé
-     */
+    /** Défini si le mode séparé est activé ou non */
     private static boolean modeSepare;
 
-    /**
-     * TODO
-     */
+    /** Liste les MenuItems de type NouvelleFenetre de l'application */
+    private static final ArrayList<NouvelleFenetre> nouvelleFenetreList = new ArrayList<>();
+
+    /** Liste les MenuItem de type ModeSeparé de l'application */
     private static final ArrayList<ModeSepare> modeSepareList = new ArrayList<>();
 
-    /**
-     * TODO
-     */
+    /** Liste les MenuItem de type ModeSynchronise de l'application */
     private static final ArrayList<ModeSynchronise> modeSynchroniseList = new ArrayList<>();
 
     /**
-     * TODO
-     */
-    private static final ArrayList<NouvelleFenetre> nouvelleFenetreList = new ArrayList<>();
-
-    /**
-     * TODO
-     * @param separe
-     * @param synchronise
+     * Référence les elements NouvelleFenetre, ModeSepare, ModeSynchronise lors de la création d'une nouvelle fenêtre
+     * @param fenetre Référence du MenuItem NouvelleFenetre de la fenêtre crée
+     * @param separe Référence du MenuItem ModeSepare de la fenêtre crée
+     * @param synchronise Référence du MenuItem ModeSynchronise de la fenêtre crée
      */
     @SuppressWarnings("SpellCheckingInspection")
     public static void addItem(NouvelleFenetre fenetre, ModeSepare separe, ModeSynchronise synchronise) {
@@ -58,16 +49,14 @@ public class GestionMode {
         updateMode();
     }
 
-    /**
-     * TODO
-     * @return
-     */
+    /** @return true si le mode séparé est activé, false sinon */
     public static boolean isModeSepare() {
         return modeSepare;
     }
 
     /**
-     * TODO
+     * Change de mode
+     * @param mode true pour le mode séparé, false pour le mode synchronisé
      */
     public static void setModeSepare(boolean mode) {
         modeSepare = mode;
@@ -75,7 +64,7 @@ public class GestionMode {
     }
 
     /**
-     * TODO
+     * Met a jour dans toutes les fenêtres ouvertes la checkbox du mode selectionné
      */
     private static void updateMode() {
         for (int i = 0; i < modeSepareList.size() ; i++) {
@@ -85,9 +74,9 @@ public class GestionMode {
     }
 
     /**
-     * TODO
+     * Grise le boutton "Nouvelle Fenêtre" de toute les fenêtres de l'application
      */
-    public static void desactiverFenetre() {
+    public static void desactiverBtnNouvelleFenetre() {
         for (NouvelleFenetre item : nouvelleFenetreList) {
             item.setEnabled(false);
             item.setBackground(Color.GRAY);
@@ -95,7 +84,7 @@ public class GestionMode {
     }
 
     /**
-     * TODO
+     * Dégrise le boutton "Nouvelle Fenêtre" de toutes les fenêtres de l'application
      */
     public static void activerBtnNouvelleFenetre() {
         for (NouvelleFenetre item : nouvelleFenetreList) {

@@ -37,6 +37,6 @@ public class NouvelleFenetre extends MenuItem {
         GestionFenetre.newIhmPdf();
 
         /* Désactive le bouton si on a atteint la limite des affichages */
-        if (GestionFenetre.FENETRE_LIST.size() == GestionFenetre.NB_MAX_PDF) GestionMode.desactiverFenetre();
+        if (GestionFenetre.FENETRE_LIST.size() == GestionFenetre.NB_MAX_PDF) GestionMode.desactiverBtnNouvelleFenetre();
     }
 }

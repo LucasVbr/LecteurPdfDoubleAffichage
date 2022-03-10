@@ -34,9 +34,9 @@ public class MenuMode extends JMenu {
         super("Mode");
 
         /* Crée les différentes options */
+        NouvelleFenetre nouvelleFenetre = new NouvelleFenetre(parent);
         ModeSepare modeSepare = new ModeSepare();
         ModeSynchronise modeSynchronise = new ModeSynchronise();
-        NouvelleFenetre nouvelleFenetre = new NouvelleFenetre(parent);
 
         /* Les ajoute au gestionnaire des modes */
         GestionMode.addItem(nouvelleFenetre, modeSepare, modeSynchronise);

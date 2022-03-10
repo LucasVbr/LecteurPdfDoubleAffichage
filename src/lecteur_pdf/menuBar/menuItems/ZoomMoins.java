@@ -31,7 +31,7 @@ public class ZoomMoins extends MenuItem {
 
     @Override
     protected void action(ActionEvent evt) {
-        parent.getPdfPanel().updateScaleZoom(0.5f);
+        parent.getPdfPanel().setZoom(0.5f);
         parent.validate();
     }
 }
