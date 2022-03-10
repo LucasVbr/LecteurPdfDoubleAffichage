@@ -72,7 +72,7 @@ public class GestionFenetre {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception ignored) {}
 
-        GestionMode.setModeSepare();
+        GestionMode.setModeSepare(true);
         newIhmPdf();
     }
 }

@@ -26,7 +26,7 @@ public class ModeSynchronise extends JRadioButtonMenuItem {
      */
     public ModeSynchronise() {
         super("Mode Synchronisé");
-        addActionListener(e -> GestionMode.setModeSynchronise());
+        addActionListener(e -> GestionMode.setModeSepare(false));
         RaccourcisClavier.listeMenuItems.add(this);
     }
 }

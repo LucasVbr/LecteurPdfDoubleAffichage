@@ -68,16 +68,8 @@ public class GestionMode {
     /**
      * TODO
      */
-    public static void setModeSepare() {
-        modeSepare = true;
-        updateMode();
-    }
-
-    /**
-     * TODO
-     */
-    public static void setModeSynchronise() {
-        modeSepare = false;
+    public static void setModeSepare(boolean mode) {
+        modeSepare = mode;
         updateMode();
     }
 

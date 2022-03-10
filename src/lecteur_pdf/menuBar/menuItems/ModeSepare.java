@@ -26,7 +26,7 @@ public class ModeSepare extends JRadioButtonMenuItem {
      */
     public ModeSepare() {
         super("Mode Séparé");
-        addActionListener(e -> GestionMode.setModeSepare());
+        addActionListener(e -> GestionMode.setModeSepare(true));
         RaccourcisClavier.listeMenuItems.add(this);
     }
 }
