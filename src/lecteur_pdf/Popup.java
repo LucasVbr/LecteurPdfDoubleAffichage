@@ -28,10 +28,9 @@ public class Popup {
      * @return JOptionPane.YES_OPTION si oui est cliqué, JOptionPane.NO_OPTION si non est cliqué
      */
     public static int OuiNonPopup(Component parent, String titre, String message) {
-        JOptionPane d = new JOptionPane();
         String[] choix = {"Oui", "Non"};
-        return d.showOptionDialog(parent, message, titre, JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                null, choix, choix[0]);
+        return JOptionPane.showOptionDialog(parent, message, titre, JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                                            null, choix, choix[0]);
     }
 
     /**

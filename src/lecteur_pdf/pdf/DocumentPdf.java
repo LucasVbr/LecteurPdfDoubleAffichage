@@ -24,7 +24,7 @@ import java.io.IOException;
 public class DocumentPdf {
 
     /** TODO */
-    private PDDocument document;
+    private final PDDocument document;
 
     /** TODO */
     private PDFRenderer renderer;
