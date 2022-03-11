@@ -11,13 +11,17 @@ import lecteur_pdf.GestionFenetre;
 import lecteur_pdf.GestionMode;
 
 /**
- * Élément de Menu PagePrecedente qui permet d'afficher la page précédente du
- * document courant (ou les pages précédentes si le mode Synchronisé est activé)
+ * Élément de {@link lecteur_pdf.menuBar.menu.MenuAffichage MenuAffichage}
+ * qui permet d'afficher la page précédente du document courant (ou les pages
+ * précédentes si le
+ * {@link lecteur_pdf.menuBar.menuItems.ModeSynchronise mode Synchronisé} est
+ * activé)
  *
  * @author Léo Franch
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see MenuItem
  */
 
 public class PagePrecedente extends MenuItem {

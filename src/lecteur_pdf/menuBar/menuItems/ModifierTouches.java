@@ -12,7 +12,9 @@ import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 /**
  * Élément de {@link lecteur_pdf.menuBar.menu.MenuOptions MenuOptions}
  * qui permet d'ouvrir une {@link javax.swing.JFrame fenêtre}
- * pour modifier les raccourcis claviers de l'application
+ * pour modifier les
+ * {@link lecteur_pdf.raccourcisClavier.RaccourcisClavier
+ * raccourcis claviers} de l'application
  *
  * @author Léo Franch
  * @author Tristan Nogaret
@@ -26,7 +28,8 @@ public class ModifierTouches extends MenuItem {
      * Créé un nouvel élément de
      * {@link lecteur_pdf.menuBar.menu.MenuOptions MenuOptions}
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce
+     * @param parent Référence de la {@link Fenetre fenêtre} qui possède
+     *               l'instance de ce
      *               {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem}
      */
     public ModifierTouches(Fenetre parent) {

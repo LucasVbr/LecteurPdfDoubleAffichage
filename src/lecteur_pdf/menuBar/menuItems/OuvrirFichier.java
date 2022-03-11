@@ -14,25 +14,37 @@ import javax.swing.*;
 import java.io.File;
 
 /**
- * Élément de Menu Ouvrir Fichier qui permet d'ouvrir un document
+ * Élément de {@link lecteur_pdf.menuBar.menu.MenuFichier MenuFichier} qui
+ * permet d'ouvrir un document
  *
  * @author Léo Franch
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see MenuItem
  */
 public class OuvrirFichier extends MenuItem {
 
-    /** Titre de la popup d'erreur lors d'une erreur d'ouverture de fichier */
+    /**
+     * Titre de la {@link lecteur_pdf.Popup popup} d'erreur lors d'une erreur
+     * d'ouverture de fichier
+     */
     public static final String TITRE_ERREUR = "Erreur";
 
-    /** Message de la popup d'erreur lors d'une erreur d'ouverture de fichier */
-    public static final String MESSAGE_ERREUR = "Erreur : Le document n'as pas pu être chargé";
+    /**
+     * Message de la {@link lecteur_pdf.Popup popup} d'erreur lors d'une
+     * erreur d'ouverture de fichier
+     */
+    public static final String MESSAGE_ERREUR
+        = "Erreur : Le document n'as pas pu être chargé";
 
     /**
-     * Créé un nouvel élément de Menu "Ouvrir Fichier"
+     * Créé un nouvel élément de
+     * {@link lecteur_pdf.menuBar.menu.MenuFichier MenuFichier}
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
+     * @param parent Référence de la {@link Fenetre fenêtre} qui possède
+     *               l'instance de ce
+     *               {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem}
      */
     public OuvrirFichier(Fenetre parent) {
         super(parent, "Ouvrir");
@@ -41,9 +53,10 @@ public class OuvrirFichier extends MenuItem {
     @Override
     protected void action() {
 
-        int valide = parent.getPdfPanel().isCharge()
-                ? Popup.OuiNonPopup(parent, FermerFichier.TITRE, FermerFichier.MESSAGE)
-                : JOptionPane.YES_OPTION;
+        int valide = parent.getPdfPanel().isCharge() ? Popup.OuiNonPopup(parent,
+                                                                         FermerFichier.TITRE,
+                                                                         FermerFichier.MESSAGE)
+                                                     : JOptionPane.YES_OPTION;
 
         if (valide == JOptionPane.YES_OPTION) {
             /* On charge le fichier si c'est possible */
@@ -58,7 +71,9 @@ public class OuvrirFichier extends MenuItem {
                 if (parent.getPdfPanel().chargerPdf(fichier)) {
                     parent.setTitle(Fenetre.TITRE + " - " + fichier.getName());
                     parent.pack();
-                } else Popup.errorPopup(parent, TITRE_ERREUR, MESSAGE_ERREUR);
+                } else {
+                    Popup.errorPopup(parent, TITRE_ERREUR, MESSAGE_ERREUR);
+                }
             }
         }
     }

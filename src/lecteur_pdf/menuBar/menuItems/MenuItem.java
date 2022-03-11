@@ -32,8 +32,9 @@ public abstract class MenuItem extends JMenuItem {
 
     /**
      * Créé un nouvel élément de {@link lecteur_pdf.menuBar.menu menu}
-     * avec un nom, une action et se référence dans la liste des raccourcis
-     * claviers
+     * avec un nom, une action et se référence dans la liste des
+     * {@link lecteur_pdf.raccourcisClavier.RaccourcisClavier raccourcis
+     * claviers}
      *
      * @param parent Référence de la fenêtre qui possède l'instance de ce
      *               MenuItem

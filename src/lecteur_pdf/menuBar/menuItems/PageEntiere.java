@@ -9,18 +9,23 @@ package lecteur_pdf.menuBar.menuItems;
 import lecteur_pdf.Fenetre;
 
 /**
- * Élément de Menu Page Entière qui permet d'afficher l'intégralité du document courant verticalement
+ * Élément de {@link lecteur_pdf.menuBar.menu.MenuAffichage MenuAffichage}
+ * qui permet d'afficher l'intégralité du document courant verticalement
  *
  * @author Léo Franch
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see MenuItem
  */
 public class PageEntiere extends MenuItem {
     /**
-     * Créé un nouvel élément de Menu PageEntiere
+     * Créé un nouvel élément de
+     * {@link lecteur_pdf.menuBar.menu.MenuAffichage MenuAffichage}
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
+     * @param parent Référence de la {@link Fenetre fenêtre} qui possède
+     *               l'instance de ce
+     *               {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem}
      */
     public PageEntiere(Fenetre parent) {
         super(parent, "Page Entière");
