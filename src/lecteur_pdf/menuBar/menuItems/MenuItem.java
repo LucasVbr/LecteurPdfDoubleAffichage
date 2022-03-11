@@ -12,8 +12,8 @@ import lecteur_pdf.raccourcisClavier.RaccourcisClavier;
 import javax.swing.*;
 
 /**
- * Classe abstraite qui défini les éléments de
- * {@link lecteur_pdf.menuBar.menu menu}
+ * Classe abstraite qui défini les
+ * {@link lecteur_pdf.menuBar.menuItems menuItems}
  * qui nécessitent d'accéder à leur {@link Fenetre fenêtre} parente
  *
  * @author Léo Franch

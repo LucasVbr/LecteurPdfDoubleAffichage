@@ -15,20 +15,25 @@ import lecteur_pdf.menuBar.menu.MenuOptions;
 import javax.swing.*;
 
 /**
- * Barre de menu contenant l'ensemble des menus de l'application
+ * Barre de menu contenant l'ensemble des {@link lecteur_pdf.menuBar.menu
+ * menu} de l'application
  *
  * @author Léo Franch
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see JMenuBar
  */
 public class MenuBar extends JMenuBar {
 
     /**
-     * Créé une nouvelle barre de menu avec l'ensemble des menus de
+     * Créé une nouvelle barre de menu avec l'ensemble des
+     * {@link lecteur_pdf.menuBar.menu menu} de
      * l'application
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
+     * @param parent Référence de la {@link Fenetre fenêtre} qui possède
+     *               l'instance de ce
+     *               {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem}
      */
     public MenuBar(Fenetre parent) {
         add(new MenuFichier(parent));

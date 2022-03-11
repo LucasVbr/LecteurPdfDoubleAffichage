@@ -11,21 +11,27 @@ import lecteur_pdf.GestionFenetre;
 import lecteur_pdf.GestionMode;
 
 /**
- * Élément de Menu Page Suivante qui permet d'afficher la page suivante du
- * document courant (ou les pages suivantes si le mode Synchronisé est activé)
+ * Élément de {@link lecteur_pdf.menuBar.menu.MenuAffichage MenuAffichage}
+ * qui permet d'afficher la page suivante du document courant (ou les pages
+ * suivantes si le
+ * {@link lecteur_pdf.menuBar.menuItems.ModeSynchronise mode Synchronisé} est
+ * activé)
  *
  * @author Léo Franch
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see MenuItem
  */
 public class PageSuivante extends MenuItem {
 
     /**
-     * Créé un nouvel Élément de Menu "Page Suivante"
+     * Créé un nouvel élément de
+     * {@link lecteur_pdf.menuBar.menu.MenuAffichage MenuAffichage}
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce
-     *               MenuItem
+     * @param parent Référence de la {@link Fenetre fenêtre} qui possède
+     *               l'instance de ce
+     *               {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem}
      */
     public PageSuivante(Fenetre parent) {
         super(parent, "Page suivante");

@@ -27,10 +27,12 @@ import lecteur_pdf.GestionMode;
 public class PagePrecedente extends MenuItem {
 
     /**
-     * Créé un nouvel élément de Menu PagePrecedente
+     * Créé un nouvel élément de
+     * {@link lecteur_pdf.menuBar.menu.MenuAffichage MenuAffichage}
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce
-     *               MenuItem
+     * @param parent Référence de la {@link Fenetre fenêtre} qui possède
+     *               l'instance de ce
+     *               {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem}
      */
     public PagePrecedente(Fenetre parent) {
         super(parent, "Page précédente");

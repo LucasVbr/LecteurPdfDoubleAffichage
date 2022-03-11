@@ -12,20 +12,25 @@ import lecteur_pdf.Popup;
 import javax.swing.*;
 
 /**
- * Élément de Menu Quitter qui permet de fermer la fenêtre courante, ferme
- * l'application s'il s'agit de la dernière fenêtre fermée
+ * Élément de {@link lecteur_pdf.menuBar.menu.MenuFichier MenuFichier} qui
+ * permet de fermer la {@link Fenetre fenêtre} courante et ferme
+ * l'application s'il s'agit de la dernière {@link Fenetre fenêtre} fermée
  *
  * @author Léo Franch
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see MenuItem
  */
 public class Quitter extends MenuItem {
 
     /**
-     * Créé un nouvel élément de Menu "Quitter"
+     * Créé un nouvel élément de
+     * {@link lecteur_pdf.menuBar.menu.MenuFichier MenuFichier}
      *
-     * @param parent Référence de la fenêtre qui possède l'instance de ce MenuItem
+     * @param parent Référence de la {@link Fenetre fenêtre} qui possède
+     *               l'instance de ce
+     *               {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem}
      */
     public Quitter(Fenetre parent) {
         super(parent, "Quitter");
@@ -34,7 +39,11 @@ public class Quitter extends MenuItem {
     @Override
     protected void action() {
         final String TITRE = "Quitter";
-        final String MESSAGE = "Êtes-vous sûr de vouloir quitter l'application ?";
-        if (Popup.OuiNonPopup(parent, TITRE, MESSAGE) == JOptionPane.YES_OPTION) parent.quitter();
+        final String MESSAGE
+            = "Êtes-vous sûr de vouloir quitter l'application ?";
+        if (Popup.OuiNonPopup(parent, TITRE, MESSAGE)
+            == JOptionPane.YES_OPTION) {
+            parent.quitter();
+        }
     }
 }
