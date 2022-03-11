@@ -22,26 +22,45 @@ import java.awt.event.KeyListener;
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see JPanel
  */
 public class RaccourcisElement extends JPanel {
 
-    /** Le nom du MenuItem */
+    /**
+     * Le nom du MenuItem
+     */
     private final String nom;
 
-    /** Le bouton qui contient en valeur la séquence de touches correspondant
-     *  au raccourci du MenuItem de l'application */
+    /**
+     * Le bouton qui contient en valeur la séquence de touches correspondant
+     * au raccourci du
+     * {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem} de l'application
+     *
+     * @see JButton
+     */
     private final JButton btnRaccourcis;
 
-    /** Le raccourci clavier */
+    /**
+     * Le raccourci clavier
+     *
+     * @see KeyStroke
+     */
     private KeyStroke raccourcis;
 
     /**
      * Crée un nouveau JPanel comportant une ligne et deux colonnes
-     * Dans la première colonne on trouve un Label qui défini le MenuItem
-     * Dans la seconde colonne on trouve le bouton pour éditer le raccourci clavier
+     * <li>Dans la première colonne on trouve un label qui défini le
+     * {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem}</li>
+     * <li>Dans la seconde colonne on trouve le bouton pour éditer le
+     * raccourci clavier</li>
      *
-     * @param nom Le nom du MenuItem ciblé
-     * @param raccourcis Le raccourci clavier actuel du MenuItem ciblé
+     * @param nom        Le nom du
+     *                   {@link lecteur_pdf.menuBar.menuItems.MenuItem
+     *                   MenuItem} ciblé
+     * @param raccourcis Le raccourci clavier actuel du
+     *                   {@link lecteur_pdf.menuBar.menuItems.MenuItem
+     *                   MenuItem} ciblé
+     * @see GridLayout
      */
     public RaccourcisElement(String nom, KeyStroke raccourcis) {
         super(new GridLayout(1, 2));
@@ -71,24 +90,33 @@ public class RaccourcisElement extends JPanel {
 
             btnRaccourcis.addKeyListener(new KeyListener() {
 
-                /** Valeur qui permet de définir si une touche n'est pas reconnue */
+                /**
+                 * Valeur qui permet de définir si une touche n'est pas reconnue
+                 */
                 private static final int INDETERMINATE = -1;
 
-                /** La valeur de la touche pressée précédemment */
+                /**
+                 * La valeur de la touche pressée précédemment
+                 */
                 private int previousKeyPressed = INDETERMINATE;
 
                 @Override
                 public void keyPressed(KeyEvent evt) {
-                    if (previousKeyPressed == INDETERMINATE) previousKeyPressed = evt.getKeyCode();
-                    else if (previousKeyPressed != evt.getKeyCode()
-                            && isMaskValide(previousKeyPressed)
-                            && !isMaskValide(evt.getKeyCode())) {
+                    if (previousKeyPressed == INDETERMINATE) {
+                        previousKeyPressed = evt.getKeyCode();
+                    } else if (previousKeyPressed != evt.getKeyCode()
+                               && isMaskValide(previousKeyPressed)
+                               && !isMaskValide(evt.getKeyCode())) {
 
-                        KeyStroke ks = KeyStroke.getKeyStroke(evt.getKeyCode(), getMask(previousKeyPressed));
+                        KeyStroke ks = KeyStroke.getKeyStroke(evt.getKeyCode(),
+                                                              getMask(
+                                                                  previousKeyPressed));
 
                         /* Vérifie que ce raccourci clavier n'existe pas */
                         if (!RaccourcisClavier.raccourcis.containsValue(ks)) {
-                            btnRaccourcis.setText(getMaskString(previousKeyPressed) + " + " + ks.toString().split(" ")[2]);
+                            btnRaccourcis.setText(
+                                getMaskString(previousKeyPressed) + " + "
+                                + ks.toString().split(" ")[2]);
                             // On modifie la valeur
                             RaccourcisClavier.raccourcis.replace(nom, ks);
                             raccourcis = ks;
@@ -97,10 +125,17 @@ public class RaccourcisElement extends JPanel {
                         } else {
                             final String TITRE_ERREUR = "Erreur raccourcis";
                             final String MESSAGE_ERREUR = "Le raccourcis que "
-                                                          + "vous venez de réaliser est déjà affecté à une autre fonctionnalité";
+                                                          + "vous venez de "
+                                                          + "réaliser est "
+                                                          + "déjà affecté à "
+                                                          + "une autre "
+                                                          + "fonctionnalité";
 
-                            Popup.errorPopup(btnRaccourcis, TITRE_ERREUR, MESSAGE_ERREUR);
-                            btnRaccourcis.setText(modifierToString(raccourcis.getModifiers()) + " + " + (char)raccourcis.getKeyCode());
+                            Popup.errorPopup(btnRaccourcis, TITRE_ERREUR,
+                                             MESSAGE_ERREUR);
+                            btnRaccourcis.setText(
+                                modifierToString(raccourcis.getModifiers())
+                                + " + " + (char) raccourcis.getKeyCode());
                         }
 
                         btnRaccourcis.removeKeyListener(this);
@@ -109,11 +144,14 @@ public class RaccourcisElement extends JPanel {
                 }
 
                 @Override
-                public void keyTyped(KeyEvent evt) {}
+                public void keyTyped(KeyEvent evt) {
+                }
 
                 @Override
                 public void keyReleased(KeyEvent evt) {
-                    if (previousKeyPressed == evt.getKeyCode()) previousKeyPressed = INDETERMINATE;
+                    if (previousKeyPressed == evt.getKeyCode()) {
+                        previousKeyPressed = INDETERMINATE;
+                    }
                 }
 
                 private boolean isMaskValide(int maskValue) {
@@ -123,8 +161,11 @@ public class RaccourcisElement extends JPanel {
                 /**
                  * Méthode outil qui permet de convertir la valeur tapée en
                  * KeyEvent
-                 * @param maskValue Valeur de masque tapé (control, shift ou alt)
+                 * @param maskValue Valeur de masque tapé (control, shift ou
+                 *                  alt)
                  * @return Le KeyEvent correspondant
+                 *
+                 * @see KeyEvent
                  */
                 private int getMask(int maskValue) {
                     return switch (maskValue) {
@@ -137,7 +178,8 @@ public class RaccourcisElement extends JPanel {
                 /**
                  * Méthode outil qui permet de convertir la valeur tapée en
                  * chaîne de caractère
-                 * @param maskValue Valeur de masque tapé (controle, shift ou alt)
+                 * @param maskValue Valeur de masque tapé (controle, shift ou
+                 *                 alt)
                  * @return La chaine de caractère correspondante
                  */
                 private String getMaskString(int maskValue) {
@@ -152,7 +194,8 @@ public class RaccourcisElement extends JPanel {
     }
 
     /**
-     * Convertit un Modifier en chaîne de caractère
+     * Convertit un modifier en chaîne de caractère
+     *
      * @param modifier valeur du modifier (Element d'un KeyStroke != KeyEvent)
      * @return La chaîne de caractère correspondante
      */
@@ -165,16 +208,21 @@ public class RaccourcisElement extends JPanel {
     }
 
     /**
-     * Convertis un raccourci en chaîne de caractère
+     * Convertit un raccourci en chaîne de caractère
+     *
      * @param keyStroke Le raccourci en question
      * @return La chaîne de caractère construite à partir du raccourci
+     *
+     * @see KeyStroke
      */
     private String keystrokeToString(KeyStroke keyStroke) {
-        return modifierToString(keyStroke.getModifiers()) + " + " + keyStroke.toString().split(" ")[2];
+        return modifierToString(keyStroke.getModifiers()) + " + "
+               + keyStroke.toString().split(" ")[2];
     }
 
     /**
      * Change le raccourci (visuellement)
+     *
      * @param raccourcis nouveau raccourci
      */
     public void setRaccourcis(KeyStroke raccourcis) {

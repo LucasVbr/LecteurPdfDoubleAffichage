@@ -6,6 +6,7 @@
 
 package lecteur_pdf.raccourcisClavier;
 
+import lecteur_pdf.Fenetre;
 import lecteur_pdf.GestionFenetre;
 
 import javax.swing.*;
@@ -24,6 +25,10 @@ import java.util.Map;
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see JFrame
+ * @see ArrayList
+ * @see HashMap
+ * @see KeyStroke
  */
 public class RaccourcisClavier extends JFrame {
 
@@ -38,24 +43,37 @@ public class RaccourcisClavier extends JFrame {
     public static boolean saisieBloquee;
 
     /**
-     * Liste des menus items, se remplis à la création de chaque MenuItem de
+     * Liste des {@link lecteur_pdf.menuBar.menuItems menus items}, se
+     * remplis à la création de chaque
+     * {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem} de
      * l'application
+     *
+     * @see ArrayList
      */
     public static ArrayList<JMenuItem> listeMenuItems = new ArrayList<>();
 
     /**
-     * Liste des éléments graphiques (un élément est une ligne) de la fenêtre
+     * Liste des {@link RaccourcisElement éléments graphiques} (un élément
+     * est une ligne) de la {@link Fenetre fenêtre}
+     *
+     * @see ArrayList
      */
-    public static ArrayList<RaccourcisElement> listeRaccourcisElement = new ArrayList<>();
+    public static ArrayList<RaccourcisElement> listeRaccourcisElement
+        = new ArrayList<>();
 
     /**
-     * HashMap qui prend en clé le Nom du MenuItem et en valeur une
+     * HashMap qui prend en clé le nom du
+     * {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem} et en valeur une
      * combinaison de touche : le raccourci clavier
+     *
+     * @see HashMap
+     * @see KeyStroke
      */
     public static Map<String, KeyStroke> raccourcis = new HashMap<>() {};
 
     /**
-     * La liste des noms de MenuItems de l'application
+     * La liste des noms de
+     * {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem} de l'application
      */
     public static String[] LISTE_NOM = {
         "Ouvrir", "Fermer", "Quitter", "Mode Plein Écran", "Page précédente",
@@ -101,9 +119,9 @@ public class RaccourcisClavier extends JFrame {
     };
 
     /**
-     * Créé une nouvelle fenêtre contenant la liste des Raccourcis claviers
-     * de l'application ainsi qu'un bouton Raccourcis par défaut qui remet
-     * les raccourcis par défaut de l'application
+     * Créé une nouvelle {@link Fenetre fenêtre} contenant la liste des
+     * raccourcis claviers de l'application ainsi qu'un bouton raccourcis par
+     * défaut qui réinitialise les raccourcis claviers de l'application
      */
     public RaccourcisClavier() {
         super("Modification des raccourcis claviers");
@@ -142,8 +160,8 @@ public class RaccourcisClavier extends JFrame {
 
     /**
      * Action lors du clic sur le bouton Reset
-     * Charge les raccourcis par défaut puis les sauvegarde
-     * Met a jour l'interface
+     * Charge les raccourcis par défaut puis les sauvegarde et met à jour
+     * l'interface
      */
     private void actionBtnReset(ActionEvent evt) {
         initialisationFichierRaccourcis();
@@ -162,6 +180,9 @@ public class RaccourcisClavier extends JFrame {
 
     /**
      * Lis le fichier de sauvegarde et restaure la HashMap des raccourcis
+     *
+     * @see FileInputStream
+     * @see ObjectInputStream
      */
     public static void chargerRaccourcis() {
         try {
@@ -184,6 +205,9 @@ public class RaccourcisClavier extends JFrame {
 
     /**
      * Écrit dans le fichier de sauvegarde la HashMap des raccourcis
+     *
+     * @see FileOutputStream
+     * @see ObjectOutputStream
      */
     public static void sauvegarderRaccourcis() {
         try {
@@ -213,7 +237,9 @@ public class RaccourcisClavier extends JFrame {
     }
 
     /**
-     * Affecte a chaque MenuItems le raccourci qui lui est destiné
+     * Affecte a chaque
+     * {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItem} le raccourci
+     * qui lui est destiné
      */
     public static void affecterRaccourcis() {
         for (JMenuItem menuItem : listeMenuItems) {
