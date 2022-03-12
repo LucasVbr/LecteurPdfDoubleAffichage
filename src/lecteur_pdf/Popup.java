@@ -26,8 +26,9 @@ public class Popup {
      * @param parent  La {@link Fenetre fenêtre} parente de référence
      * @param titre   Titre de la {@link Fenetre fenêtre}
      * @param message Message affiché dans la {@link Fenetre fenêtre}
-     * @return JOptionPane.YES_OPTION si oui est cliqué, JOptionPane
-     * .NO_OPTION si non est cliqué
+     * @return <ul><li>{@link JOptionPane JOptionPane}.YES_OPTION si oui est
+     * cliqué</li>
+     * <li>{@link JOptionPane JOptionPane}.NO_OPTION si non est cliqué</li></ul>
      * @see JOptionPane
      */
     public static int OuiNonPopup(Component parent,
