@@ -12,42 +12,71 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 
 /**
- * Classe qui permet d'ouvrir une fenêtre pour sélectionner le fichier pdf à ouvrir
+ * Classe qui permet d'ouvrir une {@link Fenetre fenêtre} pour sélectionner
+ * le fichier pdf à ouvrir
  *
  * @author Léo FRANCH
  * @author Tristan NOGARET
  * @author Lucàs VABRE
  * @author Noé VILLENEUVE
+ * @see JFileChooser
+ * @see File
+ * @see FileNameExtensionFilter
+ * @see FileSystemView
  */
 public class SelectionnerFichier {
 
-    /** Le titre de la fenêtre */
+    /**
+     * Le titre de la {@link Fenetre fenêtre}
+     */
     private static final String TITRE = "Sélectionnez un PDF";
 
-    /** Description du filtre */
+    /**
+     * Description du filtre
+     *
+     * @see FileNameExtensionFilter
+     */
     private static final String DESCRIPTION = "PDF files (*.pdf)";
 
-    /** Extension de fichier filtré */
+    /**
+     * Extension de fichier filtré
+     */
     private static final String EXTENSION = "pdf";
 
-    /** Valeur du bouton OK */
+    /**
+     * Valeur du bouton Ok
+     */
     private static final String BOUTON_OK = "Ouvrir";
 
-    /** Valeur du bouton Annuler */
+    /**
+     * Valeur du bouton Annuler
+     */
     private static final String BOUTON_ANNULER = "Annuler";
 
-    /** Indice au survol du bouton Ok */
-    private static final String INDICE_BOUTON_OK = "Ouvre le fichier sélectionné";
+    /**
+     * Indice au survol du bouton Ok
+     */
+    private static final String INDICE_BOUTON_OK
+        = "Ouvre le fichier sélectionné";
 
-    /** Indice au survol du bouton Annuler */
+    /**
+     * Indice au survol du bouton Annuler
+     */
     private static final String INDICE_BOUTON_ANNULER = "Annule la sélection";
 
     /**
-     * Méthode qui créée une fenêtre pour que l'utilisateur choisisse un
-     * fichier PDF
+     * Méthode qui créée une {@link Fenetre fenêtre} pour que l'utilisateur
+     * choisisse un fichier PDF
      *
-     * @return le fichier choisi par l'utilisateur, null si aucun fichier
-     * n'est choisi
+     * @param parent La {@link Fenetre fenêtre} parente de référence
+     * @return <ul><li>le fichier choisi par l'utilisateur</li>
+     * <li>null si aucun fichier n'est choisi</li></ul>
+     * @see JFileChooser
+     * @see File
+     * @see FileSystemView
+     * @see FileNameExtensionFilter
+     * @see SwingUtilities
+     * @see UIManager
      */
     public static File ouvrirFichier(JFrame parent) {
 

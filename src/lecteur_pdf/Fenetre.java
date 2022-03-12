@@ -16,12 +16,14 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * Classe définissant une fenêtre qui peut contenir un document PDF
+ * Classe définissant une {@link Fenetre fenêtre} qui peut contenir un
+ * document PDF
  *
  * @author Léo Franch
  * @author Tristan Nogaret
  * @author Lucàs Vabre
  * @author Noé Villeneuve
+ * @see JFrame
  */
 public class Fenetre extends JFrame {
 
@@ -31,23 +33,28 @@ public class Fenetre extends JFrame {
     public static final String TITRE = "LPDA";
 
     /**
-     * Le Panel contenant le document PDF
+     * Le {@link PdfPanel panel} contenant le document PDF
      */
     private final PdfPanel pdfPanel;
 
     /* Relatif au FullScreen */
+
     /**
-     * Booléen qui définit si la fenêtre est en mode plein écran ou non
+     * Booléen qui définit si la {@link Fenetre fenêtre} est en mode
+     * {@link lecteur_pdf.menuBar.menuItems.PleinEcran plein écran} ou non
      */
     private boolean fullscreen = false;
 
     /**
-     * Composant Graphique permettant la mise en place du plein écran
+     * Composant graphique permettant la mise en place du
+     * {@link lecteur_pdf.menuBar.menuItems.PleinEcran plein écran}
+     *
+     * @see GraphicsDevice
      */
     private GraphicsDevice device;
 
     /**
-     * Créé une nouvelle fenêtre vide
+     * Créé une nouvelle {@link Fenetre fenêtre} vide
      */
     public Fenetre() {
         super(TITRE);
@@ -63,7 +70,7 @@ public class Fenetre extends JFrame {
         setJMenuBar(new MenuBar(this));   // Ajoute la barre des menus
 
         /* Action à la fermeture de la fenêtre */
-        this.addWindowListener(new WindowAdapter(){
+        this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent et) {
                 quitter();
@@ -82,20 +89,24 @@ public class Fenetre extends JFrame {
     }
 
     /**
-     * @return Le Panel contenant le document PDF
+     * @return Le {@link PdfPanel panel} contenant le document PDF
      */
     public PdfPanel getPdfPanel() {
         return pdfPanel;
     }
 
     /**
-     * Si fullscreen est égal à false -> Désactive le mode Plein Écran
-     * Sinon Active le mode Plein Écran
+     * Si fullscreen est égal à false ->
+     * <ul><li>Désactive le mode
+     * {@link lecteur_pdf.menuBar.menuItems.PleinEcran Plein Écran}</li>
+     * <li>Sinon, active le mode
+     * {@link lecteur_pdf.menuBar.menuItems.PleinEcran Plein Écran}</li></ul>
      */
     public void pleinEcran() {
 
         if (!fullscreen) { // Active le Plein Écran
-            GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsEnvironment graphics
+                = GraphicsEnvironment.getLocalGraphicsEnvironment();
             device = graphics.getDefaultScreenDevice();
             device.setFullScreenWindow(this);
         } else { // Désactive le Plein Écran
@@ -108,7 +119,7 @@ public class Fenetre extends JFrame {
     }
 
     /**
-     * Décharge le PDF courant, ferme la fenêtre
+     * Décharge le PDF courant, ferme la {@link Fenetre fenêtre}
      * S'il s'agit de la dernière fenêtre ouverte, arrête l'application
      */
     public void quitter() {
@@ -122,11 +133,14 @@ public class Fenetre extends JFrame {
 
         /* Si la liste des fenêtres n'est pas pleine alors on réactive le
         bouton pour créer une nouvelle fenêtre  */
-        if (GestionFenetre.FENETRE_LIST.size() < GestionFenetre.NB_MAX_PDF)
+        if (GestionFenetre.FENETRE_LIST.size() < GestionFenetre.NB_MAX_PDF) {
             GestionMode.activerBtnNouvelleFenetre();
+        }
 
         /* S'il n'y a plus de fenêtres ouvertes on quitte l'application */
-        if (GestionFenetre.FENETRE_LIST.size() == 0) System.exit(0);
+        if (GestionFenetre.FENETRE_LIST.size() == 0) {
+            System.exit(0);
+        }
     }
 
     /**

@@ -14,7 +14,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Gestionnaire de mode Synchronisé ou Séparé
+ * Gestionnaire de mode {@link ModeSynchronise Synchronisé} ou
+ * {@link ModeSepare Séparé}
  *
  * @author Léo Franch
  * @author Tristan Nogaret
@@ -23,40 +24,82 @@ import java.util.ArrayList;
  */
 public class GestionMode {
 
-    /** Défini si le mode séparé est activé ou non */
+    /**
+     * Définit si le {@link ModeSepare mode Séparé} est activé ou non
+     */
     private static boolean modeSepare;
 
-    /** Liste les MenuItems de type NouvelleFenetre de l'application */
-    private static final ArrayList<NouvelleFenetre> nouvelleFenetreList = new ArrayList<>();
-
-    /** Liste les MenuItem de type ModeSepare de l'application */
-    private static final ArrayList<ModeSepare> modeSepareList = new ArrayList<>();
-
-    /** Liste les MenuItem de type ModeSynchronise de l'application */
-    private static final ArrayList<ModeSynchronise> modeSynchroniseList = new ArrayList<>();
+    /**
+     * Liste les {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItems}
+     * de type {@link NouvelleFenetre NouvelleFenetre} de l'application
+     *
+     * @see ArrayList
+     */
+    private static final ArrayList<NouvelleFenetre> nouvelleFenetreList
+        = new ArrayList<>();
 
     /**
-     * Référence les éléments NouvelleFenetre, ModeSepare, ModeSynchronise 
-     * lors de la création d'une nouvelle fenêtre
-     * @param fenetre Référence du MenuItem NouvelleFenetre de la fenêtre crée
-     * @param separe Référence du MenuItem ModeSepare de la fenêtre crée
-     * @param synchronise Référence du MenuItem ModeSynchronise de la fenêtre crée
+     * Liste les {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItems}
+     * de type {@link ModeSepare ModeSepare} de l'application
+     *
+     * @see ArrayList
      */
-    public static void addItem(NouvelleFenetre fenetre, ModeSepare separe, ModeSynchronise synchronise) {
+    private static final ArrayList<ModeSepare> modeSepareList
+        = new ArrayList<>();
+
+    /**
+     * Liste les {@link lecteur_pdf.menuBar.menuItems.MenuItem MenuItems}
+     * de type {@link ModeSynchronise ModeSynchronise} de l'application
+     *
+     * @see ArrayList
+     */
+    private static final ArrayList<ModeSynchronise> modeSynchroniseList
+        = new ArrayList<>();
+
+    /**
+     * Référence les éléments
+     * {@link NouvelleFenetre NouvelleFenetre},
+     * {@link ModeSepare ModeSepare} et
+     * {@link ModeSynchronise ModeSynchronise}
+     * lors de la création d'une nouvelle {@link Fenetre fenêtre}
+     *
+     * @param fenetre     Référence du
+     *                    {@link lecteur_pdf.menuBar.menuItems.MenuItem
+     *                    MenuItem}
+     *                    {@link NouvelleFenetre NouvelleFenetre} de la fenêtre
+     *                    créée
+     * @param separe      Référence du
+     *                    {@link lecteur_pdf.menuBar.menuItems.MenuItem
+     *                    MenuItem}
+     *                    {@link ModeSepare ModeSepare} de la fenêtre créée
+     * @param synchronise Référence du
+     *                    {@link lecteur_pdf.menuBar.menuItems.MenuItem
+     *                    MenuItem}
+     *                    {@link ModeSynchronise ModeSynchronise} de la fenêtre
+     *                    créée
+     */
+    public static void addItem(NouvelleFenetre fenetre,
+                               ModeSepare separe,
+                               ModeSynchronise synchronise) {
         nouvelleFenetreList.add(fenetre);
         modeSepareList.add(separe);
         modeSynchroniseList.add(synchronise);
         updateMode();
     }
 
-    /** @return true si le mode séparé est activé, false sinon */
+    /**
+     * @return <ul><li>true si le {@link ModeSepare mode séparé} est
+     * activé</li><li>false sinon</li></ul>
+     */
     public static boolean isModeSepare() {
         return modeSepare;
     }
 
     /**
      * Change de mode
-     * @param mode true pour le mode séparé, false pour le mode synchronisé
+     *
+     * @param mode <ul><li>true pour le mode séparé</li>
+     *             <li>false pour le mode synchronisé</li></ul>
      */
     public static void setModeSepare(boolean mode) {
         modeSepare = mode;
@@ -64,19 +107,19 @@ public class GestionMode {
     }
 
     /**
-     * Met à jour dans toutes les fenêtres ouvertes la checkbox du mode
-     * sélectionné
+     * Met à jour dans toutes les {@link Fenetre fenêtres} ouvertes la
+     * checkbox du mode sélectionné
      */
     private static void updateMode() {
-        for (int i = 0; i < modeSepareList.size() ; i++) {
+        for (int i = 0; i < modeSepareList.size(); i++) {
             modeSepareList.get(i).setSelected(modeSepare);
             modeSynchroniseList.get(i).setSelected(!modeSepare);
         }
     }
 
     /**
-     * Grise le bouton "Nouvelle Fenêtre" de toutes les fenêtres de
-     * l'application
+     * Grise le bouton "{@link NouvelleFenetre Nouvelle Fenêtre}" de toutes les
+     * {@link Fenetre fenêtres} de l'application
      */
     public static void desactiverBtnNouvelleFenetre() {
         for (NouvelleFenetre item : nouvelleFenetreList) {
@@ -86,8 +129,8 @@ public class GestionMode {
     }
 
     /**
-     * Dégrise le bouton "Nouvelle Fenêtre" de toutes les fenêtres de
-     * l'application
+     * Dégrise le bouton "{@link NouvelleFenetre Nouvelle Fenêtre}" de toutes
+     * les {@link Fenetre fenêtres} de l'application
      */
     public static void activerBtnNouvelleFenetre() {
         for (NouvelleFenetre item : nouvelleFenetreList) {

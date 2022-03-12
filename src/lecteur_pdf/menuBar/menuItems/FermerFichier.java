@@ -26,16 +26,12 @@ public class FermerFichier extends MenuItem {
     /**
      * Titre de la {@link lecteur_pdf.Popup Popup} lors de la fermeture d'un
      * document
-     *
-     * @see javax.swing.Popup
      */
     public static final String TITRE = "Fermeture du document";
 
     /**
      * Message de la {@link lecteur_pdf.Popup Popup} lors de la fermeture
      * d'un {@link lecteur_pdf.pdf.DocumentPdf document}
-     *
-     * @see javax.swing.Popup
      */
     public static final String MESSAGE
         = "Êtes-vous sûr de vouloir fermer le document ?";
