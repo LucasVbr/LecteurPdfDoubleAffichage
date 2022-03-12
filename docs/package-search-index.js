@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"lecteur_pdf"},{"l":"lecteur_pdf.menuBar"},{"l":"lecteur_pdf.menuBar.menu"},{"l":"lecteur_pdf.menuBar.menuItems"},{"l":"lecteur_pdf.pdf"},{"l":"lecteur_pdf.raccourcisClavier"}];updateSearchResults();
