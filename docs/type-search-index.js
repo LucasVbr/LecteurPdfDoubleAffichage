@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"lecteur_pdf.affichage","l":"Fenetre"},{"p":"lecteur_pdf","l":"LecteurPDFDoubleAffichage"},{"p":"lecteur_pdf.menu","l":"Menu"},{"p":"lecteur_pdf.document","l":"Page"},{"p":"lecteur_pdf.document","l":"PDF"},{"p":"lecteur_pdf.menu","l":"SelectionnerFichier"}];updateSearchResults();
