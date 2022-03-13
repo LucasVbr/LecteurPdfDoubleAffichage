@@ -237,8 +237,6 @@ public class PdfPanel extends JPanel {
 
     /**
      * @param pleineLargeur Booléen qui défini l'état du mode
-     *                      <p>
-     *                      <p>
      *                      {@link lecteur_pdf.menuBar.menuItems.PleineLargeur
      *                      Pleine Largeur}
      */
@@ -277,7 +275,7 @@ public class PdfPanel extends JPanel {
 
     /**
      * @param pdfLoader un nouveau document PDF à affecter à la
-     * {@link Fenetre fenêtre}
+     *                  {@link Fenetre fenêtre}
      */
     public void setPdfLoader(DocumentPdf pdfLoader) {
         this.pdfLoader = pdfLoader;
