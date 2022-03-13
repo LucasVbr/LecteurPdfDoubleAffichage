@@ -226,7 +226,7 @@ public class PdfPanel extends JPanel {
             taille = (viewportWidth - scrollpaneWidth) / pdfMinWidth - zoom;
         } else {
             float viewportHeight = viewport.getHeight();
-            float scrollpaneHeight = scrollPane.getVerticalScrollBar()
+            float scrollpaneHeight = scrollPane.getHorizontalScrollBar()
                                                .getHeight();
             float pdfMinHeight = pdfLoader.getMinHeight();
 
