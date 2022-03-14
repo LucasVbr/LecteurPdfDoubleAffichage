@@ -40,7 +40,7 @@ public class Quitter extends MenuItem {
     protected void action() {
         final String TITRE = "Quitter";
         final String MESSAGE
-            = "Êtes-vous sûr de vouloir quitter l'application ?";
+            = "Êtes-vous sûr de vouloir fermer la fenêtre ?";
         if (Popup.OuiNonPopup(parent, TITRE, MESSAGE)
             == JOptionPane.YES_OPTION) {
             parent.quitter();
