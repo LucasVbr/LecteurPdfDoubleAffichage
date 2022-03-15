@@ -45,7 +45,7 @@ public class GestionFenetre {
     /**
      * Crée une nouvelle fenêtre si NB_MAX_PDF n'est pas atteint
      */
-    public static void newIhmPdf() {
+    public static void nouvelleFenetre() {
         if (FENETRE_LIST.size() < NB_MAX_PDF) {
             Fenetre ihm = new Fenetre();
             FENETRE_LIST.add(ihm);
@@ -56,7 +56,7 @@ public class GestionFenetre {
      * Méthode qui affiche la page suivante de tous les PDF ouverts
      * ({@link lecteur_pdf.menuBar.menuItems.ModeSynchronise mode Synchronisé})
      */
-    public static void nextPages() {
+    public static void pagesSuivantes() {
         for (Fenetre ihm : FENETRE_LIST) {
             ihm.getPdfPanel().pageSuivante();
         }
@@ -66,7 +66,7 @@ public class GestionFenetre {
      * Méthode qui affiche la page précédente de tous les PDF ouverts
      * ({@link lecteur_pdf.menuBar.menuItems.ModeSynchronise mode Synchronisé})
      */
-    public static void previousPages() {
+    public static void pagesPrecedentes() {
         for (Fenetre ihm : FENETRE_LIST) {
             ihm.getPdfPanel().pagePrecedente();
         }
@@ -87,6 +87,6 @@ public class GestionFenetre {
         }
 
         GestionMode.setModeSepare(true);
-        newIhmPdf();
+        nouvelleFenetre();
     }
 }

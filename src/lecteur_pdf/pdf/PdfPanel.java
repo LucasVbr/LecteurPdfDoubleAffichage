@@ -187,7 +187,7 @@ public class PdfPanel extends JPanel {
         if (GestionMode.isModeSepare()) {
             pageSuivante();
         } else {
-            GestionFenetre.nextPages();
+            GestionFenetre.pagesSuivantes();
         }
     }
 
@@ -203,7 +203,7 @@ public class PdfPanel extends JPanel {
         if (GestionMode.isModeSepare()) {
             pagePrecedente();
         } else {
-            GestionFenetre.previousPages();
+            GestionFenetre.pagesPrecedentes();
         }
     }
 
@@ -212,7 +212,7 @@ public class PdfPanel extends JPanel {
      * {@link lecteur_pdf.menuBar.menuItems.PleineLargeur Pleine Largeur}
      * est activée ou non
      */
-    public void changerTaille() {
+    private void changerTaille() {
         if (pdfLoader == null || processing) {
             return;
         }
@@ -221,14 +221,14 @@ public class PdfPanel extends JPanel {
             float viewportWidth = viewport.getWidth();
             float scrollpaneWidth = scrollPane.getVerticalScrollBar()
                                               .getWidth();
-            float pdfMinWidth = pdfLoader.getMinWidth();
+            float pdfMinWidth = pdfLoader.getDefaultWidth();
 
             taille = (viewportWidth - scrollpaneWidth) / pdfMinWidth - zoom;
         } else {
             float viewportHeight = viewport.getHeight();
             float scrollpaneHeight = scrollPane.getHorizontalScrollBar()
                                                .getHeight();
-            float pdfMinHeight = pdfLoader.getMinHeight();
+            float pdfMinHeight = pdfLoader.getDefaultHeight();
 
             taille = (viewportHeight - scrollpaneHeight) / pdfMinHeight - zoom;
         }
@@ -311,20 +311,20 @@ public class PdfPanel extends JPanel {
     /**
      * Change la valeur du zoom de la page courante
      *
-     * @param scale Valeur flottante (1.00f == 100%)
+     * @param zoom Valeur flottante (1.00f == 100%)
      */
-    public void setZoom(float scale) {
-        zoom = scale;
+    public void setZoom(float zoom) {
+        this.zoom = zoom;
         changerPage(numeroPage);
     }
 
     /**
      * Change la taille de la page courante
      *
-     * @param scale Valeur flottante (1.00f == 100%)
+     * @param taille Valeur flottante (1.00f == 100%)
      */
-    private void setTaille(float scale) {
-        taille = scale;
+    private void setTaille(float taille) {
+        this.taille = taille;
         changerPage(numeroPage);
     }
 

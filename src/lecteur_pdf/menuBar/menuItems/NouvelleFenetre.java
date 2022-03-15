@@ -38,7 +38,7 @@ public class NouvelleFenetre extends MenuItem {
     @Override
     public void action() {
         /* Essaye de créer une nouvelle fenêtre */
-        GestionFenetre.newIhmPdf();
+        GestionFenetre.nouvelleFenetre();
 
         /* Désactive le bouton si on a atteint la limite de fenêtres */
         if (GestionFenetre.FENETRE_LIST.size() == GestionFenetre.NB_MAX_PDF) {

@@ -42,7 +42,7 @@ public class PageSuivante extends MenuItem {
         if (GestionMode.isModeSepare()) {
             parent.getPdfPanel().pageSuivante();
         } else {
-            GestionFenetre.nextPages();
+            GestionFenetre.pagesSuivantes();
         }
     }
 }

@@ -83,7 +83,7 @@ public class RaccourcisElement extends JPanel {
      *
      * @param evt écouteur d'évènement
      */
-    public void action(ActionEvent evt) {
+    private void action(ActionEvent evt) {
         if (!RaccourcisClavier.saisieBloquee) {
             RaccourcisClavier.saisieBloquee = true;
             btnRaccourcis.setText(" --- ");

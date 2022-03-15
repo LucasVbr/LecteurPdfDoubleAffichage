@@ -43,7 +43,7 @@ public class PagePrecedente extends MenuItem {
         if (GestionMode.isModeSepare()) {
             parent.getPdfPanel().pagePrecedente();
         } else {
-            GestionFenetre.previousPages();
+            GestionFenetre.pagesPrecedentes();
         }
     }
 }

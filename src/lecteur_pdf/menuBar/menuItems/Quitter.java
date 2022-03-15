@@ -24,6 +24,10 @@ import javax.swing.*;
  */
 public class Quitter extends MenuItem {
 
+    public final String TITRE = "Quitter";
+    public final String MESSAGE
+            = "Êtes-vous sûr de vouloir fermer la fenêtre ?";
+
     /**
      * Créé un nouvel élément de
      * {@link lecteur_pdf.menuBar.menu.MenuFichier MenuFichier}
@@ -38,9 +42,7 @@ public class Quitter extends MenuItem {
 
     @Override
     protected void action() {
-        final String TITRE = "Quitter";
-        final String MESSAGE
-            = "Êtes-vous sûr de vouloir fermer la fenêtre ?";
+
         if (Popup.OuiNonPopup(parent, TITRE, MESSAGE)
             == JOptionPane.YES_OPTION) {
             parent.quitter();

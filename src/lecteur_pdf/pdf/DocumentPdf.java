@@ -42,12 +42,12 @@ public class DocumentPdf {
     /**
      * La largeur par défaut de la page courante
      */
-    private int minWidth;
+    private int defaultWidth;
 
     /**
      * La longueur par défaut de la page courante
      */
-    private int minHeight;
+    private int defaultHeight;
 
     /**
      * Charge un nouveau
@@ -59,22 +59,22 @@ public class DocumentPdf {
     public DocumentPdf(File file) throws IOException {
         document = PDDocument.load(file);
         renderer = new PDFRenderer(document);
-        minWidth = -1;
-        minHeight = -1;
+        defaultWidth = -1;
+        defaultHeight = -1;
     }
 
     /**
      * @return La largeur par défaut de la page courante
      */
-    public int getMinWidth() {
-        return minWidth;
+    public int getDefaultWidth() {
+        return defaultWidth;
     }
 
     /**
      * @return La longueur par défaut de la page courante
      */
-    public int getMinHeight() {
-        return minHeight;
+    public int getDefaultHeight() {
+        return defaultHeight;
     }
 
     /**
@@ -107,9 +107,9 @@ public class DocumentPdf {
 
         BufferedImage img = renderer.renderImage(pageIndex, scale);
 
-        if (scale == 1.0f && minWidth == -1 && minHeight == -1) {
-            minWidth = img.getWidth();
-            minHeight = img.getHeight();
+        if (scale == 1.0f && defaultWidth == -1 && defaultHeight == -1) {
+            defaultWidth = img.getWidth();
+            defaultHeight = img.getHeight();
         }
 
         return img;
@@ -122,8 +122,8 @@ public class DocumentPdf {
         try {
             renderer = null;
             document.close();
-            minWidth = -1;
-            minHeight = -1;
+            defaultWidth = -1;
+            defaultHeight = -1;
         } catch (IOException ignored) {
         }
     }
